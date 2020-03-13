@@ -10,7 +10,10 @@
     "pages/address/address",
     "pages/goodFriend/goodFriend",
     "pages/bank/bank",
-    "pages/realName/realName"
+    "pages/realName/realName",
+    "pages/dataSet/dataSet",
+    "pages/setPassword/setPassword",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -146,6 +146,12 @@ margin-left: 40rpx;
 .div_border99{
 	border:1px solid  #999999 !important;
 }
+.width15{
+width: 15%
+}
+.width20{
+width: 20%
+}
 .width25{
 	width: 25%;
 }
@@ -167,6 +173,12 @@ margin-left: 40rpx;
 }
 .width70 {
 	width: 70%;
+}
+.width80 {
+	width: 80%;
+}
+.width90 {
+	width: 90%;
 }
 .width100 {
 	width: 100%;

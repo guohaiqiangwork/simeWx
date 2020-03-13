@@ -8,3 +8,18 @@
   border-radius: 20rpx;
   border: 1px solid #E9E9E9
 }
+.setUp_moudel_list{
+  width: 670rpx;
+  border-bottom: 1px solid #F4F4F4;
+  display: flex;
+  font-size: 32rpx;
+  color: #333333;
+  height: 80rpx;
+  padding-top: 35rpx;
+  margin-left: 20rpx;
+  padding-left: 10rpx;
+}
+.right{
+  width: 12rpx;
+  height: 21rpx;
+}

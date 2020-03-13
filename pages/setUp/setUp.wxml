@@ -4,9 +4,13 @@
 
 <!-- 内容 -->
 <view class="setUp_moudel">
-  <view class="view_display">
-    <view>686876</view>
-    <view>686876</view>
-    <view>686876</view>
+  <view class="setUp_moudel_list" wx:for="{{setList}}" data-url="{{item.url}}" catchtap="goPages">
+    <view class="width50">{{item.name}}</view>
+    <view class="width45 text_right">
+      <view class="font_size26">
+        {{item.phone}}
+        <image src="/image/right.png" class="right"></image>
+      </view>
+    </view>
   </view>
 </view>

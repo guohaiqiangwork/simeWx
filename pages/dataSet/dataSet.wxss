@@ -1,1 +1,43 @@
 /* pages/dataSet/dataSet.wxss */
+
+picker {
+  -display: block;
+  width: 670rpx;
+}
+
+.setUp_moudel {
+  width: 710rpx;
+  height: 627rpx;
+  background-color: #fff;
+  margin-top: 22rpx;
+  margin-left: 20rpx;
+  border-radius: 20rpx;
+  border: 1px solid #e9e9e9;
+}
+
+.setUp_moudel_list {
+  width: 670rpx;
+  border-bottom: 1px solid #f4f4f4;
+  -display: flex;
+  font-size: 32rpx;
+  color: #333;
+  height: 80rpx;
+  padding-top: 35rpx;
+  margin-left: 20rpx;
+  padding-left: 10rpx;
+}
+
+.right {
+  width: 12rpx;
+  height: 21rpx;
+}
+
+.pickercla {
+  width: 670rpx;
+}
+
+.section {
+  background: #cabbc7;
+  margin: 20rpx;
+  padding: 20rpx;
+}

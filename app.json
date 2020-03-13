@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/dataSet/dataSet",
     "pages/setUp/setUp",
     "pages/my/my",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/shopCart/shopCart",
     "pages/category/category",
@@ -11,9 +12,9 @@
     "pages/goodFriend/goodFriend",
     "pages/bank/bank",
     "pages/realName/realName",
-    "pages/dataSet/dataSet",
     "pages/setPassword/setPassword",
-    "pages/aboutUs/aboutUs"
+    "pages/aboutUs/aboutUs",
+    "commpents/timeChoice/timeChoice"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -24,7 +25,8 @@
     "enablePullDownRefresh": true
   },
   "usingComponents": {
-    "navbar": "/commpents/navbar/navbar"
+    "navbar": "/commpents/navbar/navbar",
+    "timeChoice": "/commpents/timeChoice/timeChoice"
   },
   "tabBar": {
     "selectedColor": "#E20000",

@@ -1,3 +1,21 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='设置' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+  <navbar title='个人资料设置' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<!-- 内容 -->
+<view class="setUp_moudel">
+  <view wx:for="{{setList}}" data-url="{{item.url}}" wx:key="key">
+    <picker class="setUp_moudel_list" bindchange="bindPickerChange" data-index="{{index}}" value="{{item.sexArray}}" range="{{item.sexArray}}" mode="{{item.modeVal}}">
+      <view class="width50 float-left">{{item.name}}</view>
+      <view class="width45 text_right float-right">
+        <view class="font_size26">
+          {{item.value}}
+          <image src="/image/right.png" class="right"></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <!-- 纪念日组件 -->
+  <timeChoice></timeChoice>
+  
 </view>

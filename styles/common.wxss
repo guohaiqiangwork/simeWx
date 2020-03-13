@@ -140,6 +140,13 @@ margin-left: 40rpx;
 	text-align: center;
 }
 
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+
 .text_right {
 	text-align: right;
 }

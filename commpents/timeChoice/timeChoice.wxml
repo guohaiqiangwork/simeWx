@@ -1,0 +1,13 @@
+<!--<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+  <input value='{{time}}' placeholder='选择时间' />
+</picker>-->
+
+<picker class="setUp_moudel_list" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+  <view class="width50 float-left">纪念日</view>
+  <view class="width45 text_right float-right">
+    <view class="font_size26">
+      {{time}}
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+</picker>

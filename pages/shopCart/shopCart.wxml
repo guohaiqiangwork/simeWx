@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='购物车' show_bol='{{ishideback}}'></navbar>
+</view>

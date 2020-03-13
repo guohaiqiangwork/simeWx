@@ -1,0 +1,35 @@
+/* 顶部导航 */
+.status-bar {
+  width: 100%;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+}
+.goBack{
+  position: absolute;
+  top: 15rpx;
+  font-size:12pt;
+}
+.goBack image{
+  width: 30rpx;
+  height: 30rpx;
+  padding: 16rpx 20px 0 30rpx;
+}
+.tabar {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+  background:linear-gradient(to right, #eb8dd2, #2e1cb0);
+  color:#fff
+}
+.tabar2{
+  background: #fff;
+  color: #575757
+}
+.tabar text {
+  line-height: 80rpx;
+  font-size: 40rpx;
+}
+.tabar .active {
+  color: #fff;
+}

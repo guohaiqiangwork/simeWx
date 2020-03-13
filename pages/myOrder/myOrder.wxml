@@ -1,0 +1,15 @@
+<!-- 标题 -->
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='我的订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view class="margin_top2">
+  <!-- 切换 -->
+  <view class="view_display">
+    <view class="width25 text_center" wx:for="{{orderTabList}}" data-id="{{item.id}}" catchtap='productTabSwich'>
+       <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
+        <view class='border_tab_y' wx:if="{{tabFalg == item.id}}"></view>
+    </view>
+  </view>
+
+</view>

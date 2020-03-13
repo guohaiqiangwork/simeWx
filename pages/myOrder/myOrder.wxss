@@ -1,0 +1,171 @@
+
+/* @import '../product/product.wxss'; */
+
+
+.border_tab_y {
+  width: 62rpx;
+  height: 6rpx;
+  background: linear-gradient(to right, #FF5882, #FF342D);
+  border-radius: 3rpx;
+  margin-left: 30%;
+  margin-top: 16rpx;
+}
+.order_tab_fcolor {
+  color: #000000;
+  font-size: 28rpx
+}
+.order_fcolor {
+  color: #0C0C0C;
+  font-size:34rpx;
+}
+
+
+
+.order_view_swich {
+  width: 100% !important;
+  margin-left: 1% !important;
+}
+
+.order_color_center {
+  color: #fe5b4a;
+  text-align: right;
+  padding-top: 24rpx;
+  margin-right: 30rpx;
+}
+
+.order_view_z {
+  width: 94%;
+  margin-top: 30rpx;
+  margin-left: 3%;
+  border-radius: 5%;
+}
+
+.view_width_30 {
+  width: 30%;
+  margin-left: 24rpx;
+}
+
+.order_j_f {
+  width: 224rpx;
+  height: 34rpx;
+  border-radius: 100rpx;
+  background-color: #ffdf00;
+  color: #333;
+  font-size: 22rpx;
+  text-align: center;
+}
+
+.order_g_t {
+  width: 152rpx;
+  height: 34rpx;
+  background-color: #cecece;
+  border-radius: 74rpx;
+  font-size: 22rpx;
+  color: #666;
+  text-align: center;
+  margin-left: 16rpx;
+}
+
+.order_font_size36 {
+  font-size: 36rpx;
+}
+
+.order_font_size30 {
+  font-size: 30rpx;
+}
+
+.order_button_b {
+  width: 146rpx;
+  height: 48rpx;
+  border-radius: 73rpx;
+  border: 1px solid #101010;
+  font-size: 24rpx;
+  color: #101010;
+  text-align: center;
+  line-height: 2;
+  margin-left: 16rpx;
+}
+
+.order_button_s {
+  padding-bottom: 30rpx;
+  margin-left: 49%;
+  padding-top: 47rpx;
+}
+
+/* 对勾 */
+
+.usermotto {
+  margin-top: 100px;
+  border: solid;
+}
+
+.isRuleShowWl {
+  display: block;
+}
+
+.isRuleHideWl {
+  display: none;
+}
+
+.ruleZhezhaoWl {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.ruleZhezhaoContentWl {
+  background: rgba(255, 255, 255, 1);
+  width: 692rpx;
+  border: 1px solid #fff;
+  position: absolute;
+  color: #333;
+  font-size: 30rpx;
+  top: 262rpx;
+  margin-left: 30rpx;
+  border-radius: 14rpx;
+  height: 830rpx;
+  overflow: auto;
+}
+
+.time_image_size2 {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.colose_img_size {
+  width: 100%;
+  text-align: right;
+  margin-top: 30rpx;
+  margin-left: -30rpx;
+}
+
+/* 动画 */
+
+/* .YesCLass {
+  width: 114rpx;
+  height: 114rpx;
+  border-radius: 50%;
+  background-color: #ffe001;
+}
+
+.animation-element {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+.ni{
+    background-color: #1aad19;
+}
+/* 圆周 */
+
+/* 
+.crl-dot {
+  width: 9px;
+  height: 9px;
+  background-color: blue;
+  border-radius: 50%;
+} */

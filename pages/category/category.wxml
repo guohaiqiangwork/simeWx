@@ -1,0 +1,24 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='分类' show_bol='{{ishideback}}'></navbar>
+</view>
+<view class="category">
+    <view class="search">
+        <input type="text" name="search" bindconfirm='shop_search_function' confirm-type='search'
+            placeholder="请输入关键词" />
+        <image src="{{imgurl}}l_shousuo.png" />
+    </view>
+
+    <!-- tab切换 -->
+    <view class="list flex">
+        <view class="left">
+            <view class="item flex {{i==index?'active':''}}" data-index="{{index}}" wx:for="{{list}}" wx:key="{{index}}"
+                bindtap="clickTab">{{item.name}}</view>
+        </view>
+        <view class="right flex">
+            <view class="item flex" wx:for='{{rightList.auctionMateriaList}}' wx:key="{{index}}">
+                <image src="{{item.smallimage}}" />
+                <text>{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>

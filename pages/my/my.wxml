@@ -1,0 +1,135 @@
+<!--index.wxml-->
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='我的' show_bol='{{ishideback}}'></navbar>
+</view>
+<!-- 内容 -->
+<view style="margin-bottom:40rpx">
+  <!-- 头像 -->
+  <view>
+    <image src="/image/switch/1.jpg" class="imgBground"></image>
+    <!-- 头像内容 -->
+    <view class="my_heard">
+      <image src="/image/switch/1.jpg" class="my_heard_img"></image>
+      <view class="my_heard_name margin_top3">{{name}}</view>
+      <view class="margin_top3 my_heard_btn" hidden="{{hiddenName}}">已实名认证</view>
+    </view>
+  </view>
+  <!-- 我的订单 -->
+  <view class="my_order">
+    <!-- 标题 -->
+    <view class="view_display  my_order_title">
+      <view class="width50 view_display">
+        <view class="title_left"></view>
+        <view class="margin_left2">我的订单</view>
+      </view>
+      <view class="width50 text_right font_size24 font_color99" catchtap="goMyOrder" data-falg="001">
+        查看更多》
+      </view>
+    </view>
+    <!-- 我的订单导航 -->
+    <view class="view_display">
+      <view class="width25 my_order_tab" catchtap="goMyOrder" data-falg="002">
+        <view class="margin_left1">
+          <image src="/image/my/payment.png" class="my_order_img"></image>
+        </view>
+        <view class="margin_top2">
+          待付款
+        </view>
+      </view>
+      <view class="width25 my_order_tab margin_left2" catchtap="goMyOrder" data-falg="003">
+        <view class="margin_left1">
+          <image src="/image/my/deliver.png" class="my_order_img"></image>
+        </view>
+        <view class="margin_top2">
+          待发货
+        </view>
+      </view>
+      <view class="width25 my_order_tab " catchtap="goMyOrder" data-falg="004">
+        <view class="margin_left1">
+          <image src="/image/my/harvest.png" class="my_order_img"></image>
+        </view>
+        <view class="margin_top2">
+          待收货
+        </view>
+      </view>
+      <view class="width25 my_order_tab">
+        <view class="margin_left1">
+          <image src="/image/my/replacement.png" class="my_order_img"></image>
+        </view>
+        <view class="margin_top2">
+          退换货
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <!-- 我的订单end -->
+  <!-- 邀请 -->
+  <view>
+    <image src="/image/my/recomment@2x1.png" class="my_centen_img"></image>
+  </view>
+  <!-- 邀请end -->
+  <!-- 我的服务 -->
+  <view class="my_serve">
+    <view class="view_display  my_order_title">
+      <view class="view_display">
+        <view class="title_left"></view>
+        <view class="margin_left2">我的服务</view>
+      </view>
+    </view>
+    <!-- 我的服务 -->
+    <view class="view_display">
+      <navigator url="../address/address" hover-class="none">
+        <view class="width20 margin_top5 padding_left3 ">
+          <view class="margin_left1">
+            <image src="/image/my/address.png" class="my_service_img"></image>
+          </view>
+          <view class="margin_top2 font_size24 font_color33">
+            收货地址
+          </view>
+        </view>
+      </navigator>
+      <navigator url="../goodFriend/goodFriend" hover-class="none">
+        <view class="width20 margin_top5 margin_left5">
+          <view class="margin_left1">
+            <image src="/image/my/frider.png" class="my_service_img"></image>
+          </view>
+          <view class="margin_top2  font_size24 font_color33">
+            我的好友
+          </view>
+        </view>
+      </navigator>
+      <navigator url="../bank/bank" hover-class="none">
+        <view class="width20 margin_top5 margin_left5">
+          <view class="margin_left1">
+            <image src="/image/my/back.png" class="my_service_img"></image>
+          </view>
+          <view class="margin_top2  font_size24 font_color33">
+            银行卡
+          </view>
+        </view>
+      </navigator>
+      <navigator url="../realName/realName" hover-class="none">
+        <view class="width20 margin_top5 margin_left5">
+          <view class="margin_left1">
+            <image src="/image/my/name.png" class="my_service_img"></image>
+          </view>
+          <view class="margin_top2 font_size24 font_color33">
+            实名认证
+          </view>
+        </view>
+      </navigator>
+      <navigator url="../setUp/setUp" hover-class="none">
+        <view class="width20 margin_top5 margin_left5">
+          <view class="margin_left1">
+            <image src="/image/my/set.png" class="my_service_img"></image>
+          </view>
+          <view class="margin_top2  font_size24 font_color33 margin_left2">
+            设置
+          </view>
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+</view>

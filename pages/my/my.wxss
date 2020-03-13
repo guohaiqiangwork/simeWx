@@ -1,0 +1,109 @@
+/* pages/my/my.wxss */
+
+.imgBground {
+  width: 100%;
+  height: 610rpx;
+  filter: blur(5px)contrast(90%)brightness(60%);
+  --webkit-filter: blur(5px)contrast(90%)brightness(60%);
+}
+
+.my_heard {
+  position: absolute;
+  top: 10%;
+  margin-left: 40%;
+  margin-top: 120rpx;
+}
+
+.my_heard_img {
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+}
+
+.my_heard_name {
+  font-size: 40rpx;
+  color: #fff;
+}
+
+.my_heard_btn {
+  width: 156rpx;
+  height: 37rrpx;
+  border: 1px solid #fff;
+  border-radius: 30rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  margin-left: -10%;
+}
+
+/* 我的订单 */
+
+.my_order {
+  width: 710rpx;
+  height: 300rpx;
+  margin-left: 20rpx;
+  margin-top: 56rpx;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px #c9c9c9;
+}
+
+.title_left {
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  width: 10rpx;
+  height: 30rpx;
+  border-radius: 10rpx;
+  margin-top: 7rpx;
+}
+
+.my_order_title {
+  border-bottom: 1px solid #e2e2e2;
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 3%;
+  padding-bottom: 3%;
+}
+
+.my_order_tab {
+  padding-left: 60rpx;
+  padding-top: 50rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.my_order_img {
+  width: 53rpx;
+  height: 53rpx;
+}
+
+/* 邀请图片 */
+
+/* .centen_img_moudel{
+ 
+} */
+
+.my_centen_img {
+  width: 710rpx;
+  height: 129rpx;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+}
+
+/* 我的服务 */
+
+.my_serve {
+  width: 710rpx;
+  height: 300rpx;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px #c9c9c9;
+}
+
+.my_service_img {
+  width: 63rpx;
+  height: 63rpx;
+}

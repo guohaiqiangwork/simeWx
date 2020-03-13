@@ -1,0 +1,12 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='设置' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<!-- 内容 -->
+<view class="setUp_moudel">
+  <view class="view_display">
+    <view>686876</view>
+    <view>686876</view>
+    <view>686876</view>
+  </view>
+</view>

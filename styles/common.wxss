@@ -1,0 +1,197 @@
+/* pages/template/template.wxss */
+.view_display {
+	display: flex;
+	bottom: 0;
+}
+
+.font_size20 {
+	font-size: 20rpx !important;
+}
+
+.font_size22 {
+	font-size: 22rpx;
+}
+
+.font_size24 {
+	font-size: 24rpx;
+}
+
+.font_size26 {
+	font-size: 26rpx;
+}
+
+.font_size28 {
+	font-size: 28rpx;
+}
+
+.font_size30 {
+	font-size: 30rpx;
+}
+
+.font_size32 {
+	font-size: 32rpx;
+}
+
+.font_size36 {
+	font-size: 36rpx;
+}
+
+.font_size40 {
+	font-size: 40rpx;
+}
+
+.font_colorff {
+	color: #FFFFFF;
+}
+
+.font_color33 {
+	color: #333333;
+}
+
+.font_colorc1 {
+	color: #0C1934;
+}
+
+.font_color66 {
+	color: #666666;
+}
+
+.font_colorcb {
+	color: #CBCBCB;
+}
+
+.font_colorf4 {
+	color: #F42300 !important;
+}
+
+.font_color08 {
+	color: #080808;
+}
+
+.font_color99 {
+	color: #999999 !important;
+}
+.font_color6A{
+	color: #6A6A6A;
+}
+.font_color00{
+	color: #000000;
+}
+.font_color5c{
+	color: #C5C5C5;
+}
+.margin_top2 {
+	margin-top: 20rpx;
+}
+
+.margin_top3 {
+	margin-top: 30rpx;
+}
+.margin_top4{
+	margin-top: 40rpx;
+}
+.margin_top5{
+	margin-top: 50rpx;
+}
+.margin_top10{
+	margin-top: 10rpx;
+}
+.margin_bot3 {
+	margin-bottom: 30rpx;
+}
+.margin_left6 {
+	margin-left: 60rpx;
+}
+.margin_left5 {
+	margin-left: 50rpx;
+}
+.margin_left4{
+margin-left: 40rpx;	
+}
+.margin_left3 {
+	margin-left: 30rpx;
+}
+.margin_left2 {
+	margin-left: 20rpx;
+}
+.margin_left1 {
+	margin-left: 10rpx;
+}
+.margin_right6{
+	margin-right: 60rpx;
+}
+.padding_right4{
+	padding-right: 40rpx !important;
+}
+.padding_left3{
+	padding-left: 30rpx;
+}
+.padding_left2{
+	padding-left: 20rpx;
+}
+.padding_top2{
+	padding-top: 20rpx;
+}
+.padding_top1 {
+	padding-top: 10rpx;
+}
+
+.text_center {
+	text-align: center;
+}
+
+.text_right {
+	text-align: right;
+}
+.div_border99{
+	border:1px solid  #999999 !important;
+}
+.width25{
+	width: 25%;
+}
+.width30{
+	width: 30%;
+}
+.width40 {
+	width: 40%;
+}
+.width45 {
+	width: 45%;
+}
+.width50 {
+	width: 50%;
+}
+
+.width55 {
+	width: 55%;
+}
+.width70 {
+	width: 70%;
+}
+.width100 {
+	width: 100%;
+}
+
+.width_height100 {
+	width: 100%;
+	height: 100%;
+}
+
+.div_backgroun_jb {
+	background: linear-gradient(to right, #FF342D, #FF5882) !important;
+}
+.div_backgroun_D8{
+			background-color: #D8D8D8;
+}
+.div_bordder99 {
+	border: 1px solid #999999 !important;
+}
+
+.img_width4 {
+	width: 40rpx;
+	height: 40rpx;
+}
+
+.div_none {
+	display: none;
+}

@@ -1,9 +1,10 @@
 /* pages/template/template.wxss */
 .view_display {
 	display: flex;
-	bottom: 0;
 }
-
+.font_size18{
+  font-size: 18rpx
+}
 .font_size20 {
 	font-size: 20rpx !important;
 }
@@ -213,4 +214,31 @@ width: 20%
 
 .div_none {
 	display: none;
+}
+
+
+/* 头部搜索框 */
+.search {
+  width: 700rpx;
+  height: 60rpx;
+  display: block;
+  box-sizing: border-box;
+  margin-left: 20rpx
+}
+.search input {
+  display: block;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1rpx solid #e3e3e3;
+  width: 700rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  padding-left:70rpx; 
+}
+.search image {
+  width: 35rpx;
+  height: 35rpx;
+  position: absolute;
+  margin-top: -6%;
+  margin-left:30rpx
 }

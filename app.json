@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/searchResult/searchResult",
     "pages/index/index",
-    "pages/dataSet/dataSet",
-    "pages/setUp/setUp",
     "pages/my/my",
+    "pages/setUp/setUp",
     "pages/logs/logs",
     "pages/shopCart/shopCart",
     "pages/category/category",
@@ -14,6 +14,8 @@
     "pages/realName/realName",
     "pages/setPassword/setPassword",
     "pages/aboutUs/aboutUs",
+    "commpents/timeChoice/timeChoice",
+    "pages/dataSet/dataSet",
     "commpents/timeChoice/timeChoice"
   ],
   "window": {

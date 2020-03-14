@@ -1,0 +1,14 @@
+/* pages/searchResult/searchResult.wxss */
+.search_tab{
+  width: 33%;
+  /* border-right: 1px solid #0C0C0C; */
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.order_tab_fcolor {
+  color: #0C0C0C;
+  font-size: 28rpx
+}
+.order_fcolor {
+ font-weight: 500
+}

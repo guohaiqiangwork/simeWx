@@ -1,4 +1,4 @@
-// pages/setPassword/setPassword.js
+// pages/searchResult/searchResult.js
 Page({
 
   /**
@@ -7,13 +7,21 @@ Page({
   data: {
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
-    my_class: true,
+    my_class: false,
+    inputValue:'',//输入框值
+    searchList: [{ name: '综合', id: '001' }, { name: '销量最高', id: '002' }, { name: '价格', id: '003' }],
+    tabFalg:'001'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      inputValue: options.value
+    })
+    // 查询数据掉取后端接口
 
   },
 
@@ -64,5 +72,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  productTabSwich: function (e) {
+    this.setData({
+      tabFalg: e.currentTarget.dataset.id,
+    })
+  },
 })

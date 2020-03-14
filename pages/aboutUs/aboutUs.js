@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bar_Height: wx.getSystemInfoSync().statusBarHeight,
+    ishideback: false,
+    my_class: true,
   },
 
   /**

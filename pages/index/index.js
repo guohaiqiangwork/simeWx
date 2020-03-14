@@ -14,8 +14,28 @@ Page({
         picUrl: "http://dcdn.it120.cc/2019/12/29/2e79921a-92b3-4d1d-8182-cb3d524be5fb.png"
       },
       { businessId: '2', picUrl: "/image/switch/3.jpg" }
-    ],
-
+    ], //轮播数组
+    tabList: [
+      { name: '面点速食', picUrl: "/image/switch/2.jpg" },
+      { name: '酒水饮料', picUrl: "/image/switch/1.jpg" },
+      { name: '粮油干货', picUrl: "/image/switch/3.jpg" },
+      { name: '美妆百货', picUrl: "/image/switch/2.jpg" },
+      { name: '中外茶叶', picUrl: "/image/switch/2.jpg" },
+      { name: '母婴保健', picUrl: "/image/switch/1.jpg" },
+      { name: '家装家纺', picUrl: "/image/switch/2.jpg" },
+      { name: '日用纸品', picUrl: "/image/switch/1.jpg" },
+      { name: '电子数码', picUrl: "/image/switch/2.jpg" }
+    
+    ],//导航栏数组
+    newList:[
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg:'极甜凤梨甜到心里'},
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+    ],//新品发现
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -74,12 +94,12 @@ Page({
     })
   },
   bindconfirm:function(e){
-    this.setData({
-      inputVal: e.detail.value
-    })
-    alert(inputVal);
-    // wx.navigateTo({
-    //   url: '/pages/goods/list?name=' + this.data.inputVal,
+    // this.setData({
+    //   inputVal: e.detail.value
     // })
+    console.log(e.detail.value);
+    wx.navigateTo({
+      url: '/pages/searchResult/searchResult?value=' + e.detail.value,
+    })
   }
 })

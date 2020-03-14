@@ -28,12 +28,12 @@ Page({
     
     ],//导航栏数组
     newList:[
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg:'极甜凤梨甜到心里'},
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
-      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg:'极甜凤梨甜到心里',id:'001'},
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里', id: '002'},
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里', id: '003' },
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里', id: '004'},
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里', id: '005'},
+      { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里', id: '006'},
       { naem: '海南凤梨（1个装）', picUrl: '/image/switch/2.jpg', price: '13.00', falg: '极甜凤梨甜到心里' },
     ],//新品发现
     motto: 'Hello World',
@@ -93,13 +93,19 @@ Page({
       hasUserInfo: true
     })
   },
+  // 去搜素页面
   bindconfirm:function(e){
-    // this.setData({
-    //   inputVal: e.detail.value
-    // })
     console.log(e.detail.value);
     wx.navigateTo({
       url: '/pages/searchResult/searchResult?value=' + e.detail.value,
     })
-  }
+  },
+  // 去产品详情
+  goProudctDetails: function (e) {
+    console.log(e.currentTarget.dataset.productid);
+    wx.navigateTo({
+      url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
+    })
+  },
+  
 })

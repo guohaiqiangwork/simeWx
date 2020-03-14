@@ -3,13 +3,39 @@
 </view>
 <view style="background-color:#fff">
   <view class="search padding_top2">
-  <input type="text" placeholder="输入搜索关键词" value="{{inputValue}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
-  <image src="/image/icon/search.svg"></image>
-</view>
-
- <view class="view_display div_backgroundff margin_top2">
-    <view class="search_tab text_center" wx:for="{{searchList}}" data-id="{{item.id}}" catchtap='productTabSwich'>
-       <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
+    <input type="text" placeholder="输入搜索关键词" value="{{inputValue}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/image/icon/search.svg"></image>
+  </view>
+  <view class="view_display div_backgroundff margin_top2">
+    <view class="search_tab text_center" wx:for="{{tabList}}" data-id="{{item.id}}" catchtap='tabSwich'>
+      <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
     </view>
   </view>
+</view>
+
+<!-- 列表 -->
+<scroll-view wx:if="{{searchList.length}}">
+  <view class="product_list_moudel" wx:for="{{searchList}}" wx:key="index">
+    <view>
+      <view class="view_display fx">
+        <view class="product_list_left">赚</view>
+        <view class="product_list_right">¥ {{item.price}}</view>
+      </view>
+      <view class="product_none">已抢光</view>
+      <image src="{{item.picUrl}}" class="product_list_img"></image>
+    </view>
+    <view class="font_size24"> {{item.naem}}</view>
+    <view class="font_size18">{{item.falg}}</view>
+    <view class="view_display margin_top2">
+      <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
+      <view>
+        <image src="/image/add.png" class="new_add_img"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 没有数据 -->
+<view class='box_bg' wx:else>
+  <image class="bg_nodata" src='/images/listnone_order.png'></image>
+  <view class='text_nodata'>您还没有订单哦</view>
 </view>

@@ -1,0 +1,53 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='商品详情' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+<!-- 轮播 -->
+<view class="swiper-container">
+  <swiper indicator-dots="true" indicator-active-color="#fff" autoplay circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image mode="aspectFill" bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
+    </swiper-item>
+  </swiper>
+</view>
+<!-- 内容 -->
+<view class=" margin_top2" style="margin-bottom:110rpx">
+  <view class="font_size42 text_center">进口海外丹麦三文鱼500g</view>
+  <view class="font_size24 text_center margin_top2">eat！大厨经典之作，复购最高。经典口味不容错过</view>
+  <view class="view_display margin_top2" style="margin-left:30%">
+    <view class="font_size32 font_colorf4">¥7987</view>
+    <view class="view_display margin_left2">
+      <view class="product_list_left">赚</view>
+      <view class="product_list_right">¥7987</view>
+    </view>
+  </view>
+  <!-- 规格 -->
+  <view class="view_display margin_left4 margin_top3">
+    <view class="font_size24 font_color99">规格:</view>
+    <view class="product_btn">250g／切片</view>
+  </view>
+  <view class="product_list_g">
+    <view class="list" wx:for="{{gList}}" wx:key="index">
+      <view class="left">{{item.name}}</view>
+      <view class="right">{{item.content}}</view>
+    </view>
+  </view>
+  <!-- 图片 -->
+  <view class="margin_top2">
+    <view wx:for="{{banners}}" wx:key="index">
+      <image src="{{item.picUrl}}" class="width100"></image>
+    </view>
+  </view>
+  <view class="text_center font_size22 font_color99">以上图片仅供参考，请以收到实物为准</view>
+
+  <!-- 底部按钮 -->
+  <view class="product_footer">
+    <view class="left">
+      <view class="shop_number">99</view>
+      <image src="/image/tab/shopz.png" class="left_image"></image>
+    </view>
+    <view class="right">
+      <view class="right_btn1">加入购物车</view>
+      <view class="right_btn2">立即购买</view>
+    </view>
+  </view>
+</view>

@@ -4,7 +4,6 @@
 view{
   white-space:pre-line
 }
-
 .swiper-container{
   width: 750rpx;
   height: 320rpx;
@@ -95,7 +94,7 @@ view{
   text-align: center
 }
 .product_list_right{
-  width: 110rpx;
+  padding: 0 15rpx 0 15rpx;
   height: 36rpx;
   border-top-right-radius: 18rpx;
   border-bottom-right-radius: 18rpx;

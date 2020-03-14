@@ -27,7 +27,7 @@
 <view class="font_color00 margin_top2">
   <view class="font_size34 text_center">*新品发现*</view>
   <scroll-view class='wrapper' scroll-x="true">
-    <view class="new_moudel" wx:for="{{newList}}" wx:key="index">
+    <view class="new_moudel" wx:for="{{newList}}" wx:key="index" catchtap="goProudctDetails" data-productId="{{item.id}}">
       <view>
         <image src="{{item.picUrl}}" class="new_img"></image>
       </view>

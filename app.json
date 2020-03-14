@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/setUp/setUp",
-    "pages/my/my",
+    "pages/searchResult/searchResult",
     "pages/index/index",
+    "pages/my/my",
+    "pages/setUp/setUp",
     "pages/logs/logs",
     "pages/shopCart/shopCart",
     "pages/category/category",
@@ -14,6 +15,7 @@
     "pages/dataSet/dataSet",
     "pages/setPassword/setPassword",
     "pages/aboutUs/aboutUs"
+  
   ],
   "window": {
     "navigationStyle": "custom",

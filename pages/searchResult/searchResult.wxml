@@ -1,0 +1,15 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='搜索' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+<view style="background-color:#fff">
+  <view class="search padding_top2">
+  <input type="text" placeholder="输入搜索关键词" value="{{inputValue}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+  <image src="/image/icon/search.svg"></image>
+</view>
+
+ <view class="view_display div_backgroundff margin_top2">
+    <view class="search_tab text_center" wx:for="{{searchList}}" data-id="{{item.id}}" catchtap='productTabSwich'>
+       <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
+    </view>
+  </view>
+</view>

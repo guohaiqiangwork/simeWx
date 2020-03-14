@@ -5,15 +5,35 @@
 <!-- 内容 -->
 <view style="margin-bottom:40rpx">
   <!-- 头像 -->
-  <view>
+  <!-- <view>
     <image src="/image/switch/1.jpg" class="imgBground"></image>
-    <!-- 头像内容 -->
     <view class="my_heard">
       <image src="/image/switch/1.jpg" class="my_heard_img"></image>
       <view class="my_heard_name margin_top3">{{name}}</view>
       <view class="margin_top3 my_heard_btn" hidden="{{hiddenName}}">已实名认证</view>
     </view>
+  </view> -->
+
+  <view class="mouerl_hearder">
+    <view class="view_display padding_top2">
+      <image src="/image/switch/1.jpg" class="my_heard_img"></image>
+      <view class="my_heard_name margin_top3">{{name}}</view>
+      <view class="my_heard_btn margin_top4 margin_left2" hidden="{{hiddenName}}">已实名认证</view>
+    </view>
+    <view class="view_display header_money">
+      <view class="font_colorff">
+        <view class="font_size40">45.90</view>
+        <view class="font_size26">可用余额</view>
+      </view>
+      <view class="font_colorff" style="margin-left:200rpx">
+        <view class="font_size40 ">45.90</view>
+        <view class="font_size26">冻结金额</view>
+      </view>
+    </view>
+
+
   </view>
+
   <!-- 我的订单 -->
   <view class="my_order">
     <!-- 标题 -->
@@ -80,7 +100,7 @@
     <!-- 我的服务 -->
     <view class="view_display">
       <navigator url="../address/address" hover-class="none">
-        <view class="width20 margin_top5 padding_left3 ">
+        <view class=" margin_top5 padding_left3 ">
           <view class="margin_left1">
             <image src="/image/my/address.png" class="my_service_img"></image>
           </view>
@@ -90,7 +110,7 @@
         </view>
       </navigator>
       <navigator url="../goodFriend/goodFriend" hover-class="none">
-        <view class="width20 margin_top5 margin_left5">
+        <view class=" margin_top5 margin_left5">
           <view class="margin_left1">
             <image src="/image/my/frider.png" class="my_service_img"></image>
           </view>
@@ -100,7 +120,7 @@
         </view>
       </navigator>
       <navigator url="../bank/bank" hover-class="none">
-        <view class="width20 margin_top5 margin_left5">
+        <view class=" margin_top5 margin_left5">
           <view class="margin_left1">
             <image src="/image/my/back.png" class="my_service_img"></image>
           </view>
@@ -110,7 +130,7 @@
         </view>
       </navigator>
       <navigator url="../realName/realName" hover-class="none">
-        <view class="width20 margin_top5 margin_left5">
+        <view class=" margin_top5 margin_left5">
           <view class="margin_left1">
             <image src="/image/my/name.png" class="my_service_img"></image>
           </view>
@@ -120,7 +140,7 @@
         </view>
       </navigator>
       <navigator url="../setUp/setUp" hover-class="none">
-        <view class="width20 margin_top5 margin_left5">
+        <view class=" margin_top5 margin_left5">
           <view class="margin_left1">
             <image src="/image/my/set.png" class="my_service_img"></image>
           </view>

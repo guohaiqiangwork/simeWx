@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   padding-bottom: 4px;
-  background:linear-gradient(to right, #eb8dd2, #2e1cb0);
+  background:linear-gradient(to right, #FF342E, #FF5882);
   color:#fff
 }
 .tabar2{

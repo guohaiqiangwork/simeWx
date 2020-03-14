@@ -16,7 +16,7 @@
 </view>
 <!-- 导航栏 -->
 <view class="">
-  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index">
+  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-id="{{item.id}}">
     <view>
       <image src="{{item.picUrl}}" class="tabList_img"></image>
     </view>
@@ -47,13 +47,16 @@
 <image src="/image/index_yq.png" class="index_yq_img"></image>
 <!-- end -->
 <!-- 产品列表 -->
-<view>
-  <view class="text_center">- 面点速食-</view>
+
+
+
+<scroll-view style="height:{{winHeight}}" scroll-into-view="{{toView}}" scroll-y="true" bindscroll="scrollTo">
+<view wx:for="{{proudeList}}" wx:key='index' id="{{item.id}}">
+  <view class="text_center">- {{item.title}} -</view>
   <view>
     <image src="/image/switch/1.jpg" class="product_img"></image>
   </view>
-
-  <view class="product_list_moudel" wx:for="{{newList}}" wx:key="index">
+  <view class="product_list_moudel" wx:for="{{item.data}}" wx:key="index">
     <view>
      <view class="view_display fx">
         <view class="product_list_left">赚</view>
@@ -71,9 +74,8 @@
       </view>
     </view>
   </view>
-
-
 </view>
+</scroll-view>
 <!-- 测试 -->
 <view>
   <button bindtap="goSet">存储数据在本地</button>

@@ -1,24 +1,21 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='分类' show_bol='{{ishideback}}'></navbar>
+  <navbar title='分类' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
-<view class="category">
-    <view class="search">
-        <input type="text" name="search" bindconfirm='shop_search_function' confirm-type='search'
-            placeholder="请输入关键词" />
-        <image src="{{imgurl}}l_shousuo.png" />
-    </view>
 
-    <!-- tab切换 -->
-    <view class="list flex">
-        <view class="left">
-            <view class="item flex {{i==index?'active':''}}" data-index="{{index}}" wx:for="{{list}}" wx:key="{{index}}"
-                bindtap="clickTab">{{item.name}}</view>
-        </view>
-        <view class="right flex">
-            <view class="item flex" wx:for='{{rightList.auctionMateriaList}}' wx:key="{{index}}">
-                <image src="{{item.smallimage}}" />
-                <text>{{item.name}}</text>
-            </view>
-        </view>
+
+<!-- 分类列表 -->
+
+<view class="view_display margin_top2">
+  <view>
+    <view class="view_left" wx:for="{{leftList}}" wx:key="index" bindtap="swichTab" data-id="{{item.id}}">
+      <view class="left_border" wx:if="{{tabFalg == item.id}}"></view>
+      <view  class="{{tabFalg != item.id ? 'left_font':'left_font_tab' }}">{{item.name}}</view>
     </view>
+  </view>
+  <view class="view_right">
+    <view class="text_center right_content margin_top3 margin_left3" wx:for="{{rightList}}" wx:key="index">
+        <image src="{{item.picUrl}}"></image>
+        <view>{{item.name}}</view>
+    </view>
+  </view>
 </view>

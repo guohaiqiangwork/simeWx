@@ -1,1 +1,80 @@
-/* pages/address/address.wxss */
+.address_list {
+  display: flex;
+  background-color: #fff;
+  margin-top: 3rpx;
+  padding-top: 30rpx;
+  padding-bottom: 28rpx;
+}
+
+.address_list_left {
+  width: 210rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.address_list_right {
+  font-size: 30rpx;
+  color: #a0a0a0;
+}
+
+.goPay {
+  font-size: 34rpx;
+  color: #fff;
+  text-align: center;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+}
+
+/* 地址列表 */
+
+.order-item {
+  height: 240rpx;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.remove {
+  width: 160rpx;
+  height: 100%;
+  background-color: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: -160rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 22rpx;
+  padding-top: 36rpx;
+  padding-left: 40rpx;
+}
+
+.left_mo_ren {
+  width: 60rpx;
+  height: 30rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  text-align: center;
+  border-radius: 20rpx;
+}
+.right_btn{
+ height: 70rpx;
+ border-left: 1px solid #DBDBDB;
+ padding-left: 20rpx;
+ margin-top: 40rpx;
+ margin-left: 20rpx;
+ line-height: 3;
+ color: #888888;
+ font-size: 24rpx
+}

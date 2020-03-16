@@ -101,7 +101,7 @@
     <view class="view_display">
       <navigator url="../address/address" hover-class="none">
         <view class=" margin_top5 padding_left3 ">
-          <view class="margin_left1">
+          <view class="margin_left2">
             <image src="/image/my/address.png" class="my_service_img"></image>
           </view>
           <view class="margin_top2 font_size24 font_color33">
@@ -111,7 +111,7 @@
       </navigator>
       <navigator url="../goodFriend/goodFriend" hover-class="none">
         <view class=" margin_top5 margin_left5">
-          <view class="margin_left1">
+          <view class="margin_left2">
             <image src="/image/my/frider.png" class="my_service_img"></image>
           </view>
           <view class="margin_top2  font_size24 font_color33">
@@ -121,7 +121,7 @@
       </navigator>
       <navigator url="../bank/bank" hover-class="none">
         <view class=" margin_top5 margin_left5">
-          <view class="margin_left1">
+          <view class="margin_left2">
             <image src="/image/my/back.png" class="my_service_img"></image>
           </view>
           <view class="margin_top2  font_size24 font_color33">
@@ -131,7 +131,7 @@
       </navigator>
       <navigator url="../realName/realName" hover-class="none">
         <view class=" margin_top5 margin_left5">
-          <view class="margin_left1">
+          <view class="margin_left2">
             <image src="/image/my/name.png" class="my_service_img"></image>
           </view>
           <view class="margin_top2 font_size24 font_color33">
@@ -141,7 +141,7 @@
       </navigator>
       <navigator url="../setUp/setUp" hover-class="none">
         <view class=" margin_top5 margin_left5">
-          <view class="margin_left1">
+          <view class="margin_left2">
             <image src="/image/my/set.png" class="my_service_img"></image>
           </view>
           <view class="margin_top2  font_size24 font_color33 margin_left2">

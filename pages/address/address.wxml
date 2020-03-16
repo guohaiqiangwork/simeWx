@@ -1,3 +1,72 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='收货地址' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
+
+<!-- 添加收货地址 -->
+<view wx:if="{{address_list.length == 0}}">
+  <view class="address_list">
+    <view class="address_list_left">收货人</view>
+    <input class="address_list_right" name="input" placeholder="请填写收货人姓名" />
+  </view>
+  <view class="address_list">
+    <view class="address_list_left">手机号码</view>
+    <input class="address_list_right" name="input" placeholder="请填写收货人手机号码" />
+  </view>
+  <view class="address_list">
+    <view class="address_list_left">所在地区</view>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="picker font_size30">
+        {{region[0]}}{{region[1]}}{{region[2]}}
+      </view>
+    </picker>
+  </view>
+  <view class="address_list">
+    <view class="address_list_left">详细地址</view>
+    <input class="address_list_right" name="input" placeholder="街道、楼牌号等" />
+  </view>
+  <view class="address_list" style="margin-top:30rpx">
+    <view class="address_list_left margin_left2">设置默认地址</view>
+    <switch bindchange="switch2Change" style="margin-left:50%" />
+  </view>
+
+  <view class="goPay">
+    保存
+  </view>
+
+</view>
+<!-- 新增结束 -->
+
+<!-- 地址列表 -->
+<view>
+  <scroll-view scroll-y="{{isScroll}}" style='height:{{windowHeight}}px'>
+    <block wx:key="item" wx:for="{{data}}">
+      <view data-index='{{index}}' class="order-item" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+        <view class="content">
+          <view class="view_display">
+            <view class="width70">
+              <view class="view_display">
+                <view class="font_color5A font_size30">
+                  刘一手
+                </view>
+                <view class="font_size24 margin_left2">
+                  188^_^1357
+                </view>
+                <view class="left_mo_ren margin_left2">
+                  默认
+                </view>
+              </view>
+              <view class="font_size24">内蒙古自治区 包头市 昆都仑区 友谊大街18栋2号 西门左转
+              </view>
+            </view>
+            <view class="width30">
+              <view class="right_btn">编辑</view>
+            </view>
+          </view>
+
+        </view>
+        <view class="remove" bindtap="delItem">删除 </view>
+      </view>
+    </block>
+  </scroll-view>
+
+</view>

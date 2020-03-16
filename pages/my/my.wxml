@@ -56,7 +56,7 @@
           待付款
         </view>
       </view>
-      <view class="width25 my_order_tab margin_left2" catchtap="goMyOrder" data-falg="003">
+      <view class="width25 my_order_tab" catchtap="goMyOrder" data-falg="003">
         <view class="margin_left1">
           <image src="/image/my/deliver.png" class="my_order_img"></image>
         </view>

@@ -2,3 +2,81 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='购物车' show_bol='{{ishideback}}'></navbar>
 </view>
+
+<!-- 购物车  有效-->
+<view class="shop_list" wx:for="{{list}}" wx:key="index">
+  <view class="shop_list_left">
+    <!-- <label class="checkbox">
+      <checkbox  checked="{{item.checked}}" data-id="{{item.id}}" data-price="{{item.price}}" data-index="{{index}}" class="checkbox" catchtap="checkboxChange"/>
+    </label> -->
+    <checkbox-group bindchange="checkboxChange" data-checkid = "{{item.id}}">
+      <label>
+        <checkbox checked="{{item.checkeditem}}"  color='#3B9EF5'/>
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="shop_list_center">
+    <image src="/image/switch/1.jpg" class=""></image>
+  </view>
+  <view class="shop_list_right margin_left2">
+    <view class="font_size32 font_color33">原麦山丘－芋之心</view>
+    <view class="font_size28 font_color99">原麦山丘－芋之心</view>
+    <view class="view_display margin_top2">
+      <view class="font_size26 font_colorf4" style="width:240rpx">¥80989 </view>
+      <view class="buy-num">
+        <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}" data-number="{{item.number}}">-</view>
+        <input type="number" value="{{item.number}}" disabled/>
+        <view class="jia-btn {{item.number==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.number}}">+</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 购物车 失效商品 -->
+<view class="over_list margin_top4 margin_left2" style="margin-bottom:110rpx">
+  <view class="view_display">
+    <view class="over_falg">失效</view>
+    <view class="font_size28 font_color33 margin_left2" style="line-height:1">失效商品</view>
+    <view class="font_size28 font_color33" style="line-height:1;"> 清空失效商品</view>
+  </view>
+  <!-- 列表 -->
+  <view class="shop_list" wx:for="{{list}}" wx:key="index">
+    <view class="shop_list_left">
+      <view class="over_falg">失效</view>
+    </view>
+    <view class="shop_list_center">
+      <image src="/image/switch/1.jpg" class=""></image>
+    </view>
+    <view class="shop_list_right margin_left2">
+      <view class="font_size32 font_color33">原麦山丘－芋之心</view>
+      <view class="font_size28 font_color99">原麦山丘－芋之心</view>
+      <view class="font_size28 font_color33 margin_top2">不好意思，该商品已售罄 </view>
+
+    </view>
+  </view>
+
+
+</view>
+
+<view class="shop_foot">
+  <view class="shop_foot_left">
+  <checkbox-group bindchange="checkedAll">
+    <label>
+      <checkbox checked="{{checked_all}}"  color='#3B9EF5'/>
+    </label>
+    全选
+  </checkbox-group>
+
+    <!-- <checkbox class="checkbox" bindtap="selectall" />
+    <view class="shop_foot_left_text">全选</view> -->
+  </view>
+  <view class="shop_foot_content">
+    <view class="font_size28 font_colr33">合计:</view>
+    <view>
+      <view class="font_size32 font_colorf4 margin_left1">¥{{totalPrice}}</view>
+      <view class="font_size18 font_color99">（含运费）</view>
+    </view>
+  </view>
+  <view class="shop_foot_right">
+    结算({{totalNumber}})
+  </view>
+</view>

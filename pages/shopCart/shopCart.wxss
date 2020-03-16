@@ -1,1 +1,177 @@
-/* pages/shopCart/shopCart.wxss */
+page {
+  min-height: 100%;
+  background-color: #f2f2f2;
+}
+
+.container {
+  background-color: #f2f2f2;
+  min-height: 100%;
+}
+
+.pos-fiexd {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* 购物车列表 */
+
+.shop_list {
+  width: 690rpx;
+  height: 230rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  padding-top: 30rpx;
+  padding-left: 20rpx;
+}
+
+.shop_list_left {
+  padding-top: 55rpx;
+}
+
+.shop_list_center image {
+  width: 170rpx;
+  height: 170rpx;
+  margin-left: 20rpx;
+}
+
+.buy-num {
+  width: 164rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  bottom: 0;
+  display: flex;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.buy-num .jian-btn {
+  width: 48rpx;
+  height: 100%;
+  border-left: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+  border-bottom-left-radius: 6rpx;
+  border-top-left-radius: 6rpx;
+}
+
+.buy-num .jian-btn.disabled {
+  background-color: #f5f5f9;
+  border-left: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  border-top: 1rpx solid #eee;
+  color: #ccc;
+}
+
+.buy-num .jia-btn {
+  width: 48rpx;
+  height: 100%;
+  border-right: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+  border-bottom-right-radius: 6rpx;
+  border-top-right-radius: 6rpx;
+}
+
+.buy-num .jia-btn.disabled {
+  background-color: #f5f5f9;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  border-top: 1rpx solid #eee;
+  color: #ccc;
+}
+
+.buy-num input {
+  width: 68rpx;
+  height: 48rpx;
+  min-height: 48rpx;
+  text-align: center;
+  font-size: 24rpx;
+  border: 1rpx solid #ccc;
+}
+
+/*checkbox 整体大小  */
+
+checkbox {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*checkbox 选项框大小  */
+
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+/*checkbox选中后样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: linear-gradient(to right, #ff342d, #ff5882);
+}
+
+/*checkbox选中后图标样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+/*失效 */
+
+.over_falg {
+  background-color: #d8d8d8;
+  height: 30rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  width: 60rpx;
+}
+
+.shop_foot {
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  bottom: 0;
+  background-color: #fafafa;
+  display: flex;
+  padding-left: 30rpx;
+}
+
+.shop_foot_left {
+  display: flex;
+  width: 30%;
+  margin-top: 24rpx;
+}
+
+.shop_foot_left_text {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+.shop_foot_content{
+  display: flex;
+  width: 33%;
+   margin-top: 24rpx;
+}
+.shop_foot_right{
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  width: 33%;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 3
+}

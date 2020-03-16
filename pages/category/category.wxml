@@ -9,13 +9,13 @@
   <view>
     <view class="view_left" wx:for="{{leftList}}" wx:key="index" bindtap="swichTab" data-id="{{item.id}}">
       <view class="left_border" wx:if="{{tabFalg == item.id}}"></view>
-      <view  class="{{tabFalg != item.id ? 'left_font':'left_font_tab' }}">{{item.name}}</view>
+      <view class="{{tabFalg != item.id ? 'left_font':'left_font_tab' }}">{{item.name}}</view>
     </view>
   </view>
   <view class="view_right">
     <view class="text_center right_content margin_top3 margin_left3" wx:for="{{rightList}}" wx:key="index">
-        <image src="{{item.picUrl}}"></image>
-        <view>{{item.name}}</view>
+      <image src="{{item.picUrl}}"></image>
+      <view>{{item.name}}</view>
     </view>
   </view>
 </view>

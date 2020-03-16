@@ -136,26 +136,6 @@ Page({
           }
         }
       }
-      console.log('选中数据id' + that.data.arr); //选中数据id
-      // 计算总价
-      var sum = 0,
-        l = that.data.priceArr.length;
-      for (var i = 0; i < l; i++) {
-        sum += Number(that.data.priceArr[i]);
-      }
-      console.log(num) //选中数据总数
-      if (num == listLen) {
-        that.setData({
-          checked_all: true, //全选
-          totalNumber: that.data.arr.length, //选中商品数量
-          totalPrice: sum //选中商品价格
-        })
-      } else {
-        that.setData({
-          totalNumber: that.data.arr.length, //选中商品数量
-          totalPrice: sum //选中商品价格
-        });
-      }
     } else {
       console.log('单选取消');
       var arrList = []
@@ -165,31 +145,35 @@ Page({
         if (list[i].id == checkid) {
           if (list[i].checkeditem) {
             list[i].checkeditem = false
-            that.data.arr.splice(i, 1);
-            that.data.priceArr.splice(i, 1);
+            that.data.arr.splice(i, 1); //删除选中
+            that.data.priceArr.splice(i, 1); //删除金额
             trolleyLen = trolleyLen - 1
           }
         }
       };
-      var sum = 0,
-        l = that.data.priceArr.length;
-      for (var i = 0; i < l; i++) {
-        sum += Number(that.data.priceArr[i]);
-      }
-      console.log(num + '是否全选标志')
-      console.log(listLen + '数组长度');
-      if (num != listLen) {
-        that.setData({
-          checked_all: false, //全选
-          totalNumber: that.data.arr.length, //选中商品数量
-          totalPrice: sum //选中商品价格
-        })
-      }
-      console.log(that.data.arr + '最后单选数据')
     }
-    that.setData({
-      list: list
-    })
+    // 数据跟新
+    // 计算总价
+    var sum = 0,
+      l = that.data.priceArr.length;
+    for (var i = 0; i < l; i++) {
+      sum += Number(that.data.priceArr[i]);
+    }
+    if (num == listLen) {
+      that.setData({
+        checked_all: true, //全选
+        totalNumber: that.data.arr.length, //选中商品数量
+        totalPrice: sum, //选中商品价格
+        list: list //页面数据
+      })
+    } else {
+      that.setData({
+        checked_all: false, //全选
+        totalNumber: that.data.arr.length, //选中商品数量
+        totalPrice: sum, //选中商品价格
+        list: list //页面数据
+      });
+    }
     console.log(JSON.stringify(list) + '页面展示数据');
   },
   // 全选
@@ -236,5 +220,23 @@ Page({
         totalPrice: 0 //选中商品价格
       })
     }
+  },
+  // 去结算
+  goConfirmOrder: function() {
+    var that = this;
+    if (that.data.arr.length > 0) {
+      wx.navigateTo({
+        url: '/pages/confirmOrder/confirmOrder?listArr=' + JSON.stringify(that.data.arr),
+      })
+    } else {
+      wx.showToast({
+        title: '请选择商品',
+        icon: '',
+        image: '/image/add.png',
+        duration: 2000
+      })
+
+    }
+
   }
 })

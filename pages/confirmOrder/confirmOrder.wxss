@@ -1,0 +1,150 @@
+view {
+  white-space: pre-line;
+}
+
+.con_order_adder {
+  width: 710rpx;
+  height: 200rpx;
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+.con_order_imgNone {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 地址块 */
+
+.left {
+  width: 20%;
+  padding-left: 33rpx;
+  padding-top: 67rpx;
+}
+
+.centent {
+  width: 65%;
+  padding-top: 33rpx;
+}
+
+.right {
+  width: 15%;
+  text-align: right;
+  padding-top: 80rpx;
+  padding-right: 33rpx;
+}
+
+.left_mo_ren {
+  width: 60rpx;
+  height: 30rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.right_img {
+  width: 15rpx;
+  height: 26rpx;
+}
+
+/* 产品块 */
+
+.con_order_product {
+  width: 710rpx;
+  height: 310rpx;
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+.product_title {
+  height: 100rrpx;
+  display: flex;
+  border-bottom: 1px solid #e9e9e9;
+  padding-top: 16rpx;
+  padding-left: 21rpx;
+}
+
+.product_img {
+  width: 88rpx;
+  height: 63rpx;
+  padding-bottom: 10rpx;
+}
+
+.product_left_img {
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 30rpx;
+}
+
+.one_product_moudel {
+  padding-top: 33rpx;
+}
+
+/* 多个 */
+
+.wrapper {
+  width: 80%;
+  white-space: nowrap;
+  display: flex;
+}
+
+.many_product_moudel {
+  text-align: center;
+  display: inline-block;
+  margin-left: 20rpx;
+  margin-top: 37rpx;
+}
+
+.many_product_img {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.many_img {
+  width: 16rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+}
+
+/* 底部list */
+
+.con_list {
+  width: 710rpx;
+  margin-left: 20rpx;
+  background-color: #fff;
+  height: 100rpx;
+  border-radius: 15rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+}
+
+.con_bottom_view {
+  position: fixed;
+  bottom: 0;
+  height: 120rpx;
+  background-color: #fff;
+  display: flex;
+}
+
+.con_bottom_left {
+  display: flex;
+  width: 450rpx;
+}
+
+.con_bottom_right {
+  display: flex;
+  width: 300rpx;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  font-size: 32rpx;
+  color: #fff;
+}

@@ -1,0 +1,21 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='{{title}}' show_bol='{{ishideback}}'></navbar>
+</view>
+
+
+<view class="con_order_product">
+  <!-- 单个商品 -->
+  <view class="view_display one_product_moudel" wx:if="{{newList.length == 1}}">
+    <view class="product_left">
+      <image src="/image/switch/1.jpg" class="product_left_img"></image>
+    </view>
+    <view class="product_content margin_left5">
+      <view class="font_size32 font_color33">每日维C-奇异果口味每味</view>
+      <view class="font_size28 font_color99">规格: 450g/袋</view>
+      <view class="font_colorf4 font_size26">¥45.90</view>
+    </view>
+    <view class="product_right font_size28 font_color99 width15 text_center margin_left2">
+      *1
+    </view>
+  </view>
+</view>

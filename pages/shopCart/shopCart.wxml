@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='购物车' show_bol='{{ishideback}}'></navbar>
 </view>
@@ -6,12 +5,9 @@
 <!-- 购物车  有效-->
 <view class="shop_list" wx:for="{{list}}" wx:key="index">
   <view class="shop_list_left">
-    <!-- <label class="checkbox">
-      <checkbox  checked="{{item.checked}}" data-id="{{item.id}}" data-price="{{item.price}}" data-index="{{index}}" class="checkbox" catchtap="checkboxChange"/>
-    </label> -->
-    <checkbox-group bindchange="checkboxChange" data-checkid = "{{item.id}}">
+    <checkbox-group bindchange="checkboxChange" data-checkid="{{item.id}}">
       <label>
-        <checkbox checked="{{item.checkeditem}}"  color='#3B9EF5'/>
+        <checkbox checked="{{item.checkeditem}}" color='#3B9EF5' />
       </label>
     </checkbox-group>
   </view>
@@ -59,15 +55,12 @@
 
 <view class="shop_foot">
   <view class="shop_foot_left">
-  <checkbox-group bindchange="checkedAll">
-    <label>
-      <checkbox checked="{{checked_all}}"  color='#3B9EF5'/>
-    </label>
-    全选
-  </checkbox-group>
-
-    <!-- <checkbox class="checkbox" bindtap="selectall" />
-    <view class="shop_foot_left_text">全选</view> -->
+    <checkbox-group bindchange="checkedAll">
+      <label>
+        <checkbox checked="{{checked_all}}" color='#3B9EF5' />
+      </label>
+      全选
+    </checkbox-group>
   </view>
   <view class="shop_foot_content">
     <view class="font_size28 font_colr33">合计:</view>
@@ -76,7 +69,7 @@
       <view class="font_size18 font_color99">（含运费）</view>
     </view>
   </view>
-  <view class="shop_foot_right">
+  <view class="shop_foot_right" catchtap="goConfirmOrder">
     结算({{totalNumber}})
   </view>
 </view>

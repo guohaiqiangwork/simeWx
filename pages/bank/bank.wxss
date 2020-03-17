@@ -1,1 +1,1 @@
-/* pages/bank/bank.wxss */
+@import "../address/address.wxss";

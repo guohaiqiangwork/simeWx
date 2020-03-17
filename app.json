@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/searchResult/searchResult",
     "pages/index/index",
+    "pages/searchResult/searchResult",
     "pages/my/my",
     "pages/setUp/setUp",
     "pages/logs/logs",
@@ -16,7 +16,12 @@
     "pages/aboutUs/aboutUs",
     "commpents/timeChoice/timeChoice",
     "pages/dataSet/dataSet",
-    "commpents/timeChoice/timeChoice"
+    "pages/prouctDetails/prouctDetails",
+    "pages/detailedList/detailedList",
+    "pages/paymentOrder/paymentOrder",
+    "pages/confirmOrder/confirmOrder",
+    "pages/activityRule/activityRule",
+    "pages/myFriend/myFriend"
   ],
   "window": {
     "navigationStyle": "custom",

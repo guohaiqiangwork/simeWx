@@ -1,0 +1,33 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='我的好友' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<image src="/image/friderBj.png" class="img"></image>
+<view class="image_btn" bindtap="goRule">查看活动规则 </view>
+<!-- 分享 -->
+<view class="text_center">
+  <view class=" font_size26">分享至</view>
+  <view class="margin_top2">
+    <image src="/image/wxf.png" class="fx_img"></image>
+    <view class=" font_size26">微信好友</view>
+  </view>
+</view>
+<!-- 好友列表 -->
+<view class="view_display frind_btn">
+  <view class="font_size26 " style="margin-top:10rpx;padding-left:150rpx">活动累计已获得奖励</view>
+  <view class="font_size36" style="color:#FFF184">￥12870.00</view>
+</view>
+<!-- 显示列表 -->
+<view class="view_display frind_list" wx:for="{{[1,2,3]}}">
+  <image src="/image/wxf.png" class="list_img"> </image>
+  <view class="width50 margin_left2">
+    <view class="view_display font_size28 font_color33 ">
+      <view>留一手</view>
+      <view class="margin_left2">169^-^9900</view>
+    </view>
+    <view class="font_size24 font_color99 ">
+      2019-05-04 13:28:15
+    </view>
+  </view>
+  <view class="font_size30 font_color33  text_right" style="width:27%;padding-top:20rpx">￥120.00 </view>
+</view>

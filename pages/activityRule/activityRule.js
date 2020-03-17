@@ -1,4 +1,4 @@
-// pages/bank/bank.js
+// pages/activityRule/activityRule.js
 Page({
 
   /**
@@ -8,20 +8,13 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
     my_class: true,
-    title:'绑定银行卡',
-    bankList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    if (that.data.bankList.length > 0){
-      that.setData({
-        title: '我的银行卡',
-      })
-    }
+
   },
 
   /**

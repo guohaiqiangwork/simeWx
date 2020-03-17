@@ -1,4 +1,4 @@
-// pages/bank/bank.js
+// pages/myFriend/myFriend.js
 Page({
 
   /**
@@ -8,20 +8,21 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
     my_class: true,
-    title:'绑定银行卡',
-    bankList:[]
   },
-
+  // 去活动规则
+  goRule:function(){
+    wx.navigateTo({
+      url: '../activityRule/activityRule',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    if (that.data.bankList.length > 0){
-      that.setData({
-        title: '我的银行卡',
-      })
-    }
+
   },
 
   /**

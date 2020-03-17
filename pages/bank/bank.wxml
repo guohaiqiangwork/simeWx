@@ -1,3 +1,32 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='我的银行卡' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+  <navbar title='{{title}}' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+<!-- 绑定银行卡 -->
+<view wx:if="{{bankList.length == 0}}">
+  <view class="address_list">
+    <view class="address_list_left">持卡人</view>
+    <input class="address_list_right" name="input" placeholder="请填写持卡人姓名" />
+  </view>
+  <view class="address_list">
+    <view class="address_list_left">卡号</view>
+    <input class="address_list_right" name="input" placeholder="请填写银行卡卡号" />
+  </view>
+   <view class="address_list">
+    <view class="address_list_left">银行</view>
+   <view>中国银行</view>
+  </view>
+
+ <view class="address_list">
+    <view class="address_list_left">卡类型</view>
+    <view>储蓄卡/信用卡</view>
+  </view>
+
+ 
+
+
+
+  <view class="goPay">
+    保存
+  </view>
+
 </view>

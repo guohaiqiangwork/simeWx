@@ -5,28 +5,58 @@
 <view wx:if="{{bankList.length == 0}}">
   <view class="address_list">
     <view class="address_list_left">持卡人</view>
-    <input class="address_list_right" name="input" placeholder="请填写持卡人姓名" />
+    <input class="address_list_right" value="{{cardName}}" placeholder="请填写持卡人姓名" bindinput='cardName' />
   </view>
   <view class="address_list">
     <view class="address_list_left">卡号</view>
-    <input class="address_list_right" name="input" placeholder="请填写银行卡卡号" />
+    <input type="number" class="width70" value="{{userInputCardNum}}" placeholder="请输入银行卡账号" maxlength="20" bindinput="bankcardInput" />
   </view>
-   <view class="address_list">
+  <view class="address_list">
     <view class="address_list_left">银行</view>
-   <view>中国银行</view>
+    <view>{{cardname}}</view>
   </view>
-
- <view class="address_list">
+  <view class="address_list">
     <view class="address_list_left">卡类型</view>
-    <view>储蓄卡/信用卡</view>
+    <view>{{cardType}}</view>
   </view>
-
- 
-
-
-
+  <view class="address_list" style="margin-top:30rpx">
+    <view class="address_list_left">手机号</view>
+    <view>
+      <input class="address_list_right" name="input" type="number" maxlength="11" placeholder="请输入银行预留手机号 " bindinput='cardPhone' value="{{cardPhone}}" />
+    </view>
+  </view>
+  <view class="address_list">
+    <view class="address_list_left">验证码</view>
+    <view class="view_display">
+      <input class="width60" bindinput="yzmInp" placeholder="请输入验证码"></input>
+      <view catchtap="getYzm" class="yzm_btn">{{yzmButtonName}}</view>
+    </view>
+  </view>
   <view class="goPay">
-    保存
+    完成
   </view>
+</view>
 
+<!-- 银行卡列表 -->
+<view wx:if="{{bankList.length > 0}}">
+  <view wx:for="{{bankList}}" wx:key="{{index}}">
+    <movable-area class='movable-area'>
+      <movable-view direction="horizontal" class='movable-view'>
+        <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="content  {{item.bankBj}}">
+            <image src="{{item.imgUrl}}" class="bank_list_img"></image>
+            <view class="bank_list_content">
+              <view class="font_size34">中国工商银行</view>
+              <view class="font_size28">储蓄卡</view>
+            </view>
+            <view class=" bank_list_right">**** 2743</view>
+          </view>
+          <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+        </view>
+      </movable-view>
+    </movable-area>
+  </view>
+  <view class="goPay" catchtap="addBank">
+    添加银行卡
+  </view>
 </view>

@@ -1,0 +1,64 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='余额提现' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view class="moudel">
+  <!-- 银行 -->
+  <view class="moudel_one">
+    <view class="view_display bank_border" catchtap="goBank">
+      <view>到账银行卡</view>
+      <view class="margin_left4 width50">
+        <view class="view_display ">
+          <image src="/image/bank/jsy.png" class="bank_img"></image>
+          <view>工商银行 (3202)</view>
+        </view>
+        <view class="font_colorA0">2小时内到账</view>
+      </view>
+      <view class="text_right width20">
+        <image src="/image/right.png" class="bank_img_right"></image>
+      </view>
+    </view>
+    <!-- 金额 -->
+    <view class="margin_top3 bank_border">
+      <view>提现金额</view>
+      <view class="view_display margin_top3">
+        <view style="font-size:60rpx">¥</view>
+        <view class="margin_top3 margin_left2">
+          <input placeholder="请填写持卡人姓名" />
+        </view>
+      </view>
+    </view>
+    <view class="view_display margin_top2">
+      <view class="font_colorA0">余额￥3142.51</view>
+      <view class="font_colorf4">全部提现</view>
+    </view>
+    <!-- 按钮 -->
+    <view class="btn" catchtap="goMoney">
+      提现
+    </view>
+  </view>
+
+</view>
+
+
+<!-- 密码输入框 -->
+<view class="password_moudel_bj" hidden="{{payMoudel}}">
+  <view class="password_moudel">
+    <!-- 标题 -->
+    <view class="view_display  password_moudel_title ">
+      <image src="/image/close.png" class="model_close" catchtap="closeM"></image>
+      <view style="margin-left:140rpx;margin-top:-12rpx">请输入密码</view>
+    </view>
+    <view class="text_center font_size30 margin_top3">提现</view>
+    <view class="font_size55 text_center">￥3010.00</view>
+    <!-- 密码框 -->
+    <view class='password-input-box'>
+      <view class='input' bindtap='getFocus'>
+        <view wx:for="{{Length}}" wx:key="item" class='input-content'>
+          <input value="{{Value.length>=index+1?Value[index]:''}}" disabled password='{{ispassword}}' catchtap='Tap'></input>
+        </view>
+      </view>
+      <input name="password" password="{{true}}" class='password-input' maxlength="{{Length}}" focus="{{isFocus}}" bindinput="password_input" type="digit"></input>
+    </view>
+  </view>
+</view>

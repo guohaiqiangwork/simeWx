@@ -117,6 +117,11 @@ Page({
       complete: function (res) { }
     })
   },
- 
+// 去余额
+  goBalance:function(){
+    wx.navigateTo({
+      url: '../myBalance/myBalance',
+    })
+  }
   
 })

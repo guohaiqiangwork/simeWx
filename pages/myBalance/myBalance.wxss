@@ -1,0 +1,53 @@
+.balance_moudel {
+  width: 100%;
+  height: 240rpx;
+  background: linear-gradient(to right, #333, #4d5157);
+}
+
+.balance_moeny_right {
+  color: #ffb126;
+  font-size: 70rpx;
+}
+
+.balance_moeny_left {
+  color: #ffb126;
+  font-size: 32rpx;
+}
+
+.balance_moeny_btn {
+  color: #ffb126;
+  border: 1px solid #ffb126;
+  text-align: center;
+  height: 63rpx;
+  border-radius: 40rpx;
+  width: 155rpx;
+  line-height: 2;
+  margin-top: 20rpx;
+}
+
+.tab_bj {
+  width: 100%;
+  background-color: #fff;
+  height: 76rpx;
+  font-size: 28rpx;
+  padding-top: 16rpx;
+}
+
+.border_tab_y {
+  width: 62rpx;
+  height: 6rpx;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  border-radius: 3rpx;
+  margin-left: 36%;
+  margin-top: 9rpx;
+}
+
+.order_tab_fcolor {
+  color: #0C0C0C;
+  font-size: 28rpx;
+}
+
+.order_fcolor {
+  color: #0C0C0C;
+  font-weight: 500
+}

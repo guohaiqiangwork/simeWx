@@ -23,7 +23,10 @@
     "pages/privacy/privacy",
     "pages/serviceAgreement/serviceAgreement",
     "pages/aboutUs/aboutUs",
-    "pages/realName/realName"
+    "pages/realName/realName",
+    "pages/myBalance/myBalance",
+    "pages/cashMoney/cashMoney",
+    "pages/cashResult/cashResult"
   ],
   "window": {
     "navigationStyle": "custom",

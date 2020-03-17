@@ -9,122 +9,97 @@ Page({
     ishideback: false,
     my_class: true,
     region: ['请选择'],
-    address_list: [1, 2, 3],
-
-
-    delBtnWidth: 160,
-    data: [{
-      content: "1",
-      right: 0
+    items: [{
+      name: '1'
     }, {
-      content: "2",
-      right: 0
+      name: '1'
     }, {
-      content: "3",
-      right: 0
-    }, {
-      content: "4",
-      right: 0
-    }, {
-      content: "5",
-      right: 0
-    }, {
-      content: "6",
-      right: 0
-    }, {
-      content: "7",
-      right: 0
-    }, {
-      content: "8",
-      right: 0
-    }, {
-      content: "9",
-      right: 0
-    }, {
-      content: "10",
-      right: 0
+      name: '1'
     }],
-    isScroll: true,
-    windowHeight: 0,
+    startX: 0, //开始坐标
+    startY: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight
-        });
-      }
+    console.log(this.data.items.length)
+    for (var i = 0; i < this.data.items.length; i++) {
+      this.data.items[i].isTouchMove = false
+    }
+    console.log(this.data.items)
+    this.setData({
+      items: this.data.items
     });
   },
-  drawStart: function(e) {
-    // console.log("drawStart");  
-    var touch = e.touches[0]
-
-    for (var index in this.data.data) {
-      var item = this.data.data[index]
-      item.right = 0
-    }
-    this.setData({
-      data: this.data.data,
-      startX: touch.clientX,
+  //手指触摸动作开始 记录起点X坐标
+  touchstart: function(e) {
+    //开始触摸时 重置所有删除
+    this.data.items.forEach(function(v, i) {
+      if (v.isTouchMove) //只操作为true的
+        v.isTouchMove = false;
     })
-
+    this.setData({
+      startX: e.changedTouches[0].clientX,
+      startY: e.changedTouches[0].clientY,
+      items: this.data.items
+    })
   },
-  // 滑动事件
-  drawMove: function(e) {
-    console.log(e)
-    var touch = e.touches[0]
-    var item = this.data.data[e.currentTarget.dataset.index]
-    var disX = this.data.startX - touch.clientX
-    if (disX >= 20) {
-      if (disX > this.data.delBtnWidth) {
-        disX = this.data.delBtnWidth
+  //滑动事件处理
+  touchmove: function(e) {
+    var that = this,
+      index = e.currentTarget.dataset.index, //当前索引
+      startX = that.data.startX, //开始X坐标
+      startY = that.data.startY, //开始Y坐标
+      touchMoveX = e.changedTouches[0].clientX, //滑动变化坐标
+      touchMoveY = e.changedTouches[0].clientY, //滑动变化坐标
+      //获取滑动角度
+      angle = that.angle({
+        X: startX,
+        Y: startY
+      }, {
+        X: touchMoveX,
+        Y: touchMoveY
+      });
+    that.data.items.forEach(function(v, i) {
+      v.isTouchMove = false
+      //滑动超过30度角 return
+      if (Math.abs(angle) > 30) return;
+      if (i == index) {
+        if (touchMoveX > startX) //右滑
+          v.isTouchMove = false
+        else //左滑
+          v.isTouchMove = true
       }
-      item.right = disX
-      this.setData({
-        isScroll: false,
-        data: this.data.data
-      })
-    } else {
-      item.right = 0
-      this.setData({
-        isScroll: true,
-        data: this.data.data
-      })
-    }
+    })
+    //更新数据
+    that.setData({
+      items: that.data.items
+    })
   },
-  // 滑动事件
-  drawEnd: function(e) {
-    var item = this.data.data[e.currentTarget.dataset.index]
-    if (item.right >= this.data.delBtnWidth / 2) {
-      item.right = this.data.delBtnWidth
-      this.setData({
-        isScroll: true,
-        data: this.data.data,
-      })
-    } else {
-      item.right = 0
-      this.setData({
-        isScroll: true,
-        data: this.data.data,
-      })
-    }
+  /**
+   * 计算滑动角度
+   * @param {Object} start 起点坐标
+   * @param {Object} end 终点坐标
+   */
+  angle: function(start, end) {
+    var _X = end.X - start.X,
+      _Y = end.Y - start.Y
+    //返回角度 /Math.atan()返回数字的反正切值
+    return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
   },
-
-  delItem: function(e) {
-
+  //删除事件
+  del: function(e) {
+    this.data.items.splice(e.currentTarget.dataset.index, 1)
+    this.setData({
+      items: this.data.items
+    })
   },
-
-
-
-
-
-
+  //跳转
+  goDetail() {
+    console.log('点击元素跳转')
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

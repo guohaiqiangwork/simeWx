@@ -1,9 +1,14 @@
 {
   "pages": [
-    "pages/searchResult/searchResult",
+    "pages/realName/realName",
     "pages/index/index",
-    "pages/my/my",
+    "pages/privacy/privacy",
+    "pages/serviceAgreement/serviceAgreement",
+    "pages/aboutUs/aboutUs",
     "pages/setUp/setUp",
+    "pages/setPassword/setPassword",
+    "pages/my/my",
+    "pages/searchResult/searchResult",
     "pages/logs/logs",
     "pages/shopCart/shopCart",
     "pages/category/category",
@@ -11,12 +16,8 @@
     "pages/address/address",
     "pages/goodFriend/goodFriend",
     "pages/bank/bank",
-    "pages/realName/realName",
-    "pages/setPassword/setPassword",
-    "pages/aboutUs/aboutUs",
     "commpents/timeChoice/timeChoice",
-    "pages/dataSet/dataSet",
-    "commpents/timeChoice/timeChoice"
+    "pages/dataSet/dataSet"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -1,4 +1,4 @@
-// pages/aboutUs/aboutUs.js
+// pages/privacy/privacy.js
 Page({
 
   /**
@@ -63,16 +63,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
-  },
-
-  /**
-   * 跳转用户协议页面
-   */
-  gotoAgreementFunc:function(e){
-    wx.navigateTo({
-      url: e.currentTarget.dataset.href,
-    })
 
   }
 })

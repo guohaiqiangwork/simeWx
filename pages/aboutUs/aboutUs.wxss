@@ -1,1 +1,22 @@
 /* pages/aboutUs/aboutUs.wxss */
+.list_ul_li {
+	width:620rpx;
+	margin-left:35rpx;
+	margin-top:100rpx;
+	border: 1rpx solid #E9E9E9;
+	border-radius: 20rpx;
+	padding-left:30rpx;
+	padding-right:30rpx;
+  background-color: #ffff;
+}
+.settingPassword{
+  border-bottom: 1rpx solid #E9E9E9;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.right {
+  width: 12rpx;
+  height: 21rpx;
+  position: relative;
+  top: -68rpx;
+}

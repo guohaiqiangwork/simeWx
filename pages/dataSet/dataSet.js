@@ -10,7 +10,8 @@ Page({
     my_class: true,
     setList: [{
       name: '头像',
-      value: ''
+      value: '',
+      headImgUrl:'/image/add.png'
     },
     {
       name: '用户名',

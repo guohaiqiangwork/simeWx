@@ -1,3 +1,129 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='实名认证' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
+
+<!-- 认证成功 -->
+<view class="" id="successImg" style="display: none;">
+  <view class="success_img">
+    <image src="/image/default/nameSuccess.png" class="width100"></image>
+  </view>
+  <view class="font_color99 font_size26" style="margin-top: 70rpx;">
+    认证成功
+  </view>
+</view>
+
+<!-- 图像识别别 display: none;-->
+<view id="realNameOne" style="">
+  <view class="reaiName_card_title">
+    <view class="reaiName_card_signL"></view>
+    <view>请拍摄并上传您的身份证照片</view>
+    <view class="reaiName_card_signR"></view>
+  </view>
+  <view style="display: flex;">
+    <view class="_left" data-id='z'>
+      <image src="/image/realName/card@2x.png" class="width_height100" id="uploadImg1"></image>
+    </view>
+    <view class="_left">
+      <image src="/image/realName/cardF@2x.png" class="width_height100" id="uploadImg2"></image>
+    </view>
+  </view>
+  <view style="display: flex;">
+    <view class="font">
+      拍摄正面
+    </view>
+    <view class="font">
+      拍摄反面
+    </view>
+  </view>
+  <view class="division"></view>
+  <view class="reaiName_card_title">
+    <view class="reaiName_division_signL"></view>
+    <view>拍摄身份证要求</view>
+    <view class="reaiName_division_signR"></view>
+  </view>
+  <view class="font_size26 font_margin">大陆公民持有本人有效二代身份证</view>
+  <view class="font_size26">拍摄时确保身份证
+    <span>边框完整,</span>
+    <span>字体清晰,</span>
+    <span>亮度均匀</span>
+  </view>
+  <view class="tips_moudel">
+    <image src="/image/realName/tipsCard@2x.png" width="100%"></image>
+  </view>
+
+  <view class="bottom_btn" id="btnOne">
+    下一步
+  </view>
+</view>
+
+<!-- 信息确认 -->
+<view id="realNameTwo" style="display: none;">
+  <view class="_one">
+    <view class="_left">姓名</view>
+    <view class="_right">
+      <input type="text" placeholder="请填写姓名" id="name"></input>
+    </view>
+  </view>
+  <view class="_one">
+    <view class="_left">身份证号</view>
+    <view class="_right">
+      <input type="text" placeholder="请填写身份证号" id="idCard"></input>
+    </view>
+  </view>
+  <view class="_one" id="cardTimeF">
+    <view class="_left">证件有效期</view>
+    <view class="_right">
+      <input type="text" placeholder="证件有效期" id="cardTime"></input>
+    </view>
+  </view>
+  <view class="bottom_btn" id="btnTwo">
+    下一步
+  </view>
+</view>
+
+<!-- 信息录入 -->
+<view id="realNameThree" style="display: none;">
+  <view class="_one">
+    <view class="_left">持卡人</view>
+    <view class="_right">
+      <input type="text" placeholder="请填写姓名" id="name"></input>
+    </view>
+  </view>
+  <view class="_one">
+    <view class="_left">卡号</view>
+    <view class="_right">
+      <input type="text" placeholder="请填写卡号" id="bankCardNumber"></input>
+    </view>
+  </view>
+  <view class="_one">
+    <view class="_left">银行</view>
+    <view class="_right" style="font-size: .3rem;color: #303030;line-height: 2;">
+      <input style="margin-left: 0.35rem;" type="" name="" id="bankName" value="" disabled></input>
+    </view>
+  </view>
+  <view class="_one">
+    <view class="_left">卡类型</view>
+    <view class="_right" style="font-size: .3rem;color: #303030;line-height: 2;">
+      <input style="margin-left: 0.35rem;" type="" name="" id="cardType" value="" disabled></input>
+    </view>
+  </view>
+  <view style="background-color: #F5F8FF;height: .2rem;float: left;width: 7.5rem;"></view>
+  <view class="_one">
+    <view class="_left">手机号</view>
+    <view class="_right">
+      <input type="text" placeholder="请输入银行预留手机号" id="bankPhone" maxlength="11"></input>
+    </view>
+  </view>
+  <view class="_one">
+    <view class="_left_y">验证码</view>
+    <view class="_right_i">
+      <input type="text" id="cardCode" placeholder="请填写验证码" maxlength="6"></input>
+    </view>
+    <view class="_right_yb" id="bankYzm">
+      发送验证码
+    </view>
+  </view>
+  <view class="bottom_btn" id="btnthree">
+    完成
+  </view>
+</view>

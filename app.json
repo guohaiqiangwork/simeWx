@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/searchResult/searchResult",
     "pages/my/my",
     "pages/setUp/setUp",
+    "pages/setPassword/setPassword",
+    "pages/searchResult/searchResult",
     "pages/logs/logs",
     "pages/shopCart/shopCart",
     "pages/category/category",
@@ -11,9 +12,6 @@
     "pages/address/address",
     "pages/goodFriend/goodFriend",
     "pages/bank/bank",
-    "pages/realName/realName",
-    "pages/setPassword/setPassword",
-    "pages/aboutUs/aboutUs",
     "commpents/timeChoice/timeChoice",
     "pages/dataSet/dataSet",
     "pages/prouctDetails/prouctDetails",
@@ -21,7 +19,11 @@
     "pages/paymentOrder/paymentOrder",
     "pages/confirmOrder/confirmOrder",
     "pages/activityRule/activityRule",
-    "pages/myFriend/myFriend"
+    "pages/myFriend/myFriend",
+    "pages/privacy/privacy",
+    "pages/serviceAgreement/serviceAgreement",
+    "pages/aboutUs/aboutUs",
+    "pages/realName/realName"
   ],
   "window": {
     "navigationStyle": "custom",

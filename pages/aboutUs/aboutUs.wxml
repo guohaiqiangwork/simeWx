@@ -1,3 +1,34 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='关于我们' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
+
+<view class="content">
+  <view class="text_center" style="padding-top:70rpx;">
+    <image src="/image/logo3.png" style="width:230rpx;height:230rpx;"></image>
+  </view>
+  <view class="text_center">
+    <view class="font_color33 margin_top2" style="font-size:56rpx;">
+      笑容
+    </view>
+    <view class="font_size30 font_color99 margin_top2">
+      版本：V
+      <text id="vId">1.0.0</text>
+    </view>
+  </view>
+  <view class="list_ul_li">
+    <view>
+      <view class="settingPassword" data-href="../serviceAgreement/serviceAgreement" catchtap="gotoAgreementFunc">
+        <view >用户协议</view>
+        <image src="/image/right.png" class="right float-right"></image>
+      </view>
+      <view class="settingPassword" data-href="../privacy/privacy" catchtap="gotoAgreementFunc">
+        <view>隐私政策</view>
+        <image src="/image/right.png" class="right float-right"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="color: #999999;font-size:30rpx;text-align: center;position:absolute;bottom:0;width:100%;height:80rpx;">
+  <text>@北京笑容科技有限公司 版权所有</text>
+</view>

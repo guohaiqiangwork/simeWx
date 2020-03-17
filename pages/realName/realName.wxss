@@ -1,1 +1,283 @@
-/* pages/realName/realName.wxss */
+image {
+width: 100%;
+height: 100%;
+display: inline-block;
+overflow: hidden;
+}
+
+
+.reaiName_card_title {
+	font-size: 28rpx;
+	display: flex;
+	padding-top: 70rpx;
+}
+
+.reaiName_card_signL {
+	border-top: 1px solid #DCDCDC;
+	width: 60rpx;
+	height: 1px;
+	margin-top: 18rpx;
+	margin-right: 20rpx;
+	margin-left: 110rpx;
+}
+
+.reaiName_card_signR {
+	border-top: 1px solid #DCDCDC;
+	width: 60rpx;
+	height: 1px;
+	margin-top: 18rpx;
+	margin-left: 20rpx;
+}
+
+.reaiName_division_signL {
+	border-top: 1px solid #DCDCDC;
+	width: 60rpx;
+	height: 1px;
+	margin-top: 18rpx;
+	margin-right:20rpx;
+	margin-left: 180rpx;
+}
+
+.reaiName_division_signR {
+	border-top: 1px solid #DCDCDC;
+	width: 60rpx;
+	height: 1px;
+	margin-top: 18rpx;
+	margin-left: 20rpx;
+}
+
+.font_size26 {
+	font-size: 26rpx;
+	text-align: center;
+	color: #999999;
+}
+
+.font_margin {
+	margin-top: 60rpx;
+}
+
+.font_size26 span {
+	color: #FEAE11;
+}
+
+.tips_moudel {
+	border: 1px dashed #333333;
+	width: 700rpx;
+	height: 180rpx;
+	overflow: hidden;
+	margin-top: 45rpx;
+	margin-left: 25rpx;
+}
+
+#realNameOne ._left {
+	width: 350rpx;
+	height: 230rpx;
+	border: 1px dashed #333333;
+	margin-top: 30rpx;
+	margin-left: 20rpx;
+	overflow: hidden;
+	text-align: center;
+}
+
+#realNameOne .font {
+	width: 350rpx;
+	margin-top: 10rpx;
+	margin-left: 20rpx;
+	text-align: center;
+	font-size: 24rpx;
+	font-weight: 800;
+}
+
+.division {
+	background-color: #F3F5F8;
+	height: 20rpx;
+	margin-top: 120rpx;
+}
+
+#realNameOne ._left div {
+	font-size: 30rpx;
+	padding-top: 50rpx;
+}
+
+/* 信息确认 */
+
+._one {
+	float: left;
+	height: 100rpx;
+	margin-top: 20rpx;
+	border-bottom: 1px solid #F5F8FC;
+	width: 750rpx;
+}
+
+._one ._left {
+	width: 200rpx;
+	text-align: left;
+	float: left;
+	font-size: 30rpx;
+	padding-left:40rpx;
+	color: #303030;
+	line-height: 2;
+}
+
+._one ._right {
+	width: 500rpx;
+	float: left;
+}
+
+._one ._right input {
+	border: none;
+	/* height: .3rpx; */
+}
+
+.bottom_btn {
+	height: 128rpx;
+  line-height: 128rpx;
+	width: 750rpx;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 30rpx;
+	position: fixed;
+	bottom: 0;
+	background: linear-gradient(to right, #FF342D, #FF5882);
+}
+
+/* 信息录入 */
+._one ._left_y {
+	width: 200rpx;
+	text-align: left;
+	float: left;
+	font-size: 30rpx;
+	padding-left: 40rpx;
+	color: #303030;
+	line-height: 2;
+}
+
+._one ._right_i {
+	width: 270rpx;
+	float: left;
+}
+
+._one ._right_i input {
+	border: none;
+}
+
+._right_yb {
+	float: left;
+	font-size: 30rpx;
+	color: #A0A0A0;
+	border: none;
+	width: 230rpx;
+	padding-top: 40rpx;
+	text-align: center;
+	border-left: 1px solid #E6E6E6;
+	height: 120rpx;
+	margin-top: -20rpx;
+}
+
+
+/* 银行卡 */
+
+#bankCard .bank_moudel {
+	width: 690rpx;
+	height: 220rpx;
+	border-radius: 10rpx;
+	margin-left: 30rpx;
+	float: left;
+	margin-top: 30rpx;
+	color: #FFFFFF;
+	/* background: linear-gradient(to right, #FF7366, #FE5262); */
+}
+
+.bank_bgColor_zgp{
+	/* red */
+	background: linear-gradient(to right, #FF7066,#FC484E);
+}
+.bank_bgColor_ny{
+	/* blue */
+	background: linear-gradient(to right, #01A99C, #028DAE);
+}
+.bank_bgColor_jj{
+	/* greet */
+	background: linear-gradient(to right, #498ACE, #4063BF);
+}
+
+
+#bankCard .bank_moudel ._left {
+	width: 120rpx;
+	float: left;
+}
+
+#bankCard .bank_moudel ._left div {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	/* border: 1px solid red; */
+	overflow: hidden;
+	margin-top: 54rpx;
+	margin-left: 34rpx;
+}
+
+#bankCard .bank_moudel ._right {
+	width: 560rpx;
+	float: left;
+	margin-top: 50rpx;
+}
+
+#bankCard .bank_moudel ._right ._Bone {
+	width: 100%;
+	float: left;
+}
+
+._Bone_number {
+	font-size: 34rpx;
+	-float: left;
+	float: right;
+	margin-right: 40rpx;
+}
+
+._Bone_name {
+	font-size: 34rpx;
+	float: left;
+	margin-left: 24rpx;
+}
+
+/* 弹出框 */
+.order_change_model {
+	width: 550rpx;
+	height: 300rpx;
+	background: #FFFFFF;
+	position: fixed;
+	top: 400rpx;
+	left: 90rpx;
+	z-index: 999999;
+	border-radius: 10rpx;
+	box-sizing: border-box;
+	padding: 20rpx 50rpx 0;
+	margin: 0 auto;
+
+}
+
+.orderChange_moudel {
+	border-bottom: 1px solid #CBCBCB;
+	height: 150rpx;
+	text-align: center;
+}
+
+.orderChange_moudel_btn div {
+	width: 50%;
+	text-align: center;
+	color: #0076FF;
+	font-size: .34rpx;
+	line-height: 2;
+}
+
+.orderChange_moudel_btn div:nth-child(1) {
+	border-right: 1px solid #4D4D4D;
+}
+
+.success_img{
+	width: 370rpx;
+	height: 200rpx;
+	margin-left: 190rpx;
+	margin-top: 300rpx;
+}

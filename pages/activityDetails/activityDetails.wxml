@@ -1,0 +1,8 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='活动详情' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+
+<view wx:for="{{activeList}}" wx:key='index'>
+  <image src="{{item}}" class="width100"></image>
+</view>

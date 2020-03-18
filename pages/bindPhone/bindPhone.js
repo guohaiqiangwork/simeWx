@@ -12,20 +12,20 @@ Page({
     phone: '', //手机号码
     code: '', //验证码
   },
-  phoneInput: function (e) {
+  phoneInput: function(e) {
     var _this = this;
     _this.setData({
       phone: e.detail.value
     })
   },
-  codeInput: function (e) {
+  codeInput: function(e) {
     var _this = this;
     _this.setData({
       code: e.detail.value
     })
   },
   // 获取验证码
-  getYzm: function (e) {
+  getYzm: function(e) {
     let that = this;
     let yzm = that.data.yzm;
     let telephone = that.data.phone;
@@ -55,7 +55,7 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
-        success: function (res) {
+        success: function(res) {
           console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
@@ -64,7 +64,7 @@ Page({
               icon: 'success',
               duration: 2000
             })
-            that.data.setInter = setInterval(function () {
+            that.data.setInter = setInterval(function() {
               times--;
               if (times < 1) {
                 that.setData({
@@ -91,7 +91,7 @@ Page({
     }
   },
   // 手机号登录
-  goLogin: function (e) {
+  goLogin: function(e) {
     var _this = this
     if (_this.data.phone.length != 11) {
       wx.showModal({
@@ -111,7 +111,7 @@ Page({
     var keyword = {
       phone: _this.data.phone,
       code: _this.data.code,
-      openId: app.nativeData.openId|| '',   
+      openId: app.nativeData.openId || '',
       headImgUrl: app.nativeData.imgurl || '',
       nickName: app.nativeData.name || ''
     }
@@ -126,7 +126,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值 
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         wx.hideLoading()
         if (res.data.code == '200') {
@@ -135,7 +135,14 @@ Page({
             icon: 'success',
             duration: 2000
           });
-          app.nativeData.token = res.data.data.token;
+          wx.setStorage({
+            key: 'token',
+            data: res.data.data.token
+          })
+          wx.setStorage({
+            key: 'useId',
+            data: res.data.data.id
+          })
           wx.switchTab({
             url: '../../pages/index/index'
           })
@@ -153,56 +160,56 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

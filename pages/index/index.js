@@ -9,6 +9,7 @@ Page({
     banners: [], //轮播数组
     tabList: [], //导航栏数组
     newList: [], //新品发现
+    bannerUrl: '', //banner图片
     proudeList: [{
         title: '酒水饮料',
         id: "002",
@@ -132,7 +133,6 @@ Page({
   },
   getSet: function() {
     const value = wx.getStorageSync('key');
-    console.log(value)
   },
   //事件处理函数
   bindViewTap: function() {
@@ -141,27 +141,26 @@ Page({
     })
   },
   onLoad: function() {
-    // console.log(app.nativeData.token + '第三届法律框架')
-    this.goWxLogin()//获取openid
+    this.getHot() //获取分类及产品
+    this.goWxLogin() //获取openid
     this.getLunBo() //获取首页轮播
-    this.getTabList()//获取分类
-    this.getNewGoods()//获取新品发现
+    this.getNewGoods() //获取新品发现
+    this.getBanner() //获取bard
   },
   // 微信登录
-  goWxLogin: function () {
+  goWxLogin: function() {
     var that = this;
     //调用登录接口，获取 code
     wx.login({
-      success: function (res) {
+      success: function(res) {
         wx.request({
           //后台登录接口--小程序登录接口code换取会员信息接口
           url: ajax_url + '/wx/miniLogin/' + res.code,
           method: "get",
-          success: function (res) {
-            console.log(res);
+          success: function(res) {
             app.nativeData.openId = res.data.data.openid;
             wx.getUserInfo({
-              success: function (res) {
+              success: function(res) {
                 that.data.userInfo = res.userInfo;
                 that.setData({
                   userInfo: that.data.userInfo
@@ -196,37 +195,14 @@ Page({
       }
     })
   },
-  //  获取分类
-  getTabList: function() {
-    var _this = this;
-    wx.request({
-      url: ajax_url + '/sort/selectSortF',
-      method: "get",
-      success: function (res) {
-        if (res.data.code == '200') {
-          _this.setData({
-            tabList: res.data.data
-          })
-        } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
-          })
-        }
-      }
-    })
-
-  },
   // 获取新品发现
-  getNewGoods:function(){
+  getNewGoods: function() {
     var _this = this;
     wx.request({
       url: ajax_url + '/goods/getNewGoods',
       method: "get",
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             newList: res.data.data
           })
@@ -240,29 +216,109 @@ Page({
       }
     })
   },
+  // 获取首页bard
+  getBanner: function() {
+    var _this = this;
+    var keyData = {
+      isShow: 1,
+      position: 1,
+    };
+    wx.request({
+      url: ajax_url + '/banner/find',
+      method: "POST",
+      data: JSON.stringify(keyData),
+      contentType: 'application/json',
+      success: function(res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            bannerUrl: res.data.data.banner
+          });
+        }
+      }
+    })
+  },
+  // 获取tab 及产品
+  getHot: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/sort/getHot',
+      method: "get",
+      success: function(res) {
+        if (res.data.code == '200') {
 
+          _this.setData({
+            tabList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
   // 去搜素页面
   bindconfirm: function(e) {
-    console.log(e.detail.value);
     wx.navigateTo({
       url: '/pages/searchResult/searchResult?value=' + e.detail.value,
     })
   },
   // 去产品详情
   goProudctDetails: function(e) {
-    console.log(e.currentTarget.dataset.productid);
     wx.navigateTo({
       url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
     })
   },
-
+  //去活动详情
+  tapBanner: function(e) {
+    wx.navigateTo({
+      url: '/pages/activityDetails/activityDetails?activeId=' + e.currentTarget.dataset.id,
+    })
+  },
   // 点击导航页面滚动
   toViewClick: function(e) {
-    console.log(e.currentTarget.dataset.id);
     wx.pageScrollTo({
-      scrollTop: 600,
-      duration: 300
+      scrollTop: 850 * parseInt(e.currentTarget.dataset.code),
+      duration: 200
     });
+  },
+  // 加入购物车
+  addShopCard: function(e) {
+    wx.showLoading({
+      title: '添加中...',
+    })
+    var data = {
+      goodsId: e.currentTarget.dataset.id,
+      pecificationId: e.currentTarget.dataset.spid,
+      userId: wx.getStorageSync('useId'),
+    };
+    wx.request({
+      url: ajax_url + '/shoppingCart/addCart',
+      method: "post",
+      data: data,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideLoading();
+        if (res.data.code == '200') {
+          wx.showModal({
+            content: '添加成功',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
   }
 
 })

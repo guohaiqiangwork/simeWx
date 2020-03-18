@@ -35,10 +35,12 @@ App({
   },
   nativeData: {
     token: '', //token
-    openId: ''
+    openId: '',
+    useId:''
   },
   globalData: {
     userInfo: null,
     ajax_url: 'http://service.bjxrkj.com',
+    // http://192.168.1.100:8080
   }
 })

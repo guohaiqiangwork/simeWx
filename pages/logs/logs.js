@@ -6,7 +6,7 @@ Page({
     onOff: true, //验证码开关,
     phone: '', //手机号码
     code: '', //验证码
-    oprnId:''//微信openId
+    oprnId: '' //微信openId
   },
   phoneInput: function(e) {
     var _this = this;
@@ -129,7 +129,17 @@ Page({
             icon: 'success',
             duration: 2000
           });
-          app.nativeData.token = res.data.data.token;
+          wx.setStorage({
+            key: 'token',
+            data: res.data.data.token
+          }
+          )
+          wx.setStorage({
+            key: 'useId',
+            data: res.data.data.id
+          }
+          )
+         
           wx.switchTab({
             url: '../../pages/index/index'
           })
@@ -143,9 +153,9 @@ Page({
       }
     })
   },
- 
+
   // 是否授权弹窗
-  bindGetUserInfo: function (res) {
+  bindGetUserInfo: function(res) {
     console.log(app.nativeData.openId);
     app.nativeData.name = res.detail.userInfo.nickName
     app.nativeData.imgurl = res.detail.userInfo.avatarUrl
@@ -165,14 +175,23 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded',
         },
-        success: function (res) {
+        success: function(res) {
           if (res.data.code == '200') {
             wx.showToast({
               title: '登录成功',
               icon: 'success',
               duration: 2000
             });
-            app.nativeData.token = res.data.data.token;
+            wx.setStorage({
+                key: 'token',
+                data: res.data.data.token
+              }
+            )
+            wx.setStorage(  {
+              key: 'useId',
+                data: res.data.data.id
+            }
+            )
             wx.switchTab({
               url: '../../pages/index/index'
             })
@@ -188,9 +207,6 @@ Page({
           }
         }
       })
-      // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
-      console.log(res.detail.userInfo);
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -198,7 +214,7 @@ Page({
         content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
         showCancel: false,
         confirmText: '',
-        success: function (res) {
+        success: function(res) {
           // 用户没有授权成功，不需要改变 isHide 的值
           if (res.confirm) {
             console.log('用户点击了“返回授权”');

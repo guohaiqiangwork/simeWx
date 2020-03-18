@@ -2,8 +2,7 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='首页' show_bol='{{ishideback}}'></navbar>
 </view>
-
-<view class="search margin_top2">
+<view class="search margin_top2" catchtap="bindViewTap">
   <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
   <image src="/image/icon/search.svg"></image>
 </view>
@@ -16,7 +15,7 @@
 </view>
 <!-- 导航栏 -->
 <view class="">
-  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-id="{{item.id}}">
+  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-code="{{item.code}}">
     <view>
       <image src="{{item.picture}}" class="tabList_img"></image>
     </view>
@@ -35,7 +34,7 @@
       <view class="font_size18">{{item.title}}</view>
       <view class="view_display margin_top2">
         <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-        <view>
+        <view catchtap="addShopCard"  data-spId="{{item.spId}}" data-id="{{item.id}}">
           <image src="/image/add.png" class="new_add_img"></image>
         </view>
       </view>
@@ -44,43 +43,41 @@
 </view>
 <!-- end -->
 <!-- 邀请好友 -->
-<image src="/image/index_yq.png" class="index_yq_img"></image>
+<image src="{{bannerUrl}}" class="index_yq_img"></image>
 <!-- end -->
 <!-- 产品列表 -->
 
-
-
 <scroll-view style="height:{{winHeight}}" scroll-into-view="{{toView}}" scroll-y="true" bindscroll="scrollTo">
-<view wx:for="{{proudeList}}" wx:key='index' id="{{item.id}}">
-  <view class="text_center">- {{item.title}} -</view>
-  <view>
-    <image src="/image/switch/1.jpg" class="product_img"></image>
-  </view>
-  <view class="product_list_moudel" wx:for="{{item.data}}" wx:key="index">
+  <view wx:for="{{tabList}}" wx:key='index' id="{{item.id}}" wx:for-item="items">
+    <view class="text_center">- {{items.name}} -</view>
     <view>
-     <view class="view_display fx">
-        <view class="product_list_left">赚</view>
-        <view class="product_list_right">¥ {{item.price}}</view>
-      </view>
-       <view class="product_none">已抢光</view>
-      <image src="{{item.picUrl}}" class="product_list_img"></image>
+      <image src="{{items.picture}}" class="product_img"></image>
     </view>
-    <view class="font_size24"> {{item.naem}}</view>
-    <view class="font_size18">{{item.falg}}</view>
-    <view class="view_display margin_top2">
-      <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-      <view>
-        <image src="/image/add.png" class="new_add_img"></image>
+    <view class="product_list_moudel" wx:for="{{items.goodsList}}" wx:key="index">
+      <view catchtap="goProudctDetails" data-productId="{{item.id}}">
+        <view class="view_display fx" hidden="{{item.rebate == 0}}">
+          <view class="product_list_left">赚</view>
+          <view class="product_list_right">¥ {{item.rebate}}</view>
+        </view>
+        <view class="product_none" hidden="{{item.inventory != 0}}">已抢光</view>
+        <image src="{{item.pictureUrl}}" class="product_list_img"></image>
+      </view>
+      <view class="font_size24"> {{item.goodsName}} {{items.spId}}</view>
+      <view class="font_size18">{{item.title}}</view>
+      <view class="view_display margin_top2">
+        <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
+        <view catchtap="addShopCard" data-spId="{{item.pecificationId}}"  data-id="{{item.id}}">
+          <image src="/image/add.png" class="new_add_img"></image>
+        </view>
       </view>
     </view>
   </view>
-</view>
 </scroll-view>
 <!-- 测试 -->
-<view>
+<!-- <view>
   <button bindtap="goSet">存储数据在本地</button>
   <button bindtap="getSet">获取存储数据在本地</button>
-</view>
+</view> -->
 
 <!-- 模版初始化 -->
 <!-- <view class="container">

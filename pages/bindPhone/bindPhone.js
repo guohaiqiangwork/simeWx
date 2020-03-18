@@ -1,27 +1,31 @@
+// pages/bindPhone/bindPhone.js
 const app = getApp()
 const ajax_url = app.globalData.ajax_url;
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     yzmButtonName: '获取验证码',
     onOff: true, //验证码开关,
     phone: '', //手机号码
     code: '', //验证码
-    oprnId:''//微信openId
   },
-  phoneInput: function(e) {
+  phoneInput: function (e) {
     var _this = this;
     _this.setData({
       phone: e.detail.value
     })
   },
-  codeInput: function(e) {
+  codeInput: function (e) {
     var _this = this;
     _this.setData({
       code: e.detail.value
     })
   },
   // 获取验证码
-  getYzm: function(e) {
+  getYzm: function (e) {
     let that = this;
     let yzm = that.data.yzm;
     let telephone = that.data.phone;
@@ -51,7 +55,7 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
-        success: function(res) {
+        success: function (res) {
           console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
@@ -60,7 +64,7 @@ Page({
               icon: 'success',
               duration: 2000
             })
-            that.data.setInter = setInterval(function() {
+            that.data.setInter = setInterval(function () {
               times--;
               if (times < 1) {
                 that.setData({
@@ -86,9 +90,8 @@ Page({
       })
     }
   },
-
   // 手机号登录
-  goLogin: function(e) {
+  goLogin: function (e) {
     var _this = this
     if (_this.data.phone.length != 11) {
       wx.showModal({
@@ -105,23 +108,26 @@ Page({
       });
       return;
     }
-    var data = {
+    var keyword = {
       phone: _this.data.phone,
-      phoneCode: _this.data.code,
-      openId: ''
-    };
+      code: _this.data.code,
+      openId: app.nativeData.openId|| '',   
+      headImgUrl: app.nativeData.imgurl || '',
+      nickName: app.nativeData.name || ''
+    }
     wx.showLoading({
       title: '登录中',
     })
     //手机号登录
     wx.request({
-      url: ajax_url + '/wx/send/login',
+      url: ajax_url + '/wx/weixin/messages',
       method: "POST",
-      data: data,
+      data: keyword,
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值 
       },
-      success: function(res) {
+      success: function (res) {
+        console.log(res)
         wx.hideLoading()
         if (res.data.code == '200') {
           wx.showToast({
@@ -143,74 +149,60 @@ Page({
       }
     })
   },
- 
-  // 是否授权弹窗
-  bindGetUserInfo: function (res) {
-    console.log(app.nativeData.openId);
-    app.nativeData.name = res.detail.userInfo.nickName
-    app.nativeData.imgurl = res.detail.userInfo.avatarUrl
-    if (res.detail.userInfo) {
-      //用户按了允许授权按钮
-      var that = this;
-      var data = {
-        'openId': app.nativeData.openId,
-        'nickName': res.detail.userInfo.nickName,
-        'headImgUrl': res.detail.userInfo.avatarUrl,
-      };
-      //判断是否绑定手机号
-      wx.request({
-        url: ajax_url + '/wx/havePhone',
-        method: "POST",
-        data: data,
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-        },
-        success: function (res) {
-          if (res.data.code == '200') {
-            wx.showToast({
-              title: '登录成功',
-              icon: 'success',
-              duration: 2000
-            });
-            app.nativeData.token = res.data.data.token;
-            wx.switchTab({
-              url: '../../pages/index/index'
-            })
-          } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
-            })
-            wx.navigateTo({
-              url: '/pages/bindPhone/bindPhone',
-            })
-          }
-        }
-      })
-      // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
-      console.log(res.detail.userInfo);
-    } else {
-      //用户按了拒绝按钮
-      wx.showModal({
-        title: '警告',
-        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-        showCancel: false,
-        confirmText: '',
-        success: function (res) {
-          // 用户没有授权成功，不需要改变 isHide 的值
-          if (res.confirm) {
-            console.log('用户点击了“返回授权”');
-          }
-        }
-      });
-    }
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
+  },
 
-  onLoad: function() {
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
   }
 })

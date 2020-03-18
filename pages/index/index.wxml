@@ -10,7 +10,7 @@
 <view class="swiper-container">
   <swiper indicator-dots="true" indicator-active-color="#fff" autoplay circular>
     <swiper-item wx:for="{{banners}}" wx:key="id">
-      <image mode="aspectFill" bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
+      <image mode="aspectFill" bindtap="tapBanner" data-id="{{item.id}}" src="{{item.carousel}}" />
     </swiper-item>
   </swiper>
 </view>
@@ -18,7 +18,7 @@
 <view class="">
   <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-id="{{item.id}}">
     <view>
-      <image src="{{item.picUrl}}" class="tabList_img"></image>
+      <image src="{{item.picture}}" class="tabList_img"></image>
     </view>
     <view class="font_size28 font_color33 margin_top2">{{item.name}}</view>
   </view>
@@ -29,10 +29,10 @@
   <scroll-view class='wrapper' scroll-x="true">
     <view class="new_moudel" wx:for="{{newList}}" wx:key="index" catchtap="goProudctDetails" data-productId="{{item.id}}">
       <view>
-        <image src="{{item.picUrl}}" class="new_img"></image>
+        <image src="{{item.pictureUrl}}" class="new_img"></image>
       </view>
-      <view class="font_size24"> {{item.naem}}</view>
-      <view class="font_size18">{{item.falg}}</view>
+      <view class="font_size24 view_hidden"> {{item.goodsName}}</view>
+      <view class="font_size18">{{item.title}}</view>
       <view class="view_display margin_top2">
         <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
         <view>

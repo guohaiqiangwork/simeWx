@@ -110,6 +110,10 @@
 .margin_top5 {
   margin-top: 50rpx;
 }
+.margin_top8 {
+  margin-top: 80rpx;
+}
+
 
 .margin_top10 {
   margin-top: 10rpx;

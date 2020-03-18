@@ -6,119 +6,9 @@ Page({
   data: {
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: true,
-    banners: [{
-        businessId: '1',
-        picUrl: "/image/switch/1.jpg"
-      },
-      {
-        businessId: '2',
-        picUrl: "/image/switch/2.jpg"
-      },
-      {
-        businessId: '1',
-        picUrl: "http://dcdn.it120.cc/2019/12/29/2e79921a-92b3-4d1d-8182-cb3d524be5fb.png"
-      },
-      {
-        businessId: '2',
-        picUrl: "/image/switch/3.jpg"
-      }
-    ], //轮播数组
-    tabList: [{
-        name: '面点速食',
-        picUrl: "/image/switch/2.jpg",
-        id: '001'
-      },
-      {
-        name: '酒水饮料',
-        picUrl: "/image/switch/1.jpg",
-        id: '002'
-      },
-      {
-        name: '粮油干货',
-        picUrl: "/image/switch/3.jpg",
-        id: '003'
-      },
-      {
-        name: '美妆百货',
-        picUrl: "/image/switch/2.jpg",
-        id: '004'
-      },
-      {
-        name: '中外茶叶',
-        picUrl: "/image/switch/2.jpg",
-        id: '005'
-      },
-      {
-        name: '母婴保健',
-        picUrl: "/image/switch/1.jpg",
-        id: '006'
-      },
-      {
-        name: '家装家纺',
-        picUrl: "/image/switch/2.jpg",
-        id: '007'
-      },
-      {
-        name: '日用纸品',
-        picUrl: "/image/switch/1.jpg",
-        id: '008'
-      },
-      {
-        name: '电子数码',
-        picUrl: "/image/switch/2.jpg",
-        id: '009'
-      }
-
-    ], //导航栏数组
-    newList: [{
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '001'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '002'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '003'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '004'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '005'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里',
-        id: '006'
-      },
-      {
-        naem: '海南凤梨（1个装）',
-        picUrl: '/image/switch/2.jpg',
-        price: '13.00',
-        falg: '极甜凤梨甜到心里'
-      },
-    ], //新品发现
+    banners: [], //轮播数组
+    tabList: [], //导航栏数组
+    newList: [], //新品发现
     proudeList: [{
         title: '酒水饮料',
         id: "002",
@@ -251,41 +141,106 @@ Page({
     })
   },
   onLoad: function() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    // console.log(app.nativeData.token + '第三届法律框架')
+    this.goWxLogin()//获取openid
+    this.getLunBo() //获取首页轮播
+    this.getTabList()//获取分类
+    this.getNewGoods()//获取新品发现
+  },
+  // 微信登录
+  goWxLogin: function () {
+    var that = this;
+    //调用登录接口，获取 code
+    wx.login({
+      success: function (res) {
+        wx.request({
+          //后台登录接口--小程序登录接口code换取会员信息接口
+          url: ajax_url + '/wx/miniLogin/' + res.code,
+          method: "get",
+          success: function (res) {
+            console.log(res);
+            app.nativeData.openId = res.data.data.openid;
+            wx.getUserInfo({
+              success: function (res) {
+                that.data.userInfo = res.userInfo;
+                that.setData({
+                  userInfo: that.data.userInfo
+                });
+
+              }
+            })
+          }
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
   },
+  // 获取轮播
+  getLunBo: function() {
+    var _this = this;
+    // 获取首页轮播
+    wx.request({
+      url: ajax_url + '/act/list',
+      method: "get",
+      success: function(res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            banners: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  //  获取分类
+  getTabList: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/sort/selectSortF',
+      method: "get",
+      success: function (res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            tabList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+
+  },
+  // 获取新品发现
+  getNewGoods:function(){
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/goods/getNewGoods',
+      method: "get",
+      success: function (res) {
+        if (res.data.code == '200') {
+          console.log(res)
+          _this.setData({
+            newList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+
   // 去搜素页面
   bindconfirm: function(e) {
     console.log(e.detail.value);

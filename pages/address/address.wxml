@@ -37,10 +37,11 @@
 <!-- 新增结束 -->
 
 <!-- 地址列表 -->
-<view>
-  <scroll-view scroll-y="{{isScroll}}" style='height:{{windowHeight}}px'>
-    <block wx:key="item" wx:for="{{data}}">
-      <view data-index='{{index}}' class="order-item" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+<view wx:for="{{items}}" wx:key="{{index}}">
+  <movable-area class='movable-area'>
+    <movable-view direction="horizontal" class='movable-view'>
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <!-- <view class="content" bindtap='goDetail'>{{item.content}}</view> -->
         <view class="content">
           <view class="view_display">
             <view class="width70">
@@ -62,11 +63,9 @@
               <view class="right_btn">编辑</view>
             </view>
           </view>
-
         </view>
-        <view class="remove" bindtap="delItem">删除 </view>
+        <view class="del" catchtap="del" data-index="{{index}}">删除</view>
       </view>
-    </block>
-  </scroll-view>
-
+    </movable-view>
+  </movable-area>
 </view>

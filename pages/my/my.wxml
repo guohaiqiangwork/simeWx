@@ -21,7 +21,7 @@
       <view class="my_heard_btn margin_top4 margin_left2" hidden="{{hiddenName}}">已实名认证</view>
     </view>
     <view class="view_display header_money">
-      <view class="font_colorff">
+      <view class="font_colorff" catchtap="goBalance">
         <view class="font_size40">45.90</view>
         <view class="font_size26">可用余额</view>
       </view>

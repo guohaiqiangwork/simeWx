@@ -80,7 +80,7 @@ radio .wx-radio-input.wx-radio-input-checked {
   background-color: #fff;
   border-radius: 20rpx;
   position: fixed;
-  top: 30%;
+  top: 26%;
   left: 12%;
 }
 .password_moudel_title{

@@ -1,0 +1,44 @@
+@import '../paymentOrder/paymentOrder.wxss';
+.moudel {
+  width: 690rpx;
+  height: 600rpx;
+  margin-left: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+}
+
+.moudel_one {
+  width: 580rpx;
+  margin-left: 55rpx;
+  font-size: 24rpx;
+  padding-top: 44rpx;
+}
+
+.bank_border {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+}
+
+.bank_img {
+  width: 27rpx;
+  height: 27rpx;
+  margin-top: 4rpx;
+}
+
+.bank_img_right {
+  width: 13rpx;
+  height: 21rpx;
+}
+
+.btn {
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  line-height: 3;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  margin-top: 40rpx
+}

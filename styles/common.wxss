@@ -51,6 +51,9 @@
 .font_colorff {
   color: #fff;
 }
+.font_colorA0 {
+  color: #A0A0A0;
+}
 
 .font_color33 {
   color: #333;
@@ -203,6 +206,10 @@
 .width30 {
   width: 30%;
 }
+.width33 {
+  width: 33%;
+}
+
 
 .width40 {
   width: 40%;
@@ -218,6 +225,10 @@
 
 .width55 {
   width: 55%;
+}
+
+.width60 {
+  width: 60%;
 }
 
 .width70 {

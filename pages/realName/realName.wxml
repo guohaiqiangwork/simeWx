@@ -3,14 +3,14 @@
 </view>
 
 <!-- 认证成功 -->
-<view class="" id="successImg" style="display: none;">
+<!-- <view>
   <view class="success_img">
     <image src="/image/default/nameSuccess.png" class="width100"></image>
   </view>
   <view class="font_color99 font_size26" style="margin-top: 70rpx;">
     认证成功
   </view>
-</view>
+</view> -->
 
 <!-- 图像识别别 display: none;-->
 <view id="realNameOne" style="">
@@ -20,11 +20,11 @@
     <view class="reaiName_card_signR"></view>
   </view>
   <view style="display: flex;">
-    <view class="_left" data-id='z'>
-      <image src="/image/realName/card@2x.png" class="width_height100" id="uploadImg1"></image>
+    <view class="_left" data-id='z' catchtap="selectImg">
+      <image src="{{imgPath}}" class="width_height100" id="uploadImg1" ></image>
     </view>
-    <view class="_left">
-      <image src="/image/realName/cardF@2x.png" class="width_height100" id="uploadImg2"></image>
+    <view class="_left" catchtap="selectImg" data-type="fan">
+      <image src="{{imgPathF}}" class="width_height100" id="uploadImg2"></image>
     </view>
   </view>
   <view style="display: flex;">
@@ -57,7 +57,7 @@
 </view>
 
 <!-- 信息确认 -->
-<view id="realNameTwo" style="display: none;">
+<view style="display:none">
   <view class="_one">
     <view class="_left">姓名</view>
     <view class="_right">
@@ -76,13 +76,13 @@
       <input type="text" placeholder="证件有效期" id="cardTime"></input>
     </view>
   </view>
-  <view class="bottom_btn" id="btnTwo">
+  <!-- <view class="bottom_btn" id="btnTwo">
     下一步
-  </view>
+  </view> -->
 </view>
 
 <!-- 信息录入 -->
-<view id="realNameThree" style="display: none;">
+<view style="display:none">
   <view class="_one">
     <view class="_left">持卡人</view>
     <view class="_right">
@@ -123,7 +123,7 @@
       发送验证码
     </view>
   </view>
-  <view class="bottom_btn" id="btnthree">
+  <!-- <view class="bottom_btn" id="btnthree">
     完成
-  </view>
+  </view> -->
 </view>

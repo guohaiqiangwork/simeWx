@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/realName/realName",
     "pages/index/index",
     "pages/my/my",
     "pages/setUp/setUp",
@@ -23,7 +24,10 @@
     "pages/privacy/privacy",
     "pages/serviceAgreement/serviceAgreement",
     "pages/aboutUs/aboutUs",
-    "pages/realName/realName"
+    "pages/myBalance/myBalance",
+    "pages/cashMoney/cashMoney",
+    "pages/cashResult/cashResult"
+
   ],
   "window": {
     "navigationStyle": "custom",

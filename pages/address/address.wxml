@@ -26,7 +26,7 @@
   </view>
   <view class="address_list" style="margin-top:30rpx">
     <view class="address_list_left margin_left2">设置默认地址</view>
-    <switch bindchange="switch2Change" style="margin-left:50%" checked="{{!isDefault}}" />
+    <switch bindchange="switch2Change" style="margin-left:50%" checked="{{isDefaultD}}" />
   </view>
 
   <view class="goPay" catchtap="addAddress">

@@ -12,6 +12,8 @@ Page({
     startY: 0,
     receiver:'',
     mobile:'',
+    isDefault:1,
+    isDefaultD: true,
     addAddressId:''
   },
 
@@ -108,6 +110,7 @@ Page({
       })
       return;
     }
+    console.log(_this.data.isDefault)
     var data = {
       receiver: _this.data.receiver, //收货人
       mobile: _this.data.mobile, //收货人联系电话

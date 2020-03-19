@@ -2,7 +2,7 @@
   <image src="/image/loginbg.png" class="bg-image" mode="scaleToFill"></image>
 </view>
 <view class="content">
-  <view>
+  <view catchtap="goHome">
     <image src="/image/rightlog.png" class="img_widthr"></image>
   </view>
   <view>

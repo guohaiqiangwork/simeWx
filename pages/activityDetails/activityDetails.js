@@ -10,24 +10,28 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
     my_class: true,
-    activeList:[]//轮播详情
+    activeList: [], //轮播详情
+    barList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options.activeId)
-    this.getFind(options.activeId)
+  onLoad: function(options) {
+    if (options.type == 'bar') {
+      this.getBar(options.activeId)
+    } else {
+      this.getFind(options.activeId)
+    }
   },
-  // 获取轮播
-  getFind: function (data) {
+  // 获取轮播活动
+  getFind: function(data) {
     var _this = this;
     // 获取首页轮播
     wx.request({
-      url: ajax_url + "/act/find/" +  data,
+      url: ajax_url + "/act/find/" + data,
       method: "get",
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
           _this.setData({
             activeList: res.data.data
@@ -42,52 +46,74 @@ Page({
       }
     })
   },
+  // 获取bar活动
+  getBar: function(data) {
+    var _this = this;
+    wx.request({
+      url: ajax_url + "/banner/content/" + data,
+      method: "get",
+      success: function(res) {
+        if (res.data.code == '200') {
+          
+          _this.setData({
+            barList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -3,6 +3,11 @@
 </view>
 
 
-<view wx:for="{{activeList}}" wx:key='index'>
+<view wx:for="{{activeList}}" wx:key='index' wx:if="{{activeList.length > 0}}">
   <image src="{{item}}" class="width100"></image>
+</view>
+<view wx:for="{{barList}}" wx:key='index' wx:if="{{barList.length > 0}}">
+  <image src="{{item.detailsImg}}" class="width100" style="height:680rpx"></image>
+  <view class="text_center font_size24">{{item.detailsTitle}}</view>
+  <view class="text_center font_size24">{{item.detailsContent}}</view>
 </view>

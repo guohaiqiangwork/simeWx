@@ -2,7 +2,7 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='首页' show_bol='{{ishideback}}'></navbar>
 </view>
-<view class="search margin_top2" catchtap="bindViewTap">
+<view class="search margin_top2">
   <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
   <image src="/image/icon/search.svg"></image>
 </view>
@@ -43,7 +43,7 @@
 </view>
 <!-- end -->
 <!-- 邀请好友 -->
-<image src="{{bannerUrl}}" class="index_yq_img"></image>
+<image src="{{bannerUrl.banner}}" class="index_yq_img" catchtap="tapBanner" data-id="{{bannerUrl.id}}" data-type="bar"></image>
 <!-- end -->
 <!-- 产品列表 -->
 

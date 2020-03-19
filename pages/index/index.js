@@ -10,116 +10,7 @@ Page({
     tabList: [], //导航栏数组
     newList: [], //新品发现
     bannerUrl: '', //banner图片
-    proudeList: [{
-        title: '酒水饮料',
-        id: "002",
-        data: [{
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '001'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '002'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '003'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '004'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '005'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '006'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里'
-          },
-        ]
-      },
-      {
-        title: '面点素食',
-        id: "001",
-        data: [{
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '001'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '002'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '003'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '004'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '005'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里',
-            id: '006'
-          },
-          {
-            naem: '海南凤梨（1个装）',
-            picUrl: '/image/switch/2.jpg',
-            price: '13.00',
-            falg: '极甜凤梨甜到心里'
-          },
-        ]
-      }
-
-
-
-    ],
+    proudeList: [],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -231,7 +122,7 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           _this.setData({
-            bannerUrl: res.data.data.banner
+            bannerUrl: res.data.data
           });
         }
       }
@@ -274,7 +165,7 @@ Page({
   //去活动详情
   tapBanner: function(e) {
     wx.navigateTo({
-      url: '/pages/activityDetails/activityDetails?activeId=' + e.currentTarget.dataset.id,
+      url: '/pages/activityDetails/activityDetails?activeId=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
     })
   },
   // 点击导航页面滚动

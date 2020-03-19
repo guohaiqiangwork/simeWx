@@ -1,13 +1,11 @@
 {
   "pages": [
-    "pages/realName/realName",
     "pages/index/index",
     "pages/my/my",
     "pages/setUp/setUp",
     "pages/setPassword/setPassword",
     "pages/searchResult/searchResult",
     "pages/logs/logs",
-    "pages/shopCart/shopCart",
     "pages/category/category",
     "pages/myOrder/myOrder",
     "pages/address/address",
@@ -26,8 +24,11 @@
     "pages/aboutUs/aboutUs",
     "pages/myBalance/myBalance",
     "pages/cashMoney/cashMoney",
-    "pages/cashResult/cashResult"
-
+    "pages/cashResult/cashResult",
+    "pages/realName/realName",
+    "pages/bindPhone/bindPhone",
+    "pages/activityDetails/activityDetails",
+    "pages/shopCart/shopCart"
   ],
   "window": {
     "navigationStyle": "custom",

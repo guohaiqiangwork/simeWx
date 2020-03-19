@@ -2,51 +2,54 @@
   <navbar title='购物车' show_bol='{{ishideback}}'></navbar>
 </view>
 
+
 <!-- 购物车  有效-->
-<view class="shop_list" wx:for="{{list}}" wx:key="index">
-  <view class="shop_list_left">
-    <checkbox-group bindchange="checkboxChange" data-checkid="{{item.id}}">
-      <label>
-        <checkbox checked="{{item.checkeditem}}" color='#3B9EF5' />
-      </label>
-    </checkbox-group>
-  </view>
-  <view class="shop_list_center">
-    <image src="/image/switch/1.jpg" class=""></image>
-  </view>
-  <view class="shop_list_right margin_left2">
-    <view class="font_size32 font_color33">原麦山丘－芋之心</view>
-    <view class="font_size28 font_color99">原麦山丘－芋之心</view>
-    <view class="view_display margin_top2">
-      <view class="font_size26 font_colorf4" style="width:240rpx">¥80989 </view>
-      <view class="buy-num">
-        <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}" data-number="{{item.number}}">-</view>
-        <input type="number" value="{{item.number}}" disabled/>
-        <view class="jia-btn {{item.number==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.number}}">+</view>
+<view style="padding-bottom:120rpx">
+  <view class="shop_list" wx:for="{{list}}" wx:key="index">
+    <view class="shop_list_left">
+      <checkbox-group bindchange="checkboxChange" data-checkid="{{item.id}}" data-ZpriceNum="{{item.num}}">
+        <label>
+          <checkbox checked="{{item.checkeditem}}" color='#3B9EF5' />
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="shop_list_center">
+      <image src="{{item.picture}}" class=""></image>
+    </view>
+    <view class="shop_list_right margin_left2">
+      <view class="font_size32 font_color33">{{item.goodsName}}</view>
+      <view class="font_size28 font_color99">{{item.pecificationName}}</view>
+      <view class="view_display margin_top2">
+        <view class="font_size26 font_colorf4" style="width:240rpx">¥{{item.price}} </view>
+        <view class="buy-num">
+          <view class="jian-btn {{item.num <=1? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}">-</view>
+          <input type="number" value="{{item.num}}" disabled/>
+          <view class="jia-btn {{item.number ==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-fag="add" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}">+</view>
+        </view>
       </view>
     </view>
   </view>
 </view>
+
 <!-- 购物车 失效商品 -->
-<view class="over_list margin_top4 margin_left2" style="margin-bottom:110rpx">
-  <view class="view_display">
+<view class="over_list margin_top4 " style="margin-bottom:110rpx" wx:if="{{noList.length > 0}}">
+  <view class="view_display margin_left2">
     <view class="over_falg">失效</view>
     <view class="font_size28 font_color33 margin_left2" style="line-height:1">失效商品</view>
-    <view class="font_size28 font_color33" style="line-height:1;"> 清空失效商品</view>
+    <view class="font_size28 font_color33" style="line-height:1;margin-left:320rpx" catchtap="deleteShopData" data-falg="over"> 清空失效商品</view>
   </view>
   <!-- 列表 -->
-  <view class="shop_list" wx:for="{{list}}" wx:key="index">
+  <view class="shop_list" wx:for="{{noList}}" wx:key="index">
     <view class="shop_list_left">
       <view class="over_falg">失效</view>
     </view>
     <view class="shop_list_center">
-      <image src="/image/switch/1.jpg" class=""></image>
+      <image src="{{item.picture}}" class=""></image>
     </view>
     <view class="shop_list_right margin_left2">
-      <view class="font_size32 font_color33">原麦山丘－芋之心</view>
-      <view class="font_size28 font_color99">原麦山丘－芋之心</view>
+      <view class="font_size32 font_color33">{{item.goodsName}}</view>
+      <view class="font_size28 font_color99">{{item.pecificationName}}</view>
       <view class="font_size28 font_color33 margin_top2">不好意思，该商品已售罄 </view>
-
     </view>
   </view>
 
@@ -70,6 +73,6 @@
     </view>
   </view>
   <view class="shop_foot_right" catchtap="goConfirmOrder">
-    结算({{totalNumber}})
+    结算（{{totalNumber}}）
   </view>
 </view>

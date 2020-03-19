@@ -36,7 +36,6 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
-        console.log(res)
         if (res.data.code == '200') {
           _this.setData({
             banners: res.data.data.pictureUrlList,

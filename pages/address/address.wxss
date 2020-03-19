@@ -7,7 +7,7 @@
 }
 
 .address_list_left {
-  width: 150rpx;
+  width: 180rpx;
   text-align: left;
   font-size: 30rpx;
   padding-left: 40rpx;

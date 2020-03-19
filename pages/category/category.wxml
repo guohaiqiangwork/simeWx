@@ -14,7 +14,7 @@
   </view>
   <view class="view_right">
     <view class="text_center right_content margin_top3 margin_left3" wx:for="{{rightList}}" wx:key="index">
-      <image src="{{item.picture}}"></image>
+      <image src="{{item.picture}}" catchtap="goSearchResult" data-id="{{item.code}}"></image>
       <view>{{item.name}}</view>
     </view>
   </view>

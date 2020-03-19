@@ -9,71 +9,26 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: true,
     my_class: false,
-    tabFalg: '001',
-    leftList: [],
-    rightList: [{
-      name: '面点速食',
-      picUrl: "/image/switch/2.jpg",
-      id: '001'
-    },
-    {
-      name: '酒水饮料',
-      picUrl: "/image/switch/1.jpg",
-      id: '002'
-    },
-    {
-      name: '粮油干货',
-      picUrl: "/image/switch/3.jpg",
-      id: '003'
-    },
-    {
-      name: '美妆百货',
-      picUrl: "/image/switch/2.jpg",
-      id: '004'
-    },
-    {
-      name: '中外茶叶',
-      picUrl: "/image/switch/2.jpg",
-      id: '005'
-    },
-    {
-      name: '母婴保健',
-      picUrl: "/image/switch/1.jpg",
-      id: '006'
-    },
-    {
-      name: '家装家纺',
-      picUrl: "/image/switch/2.jpg",
-      id: '007'
-    },
-    {
-      name: '日用纸品',
-      picUrl: "/image/switch/1.jpg",
-      id: '008'
-    },
-    {
-      name: '电子数码',
-      picUrl: "/image/switch/2.jpg",
-      id: '009'
-    }
-
-    ],
+    tabFalg: '01',
+    leftList: [], //左面分类
+    rightList: [] //右面分类
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getTabList();//获取主分类
+  onLoad: function(options) {
+    let _this = this;
+    _this.getTabList(); //获取主分类
+    _this.getTabListRight(_this.data.tabFalg) //获取右面
   },
-  //  获取分类
-  getTabList: function () {
+  //  获取分类左
+  getTabList: function() {
     var _this = this;
     wx.request({
       url: ajax_url + '/sort/selectSortF',
       method: "get",
-      success: function (res) {
-        console.log(res)
+      success: function(res) {
         if (res.data.code == '200') {
           _this.setData({
             leftList: res.data.data
@@ -89,58 +44,81 @@ Page({
     })
 
   },
+  //  获取分类右
+  getTabListRight: function(code) {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/sort/selectSortC/' + code,
+      method: "get",
+      success: function(res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            rightList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   // 左边切换
-  swichTab: function (e) {
-    this.setData({
+  swichTab: function(e) {
+    let _this = this;
+    _this.getTabListRight(e.currentTarget.dataset.id)
+    _this.setData({
       tabFalg: e.currentTarget.dataset.id
     })
   }

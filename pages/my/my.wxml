@@ -5,28 +5,19 @@
 <!-- 内容 -->
 <view style="margin-bottom:40rpx">
   <!-- 头像 -->
-  <!-- <view>
-    <image src="/image/switch/1.jpg" class="imgBground"></image>
-    <view class="my_heard">
-      <image src="/image/switch/1.jpg" class="my_heard_img"></image>
-      <view class="my_heard_name margin_top3">{{name}}</view>
-      <view class="margin_top3 my_heard_btn" hidden="{{hiddenName}}">已实名认证</view>
-    </view>
-  </view> -->
-
   <view class="mouerl_hearder">
     <view class="view_display padding_top2">
-      <image src="/image/switch/1.jpg" class="my_heard_img"></image>
-      <view class="my_heard_name margin_top3">{{name}}</view>
-      <view class="my_heard_btn margin_top4 margin_left2" hidden="{{hiddenName}}">已实名认证</view>
+      <image src="{{myData.avatar}}" class="my_heard_img"></image>
+      <view class="my_heard_name margin_top3">{{myData.nickname}}</view>
+      <view class="my_heard_btn margin_top4 margin_left2" hidden="!{{myData.idcard}}">已实名认证</view>
     </view>
     <view class="view_display header_money">
       <view class="font_colorff" catchtap="goBalance">
-        <view class="font_size40">45.90</view>
+        <view class="font_size40 text_center">{{myMoney.balance}}</view>
         <view class="font_size26">可用余额</view>
       </view>
       <view class="font_colorff" style="margin-left:200rpx">
-        <view class="font_size40 ">45.90</view>
+        <view class="font_size40 text_center">{{myMoney.integral}}</view>
         <view class="font_size26">冻结金额</view>
       </view>
     </view>

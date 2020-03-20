@@ -1,4 +1,5 @@
-// pages/paymentOrder/paymentOrder.js
+const app = getApp()
+const ajax_url = app.globalData.ajax_url;
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
-    endTime: '2020-03-16 14:24:30', //2018/11/22 10:40:30这种格式也行
+    my_class: false,
+    endTime: '', //2018/11/22 10:40:30这种格式也行
     payMoudel: true, //是否展示密码框
     focus: false,
     Length: 6, //输入框个数  
@@ -18,15 +20,38 @@ Page({
   },
   password_input: function(e) {
     var that = this;
-    console.log(e.detail.value);
     var inputValue = e.detail.value;
-    that.setData({
-      Value: inputValue
-    })
+    if (inputValue.length == 6 ){
+      wx.request({
+        url: ajax_url + '/account/passwordCheck/' + wx.getStorageSync('useId'),
+        method: "post",
+        data: { password: inputValue},
+        header: {
+          'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+          'client': 'APP',
+        },
+        success: function (res) {
+          if (res.data.code == '200') {
+           console.log(res);
+          } else {
+            wx.showModal({
+              content: res.data.message,
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+          }
+        }
+      })
+
+    }
+    // that.setData({
+    //   Value: inputValue
+    // })
   },
 
   Tap() {
     var that = this;
+    console.log('234')
     that.setData({
       isFocus: true,
     })
@@ -41,7 +66,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
+    console.log(JSON.parse(options.buyData))
+    var buyData = JSON.parse(options.buyData);
     var that = this;
+    that.setData({
+      endTime: buyData.createTime,
+      totalPrice: buyData.totalPrice,
+      orderNo: buyData.orderNo
+    })
     that.countDown()
   },
 
@@ -146,7 +179,6 @@ Page({
   },
   // 去支付
   goPay: function() {
-    console.log('00')
     var that = this
     // 余额支付
     if (that.data.payType == 'ye') {

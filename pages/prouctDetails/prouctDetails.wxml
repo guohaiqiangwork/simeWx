@@ -12,9 +12,9 @@
 <!-- 内容 -->
 <view class=" margin_top2" style="margin-bottom:110rpx">
   <view class="font_size42 text_center">{{goodsName}}</view>
-  <view class="font_size24 text_center margin_top2">{{price}}</view>
+  <view class="font_size24 text_center margin_top2">{{title}}</view>
   <view class="view_display margin_top2" style="margin-left:30%">
-    <view class="font_size32 font_colorf4">¥{{grossMargin}}</view>
+    <view class="font_size32 font_colorf4">¥{{price}}</view>
     <view class="view_display margin_left2">
       <view class="product_list_left">赚</view>
       <view class="product_list_right">¥{{grossMargin}}</view>
@@ -41,13 +41,13 @@
 
   <!-- 底部按钮 -->
   <view class="product_footer">
-    <view class="left">
-      <view class="shop_number">{{number}}</view>
+    <view class="left" catchtap="goShopCart">
+      <view class="shop_number">{{prouctNumberNo > 99 ? "99+" : prouctNumberNo}}</view>
       <image src="/image/tab/shopz.png" class="left_image"></image>
     </view>
     <view class="right">
       <view class="right_btn1">加入购物车</view>
-      <view class="right_btn2">立即购买</view>
+      <view class="right_btn2" catchtap="goBuy">立即购买</view>
     </view>
   </view>
 </view>

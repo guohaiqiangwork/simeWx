@@ -1,9 +1,18 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='确认订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+
 <text>
 wx.getStorageSync('useId') // 获取用户id
   //get请求
     wx.request({
       url: ajax_url + '/act/list',
       method: "get",
+        header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
       success: function (res) {
         if (res.data.code == '200') {
           _this.setData({

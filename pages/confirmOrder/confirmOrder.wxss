@@ -56,7 +56,7 @@ view {
 
 .con_order_product {
   width: 710rpx;
-  height: 310rpx;
+  height: 200rpx;
   background-color: #fff;
   border: 1px solid #e9e9e9;
   border-radius: 10rpx;

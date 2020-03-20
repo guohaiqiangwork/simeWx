@@ -14,14 +14,14 @@ Page({
     banners: [], //轮播数组
     goodsName:'',//产品名称
     title:'',
-    gList: [{ name: '原料产地', content: '丹麦' }, { name: '保质期', content: '3天冷藏（建议收货当天食用）' }, { name: '储藏温度', content: '0℃ - 5℃' }, { name: '商家电话', content: '400-1005-200' }]
+    gList: [],
+    prouctNumberNo:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.getProduct(options.productId);//获取商品详情
     this.getNum()//获取购物车数量
   },
@@ -45,7 +45,10 @@ Page({
             price: res.data.data.specification[0].price,
             gList: res.data.data.propertyList,
             specification: res.data.data.specification,
-            pictureUrlList: res.data.data.pictureUrlList
+            pictureUrlList: res.data.data.pictureUrlList,
+            goodsId: res.data.data.id,//商品id
+            mchId: res.data.data.mchId,//商户id
+            skuId: res.data.data.specification[0].id//规格id
           })
         } else {
           wx.showModal({
@@ -68,10 +71,10 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
-        console.log(res)
         if (res.data.code == '200') {
+         
           _this.setData({
-            number: res.data.data
+            prouctNumberNo: res.data.data
           })
         } else {
           wx.showModal({
@@ -85,7 +88,6 @@ Page({
   },
   // 拨打电话
   getPhone:function(e){
-    console.log(e)
     let pageUrl = e.currentTarget.dataset.pvalue
     let falg = e.currentTarget.dataset.id
     if (falg == '1') {
@@ -93,6 +95,25 @@ Page({
         phoneNumber: pageUrl
       })
     } 
+  },
+//立即购买
+  goBuy:function(){
+    var _this = this;
+    var prouctData ={
+      goodsId: _this.data.goodsId,//商品id
+      mchId: _this.data.mchId,//商户id
+      skuId: _this.data.skuId,//规格id
+      falg:'prouct'
+    }
+    wx.navigateTo({
+      url: '/pages/confirmOrder/confirmOrder?prouctData=' + JSON.stringify(prouctData),
+    })
+  },
+  // 去购物车
+  goShopCart:function(){
+    wx.switchTab({
+      url: '../../pages/shopCart/shopCart'
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

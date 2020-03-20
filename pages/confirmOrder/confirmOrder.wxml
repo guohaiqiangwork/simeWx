@@ -1,21 +1,22 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='确认订单' show_bol='{{ishideback}}'></navbar>
+  <navbar title='确认订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
 <!-- 地址框 -->
 <view class="con_order_adder">
-  <view wx:if="{{adderList.length == 0}}" style="margin-top: 78rpx;text-align: center;">
+
+  <view wx:if="{{adderList.receiver == 0}}" style="margin-top: 78rpx;text-align: center;">
     <image src="/image/addA.png" class="con_order_imgNone"></image>
     请添加收货人信息
   </view>
-  <view wx:if="{{adderList.length > 0}}" class="view_display">
+  <view wx:if="{{adderList.length > 0}}" class="view_display" wx:for="{{adderList}}" wx:key="index">
     <view class="left">
-      <view class="left_name">留一手</view>
-      <view class="left_mo_ren">默认</view>
+      <view class="left_name">{{item.receiver}}</view>
+      <view class="left_mo_ren" wx:if="{{item.isDefault == 1}}">默认</view>
     </view>
     <view class="centent">
-      <view class="font_size32 font_color33">176^_^3978</view>
-      <view class="font_size28 font_color66">内蒙古包头市九原区华诚中心A座十三层南侧</view>
+      <view class="font_size32 font_color33">{{item.mobile}}</view>
+      <view class="font_size28 font_color66">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
     </view>
     <view class="right">
       <image src="/image/right99.png" class="right_img"></image>
@@ -26,27 +27,27 @@
 <!-- 产品块 -->
 <view class="con_order_product">
   <!-- 标题栏 -->
-  <view class="product_title">
+  <!-- <view class="product_title">
     <image src="/image/addA.png" class="product_img"></image>
     <view class="margin_left2 font_size28" style="margin-top:12rpx">笑容</view>
-  </view>
+  </view> -->
   <!-- 单个商品 -->
-  <view class="view_display one_product_moudel" wx:if="{{newList.length == 1}}">
+  <view class="view_display one_product_moudel" wx:if="{{true}}" wx:for="{{prouctList.itemList}}" wx:key="index">
     <view class="product_left">
-      <image src="/image/switch/1.jpg" class="product_left_img"></image>
+      <image src="{{item.picPath}}" class="product_left_img"></image>
     </view>
     <view class="product_content margin_left5">
-      <view class="font_size32 font_color33">每日维C-奇异果口味每味</view>
-      <view class="font_size28 font_color99">规格: 450g/袋</view>
-      <view class="font_colorf4 font_size26">¥45.90</view>
+      <view class="font_size32 font_color33">{{item.goodsName}}</view>
+      <view class="font_size28 font_color99">规格: {{item.skuName}}</view>
+      <view class="font_colorf4 font_size26">¥{{item.price}}</view>
     </view>
     <view class="product_right font_size28 font_color99 width15 text_center margin_left2">
-      *1
+      *{{item.num}}
     </view>
   </view>
 
   <!-- 多个商品 -->
-  <view class="view_display" wx:if="{{newList.length > 1}}">
+  <view class="view_display" wx:if="{{false}}">
     <scroll-view class='wrapper' scroll-x="true">
       <view class="many_product_moudel" wx:for="{{newList}}" wx:key="index">
         <view>
@@ -70,14 +71,14 @@
 <view class="con_list">
   <view class="width50 margin_top3 margin_left2">失效商品清单</view>
   <view class="view_display margin_top3" style="margin-left:190rpx;" data-type="失效" catchtap="goDetailList">
-    <view style="margin-top:-4rpx">共19种</view>
-    <image src="/image/right99.png" class="many_img"></image>
+    <view style="margin-top:-4rpx" >共{{cartListNo}}种</view>
+    <image src="/image/right99.png" class="many_img" wx:if="{{cartListNo > 0}}"></image>
   </view>
 </view>
 <view class="con_list">
   <view class="width50 margin_top3 margin_left2">商品金额</view>
   <view class="view_display margin_top3" style="margin-left:190rpx;">
-    <view style="margin-top:-4rpx">¥250.00</view>
+    <view style="margin-top:-4rpx">¥{{prouctList.totalPrice}}</view>
   </view>
 </view>
 
@@ -85,7 +86,7 @@
 <view class="con_bottom_view">
   <view class="con_bottom_left">
     <view class="font_size32 font_color33 margin_left4 margin_top4">还需支付：</view>
-    <view class="font_size40 font_colorf4 margin_top3">¥255.00</view>
+    <view class="font_size40 font_colorf4 margin_top3">¥{{prouctList.totalPrice}}</view>
   </view>
   <view class="con_bottom_right">
     <view class="margin_top3" style="margin-left:100rpx" catchtap="goPay"> 去支付</view>

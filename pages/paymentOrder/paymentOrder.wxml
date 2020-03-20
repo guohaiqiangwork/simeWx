@@ -1,5 +1,5 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='支付订单' show_bol='{{ishideback}}'></navbar>
+  <navbar title='支付订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
 
@@ -14,7 +14,7 @@
 </view>
 <view class="font_size32 view_display money_moudel">
   <view class="font_color33">需支付：</view>
-  <view class="font_colorf4">100.0元</view>
+  <view class="font_colorf4">{{totalPrice}}元</view>
 </view>
 
 <!-- 支付方式 -->
@@ -61,7 +61,7 @@
       <view style="margin-left:140rpx;margin-top:-12rpx">请输入密码</view>
     </view>
     <view class="text_center font_size30 margin_top3">需支付</view>
-    <view class="font_size55 text_center">￥3010.00</view>
+    <view class="font_size55 text_center">￥{{totalPrice}}</view>
     <!-- 密码框 -->
     <view class='password-input-box'>
       <view class='input' bindtap='getFocus'>

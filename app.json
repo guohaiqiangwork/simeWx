@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/my/my",
     "pages/setUp/setUp",
@@ -27,7 +28,8 @@
     "pages/realName/realName",
     "pages/bindPhone/bindPhone",
     "pages/activityDetails/activityDetails",
-    "pages/shopCart/shopCart"
+    "pages/shopCart/shopCart",
+    "pages/case/case"
   ],
   "window": {
     "navigationStyle": "custom",

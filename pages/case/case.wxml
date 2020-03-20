@@ -1,0 +1,53 @@
+<text>
+wx.getStorageSync('useId') // 获取用户id
+  //get请求
+    wx.request({
+      url: ajax_url + '/act/list',
+      method: "get",
+      success: function (res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            banners: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+
+    <!-- psot -->
+        wx.request({
+      url: ajax_url + '/shoppingCart/setCarttNum',
+      method: "post",
+      data: data,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          let list = "list[" + index + "].num"
+          _this.setData({
+            [list]: num
+          });
+
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+
+    <!-- 提示 -->
+      wx.showLoading({
+      title: '上传中...',
+    })
+     wx.hideLoading();
+</text>

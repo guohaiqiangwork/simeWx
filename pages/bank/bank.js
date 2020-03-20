@@ -1,4 +1,6 @@
 var bankCard = require('../../utils/bankType.js');
+const app = getApp()
+const ajax_url = app.globalData.ajax_url;
 Page({
 
   /**
@@ -9,24 +11,19 @@ Page({
     ishideback: false,
     my_class: true,
     title: '绑定银行卡',
-    bankList: [{
-      name: '1',
-      bankBj: 'ICBC'
-    }, {
-      name: '2',
-      bankBj: 'ABC'
-    }, {
-      bankBj: 'CCB'
-    }],
+    bankFalg: 1, //标示
+    bankList: [],
     yzmButtonName: '获取验证码',
     onOff: true, //验证码开关
     cardName: '', //持卡人姓名
     userInputCardNum: '', // 银行卡账号
     cardPhone: '', //手机号
-
-
     startX: 0, //开始坐标
-    startY: 0
+    startY: 0,
+
+    bankName: '', //银行开户行名称
+    bankType: '', //	银行卡类型
+    bankCode: '', //银行编码
   },
 
   /**
@@ -34,61 +31,203 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    that.getName() //查询是否实名认证
+
     if (that.data.bankList.length > 0) {
       that.setData({
         title: '我的银行卡',
       })
     };
-    // 添加滑动事件列表
-    for (var i = 0; i < this.data.bankList.length; i++) {
-      this.data.bankList[i].isTouchMove = false;
-      console.log(this.data.bankList[i].bankBj);
-      switch (this.data.bankList[i].bankBj) {
-        case 'ICBC':
-          this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
-          this.data.bankList[i].imgUrl = '/image/bank/gsy.png';
-          break;
-        case 'ABC':
-          this.data.bankList[i].bankBj = 'bank_bgColor_ny'
-          this.data.bankList[i].imgUrl = '/image/bank/nyy.png';
-          break;
-        case 'CCB':
-          this.data.bankList[i].bankBj = 'bank_bgColor_jj'
-          this.data.bankList[i].imgUrl = '/image/bank/jsy.png';
-          break;
-        case 'BOC':
-          this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
-          this.data.bankList[i].imgUrl = '/image/bank/zgy.png';
-          break;
-        case 'COMM':
-          this.data.bankList[i].bankBj = 'bank_bgColor_jj'
-          this.data.bankList[i].imgUrl = '/image/bank/jty.png';
-          break;
-        case 'PSBC':
-          this.data.bankList[i].bankBj = 'bank_bgColor_ny'
-          this.data.bankList[i].imgUrl = '/image/bank/yzy.png';
-          break;
-        case 'SPDB':
-          this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
-          this.data.bankList[i].imgUrl = '/image/bank/qty.png';
-          break;
-        case 'CMB':
-          this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
-          this.data.bankList[i].imgUrl = '/image/bank/zsy.png';
-          break;
-        default:
-          this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
-          this.data.bankList[i].imgUrl = '/image/bank/qty.png';
-          break;
-      }
 
-    }
-    this.setData({
-      bankList: this.data.bankList
-    });
   },
+  // 查询是否实名
+  getName: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/mb/checkVerified/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          if (res.data.data) {
+            _this.getBankList() //查询银行卡列表
+          } else {
+            wx.showModal({
+              content: '请先进行实名认证',
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+            setTimeout(function() {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }, 1500)
+
+          }
+        }
+      }
+    })
+  },
+  // 获取银行卡列表
+  getBankList: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/bank/findAll/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          _this.data.bankList = res.data.data;
+          // 添加滑动事件列表
+          for (var i = 0; i < _this.data.bankList.length; i++) {
+            _this.data.bankList[i].isTouchMove = false;
+            _this.data.bankList[i].bankCard = "****" + _this.data.bankList[i].bankCard.substr(-4);
+            switch (_this.data.bankList[i].bankBj) {
+              case 'ICBC':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
+                _this.data.bankList[i].imgUrl = '/image/bank/gsy.png';
+                break;
+              case 'ABC':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_ny'
+                _this.data.bankList[i].imgUrl = '/image/bank/nyy.png';
+                break;
+              case 'CCB':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_jj'
+                _this.data.bankList[i].imgUrl = '/image/bank/jsy.png';
+                break;
+              case 'BOC':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
+                _this.data.bankList[i].imgUrl = '/image/bank/zgy.png';
+                break;
+              case 'COMM':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_jj'
+                _this.data.bankList[i].imgUrl = '/image/bank/jty.png';
+                break;
+              case 'PSBC':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_ny'
+                _this.data.bankList[i].imgUrl = '/image/bank/yzy.png';
+                break;
+              case 'SPDB':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
+                _this.data.bankList[i].imgUrl = '/image/bank/qty.png';
+                break;
+              case 'CMB':
+                _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
+                _this.data.bankList[i].imgUrl = '/image/bank/zsy.png';
+                break;
+              default:
+                _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
+                _this.data.bankList[i].imgUrl = '/image/bank/qty.png';
+                break;
+            }
+
+          }
+          _this.setData({
+            bankList: _this.data.bankList
+          });
+        }
+      }
+    })
+
+  },
+
+  // 保存银行卡
+  saveBank: function() {
+    var _this = this;
+    if (!_this.data.cardName) {
+      wx.showModal({
+        content: '请填写持卡人名字',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+      return;
+    } else if (!_this.data.cardPhone) {
+      wx.showModal({
+        content: '请填写手机号',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+      return;
+    } else if (!_this.data.code) {
+      wx.showModal({
+        content: '请填写验证码',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+      return;
+    }
+    var keyword = {
+      name: _this.data.cardName,
+      bankCard: _this.data.userInputCardNum, //银行卡
+      bankName: _this.data.cardname, //银行开户行名称
+      bankType: _this.data.cardType, //	银行卡类型
+      memberId: wx.getStorageSync('useId'), //
+      reservedMobile: _this.data.cardPhone, //银行预留手机号
+      bankCode: _this.data.bankCode
+    }
+    wx.request({
+      url: ajax_url + '/bank/addBank/' + _this.data.code,
+      method: "post",
+      data: JSON.stringify(keyword),
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          wx.showModal({
+            content: '添加成功',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+          _this.getBankList();
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  //删除事件
+  del: function(e) {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/bank/deleteBank/' + e.currentTarget.dataset.id,
+      method: "post",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          wx.showModal({
+            content: '删除成功',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+          _this.getBankList();
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+
   // 添加银行卡
-  addBank:function(){
+  addBank: function() {
     this.setData({
       bankList: [],
     })
@@ -149,21 +288,11 @@ Page({
     //返回角度 /Math.atan()返回数字的反正切值
     return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
   },
-  //删除事件
-  del: function(e) {
-    this.data.bankList.splice(e.currentTarget.dataset.index, 1)
-    this.setData({
-      bankList: this.data.bankList
-    })
-  },
-  //跳转
-  goDetail() {
-    console.log('点击元素跳转')
-  },
+
+
   // 账号输入框的监听事件
   bankcardInput: function(e) {
     var card = e.detail.value;
-    console.log(card + '是东方接口')
     // 格式
     var len = card.length
     //判断用户是输入还是回删
@@ -186,7 +315,6 @@ Page({
     });
     let cardNum = this.data.userInputCardNum.replace(/\s*/g, ""); // 格式化字符串的空格
     var temp = bankCard.bankCardAttribution(cardNum);
-    console.log(JSON.stringify(temp) + '谁都能解开了')
     if (temp == Error) {
       temp.bankName = '';
       temp.cardTypeName = '';
@@ -194,6 +322,7 @@ Page({
       this.setData({
         cardname: temp.bankName,
         cardType: temp.cardTypeName,
+        bankCode: temp.bankCode
       })
     }
   },
@@ -209,7 +338,12 @@ Page({
       cardPhone: e.detail.value
     })
   },
-
+  // 验证码
+  yzmInp: function(e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -263,26 +397,65 @@ Page({
   getYzm: function(e) {
     let that = this;
     let yzm = that.data.yzm;
-    let telephone = that.data.telephone;
+    let telephone = that.data.cardPhone;
+    if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
+      wx.showModal({
+        content: '请输入正确手机号',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+      return;
+    }
     if (!that.data.onOff) {
       return;
     } else {
       let times = 60;
-      that.data.setInter = setInterval(function() {
-        times--;
-        if (times < 1) {
-          that.setData({
-            yzmButtonName: "重新获取"
-          });
-          that.data.onOff = true;
-          clearInterval(that.data.setInter);
-        } else {
-          that.setData({
-            yzmButtonName: times + 's'
-          });
-          that.data.onOff = false;
+      var data = {
+        phone: telephone
+      };
+      wx.showLoading({
+        title: '获取中',
+      })
+      // 获取验证码
+      wx.request({
+        url: ajax_url + '/wx/send/messages',
+        method: "POST",
+        data: data,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值 
+        },
+        success: function(res) {
+          wx.hideLoading();
+          if (res.data.code == '200') {
+            wx.showToast({
+              title: '获取验证码成功',
+              icon: 'success',
+              duration: 2000
+            })
+            that.data.setInter = setInterval(function() {
+              times--;
+              if (times < 1) {
+                that.setData({
+                  yzmButtonName: "重新获取"
+                });
+                that.data.onOff = true;
+                clearInterval(that.data.setInter);
+              } else {
+                that.setData({
+                  yzmButtonName: times + 's'
+                });
+                that.data.onOff = false;
+              }
+            }, 1000);
+          } else {
+            wx.showModal({
+              content: res.message,
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+          }
         }
-      }, 1000);
+      })
     }
   },
 

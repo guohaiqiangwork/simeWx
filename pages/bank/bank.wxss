@@ -15,7 +15,7 @@
 
 .address_list_right {
   font-size: 30rpx;
-  color: #a0a0a0;
+  /* color: #a0a0a0; */
 }
 
 .goPay {

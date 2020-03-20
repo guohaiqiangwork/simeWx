@@ -28,30 +28,30 @@
   <view class="address_list">
     <view class="address_list_left">验证码</view>
     <view class="view_display">
-      <input class="width60" bindinput="yzmInp" placeholder="请输入验证码"></input>
+      <input class="width60" bindinput="yzmInp" value="{{code}}" type="number" maxlength="6" placeholder="请输入验证码"></input>
       <view catchtap="getYzm" class="yzm_btn">{{yzmButtonName}}</view>
     </view>
   </view>
-  <view class="goPay">
+  <view class="goPay" catchtap="saveBank">
     完成
   </view>
 </view>
 
 <!-- 银行卡列表 -->
 <view wx:if="{{bankList.length > 0}}">
-  <view wx:for="{{bankList}}" wx:key="{{index}}">
+  <view wx:for="{{bankList}}" wx:key="index">
     <movable-area class='movable-area'>
       <movable-view direction="horizontal" class='movable-view'>
         <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
           <view class="content  {{item.bankBj}}">
             <image src="{{item.imgUrl}}" class="bank_list_img"></image>
             <view class="bank_list_content">
-              <view class="font_size34">中国工商银行</view>
-              <view class="font_size28">储蓄卡</view>
+              <view class="font_size34">{{item.bankName}}</view>
+              <view class="font_size28">{{item.bankType}}</view>
             </view>
-            <view class=" bank_list_right">**** 2743</view>
+            <view class=" bank_list_right">{{item.bankCard}}</view>
           </view>
-          <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+          <view class="del" catchtap="del" data-index="{{index}}" data-id="{{item.id}}">删除</view>
         </view>
       </movable-view>
     </movable-area>

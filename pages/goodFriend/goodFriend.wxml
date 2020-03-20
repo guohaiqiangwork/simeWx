@@ -1,3 +1,0 @@
-<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='我的好友' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
-</view>

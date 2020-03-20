@@ -9,7 +9,6 @@
     "pages/category/category",
     "pages/myOrder/myOrder",
     "pages/address/address",
-    "pages/goodFriend/goodFriend",
     "pages/bank/bank",
     "commpents/timeChoice/timeChoice",
     "pages/dataSet/dataSet",

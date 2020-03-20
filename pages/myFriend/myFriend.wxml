@@ -15,19 +15,19 @@
 <!-- 好友列表 -->
 <view class="view_display frind_btn">
   <view class="font_size26 " style="margin-top:10rpx;padding-left:150rpx">活动累计已获得奖励</view>
-  <view class="font_size36" style="color:#FFF184">￥12870.00</view>
+  <view class="font_size36" style="color:#FFF184">￥{{totalPrice}}</view>
 </view>
 <!-- 显示列表 -->
-<view class="view_display frind_list" wx:for="{{[1,2,3]}}">
-  <image src="/image/wxf.png" class="list_img"> </image>
+<view class="view_display frind_list" wx:for="{{friendList}}">
+  <image src="{{item.avatar}}" class="list_img"> </image>
   <view class="width50 margin_left2">
     <view class="view_display font_size28 font_color33 ">
-      <view>留一手</view>
-      <view class="margin_left2">169^-^9900</view>
+      <view>{{item.nickname}}</view>
+      <view class="margin_left2">{{item.mobile}}</view>
     </view>
     <view class="font_size24 font_color99 ">
-      2019-05-04 13:28:15
+      {{item.createTime}}
     </view>
   </view>
-  <view class="font_size30 font_color33  text_right" style="width:27%;padding-top:20rpx">￥120.00 </view>
+  <view class="font_size30 font_color33  text_right" style="width:27%;padding-top:20rpx">￥{{item.amount}} </view>
 </view>

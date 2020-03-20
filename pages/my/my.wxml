@@ -100,7 +100,7 @@
           </view>
         </view>
       </navigator>
-      <navigator url="../goodFriend/goodFriend" hover-class="none">
+      <navigator url="../myFriend/myFriend" hover-class="none">
         <view class=" margin_top5 margin_left5">
           <view class="margin_left2">
             <image src="/image/my/frider.png" class="my_service_img"></image>

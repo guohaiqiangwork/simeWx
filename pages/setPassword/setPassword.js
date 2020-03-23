@@ -1,4 +1,6 @@
-// pages/setPassword/setPassword.js
+//获取应用实例
+const app = getApp()
+const ajax_url = app.globalData.ajax_url;
 Page({
 
   /**
@@ -9,7 +11,7 @@ Page({
     ishideback: false,
     my_class: true,
     yzm: "",
-    telephone: "18686146962",
+    telephone: "",
     newPassword: "",
     confirmNewPassword: "",
     yzmButtonName: '获取验证码',
@@ -21,55 +23,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getUserList();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
+  // 获取用户手机号码
+  getUserList: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/mb/find/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.code == '200') {
+          _this.setData({
+            telephone: res.data.data.mobile
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
 
   },
 
@@ -92,35 +72,69 @@ Page({
    * 获取验证码
    */
   getYzm: function(e) {
-    let me = this;
-    let yzm = me.data.yzm;
-    let telephone = me.data.telephone;
-    //console.log(yzm);
-    //console.log(telephone);
-
-    if (!me.data.onOff) {
+    let that = this;
+    let yzm = that.data.yzm;
+    let telephone = that.data.telephone;
+    if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
+      wx.showModal({
+        content: '请输入正确手机号',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+      return;
+    }
+    if (!that.data.onOff) {
       return;
     } else {
       let times = 60;
-      me.data.setInter = setInterval(function() {
-        times--;
-        if (times < 1) {
-          me.setData({
-            yzmButtonName: "重新获取"
-          });
-          me.data.onOff = true;
-          clearInterval(me.data.setInter);
-        } else {
-          me.setData({
-            yzmButtonName: times + 's'
-          });
-          me.data.onOff = false;
+      var data = {
+        phone: telephone
+      };
+      wx.showLoading({
+        title: '获取中',
+      })
+      // 获取验证码
+      wx.request({
+        url: ajax_url + '/wx/send/messages',
+        method: "POST",
+        data: data,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值 
+        },
+        success: function(res) {
+          console.log(JSON.stringify(res))
+          wx.hideLoading();
+          if (res.data.code == '200') {
+            wx.showToast({
+              title: '获取验证码成功',
+              icon: 'success',
+              duration: 2000
+            })
+            that.data.setInter = setInterval(function() {
+              times--;
+              if (times < 1) {
+                that.setData({
+                  yzmButtonName: "重新获取"
+                });
+                that.data.onOff = true;
+                clearInterval(that.data.setInter);
+              } else {
+                that.setData({
+                  yzmButtonName: times + 's'
+                });
+                that.data.onOff = false;
+              }
+            }, 1000);
+          } else {
+            wx.showModal({
+              content: res.data.message,
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+          }
         }
-      }, 1000);
+      })
     }
-
-
-
   },
 
   /**
@@ -181,9 +195,44 @@ Page({
       })
       return;
     };
-
-    console.log("222");
+    var dataBase = {
+      code: yzm.replace(/\s*/g, ""),
+      mobile: telephone.replace(/\s*/g, ""),
+      memberId: wx.getStorageSync('useId'),
+      password: newPassword,
+    };
+    console.log(dataBase);
     //上面已验证时正确的 下面直接开始对接口
+    wx.request({
+      url: ajax_url + '/account/updatePassword/' + wx.getStorageSync('useId'),
+      method: "post",
+      data: dataBase,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          wx.showModal({
+            content: '设置成功',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          });
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: -1
+            });
+          },2000)
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
   },
 
 

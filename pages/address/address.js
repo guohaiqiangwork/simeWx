@@ -110,7 +110,6 @@ Page({
       })
       return;
     }
-    console.log(_this.data.isDefault)
     var data = {
       receiver: _this.data.receiver, //收货人
       mobile: _this.data.mobile, //收货人联系电话
@@ -165,7 +164,14 @@ Page({
             confirmColor: '#6928E2',
             showCancel: false,
           })
-          _this.getAddressList();//获取列表
+          if (app.nativeData.addressf == 'confirmOrder'){
+            wx.navigateBack({
+              delta: -1
+            });
+          }else{
+            _this.getAddressList();//获取列表
+          }
+         
         } else {
           wx.showModal({
             content: res.data.message,
@@ -176,11 +182,16 @@ Page({
       }
     })
   }
-
-  
+  },
+  // 选择地址
+  replaceAddress:function(e){
+    app.nativeData.addressfId = e.currentTarget.dataset.id//地址id
+    wx.navigateBack({
+      delta: -1
+    });
   },
   // 获取地址列表
-  getAddressList: function() {
+  getAddressList: function(falg) {
     var _this = this;
     wx.request({
       url: ajax_url + '/address/findAll/' + wx.getStorageSync('useId'),
@@ -191,16 +202,22 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
+        
           if (res.data.data.length > 0) {
            var addressList = res.data.data;
             for (var i = 0; i < addressList.length; i++) {
               addressList.isTouchMove = false
             }
+            _this.setData({
+              items: addressList
+            })
+          }else{
+            _this.setData({
+              items: []
+            })
           }
-          _this.setData({
-            items: addressList
-          })
+       
+         
         } else {
           wx.showModal({
             content: res.data.message,
@@ -233,7 +250,7 @@ Page({
             confirmColor: '#6928E2',
             showCancel: false,
           })
-          _this.getAddressList();//刷新列表
+          _this.getAddressList('del');//刷新列表
         } else {
           wx.showModal({
             content: res.data.message,

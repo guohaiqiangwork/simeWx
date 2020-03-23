@@ -5,17 +5,17 @@
 
 <view class="con_order_product">
   <!-- 单个商品 -->
-  <view class="view_display one_product_moudel" wx:if="{{newList.length == 1}}">
+  <view class="view_display one_product_moudel" wx:for="{{newList}}" wx:ke="index">
     <view class="product_left">
-      <image src="/image/switch/1.jpg" class="product_left_img"></image>
+      <image src="{{item.picture}}" class="product_left_img"></image>
     </view>
     <view class="product_content margin_left5">
-      <view class="font_size32 font_color33">每日维C-奇异果口味每味</view>
+      <view class="font_size32 font_color33">{{item.goodsName}}</view>
       <view class="font_size28 font_color99">规格: 450g/袋</view>
-      <view class="font_colorf4 font_size26">¥45.90</view>
+      <view class="font_colorf4 font_size26">¥{{item.price}}</view>
     </view>
     <view class="product_right font_size28 font_color99 width15 text_center margin_left2">
-      *1
+      *{{item.num}}
     </view>
   </view>
 </view>

@@ -1,11 +1,11 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='确认订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+  <navbar title='确认订单{{}}' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
 <!-- 地址框 -->
 <view class="con_order_adder">
 
-  <view wx:if="{{adderList.receiver == 0}}" style="margin-top: 78rpx;text-align: center;">
+  <view wx:if="{{adderList.length == 0}}" style="margin-top: 78rpx;text-align: center;" catchtap="goAddress">
     <image src="/image/addA.png" class="con_order_imgNone"></image>
     请添加收货人信息
   </view>
@@ -18,7 +18,9 @@
       <view class="font_size32 font_color33">{{item.mobile}}</view>
       <view class="font_size28 font_color66">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
     </view>
-    <view class="right">
+    <view class="right" catchtap="goAddress" data-falg="replace"
+
+>
       <image src="/image/right99.png" class="right_img"></image>
     </view>
   </view>

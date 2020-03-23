@@ -175,7 +175,7 @@ Page({
             buyData: res.data.data
           })
           wx.navigateTo({
-              url: '/pages/paymentOrder/paymentOrder?buyData=' + JSON.stringify(_this.data.buyData) ,
+            url: '/pages/paymentOrder/paymentOrder?buyData=' + JSON.stringify(_this.data.buyData),
           })
         } else {
           wx.showModal({
@@ -188,7 +188,27 @@ Page({
     })
 
   },
+  // 去商品清单
+  goDetailList: function(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/detailedList/detailedList?type=' + e.currentTarget.dataset.type,
+    })
+  },
 
+  // 去选择地址；
+  goAddress: function(e) {
+    console.log(e.currentTarget.dataset.falg)
+    app.nativeData.addressf = ''
+    if (e.currentTarget.dataset.falg == "replace") {
+      app.nativeData.addressf = 'replace'
+    } else {
+      app.nativeData.addressf = 'confirmOrder'
+    }
+    wx.navigateTo({
+      url: '/pages/address/address',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -201,7 +221,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var _this = this;
+    if (app.nativeData.addressf == 'confirmOrder') {
+      this.getAddressList();
+    } else if (app.nativeData.addressf == 'replace') {
+      wx.request({
+        url: ajax_url + '/address/findById/' + app.nativeData.addressfId,
+        method: "get",
+        header: {
+          'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+          'client': 'APP',
+        },
+        success: function(res) {
+          if (res.data.code == '200') {
+            var list = [];
+            list.push(res.data.data)
+            _this.setData({
+              adderList: list
+            })
+          } else {
+            wx.showModal({
+              content: res.data.message,
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+          }
+        }
+      })
 
+    }
   },
 
   /**
@@ -238,12 +286,6 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // 去商品清单
-  goDetailList: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/detailedList/detailedList?type=' + e.currentTarget.dataset.type,
-    })
-  },
+
 
 })

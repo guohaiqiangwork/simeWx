@@ -43,7 +43,7 @@
       <movable-view direction="horizontal" class='movable-view'>
         <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
           <!-- <view class="content" bindtap='goDetail'>{{item.content}}</view> -->
-          <view class="content">
+          <view class="content" catchtap="replaceAddress" data-id="{{item.id}}">
             <view class="view_display">
               <view class="width70">
                 <view class="view_display">

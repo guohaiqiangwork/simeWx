@@ -1,4 +1,6 @@
-// pages/detailedList/detailedList.js
+//获取应用实例
+const app = getApp()
+const ajax_url = app.globalData.ajax_url
 Page({
 
   /**
@@ -19,8 +21,34 @@ Page({
     this.setData({
       title: options.type + '商品清单'
     });
+    this.getCartListNo();//获取失效商品列表
   },
-
+  // 获取失效商品
+  getCartListNo: function () {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/shoppingCart/cartListNo/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+          console.log(res)
+          _this.setData({
+            newList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

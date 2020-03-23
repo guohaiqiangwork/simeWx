@@ -17,6 +17,7 @@ Page({
     Value: "", //输入的内容  
     ispassword: true, //是否密文显示 true为密文， false为明文。
     payType: '', //支付类型
+    orderId: ''
   },
   password_input: function(e) {
     var that = this;
@@ -39,12 +40,65 @@ Page({
         success: function(res) {
           wx.hideLoading();
           if (res.data.code == '200') {
-            console.log(res);
+
+            var dataBase = {
+              memberId: wx.getStorageSync('useId'),
+              orderId: that.data.orderId,
+              orderNo: that.data.orderNo,
+            };
+            wx.showLoading({
+              title: '支付中...',
+            })
+            wx.request({
+              url: ajax_url + '/balance/pay',
+              method: "post",
+              data: dataBase,
+              header: {
+                'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+                'client': 'APP',
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function(res) {
+                if (res.data.code == '200') {
+                  that.setData({
+                    inputValue: '',
+                    Value: "",
+                    payMoudel: true
+                  });
+                  wx.hideLoading();
+                  setTimeout(function(){
+                    wx.navigateTo({
+                      url: '/pages/payResult/payResult?payFalg=success',
+                    })
+                  },1500)
+                } else {
+                  that.setData({
+                    inputValue: '',
+                    Value: "",
+                    payMoudel: true
+                  })
+                  wx.hideLoading();
+                  wx.showModal({
+                    content: res.data.message,
+                    confirmColor: '#6928E2',
+                    showCancel: false,
+                  })
+                  setTimeout(function () {
+                    wx.navigateTo({
+                      url: '/pages/payResult/payResult?payFalg=',
+                    })
+                  }, 1500)
+                }
+              }
+            })
           } else {
             that.setData({
               inputValue: '',
               Value: "",
               payMoudel: true
+            });
+            wx.navigateTo({
+              url: '/pages/payResult/payResult?payFalg=close',
             })
             wx.showModal({
               content: res.data.message,
@@ -77,8 +131,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // console.log(options)
-    // console.log(JSON.parse(options.buyData))
     var buyData = JSON.parse(options.buyData);
     var that = this;
     that.setData({
@@ -88,56 +140,6 @@ Page({
     })
     that.countDown()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
-
 
   // 倒计时
   countDown: function() {
@@ -215,8 +217,6 @@ Page({
           }
         }
       })
-
-
     } else {
       const openId = wx.getStorageSync("code") // 获取微信的code作为open ID传到后台
       // console.log(openId);

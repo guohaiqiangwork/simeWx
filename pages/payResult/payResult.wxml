@@ -1,0 +1,18 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='支付结果' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view class="text_center font_size26" hidden="{{falg}}">
+  <image src="/image/paySure.png" class="image_width"></image>
+  <view class="margin_top3"> 支付成功</view>
+  <view class="btn" catchtap="goHome">
+    去首页逛逛
+  </view>
+</view>
+<view class="text_center font_size26" hidden="{{!falg}}">
+  <image src="/image/payFail.png" class="image_width"></image>
+  <view class="margin_top3"> 支付失败</view>
+  <view class="btn" catchtap="goOne">
+    重新支付
+  </view>
+</view>

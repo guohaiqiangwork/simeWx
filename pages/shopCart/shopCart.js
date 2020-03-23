@@ -16,6 +16,7 @@ Page({
     totalPrice: 0, //总价
     noList: [], //失效数据
     list: [],
+    shopCarId:[],//购物车Id
     curTouchGoodStore: 99, //最大购买数量
   },
   /**
@@ -200,7 +201,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+   
   },
 
   /**
@@ -239,7 +240,6 @@ Page({
   },
   //单选
   checkboxChange: function(e) {
-    console.log(e)
     var that = this
     var value = e.detail.value;
     var valLen = value.length;
@@ -250,19 +250,26 @@ Page({
     var num = 0
     if (valLen != 0) { //选中
       for (var i = 0; i < listLen; i++) {
-        if (list[i].id == checkid) {
-          console.log(list[i].id + 'if' + checkid)
+        if (list[i].goodsId == checkid) {
+          console.log(list[i].goodsId + 'if' + checkid)
           if (!list[i].checkeditem) {
             list[i].checkeditem = true;
             console.log('未选中状态');
             num = num + 1;
             console.log('--' + num)
-            that.data.arr.push(list[i].id); //选中商品数组
+            var buyDataObj = {
+              goodsId: list[i].goodsId,
+              num: list[i].num,
+              skuId: list[i].pecificationId,
+              shopCarId: list[i].id
+            }
+            // that.data.shopCarId.push(list[i].id)//购物车id
+            that.data.arr.push(buyDataObj); //选中商品数组
             that.data.priceArr.push(list[i].price * zpricenum); //价格数组
           }
         } else {
           if (list[i].checkeditem) {
-            console.log(list[i].id + 'else' + checkid)
+            console.log(list[i].goodsId + 'else' + checkid)
             num = num + 1;
             console.log('++' + num)
           }
@@ -276,10 +283,10 @@ Page({
       console.log(listLen + '循环长度')
       console.log(that.data.arr)
       for (var i = 0; i < listLen; i++) {
-        if (list[i].id == checkid) {
+        if (list[i].goodsId == checkid) {
           if (list[i].checkeditem) {
             for (var j = 0; j < that.data.arr.length; j++) {
-              if (list[i].id == that.data.arr[j]) {
+              if (list[i].goodsId == that.data.arr[j].goodsId) {
                 list[i].checkeditem = false
                 that.data.arr.splice(j, 1); //删除选中
                 that.data.priceArr.splice(j, 1); //删除金额
@@ -330,7 +337,13 @@ Page({
       console.log(that.data.arr + '全选选中')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = true;
-        that.data.arr.push(list[i].id); //ID数组
+        var buyDataObj= {
+          goodsId: list[i].goodsId,
+          num: list[i].num,
+          skuId: list[i].pecificationId,
+          shopCarId: list[i].id
+        }
+        that.data.arr.push(buyDataObj); //ID数组
         that.data.priceArr.push(that.data.list[i].price * that.data.list[i].num) //价格数组
       }
       var sum = 0,
@@ -365,6 +378,7 @@ Page({
   // 去结算
   goConfirmOrder: function() {
     var that = this;
+    console.log(that.data.arr)
     if (that.data.arr.length > 0) {
       wx.navigateTo({
         url: '/pages/confirmOrder/confirmOrder?listArr=' + JSON.stringify(that.data.arr),

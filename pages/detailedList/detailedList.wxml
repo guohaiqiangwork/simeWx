@@ -11,7 +11,7 @@
     </view>
     <view class="product_content margin_left5">
       <view class="font_size32 font_color33">{{item.goodsName}}</view>
-      <view class="font_size28 font_color99">规格: 450g/袋</view>
+      <view class="font_size28 font_color99">{{item.skuName}}</view>
       <view class="font_colorf4 font_size26">¥{{item.price}}</view>
     </view>
     <view class="product_right font_size28 font_color99 width15 text_center margin_left2">

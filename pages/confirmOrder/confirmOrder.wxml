@@ -18,23 +18,21 @@
       <view class="font_size32 font_color33">{{item.mobile}}</view>
       <view class="font_size28 font_color66">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
     </view>
-    <view class="right" catchtap="goAddress" data-falg="replace"
-
->
+    <view class="right" catchtap="goAddress" data-falg="replace">
       <image src="/image/right99.png" class="right_img"></image>
     </view>
   </view>
 </view>
 
 <!-- 产品块 -->
-<view class="con_order_product">
+<view class="con_order_product" wx:if="{{true}}" wx:for="{{prouctList.itemList}}" wx:key="index">
   <!-- 标题栏 -->
   <!-- <view class="product_title">
     <image src="/image/addA.png" class="product_img"></image>
     <view class="margin_left2 font_size28" style="margin-top:12rpx">笑容</view>
   </view> -->
   <!-- 单个商品 -->
-  <view class="view_display one_product_moudel" wx:if="{{true}}" wx:for="{{prouctList.itemList}}" wx:key="index">
+  <view class="view_display one_product_moudel">
     <view class="product_left">
       <image src="{{item.picPath}}" class="product_left_img"></image>
     </view>
@@ -69,11 +67,11 @@
 </view>
 
 <!-- 显示list -->
-
+<view style="">
 <view class="con_list">
   <view class="width50 margin_top3 margin_left2">失效商品清单</view>
   <view class="view_display margin_top3" style="margin-left:190rpx;" data-type="失效" catchtap="goDetailList">
-    <view style="margin-top:-4rpx" >共{{cartListNo}}种</view>
+    <view style="margin-top:-4rpx">共{{cartListNo}}种</view>
     <image src="/image/right99.png" class="many_img" wx:if="{{cartListNo > 0}}"></image>
   </view>
 </view>
@@ -82,6 +80,8 @@
   <view class="view_display margin_top3" style="margin-left:190rpx;">
     <view style="margin-top:-4rpx">¥{{prouctList.totalPrice}}</view>
   </view>
+</view>
+
 </view>
 
 <!-- 底部操作 -->

@@ -15,7 +15,8 @@ Page({
     prouctData: '', //详情页购买数据
     sharePeopleId: '', //分享人id
     addressId: '', //地址id
-    buyData: ''
+    buyData: '',
+    shopCarIdList:[]//购物车id
   },
 
 
@@ -28,26 +29,46 @@ Page({
     if (options.prouctData) {
       _this.data.prouctData = JSON.parse(options.prouctData);
       _this.getProuctBuy() //详情页过来获取数据
+      _this.data.comeUrl = 'one'
     };
+    if (options.listArr) {
+      _this.data.listArrShop = JSON.parse(options.listArr);
+      console.log(_this.data.listArrShop);
+      _this.data.shopCarIdList
+      for (var i = 0; i < _this.data.listArrShop.length; i++) {
+        _this.data.shopCarIdList.push(_this.data.listArrShop[i].shopCarId)
+        _this.data.listArrShop[i].shopCarId = ''; 
+        console.log(_this.data.listArrShop)
+        console.log(_this.data.shopCarIdList)
+      }
+      _this.getProuctBuy(_this.data.listArrShop) //详情页过来获取数据
+      _this.data.comeUrl = 'two'
+    }
+    console.log(options)
     _this.getCartListNo() //获取失效商品数量 
     _this.getAddressList() //获取地址列表
     _this.getShareId() //查询是否绑定他人
   },
   // 详情获取页面数据
-  getProuctBuy: function() {
+  getProuctBuy: function(falg) {
     var _this = this;
-    var data = [{
-      goodsId: _this.data.prouctData.goodsId,
-      skuId: _this.data.prouctData.skuId,
-      num: 1
-    }]
+    if (falg) {
+      var data = falg;
+    } else {
+      var data = [{
+        goodsId: _this.data.prouctData.goodsId,
+        skuId: _this.data.prouctData.skuId,
+        num: 1
+      }]
+    }
+
     wx.request({
       url: ajax_url + '/order/mb/settle',
       method: "post",
       data: data,
       header: {
         'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
-        'client': 'APP',
+        'client': 'APP'
       },
       success: function(res) {
         if (res.data.code == '200') {
@@ -152,16 +173,30 @@ Page({
     })
 
     var _this = this;
-    var data = {
-      itemList: _this.data.prouctList.itemList, //商品数组
-      memberId: wx.getStorageSync('useId'),
-      orderAddress: {
-        addressId: _this.data.addressId //地址id
-      },
-      sharePeopleId: _this.data.sharePeopleId,
-    };
+    if(_this.data.comeUrl == 'one'){
+      var url = '/order/mb/singleItemBuy';
+      var data = {
+        itemList: _this.data.prouctList.itemList, //商品数组
+        memberId: wx.getStorageSync('useId'),
+        orderAddress: {
+          addressId: _this.data.addressId //地址id
+        },
+        sharePeopleId: _this.data.sharePeopleId,
+      };
+    } else if (_this.data.comeUrl == 'two'){
+      var url = '/order/mb/placeAnOrder';
+      var data = {
+        cartId: _this.data.shopCarIdList,
+        itemList: _this.data.prouctList.itemList, //商品数组
+        memberId: wx.getStorageSync('useId'),
+        orderAddress: {
+          addressId: _this.data.addressId //地址id
+        },
+        sharePeopleId: _this.data.sharePeopleId,
+      };
+    }
     wx.request({
-      url: ajax_url + '/order/mb/singleItemBuy',
+      url: ajax_url + url,
       method: "post",
       data: data,
       header: {

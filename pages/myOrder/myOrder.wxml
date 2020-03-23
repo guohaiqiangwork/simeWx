@@ -3,13 +3,122 @@
   <navbar title='我的订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
-<view class="margin_top2">
-  <!-- 切换 -->
-  <view class="view_display">
-    <view class="width25 text_center" wx:for="{{orderTabList}}" data-id="{{item.id}}" catchtap='productTabSwich'>
-       <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
-        <view class='border_tab_y' wx:if="{{tabFalg == item.id}}"></view>
+<view class="top_moudel" style="background-color:#fff">
+  <view class="view_display padding_top3">
+    <view class="width25 text_center" wx:for="{{orderTabList}}" wx:key="index" data-id="{{item.id}}" data-status="{{item.status}}" catchtap='productTabSwich'>
+      <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
+      <view class='border_tab_y' wx:if="{{tabFalg == item.id}}"></view>
     </view>
   </view>
+</view>
 
+<!-- 列表 bindscrolltoupper="refresh" bindscrolltolower="refresh_j" -->
+<scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-top:130rpx;padding-bottom:50rpx'>
+  <!-- product -->
+  <view class="product_moudel" wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}" wx:key="index" wx:for-item="items">
+    <!-- 标题 -->
+    <view class="title_order_border">
+      <view class="width20 padding_left2">
+        <image src="{{items.mchLogo}}" class="img_title"></image>
+      </view>
+      <view class="font_size28 width50 margin_top2 view_width_hidden">{{items.mchName}}</view>
+      <view class="text_right width30" wx:if="{{items.status == 1}}">
+        <view class="font_size28 margin_top2 font_colorf4">待付款</view>
+      </view>
+      <view class="text_right width30" wx:if="{{items.status == 2}}">
+        <view class="font_size28 margin_top2 font_colorf4">待发货</view>
+      </view>
+      <view class="text_right width30" wx:if="{{items.status == 3}}">
+        <view class="font_size28 margin_top2 font_colorf4">待收货</view>
+      </view>
+      <view class="view_display width30" wx:if="{{items.status == 4}}">
+        <view class="font_size28 margin_top2">已完成</view>
+        <view>
+          <image src="/image/orderD.png" class="del_img"></image>
+        </view>
+      </view>
+      <view class="view_display width30" wx:if="{{items.status == 5}}">
+        <view class="font_size28 margin_top2">已取消</view>
+        <view>
+          <image src="/image/orderD.png" class="del_img"></image>
+        </view>
+      </view>
+
+
+    </view>
+    <!-- 内容多个-->
+    <view class="conter_border" wx:if="{{items.itemList.length > 1}}">
+      <view class="view_display">
+        <scroll-view class='wrapper' scroll-x="true">
+          <image src="{{item.picPath}}" class="money_img" wx:for="{{items.itemList}}" wx:key="index"></image>
+        </scroll-view>
+        <view>
+          <image src="/image/right99.png" class="many_img"></image>
+        </view>
+      </view>
+      <view class="view_display font_size28">
+        <view class="width50"></view>
+        <view class="font_color99">共{{items.goodsNum}}种</view>
+        <view class="margin_left2 font_color00">实付款：¥{{items.totalPrice}}</view>
+      </view>
+    </view>
+    <!-- 一个内容 -->
+    <view class="conter_border" wx:if="{{items.itemList.length == 1}}">
+      <view class="view_display">
+        <view class="width20">
+          <image src="{{items.itemList[0].picPath}}" class="one_img"></image>
+        </view>
+        <view class="font_size24 margin_top2 width70">
+          <view class="font_color33">{{items.itemList[0].title}}</view>
+          <view class="font_color99">{{items.itemList[0].skuName}}</view>
+          <view class="font_colorf4">¥{{items.itemList[0].totalFee}}</view>
+        </view>
+        <view class="font_size24 font_color99 margin_top8">
+          *{{items.itemList[0].num}}
+        </view>
+      </view>
+      <view class="view_display font_size28">
+        <view class="width50"></view>
+        <view class="font_color99">共{{items.goodsNum}}种</view>
+        <view class="margin_left2 font_color00">实付款：¥{{items.totalPrice}}</view>
+      </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="view_display">
+      <view class="width45"></view>
+      <view class="bottom_btn" style="margin-left:28%" wx:if="{{items.status == 4 || items.status == 2 || items.status == 5 }}">
+        再次购买
+      </view>
+      <view class="view_display" wx:if="{{items.status == 1  }}">
+        <view class="bottom_btn font_color99" style="border:1px solid #999999">
+          取消支付
+        </view>
+        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300">
+          去支付
+        </view>
+      </view>
+      <view wx:if="{{items.status == 3  }}">
+        <view class="bottom_btn">
+          查看物流
+        </view>
+        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300">
+          确认收货
+        </view>
+      </view>
+
+
+
+    </view>
+
+  </view>
+
+</scroll-view>
+
+<view wx:if="{{orderList.length == 0}}" class="text_center">
+  <image src="/image/default/noeOrder.png" class="none_img"></image>
+  <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
+  <view class="none_btn" catchtap="goHome">
+    去首页逛逛
+  </view>
 </view>

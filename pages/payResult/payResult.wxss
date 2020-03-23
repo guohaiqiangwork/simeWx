@@ -1,0 +1,17 @@
+.image_width{
+  width: 220rpx;
+  height: 220rpx;
+  margin-top: 150rpx
+}
+.btn{
+  width: 577rpx;
+  height: 82rpx;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+   background: linear-gradient(to right, #ff342d, #ff5882) !important;
+   border-radius: 50rpx;
+   line-height: 3;
+   margin-left: 87rpx;
+   margin-top: 100rpx;
+}

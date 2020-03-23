@@ -219,11 +219,11 @@ Page({
             confirmColor: '#6928E2',
             showCancel: false,
           });
-          setTimeout(function(){
+          setTimeout(function() {
             wx.navigateBack({
               delta: -1
             });
-          },2000)
+          }, 2000)
         } else {
           wx.showModal({
             content: res.data.message,

@@ -1,0 +1,12 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='笑容金豆' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view>
+
+<image src="/image/jdB.png" class="img_top"></image>
+<view class="top_conternt">
+<view>笑容金豆</view>
+<view>1000</view>
+</view>
+</view>

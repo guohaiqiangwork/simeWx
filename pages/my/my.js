@@ -7,7 +7,8 @@ Page({
     ishideback: true,
     name: '留一手',
     hiddenName: false,
-    myData: ''
+    myData: '',
+    jinDou:0
   },
 
   /**
@@ -16,6 +17,7 @@ Page({
   onLoad: function(options) {
     this.getMyDeatail() //获取个人信息
     this.getMoney() //获取余额
+    this.getMyRedBlance()//获取金豆
   },
   // 获取个人信息
   getMyDeatail: function() {
@@ -31,6 +33,32 @@ Page({
         if (res.data.code == '200') {
           _this.setData({
             myData: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  // 获取我的金豆
+  getMyRedBlance:function(){
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/redEnvelope/myRedBlance',
+      method: "get",
+      data: {memberId:wx.getStorageSync('useId')},
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+          _this.setData({
+            jinDou: res.data.data || 0
           })
         } else {
           wx.showModal({
@@ -66,6 +94,13 @@ Page({
           })
         }
       }
+    })
+  },
+  // 去金豆页
+  goGoldDetail:function(){
+    wx.navigateTo({
+      url: '../goldDetail/goldDetail',
+
     })
   },
   /**

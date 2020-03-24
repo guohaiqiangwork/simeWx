@@ -31,6 +31,8 @@
     "pages/shopCart/shopCart",
     "pages/payResult/payResult",
     "pages/logistics/logistics",
+    "pages/returnedGoods/returnedGoods",
+    "pages/returnedApply/returnedApply",
     "pages/case/case"
   ],
   "window": {

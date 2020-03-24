@@ -46,7 +46,7 @@
       <image src="/image/tab/shopz.png" class="left_image"></image>
     </view>
     <view class="right">
-      <view class="right_btn1">加入购物车</view>
+      <view class="right_btn1" catchtap="addShopCard"  data-spId="{{item.spId}}" data-id="{{item.id}}">加入购物车</view>
       <view class="right_btn2" catchtap="goBuy">立即购买</view>
     </view>
   </view>

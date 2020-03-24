@@ -1,0 +1,9 @@
+@import '/pages/myOrder/myOrder.wxss';
+.border_tab_t {
+  width: 40%;
+  height: 6rpx;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  border-radius: 3rpx;
+  margin-left: 30%;
+  margin-top: 16rpx;
+}

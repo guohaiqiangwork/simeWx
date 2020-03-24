@@ -63,7 +63,7 @@
           待收货
         </view>
       </view>
-      <view class="width25 my_order_tab">
+      <view class="width25 my_order_tab" catchtap="goReturnedGoods">
         <view class="margin_left1">
           <image src="/image/my/replacement.png" class="my_order_img"></image>
         </view>

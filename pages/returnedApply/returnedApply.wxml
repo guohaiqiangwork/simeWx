@@ -1,0 +1,108 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='退换货申请' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+
+<view class="top_moudel">
+  <view>小贴士：</view>
+  <view>1. 申请通过后退款按原支付方式退回，耐心等待通知</view>
+  <view>2. 申请单通过后，商品就真的与你擦身而过</view>
+</view>
+<view class="moudel">
+  <view class="view_display moudel_list">
+    <view class="font_size28">
+      <text class="font_colorf4">*</text> 申请服务：</view>
+    <view>
+      <picker bindchange="bindPickerChange"  range="{{serviceArray}}" range-key="text">
+        <view class="picker font_size28 font_color66">
+          {{servelNull?serviceArray[index].text:'请选择申请服务'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="view_display moudel_list margin_top2">
+    <view class="font_size28">
+      <text class="font_colorf4">*</text> 申请原因:
+    </view>
+    <view>
+      <picker bindchange="bindPickeR" value="{{reaIndex}}" range="{{reasonArray}}" range-key="text">
+        <view class="picker font_size28 font_color66 margin_left2">
+          {{reasonNull?reasonArray[index].text:'请选择申请原因'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="moudel_list margin_top2 view_display font_size28">
+    <view style="margin-left:10rpx">具体说明：</view>
+    <view class="font_color66 margin_left2">
+      <input placeholder="请具体说明" bindinput="phoneInput"></input>
+
+    </view>
+  </view>
+  <!-- 图片上传 -->
+  <view>
+    <view class="view_display">
+      <view class="up_img_moudel" data-id='1' catchtap="selectImg">
+        <image src="{{upimgPathUrl1}}" class="up_img"></image>
+      </view>
+      <view class="up_img_moudel" data-id='2' catchtap="selectImg">
+        <image src="{{upimgPathUrl2}}" class="up_img"></image>
+      </view>
+      <view class="up_img_moudel" data-id='3' catchtap="selectImg">
+        <image src="{{upimgPathUrl3}}" class="up_img"></image>
+      </view>
+    </view>
+    <view class="font_size22 font_color66 margin_top2">
+      <text class="font_colorf4">*</text>请上传商品凭证，最多上传3张
+    </view>
+  </view>
+
+
+  <!--商品列表 -->
+  <view class="view_display moudel_list margin_top2 font_size28 font_color66">
+    <checkbox-group bindchange="checkedAll">
+      <label>
+        <checkbox checked="{{checked_all}}" color='#3B9EF5' />
+      </label>
+      <text class="margin_left2"> 全选</text>
+    </checkbox-group>
+  </view>
+
+
+  <view class="shop_list_one" wx:for="{{orderList}}" wx:key="index">
+    <view class="shop_list_left">
+      <checkbox-group bindchange="checkboxChange" data-checkid="{{item.goodsId}}" data-ZpriceNum="{{item.num}}">
+        <label>
+          <checkbox checked="{{item.checkeditem}}" color='#3B9EF5' />
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="shop_list_center">
+      <image src="{{item.picPath}}" class=""></image>
+    </view>
+    <view class="shop_list_right margin_left2">
+      <view class="font_size32 font_color33">{{item.title}}</view>
+
+      <view class="view_display margin_top2">
+        <view class="font_size26 font_colorf4" style="width:240rpx">¥{{item.price}} </view>
+        <view class="buy-num">
+          <view class="jian-btn {{item.num <=1? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}">-</view>
+          <input type="number" value="{{item.num}}" disabled/>
+          <view class="jia-btn {{item.number ==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-fag="add" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}">+</view>
+        </view>
+      </view>
+      <view class="font_size24 font_color99">预计退款：{{item.totalFee}}</view>
+    </view>
+  </view>
+
+  <view class="moudel_list view_display margin_top2">
+    <view class="font_size28 width80">预计退款总金额</view>
+    <view class="font_size32 font_colorf4">¥{{totalPrice}}</view>
+  </view>
+
+
+</view>
+
+  <view class="bottom_btn" catchtap="getRefund">
+    提交申请
+  </view>

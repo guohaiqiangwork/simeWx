@@ -115,6 +115,46 @@ Page({
       url: '../../pages/shopCart/shopCart'
     })
   },
+  // 加入购物车
+  addShopCard: function (e) {
+    var _this = this;
+
+    wx.showLoading({
+      title: '添加中...',
+    })
+    var data = {
+      goodsId: _this.data.goodsId,
+      pecificationId: _this.data.skuId,
+      userId: wx.getStorageSync('useId'),
+    };
+    wx.request({
+      url: ajax_url + '/shoppingCart/addCart',
+      method: "post",
+      data: data,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        wx.hideLoading();
+        if (res.data.code == '200') {
+          wx.showModal({
+            content: '添加成功',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+          _this.getNum()
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

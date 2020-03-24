@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function(options) {
     this.getMyDeatail() //获取个人信息
-    this.getMoney()//获取余额
+    this.getMoney() //获取余额
   },
   // 获取个人信息
   getMyDeatail: function() {
@@ -43,7 +43,7 @@ Page({
     })
   },
   // 获取余额
-  getMoney: function () {
+  getMoney: function() {
     var _this = this;
     wx.request({
       url: ajax_url + '/account/find/' + wx.getStorageSync('useId'),
@@ -52,7 +52,7 @@ Page({
         'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
         'client': 'APP',
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
           console.log(res)
           _this.setData({
@@ -126,6 +126,12 @@ Page({
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}
+    })
+  },
+  // 去退换货
+  goReturnedGoods: function() {
+    wx.navigateTo({
+      url: '../returnedGoods/returnedGoods'
     })
   },
   // 去余额

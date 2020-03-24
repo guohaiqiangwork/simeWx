@@ -62,6 +62,7 @@ Page({
   },
   // 再次购买
   againBuy: function(e) {
+    var _this = this
     var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid
@@ -94,6 +95,7 @@ Page({
   },
   // 取消支付
   cancelPay: function(e) {
+    var _this = this
     var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid
@@ -123,6 +125,7 @@ Page({
   },
   // 查看物流
   goLogistics: function(e) {
+
     var orderid = e.currentTarget.dataset.orderid;
     wx.navigateTo({
       url: '/pages/logistics/logistics?orderId=' + orderid,
@@ -130,6 +133,7 @@ Page({
   },
   // 确认收货
   confirmOrder: function(e) {
+    var _this = this
     var orderid = e.currentTarget.dataset.orderid;
     var _this = this;
     var keywords = {

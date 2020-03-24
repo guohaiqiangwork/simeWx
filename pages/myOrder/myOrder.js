@@ -28,9 +28,6 @@ Page({
       status: '3'
     }],
     tabFalg: '001', //显示那个模块
-    bar_Height: wx.getSystemInfoSync().statusBarHeight,
-    ishideback: false,
-    my_class: false,
     inputValue: '', //输入框值
     isScroll: true,
     refresh_falg: true,
@@ -103,33 +100,33 @@ Page({
       url: '../orderDetails/orderDetails?orderId=' + e.currentTarget.dataset.orderid,
     })
   },
-  // tab 切换
-  tabSwich: function(e) {
-    if (e.currentTarget.dataset.id == '002') {
-      this.setData({
-        sell: 1,
-        priceSorted: '',
-        synthesize: ''
-      })
-    } else if (e.currentTarget.dataset.id == '003') {
-      this.setData({
-        priceSorted: 1,
-        sell: '',
-        synthesize: ''
-      })
-    } else {
-      this.setData({
-        priceSorted: '',
-        sell: '',
-        synthesize: 1
-      })
-    }
-    this.setData({
-      tabFalg: e.currentTarget.dataset.id,
-    });
-    this.data.searchList = [];
-    this.getSearchList();
-  },
+  // // tab 切换
+  // tabSwich: function(e) {
+  //   if (e.currentTarget.dataset.id == '002') {
+  //     this.setData({
+  //       sell: 1,
+  //       priceSorted: '',
+  //       synthesize: ''
+  //     })
+  //   } else if (e.currentTarget.dataset.id == '003') {
+  //     this.setData({
+  //       priceSorted: 1,
+  //       sell: '',
+  //       synthesize: ''
+  //     })
+  //   } else {
+  //     this.setData({
+  //       priceSorted: '',
+  //       sell: '',
+  //       synthesize: 1
+  //     })
+  //   }
+  //   this.setData({
+  //     tabFalg: e.currentTarget.dataset.id,
+  //   });
+  //   this.data.searchList = [];
+  //   this.getSearchList();
+  // },
 
   // 去支付
   goOrderPay: function(e) {
@@ -139,13 +136,13 @@ Page({
     })
   },
   // 删除订单
-  delOrder:function(e){
+  delOrder: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     var _this = this;
     wx.showModal({
       title: '确定删除此订单？',
       content: '删除后如有售后问题可联系客服恢复',
-      success: function (e) {
+      success: function(e) {
         if (e.confirm) {
           var keywords = {
             orderId: orderid
@@ -159,9 +156,9 @@ Page({
               'client': 'APP',
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function (res) {
+            success: function(res) {
               if (res.data.code == '200') {
-                _this.getMyOrder('new')//刷新数据
+                _this.getMyOrder('new') //刷新数据
               } else {
                 wx.showModal({
                   content: res.data.message,
@@ -171,13 +168,12 @@ Page({
               }
             }
           })
-        } else if (e.cancel) {
-        }
+        } else if (e.cancel) {}
       }
     })
   },
   // 取消支付
-  cancelPay:function(e){
+  cancelPay: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid
@@ -191,10 +187,10 @@ Page({
         'client': 'APP',
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
           console.log(res)
-          _this.getMyOrder('new')//刷新数据
+          _this.getMyOrder('new') //刷新数据
         } else {
           wx.showModal({
             content: res.data.message,
@@ -206,7 +202,7 @@ Page({
     })
   },
   // 确认收货
-  confirmOrder:function(e){
+  confirmOrder: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     var _this = this;
     var keywords = {
@@ -221,10 +217,10 @@ Page({
         'client': 'APP',
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
           console.log(res)
-          _this.getMyOrder('new')//刷新数据
+          _this.getMyOrder('new') //刷新数据
         } else {
           wx.showModal({
             content: res.data.message,
@@ -236,14 +232,14 @@ Page({
     })
   },
   // 查看物流
-  goLogistics:function(e){
+  goLogistics: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     wx.navigateTo({
       url: '/pages/logistics/logistics?orderId=' + orderid,
     })
   },
   // 再次购买
-  againBuy:function(e){
+  againBuy: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid
@@ -257,12 +253,12 @@ Page({
         'client': 'APP',
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.code == '200') {
           wx.switchTab({
             url: '../../pages/shopCart/shopCart'
           })
-     
+
         } else {
           wx.showModal({
             content: res.data.message,

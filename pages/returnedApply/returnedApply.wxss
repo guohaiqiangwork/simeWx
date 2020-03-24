@@ -1,0 +1,98 @@
+@import '/pages/shopCart/shopCart.wxss';
+
+.top_moudel {
+  width: 680rpx;
+  height: 160rpx;
+  background-color: #ffe8e8;
+  font-size: 26rpx;
+  padding-left: 30rpx;
+  padding-top: 20rpx;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.moudel {
+  width: 680rpx;
+  padding-top: 20rpx;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.moudel_list {
+  background-color: #fff;
+  height: 54rpx;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  width: 100%;
+}
+.up_img{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 10rpx
+}
+.up_img_moudel{
+  width: 120rpx;
+  height: 120rpx;
+  border: 1ppx solid #CFCFCF;
+  border-radius: 10rpx;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 30rpx;
+  margin-left: 15rpx;
+}
+
+checkbox {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*checkbox 选项框大小  */
+
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+/*checkbox选中后样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: linear-gradient(to right, #ff342d, #ff5882);
+}
+
+/*checkbox选中后图标样式  */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.shop_list_one {
+  width: 680rpx;
+  height: 230rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  display: flex;
+  padding-top: 30rpx;
+  padding-left: 20rpx
+}
+.bottom_btn{
+  width: 100%;
+  height: 120rpx;
+   background: linear-gradient(to right, #ff342d, #ff5882);
+   text-align: center;
+   color: #fff;
+   line-height: 4;
+   font-size: 32rpx;
+   margin-top:20rpx
+}

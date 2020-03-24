@@ -120,8 +120,9 @@ Page({
   // 我的订单页面跳转
   goMyOrder: function(e) {
     let falg = e.currentTarget.dataset.falg;
+    let status = e.currentTarget.dataset.status;
     wx.navigateTo({
-      url: '../myOrder/myOrder?index=' + falg,
+      url: '../myOrder/myOrder?index=' + falg + '&status=' + status,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}

@@ -13,19 +13,19 @@ Page({
     orderTabList: [{
       name: '全部',
       id: '001',
-      status:'',
+      status: '',
     }, {
       name: '待付款',
       id: '002',
-        status:'1'
+      status: '1'
     }, {
       name: '待发货',
       id: '003',
-        status:'2'
+      status: '2'
     }, {
       name: '待收货',
       id: '004',
-        status:'3'
+      status: '3'
     }],
     tabFalg: '001', //显示那个模块
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
@@ -40,8 +40,8 @@ Page({
     synthesize: '1',
     priceSorted: '',
     sell: '',
-    orderList:[],
-    status:''
+    orderList: [],
+    status: ''
     // isRuleTrueWl: false,
   },
 
@@ -50,12 +50,12 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      tabFalg: options.index //我的订单某个模块
+      tabFalg: options.index, //我的订单某个模块
+      status: options.status
     });
     this.getMyOrder() //获取我的订单
   },
   // 获取我的订单数据
-
   getMyOrder: function(type) {
     var _this = this;
     var data = {
@@ -97,7 +97,12 @@ Page({
       }
     })
   },
-
+  // 去我的订单详情
+  goOrderDetail: function(e) {
+    wx.navigateTo({
+      url: '../orderDetails/orderDetails?orderId=' + e.currentTarget.dataset.orderid,
+    })
+  },
   // tab 切换
   tabSwich: function(e) {
     if (e.currentTarget.dataset.id == '002') {
@@ -124,6 +129,150 @@ Page({
     });
     this.data.searchList = [];
     this.getSearchList();
+  },
+
+  // 去支付
+  goOrderPay: function(e) {
+    console.log(e.currentTarget.dataset.paydata);
+    wx.navigateTo({
+      url: '/pages/paymentOrder/paymentOrder?payData=' + JSON.stringify(e.currentTarget.dataset.paydata),
+    })
+  },
+  // 删除订单
+  delOrder:function(e){
+    var orderid = e.currentTarget.dataset.orderid;
+    var _this = this;
+    wx.showModal({
+      title: '确定删除此订单？',
+      content: '删除后如有售后问题可联系客服恢复',
+      success: function (e) {
+        if (e.confirm) {
+          var keywords = {
+            orderId: orderid
+          };
+          wx.request({
+            url: ajax_url + '/order/mb/delete',
+            method: "post",
+            data: keywords,
+            header: {
+              'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+              'client': 'APP',
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              if (res.data.code == '200') {
+                _this.getMyOrder('new')//刷新数据
+              } else {
+                wx.showModal({
+                  content: res.data.message,
+                  confirmColor: '#6928E2',
+                  showCancel: false,
+                })
+              }
+            }
+          })
+        } else if (e.cancel) {
+        }
+      }
+    })
+  },
+  // 取消支付
+  cancelPay:function(e){
+    var orderid = e.currentTarget.dataset.orderid;
+    var keywords = {
+      orderId: orderid
+    };
+    wx.request({
+      url: ajax_url + '/order/mb/cancelPay',
+      method: "post",
+      data: keywords,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+          console.log(res)
+          _this.getMyOrder('new')//刷新数据
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  // 确认收货
+  confirmOrder:function(e){
+    var orderid = e.currentTarget.dataset.orderid;
+    var _this = this;
+    var keywords = {
+      orderId: orderid
+    };
+    wx.request({
+      url: ajax_url + '/order/mb/confirmReceipt',
+      method: "post",
+      data: keywords,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+          console.log(res)
+          _this.getMyOrder('new')//刷新数据
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  // 查看物流
+  goLogistics:function(e){
+    var orderid = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '/pages/logistics/logistics?orderId=' + orderid,
+    })
+  },
+  // 再次购买
+  againBuy:function(e){
+    var orderid = e.currentTarget.dataset.orderid;
+    var keywords = {
+      orderId: orderid
+    };
+    wx.request({
+      url: ajax_url + '/order/mb/buyAgain',
+      method: "post",
+      data: keywords,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+          wx.switchTab({
+            url: '../../pages/shopCart/shopCart'
+          })
+     
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -187,7 +336,7 @@ Page({
     });
     _this.getMyOrder();
   },
-  goHome: function () {
+  goHome: function() {
     wx.switchTab({
       url: '../../pages/index/index'
     })

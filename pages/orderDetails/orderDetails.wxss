@@ -1,0 +1,99 @@
+.top_title5{
+  width: 100%;
+  height: 150rpx;
+  background: linear-gradient(to right, #73767C, #484747);
+  color: #fff;
+}
+.padding_top3{
+  padding-top: 30rpx
+}
+.top_title1{
+  width: 100%;
+  height: 150rpx;
+  background: linear-gradient(to right, #FF342D, #FF5882);
+  color: #fff;
+}
+
+
+.con_order_adder {
+  width: 710rpx;
+  height: 200rpx;
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+
+.con_order_imgNone {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 地址块 */
+
+.left {
+  width: 20%;
+  padding-left: 33rpx;
+  padding-top: 67rpx;
+}
+
+.centent {
+  width: 80%;
+  padding-top: 33rpx;
+}
+.left_mo_ren {
+  width: 60rpx;
+  height: 30rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: linear-gradient(to right, #ff5882, #ff342d);
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.conter_border {
+  border: 1px solid #E9E9E9;
+  width: 710rpx;
+  height: 200rpx;
+  margin-left: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.one_img {
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 10rpx;
+  margin-top: 20rpx;
+}
+.bottom_moudel{
+  width: 680rpx;
+  height: 350rpx;
+  background-color: #fff;
+  border: 1px solid #E9E9E9;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  padding-top: 30rpx;
+  padding-left:30rpx
+}
+.shop_border{
+ border-top: 1px dashed #D0D0D0;
+ border-bottom: 1px dashed #D0D0D0;
+ line-height: 3;
+ margin-top: 20rpx;
+ width: 95%;
+}
+.bottom_btn {
+  width: 160rpx;
+  height: 48rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+  border-radius: 30rpx;
+  border: 1px solid #333;
+  line-height: 2;
+  margin-top: 20rpx;
+}

@@ -131,14 +131,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var buyData = JSON.parse(options.buyData);
+    console.log(options);
     var that = this;
-    that.setData({
-      endTime: buyData.createTime,
-      totalPrice: buyData.totalPrice,
-      orderNo: buyData.orderNo
-    })
-    that.countDown()
+    if (options.buyData){
+      var buyData = JSON.parse(options.buyData);
+      that.setData({
+        endTime: buyData.createTime,
+        totalPrice: buyData.totalPrice,
+        orderNo: buyData.orderNo
+      })
+      that.countDown()
+    } else if (options.payData){
+      var payData = JSON.parse(options.payData);
+      that.setData({
+        endTime: payData.closeTime,
+        totalPrice: payData.totalPrice,
+        orderNo: payData.orderNo
+      })
+      that.countDown()
+
+    }
+
+   
   },
 
   // 倒计时

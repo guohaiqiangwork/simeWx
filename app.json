@@ -8,6 +8,7 @@
     "pages/logs/logs",
     "pages/category/category",
     "pages/myOrder/myOrder",
+    "pages/orderDetails/orderDetails",
     "pages/address/address",
     "pages/bank/bank",
     "commpents/timeChoice/timeChoice",
@@ -28,6 +29,8 @@
     "pages/bindPhone/bindPhone",
     "pages/activityDetails/activityDetails",
     "pages/shopCart/shopCart",
+    "pages/payResult/payResult",
+    "pages/logistics/logistics",
     "pages/case/case"
   ],
   "window": {

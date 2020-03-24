@@ -16,7 +16,7 @@ Page({
     totalPrice: 0, //总价
     noList: [], //失效数据
     list: [],
-    shopCarId:[],//购物车Id
+    shopCarId: [], //购物车Id
     curTouchGoodStore: 99, //最大购买数量
   },
   /**
@@ -133,7 +133,7 @@ Page({
     })
   },
   // 删除数据处理
-  deleteShopData:function(e){
+  deleteShopData: function(e) {
     let _this = this;
     let deleteF = e.currentTarget.dataset.falg; //是否为失效商品
     let deleteList = [];
@@ -154,7 +154,7 @@ Page({
     //   ids: list,
     // };
     var _this = this;
-    if (list.length == 0){
+    if (list.length == 0) {
       wx.showModal({
         content: '请选择需要删除的内容',
         confirmColor: '#6928E2',
@@ -178,7 +178,7 @@ Page({
             showCancel: false,
           });
           _this.setData({
-            noList:[]
+            noList: []
           });
         } else {
           wx.showModal({
@@ -201,7 +201,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-   
+    var _this = this;
+    _this.onLoad() //
   },
 
   /**
@@ -337,7 +338,7 @@ Page({
       console.log(that.data.arr + '全选选中')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = true;
-        var buyDataObj= {
+        var buyDataObj = {
           goodsId: list[i].goodsId,
           num: list[i].num,
           skuId: list[i].pecificationId,

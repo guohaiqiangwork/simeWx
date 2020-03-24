@@ -1,0 +1,133 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='订单详情' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<!-- 状态栏 -->
+<!-- 已取消 status -->
+
+<view class="top_title5" wx:if="{{orderDetail.status == 5}}">
+  <view class=" margin_left4 padding_top3">
+    <view class="font_size34">已取消</view>
+    <view class="font_size24">订单取消成功(订单超时未支付，系统自动取消订单）</view>
+  </view>
+</view>
+<view class="top_title1" wx:if="{{orderDetail.status == 1}}">
+  <view class=" margin_left4 padding_top3">
+    <view class="view_display">
+      <view class="font_size34 width70">待支付</view>
+      <view class="font_size24 margin_top2">
+        <view wx:if="{{countDown}}">
+          剩余时间：{{min}} : {{sec}}
+        </view>
+        <view wx:else="{{countDown}}">
+          剩余时间：00 : 00
+        </view>
+
+      </view>
+    </view>
+    <view class="font_size24">请在订单提交后，尽快支付超时将取消订单</view>
+  </view>
+</view>
+<view class="top_title1" wx:if="{{orderDetail.status == 2}}">
+  <view class=" margin_left4 padding_top3">
+    <view class="font_size34 width70">待发货</view>
+    <view class="font_size24">已通知商家，等待商家发货</view>
+  </view>
+</view>
+<view class="top_title1" wx:if="{{orderDetail.status == 3}}">
+  <view class=" margin_left4 padding_top3">
+    <view class="font_size34 width70">待收货</view>
+    <view class="font_size24">商家已发货，耐心等待收货</view>
+  </view>
+</view>
+
+<!-- 地址块 -->
+<view class="con_order_adder">
+  <view class="view_display">
+    <view class="left">
+      <view class="left_name">{{orderDetail.orderAddress.receiverName}}</view>
+    </view>
+    <view class="centent">
+      <view class="font_size32 font_color33">{{orderDetail.orderAddress.receiverPhone}}</view>
+      <view class="font_size28 font_color66">{{orderDetail.orderAddress.receiverState}}{{orderDetail.orderAddress.receiverCity}}{{orderDetail.orderAddress.receiverDistrict}}{{orderDetail.orderAddress.receiverAddress}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 产品块 -->
+<view class="conter_border" wx:for="{{orderDetail.itemList}}" wx:key="index">
+  <view class="view_display">
+    <view class="width30">
+      <image src="{{item.picPath}}" class="one_img"></image>
+    </view>
+    <view class="font_size26 margin_top2 width60">
+      <view class="font_color33">{{item.title}}</view>
+      <view class="font_color99">{{item.skuName}}</view>
+      <view class="font_colorf4">¥{{item.totalFee}}</view>
+    </view>
+    <view class="font_size26 font_color99 margin_top8">
+      *{{item.num}}
+    </view>
+  </view>
+</view>
+
+<!-- 列表信息 -->
+
+<view class="bottom_moudel">
+  <view class="view_display">
+    <view class="width20">订单编号</view>
+    <view class="width70">{{orderDetail.orderNo}}</view>
+  </view>
+  <view class="view_display margin_top2">
+    <view class="width20"> 下单时间</view>
+    <view class="width70">{{orderDetail.createTime}}</view>
+  </view>
+  <view class="view_display margin_top2">
+    <view class="width20">支付方式</view>
+    <view class="width70">{{orderDetail.paymentType == 1 ? '微信支付' : orderDetail.paymentType == 1 ?'支付宝支付' : '余额支付' }}</view>
+  </view>
+
+  <view class="view_display shop_border">
+    <view class="width20">商品总额</view>
+    <view class="width70">{{orderDetail.totalPrice}}</view>
+  </view>
+
+  <view class="view_display font_size26 margin_top3">
+    <view class="width60"></view>
+    <view>
+      实付款
+    </view>
+    <view class="font_colorf4 margin_left2">
+      ¥{{orderDetail.payment}}
+    </view>
+  </view>
+
+
+</view>
+
+<!-- 底部按钮 -->
+<view class="view_display">
+  <view class="width45"></view>
+  <view class="bottom_btn" style="margin-left:28%" wx:if="{{orderDetail.status == 4 || orderDetail.status == 2 || orderDetail.status == 5 }}" catchtap="againBuy" data-orderId="{{orderDetail.orderId}}">
+    再次购买
+  </view>
+  <view class="view_display" wx:if="{{orderDetail.status == 1  }}">
+    <view class="bottom_btn font_color99" style="border:1px solid #999999" catchtap="cancelPay" data-orderId="{{orderDetail.orderId}}">
+      取消支付
+    </view>
+    <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" data-paydata="{{orderDetail}}" catchtap="goOrderPay">
+      去支付
+    </view>
+  </view>
+  <view wx:if="{{orderDetail.status == 3  }}">
+    <view class="bottom_btn" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}">
+      查看物流
+    </view>
+    <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" catchtap="confirmOrder" data-orderId="{{orderDetail.orderId}}">
+      确认收货
+    </view>
+  </view>
+
+
+
+</view>

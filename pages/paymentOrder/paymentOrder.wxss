@@ -1,5 +1,5 @@
 .pay_order_title {
-  background: linear-gradient(to right, #484747, #73767c);
+  background: linear-gradient(to right, #FF342D, #FF5882);
   width: 100%;
   color: #fff;
   text-align: center;
@@ -11,7 +11,6 @@
 .money_moudel {
   padding-top: 56rpx;
   padding-bottom: 56rpx;
-  border: 1px solid #e8e8e8;
   padding-left: 250rpx;
   background-color: #fff;
 }
@@ -138,3 +137,13 @@ radio .wx-radio-input.wx-radio-input-checked {
 
 
 
+.title_hot{
+  background-color: #fff;
+  padding-top: 20rpx
+}
+.title_img{
+  width: 30rpx;
+  height: 30rpx;
+  top: 30rpx;
+  z-index: 9999
+}

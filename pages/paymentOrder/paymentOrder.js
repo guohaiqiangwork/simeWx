@@ -7,8 +7,8 @@ Page({
    */
   data: {
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
-    ishideback: false,
-    my_class: false,
+    ishideback: true,
+    my_class: true,
     endTime: '', //2018/11/22 10:40:30这种格式也行
     payMoudel: true, //是否展示密码框
     focus: false,
@@ -66,11 +66,15 @@ Page({
                     payMoudel: true
                   });
                   wx.hideLoading();
-                  setTimeout(function(){
+                  var orderItem = {
+                    orderId: that.data.orderId,
+                    orderNo: that.data.orderNo,
+                  }
+                  setTimeout(function() {
                     wx.navigateTo({
-                      url: '/pages/payResult/payResult?payFalg=success',
+                      url: '/pages/payResult/payResult?payFalg=success&item=' + JSON.stringify(orderItem),
                     })
-                  },1500)
+                  }, 500)
                 } else {
                   that.setData({
                     inputValue: '',
@@ -83,11 +87,11 @@ Page({
                     confirmColor: '#6928E2',
                     showCancel: false,
                   })
-                  setTimeout(function () {
+                  setTimeout(function() {
                     wx.navigateTo({
                       url: '/pages/payResult/payResult?payFalg=',
                     })
-                  }, 1500)
+                  }, 500)
                 }
               }
             })
@@ -133,28 +137,39 @@ Page({
   onLoad: function(options) {
     console.log(options);
     var that = this;
-    if (options.buyData){
+    if (options.buyData) {
       var buyData = JSON.parse(options.buyData);
       that.setData({
         endTime: buyData.createTime,
         totalPrice: buyData.totalPrice,
-        orderNo: buyData.orderNo
+        orderNo: buyData.orderNo,
+        redPrice: buyData.redPrice,
+        payment: buyData.payment,
+        orderId: buyData.orderId
       })
       that.countDown()
-    } else if (options.payData){
+    } else if (options.payData) {
       var payData = JSON.parse(options.payData);
       that.setData({
         endTime: payData.closeTime,
         totalPrice: payData.totalPrice,
-        orderNo: payData.orderNo
+        orderNo: payData.orderNo,
+        redPrice: payData.redPrice,
+        payment: payData.payment,
+        orderId: payData.orderId
       })
       that.countDown()
 
     }
 
-   
-  },
 
+  },
+  // 去我的订单
+  goToOrder: function() {
+    wx.navigateTo({
+      url: '/pages/myOrder/myOrder?index=002&status=1',
+    })
+  },
   // 倒计时
   countDown: function() {
     var that = this;

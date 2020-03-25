@@ -58,7 +58,7 @@
       <view class="view_display font_size28">
         <view class="width50"></view>
         <view class="font_color99">共{{items.goodsNum}}种</view>
-        <view class="margin_left2 font_color00">实付款：¥{{items.totalPrice}}</view>
+        <view class="margin_left2 font_color00">实付款：¥{{items.payment}}</view>
       </view>
     </view>
     <!-- 一个内容 -->
@@ -79,7 +79,7 @@
       <view class="view_display font_size28">
         <view class="width50"></view>
         <view class="font_color99">共{{items.goodsNum}}种</view>
-        <view class="margin_left2 font_color00">实付款：¥{{items.totalPrice}}</view>
+        <view class="margin_left2 font_color00">实付款：¥{{items.payment}}</view>
       </view>
     </view>
 

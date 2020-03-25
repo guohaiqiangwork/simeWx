@@ -2,16 +2,21 @@
   <navbar title='支付结果' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
-<view class="text_center font_size26" hidden="{{falg}}">
-  <image src="/image/paySure.png" class="image_width"></image>
-  <view class="margin_top3"> 支付成功</view>
+<view class="text_center font_size26 " hidden="{{falg}}">
+  <!-- <image src="/image/paySure.png" class="image_width"></image> -->
+  <image src="/image/payS.png" class="image_width"></image>
+  <view wx:if="{{hotMoney}}">
+    <image src="/image/payHot.png" class="image_width1"></image>
+    <view class="font_size36">恭喜您！ 成功获得
+      <text class="font_colorf4"></text>金豆 </view>
+  </view>
+
   <view class="btn" catchtap="goHome">
     去首页逛逛
   </view>
 </view>
-<view class="text_center font_size26" hidden="{{!falg}}">
-  <image src="/image/payFail.png" class="image_width"></image>
-  <view class="margin_top3"> 支付失败</view>
+<view class="text_center font_size26 " hidden="{{!falg}}">
+  <image src="/image/payC.png" class="image_width"></image>
   <view class="btn" catchtap="goOne">
     重新支付
   </view>

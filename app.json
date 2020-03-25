@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/payResult/payResult",
     "pages/my/my",
     "pages/setUp/setUp",
     "pages/setPassword/setPassword",
@@ -27,7 +28,6 @@
     "pages/bindPhone/bindPhone",
     "pages/activityDetails/activityDetails",
     "pages/shopCart/shopCart",
-    "pages/payResult/payResult",
     "pages/logistics/logistics",
     "pages/returnedGoods/returnedGoods",
     "pages/returnedApply/returnedApply",

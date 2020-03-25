@@ -37,16 +37,27 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    this.setData({
-      inputValue: options.value,
-      code: options.code
-    });
-    this.getSearchList() //获取查询列表
+    if (options.city){
+      this.setData({
+        city: options.city,
+        synthesize:''
+      });
+      this.getCityList();
+    }else{
+      this.setData({
+        inputValue: options.value,
+        code: options.code
+      });
+      this.getSearchList() //获取查询列表
+    }
+
+  
   },
 // 获取列表数据
   getSearchList: function(type) {
     let _this = this;
     var data = {
+      city: _this.data.city || '',
       code: _this.data.code || '',
       pageNum: _this.data.page,
       goodsName: _this.data.inputValue || '',
@@ -64,6 +75,50 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
+        wx.hideLoading();
+        console.log(res)
+        if (res.data.code == '200') {
+          if (type == 'new') {
+            _this.setData({
+              searchList: res.data.data
+            });
+          } else {
+            _this.setData({
+              searchList: _this.data.searchList.concat(res.data.data)
+            });
+          }
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  // 获取同城数据
+  getCityList: function (type) {
+    let _this = this;
+    var data = {
+      city: _this.data.city || '',
+      code: _this.data.code || '',
+      pageNum: _this.data.page,
+      goodsName: _this.data.inputValue || '',
+      priceSorted: _this.data.priceSorted,
+      sell: _this.data.sell,
+      synthesize: _this.data.synthesize,
+      meberId: wx.getStorageSync('useId')
+    };
+    wx.request({
+      url: ajax_url + '/goods/getSameCityProduct',
+      method: "post",
+      data: data,
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
         wx.hideLoading();
         console.log(res)
         if (res.data.code == '200') {
@@ -128,37 +183,7 @@ Page({
       url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
     })
   },
-  // // 上拉加载
-  // refresh_j() {
-  //   console.log('2342')
-  //   if (this.data.refresh_falg) {
-  //     let that = this;
-  //     that.setData({
-  //       page: this.data.page + 1, // 每次触发上拉事件，把pageNum+1
-  //       isFirstLoad: false // 触发到上拉事件，把isFirstLoad设为为false
-  //     });
-  //     if (that.data.isScroll) {
-  //       this.GetList(this);
-  //     }
-  //   }
-  // },
-  // // 下拉刷新
-  // refresh() {
-  //   console.log('............')
-  //   if (this.data.refresh_falg) {
-  //     this.data.page = 1
-  //     var StoreList = this.data.StoreList;
-  //     this.setData({
-  //       StoreList: [],
-  //     })
-  //     // 调用接口加载数据
-  //     if (this.data.isScroll) {
-  //       this.GetList(this);
-  //     }
-  //   }
-  //   // 当处理完数据刷新后，wx.stopPullDownRefresh可以停止当前页面的下拉刷新
-  //   wx.stopPullDownRefresh();
-  // },
+  
   // 监听输入框值
   bindconfirm: function(e) {
     console.log(e)
@@ -168,36 +193,16 @@ Page({
     });
     _this.data.code='';
     _this.data.searchList =[];
-    _this.getSearchList();
+    if (_this.data.city){
+      _this.getCityList();
+    }else{
+      _this.getSearchList();
+    }
+    
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
+  
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
+  
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -206,7 +211,12 @@ Page({
     this.setData({
       page: 1
     })
-    this.getSearchList('new');
+    if (_this.data.city) {
+      _this.getCityList('new');
+    } else {
+      this.getSearchList('new');
+    }
+   
     wx.stopPullDownRefresh();
   },
 
@@ -220,7 +230,11 @@ Page({
     this.setData({
       page: this.data.page + 1,
     })
-    this.getSearchList(); //获取数据
+    if (_this.data.city) {
+      _this.getCityList();
+    } else {
+      this.getSearchList();
+    }
   },
 
   /**
@@ -254,7 +268,11 @@ Page({
       tabFalg: e.currentTarget.dataset.id,
     });
     this.data.searchList = [];
-    this.getSearchList();
+    if (_this.data.city) {
+      _this.getCityList();
+    } else {
+      this.getSearchList();
+    }
   },
 
 })

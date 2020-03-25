@@ -136,7 +136,6 @@ Page({
       method: "get",
       success: function(res) {
         if (res.data.code == '200') {
-
           _this.setData({
             tabList: res.data.data
           })
@@ -150,6 +149,36 @@ Page({
       }
     })
   },
+  // 同城
+  goCity: function() {
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+        console.log(res);
+        //弹框
+        var locationString = res.latitude + "," + res.longitude;
+        wx.request({
+          url: 'https://apis.map.qq.com/ws/geocoder/v1/',
+          data: {
+            "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
+            "location": locationString
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method: 'GET',
+          success: function(r) {
+            var city = r.data.result.address_component.city
+            wx.navigateTo({
+              url: '/pages/searchResult/searchResult?city=' + city,
+            })
+          }
+        });
+      }
+    })
+
+  },
+
   // 去搜素页面
   bindconfirm: function(e) {
     wx.navigateTo({
@@ -170,10 +199,13 @@ Page({
   },
   // 点击导航页面滚动
   toViewClick: function(e) {
+
     wx.pageScrollTo({
       scrollTop: 850 * parseInt(e.currentTarget.dataset.code),
       duration: 200
     });
+
+
   },
   // 加入购物车
   addShopCard: function(e) {

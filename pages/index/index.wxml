@@ -15,6 +15,12 @@
 </view>
 <!-- 导航栏 -->
 <view class="">
+  <view class="margin_top3 margin_left6 tab_width" catchtap="goCity">
+    <view>
+      <image src="/image/switch/1.jpg" class="tabList_img"></image>
+    </view>
+    <view class="font_size28 font_color33 margin_top2">同城</view>
+  </view>
   <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-code="{{item.code}}">
     <view>
       <image src="{{item.picture}}" class="tabList_img"></image>
@@ -34,7 +40,7 @@
       <view class="font_size18">{{item.title}}</view>
       <view class="view_display margin_top2">
         <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-        <view catchtap="addShopCard"  data-spId="{{item.spId}}" data-id="{{item.id}}">
+        <view catchtap="addShopCard" data-spId="{{item.spId}}" data-id="{{item.id}}">
           <image src="/image/add.png" class="new_add_img"></image>
         </view>
       </view>
@@ -66,7 +72,7 @@
       <view class="font_size18">{{item.title}}</view>
       <view class="view_display margin_top2">
         <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-        <view catchtap="addShopCard" data-spId="{{item.pecificationId}}"  data-id="{{item.id}}">
+        <view catchtap="addShopCard" data-spId="{{item.pecificationId}}" data-id="{{item.id}}">
           <image src="/image/add.png" class="new_add_img"></image>
         </view>
       </view>

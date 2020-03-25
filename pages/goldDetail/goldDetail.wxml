@@ -5,14 +5,32 @@
 <view>
   <image src="/image/jdB.png" class="img_top"></image>
   <view class="top_conternt">
-    <view class="font_size26 font_colorff padding_top3">笑容金豆</view>
+    <view class="view_display padding_top3">
+      <view class="width40"></view>
+      <view class="width20 font_size26 font_colorff">笑容金豆</view>
+      <view class="width33 font_size26 font_colorff text_right"catchtap="moudelExplain" >金豆说明</view>
+    </view>
     <view class="view_display">
       <view class="width40"></view>
       <view class="money">{{jinDou}}</view>
       <image src="/image/jindou.png" class="img_width"></image>
     </view>
-
   </view>
+</view>
+<!-- 说明弹窗 -->
+<view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+  <view class="conter_motai">
+      <view class="view_display title">
+        <view class="width40" catchtap="hideRule"> <image src="/image/close.png" class="title_img"></image> </view>
+         <view class="font_size32">金豆说明</view>
+      </view>
+      <view class="font_size24 font_color66 font_padding">
+            1. 打开任意支持返利的商品，分享商品二维码图片/链接给好友（或自己）邀请其购买。好友（或自己）使用该链接购买该商品且没有发生退款，分享者将获得一定比例的现金返利且支持提现。
+
+    2. 实物商品：订单支付完成后，分享者账户将增加一笔“未结算”，此时返利并未实际到账
+      </view>
+  </view>
+
 </view>
 
 <!-- 切换 -->

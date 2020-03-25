@@ -23,10 +23,10 @@
         <view class="font_size26">冻结金额</view>
       </view>
     </view>
-    <view class="view_display font_colorff jin_dou" catchtap="goGoldDetail">
+    <view class="view_display font_colorff jin_dou" >
       <view class="font_size28 width20">笑容金豆</view>
       <view class="font_size40 margin_left2 width50" style="margin-top:-10rpx">{{jinDou}}</view>
-      <view class="font_size24" wx:if="{{jinDou > 0}}">立即查看></view>
+      <view class="font_size24" wx:if="{{jinDou > 0}}" catchtap="goGoldDetail">立即查看></view>
     </view>
   </view>
 

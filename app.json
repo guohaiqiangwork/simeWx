@@ -33,7 +33,7 @@
     "pages/logistics/logistics",
     "pages/returnedGoods/returnedGoods",
     "pages/returnedApply/returnedApply",
-    "pages/goldDetail/goldDetail",
+      "pages/goldDetail/goldDetail",
     "pages/case/case"
   ],
   "window": {

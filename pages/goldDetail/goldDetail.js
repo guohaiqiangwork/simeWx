@@ -107,6 +107,19 @@ Page({
       }
     })
   },
+  // 说明
+  moudelExplain:function(){
+    this.setData({
+      isRuleTrue:true
+    })
+  },
+  //关闭说明提示
+  hideRule: function () {
+    this.setData({
+      isRuleTrue: false,
+      isScroll: true,
+    })
+  },
   // 切换
   productTabSwich: function(e) {
     var _this = this;

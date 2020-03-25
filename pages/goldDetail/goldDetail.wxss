@@ -24,8 +24,52 @@
   height: 27rpx;
   margin-top: 64rpx;
 margin-left: 20rpx;
-
 }
 .width33{
 width: 33%
+}
+/* 弹出层 */
+
+.isRuleShow {
+  display: block;
+}
+
+.isRuleHide {
+  display: none;
+}
+.ruleZhezhao {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+.conter_motai{
+  background: rgba(255, 255, 255, 1);
+  width: 580rpx;
+  margin-left: 84rpx;
+  border: 1px solid #fff;
+  position: absolute;
+  color: #333;
+  font-size: 30rpx;
+  top: 312rpx;
+  border-radius: 14rpx;
+  height: 470rpx;
+  overflow: auto;
+}
+.title{
+  padding-top: 20rpx;
+  padding-left: 42rpx;
+  border-bottom: 1px solid #EDEDED;
+  padding-bottom: 20rpx
+}
+.title_img{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 10rpx
+}
+.font_padding{
+  padding:28rpx;
 }

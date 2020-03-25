@@ -3,10 +3,38 @@
 </view>
 
 <view>
+  <image src="/image/jdB.png" class="img_top"></image>
+  <view class="top_conternt">
+    <view class="font_size26 font_colorff padding_top3">笑容金豆</view>
+    <view class="view_display">
+      <view class="width40"></view>
+      <view class="money">{{jinDou}}</view>
+      <image src="/image/jindou.png" class="img_width"></image>
+    </view>
 
-<image src="/image/jdB.png" class="img_top"></image>
-<view class="top_conternt">
-<view>笑容金豆</view>
-<view>1000</view>
+  </view>
 </view>
+
+<!-- 切换 -->
+
+<view class="top_moudel" style="background-color:#fff">
+  <view class="view_display padding_top3">
+    <view class="width33 text_center" wx:for="{{orderTabList}}" wx:key="index" data-id="{{item.id}}" data-status="{{item.status}}" catchtap='productTabSwich'>
+      <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
+      <view class='border_tab_y' wx:if="{{tabFalg == item.id}}"></view>
+    </view>
+  </view>
 </view>
+
+<!-- 数据展示 -->
+<scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
+  <!-- 列表 -->
+  <view class="view_display font_size24 text_center padding_top3" wx:for="{{goldList}}" wx:key="index">
+    <view class="width30">{{item.remark}}</view>
+    <view class="width40">{{item.useTime}}</view>
+    <view class="width30">{{item.amount}}</view>
+  </view>
+  <!-- <view>
+    <image src=""></image>
+  </view> -->
+</scroll-view>

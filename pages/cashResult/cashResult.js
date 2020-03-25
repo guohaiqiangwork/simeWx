@@ -1,4 +1,5 @@
-// pages/cashResult/cashResult.js
+const app = getApp();
+const ajax_url = app.globalData.ajax_url;
 Page({
 
   /**
@@ -14,9 +15,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    var options = { payFalg: "20200325141619589" };
+    this.getMoney(options.payFalg)
   },
-
+  // 详情
+  getMoney: function (bank) {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/account/accountDe/' + bank,
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        if (res.data.code == '200') {
+         _this.setData({
+           cashData: res.data.data
+         })
+         
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  goHOme:function(){
+    wx.switchTab({
+      url: '../../pages/index/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

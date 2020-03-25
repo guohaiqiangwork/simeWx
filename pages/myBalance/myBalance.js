@@ -32,7 +32,7 @@ Page({
    */
   onLoad: function(options) {
     this.getMoney(); //获取余额
-    this.getMoneyList()//获取列表
+    this.getMoneyList() //获取列表
   },
   // tab
   productTabSwich: function(e) {
@@ -40,7 +40,7 @@ Page({
       tabFalg: e.currentTarget.dataset.id,
       transType: e.currentTarget.dataset.transtype
     });
-    this.getMoneyList()//获取列表
+    this.getMoneyList() //获取列表
   },
   // 获取余额
   getMoney: function() {
@@ -149,9 +149,107 @@ Page({
   onShareAppMessage: function() {
 
   },
+  // 提现
   goCashMoney: function() {
-    wx.navigateTo({
-      url: "../cashMoney/cashMoney",
+    var _this = this;
+    if (_this.data.myMoney.balance > 0) {
+      _this.getName() //各种判断
+    } else {
+      wx.showModal({
+        content: '没有可提现金额',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+    }
+  },
+  // 查询是否实名
+  getName: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/mb/checkVerified/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          if (res.data.data) {
+            _this.getBankList() //查询是否绑定银行卡
+          } else {
+            wx.showModal({
+              content: '请先进行实名认证',
+              confirmColor: '#6928E2',
+              showCancel: false,
+            })
+            setTimeout(function() {
+              wx.navigateTo({
+                url: '../realName/realName',
+              })
+            }, 500)
+
+          }
+        }
+      }
     })
-  }
+  },
+  // 查询是否绑定银行卡
+  getBankList: function() {
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/bank/checkBank/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          console.log(res)
+          _this.getpaword();
+        } else {
+          wx.showModal({
+            content: '请绑定银行卡',
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+          setTimeout(function() {
+            wx.navigateTo({
+              url: '../bank/bank',
+            })
+          }, 500)
+        }
+      }
+    })
+
+  },
+  // 判断是否设置密码
+  getpaword: function() {
+    wx.request({
+      url: ajax_url + '/account/isSetPassword/' + wx.getStorageSync('useId'),
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: "../cashMoney/cashMoney",
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          });
+          setTimeout(function() {
+            wx.navigateTo({
+              url: '../setPassword/setPassword',
+            })
+          }, 500)
+        }
+      }
+    })
+  },
 })

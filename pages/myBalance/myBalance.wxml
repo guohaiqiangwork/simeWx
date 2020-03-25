@@ -31,3 +31,4 @@
     <view class="width20 text_right"> <text wx:if="{{item.transType == 1}}">+</text> <text wx:else>-</text> ¥{{item.amount}}</view>
   </view>
 </scroll-view>
+

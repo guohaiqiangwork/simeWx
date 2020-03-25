@@ -4,17 +4,17 @@
 
 <view class="moudel">
   <!-- 银行 -->
-  <view class="moudel_one">
+  <view class="moudel_one" data-id="{{bankList[0].id}}">
     <view class="view_display bank_border" catchtap="goBank">
       <view>到账银行卡</view>
       <view class="margin_left4 width50">
         <view class="view_display ">
-          <image src="/image/bank/jsy.png" class="bank_img"></image>
-          <view>工商银行 (3202)</view>
+          <image src="{{bankList[0].imgUrl}}" class="bank_img"></image>
+          <view>{{bankList[0].bankName}} ({{bankList[0].bankCard}})</view>
         </view>
         <view class="font_colorA0">2小时内到账</view>
       </view>
-      <view class="text_right width20">
+      <view class="text_right width20" catchtap="goBank" data-id="{{bankList[0].id}}">
         <image src="/image/right.png" class="bank_img_right"></image>
       </view>
     </view>
@@ -23,14 +23,14 @@
       <view>提现金额</view>
       <view class="view_display margin_top3">
         <view style="font-size:60rpx">¥</view>
-        <view class="margin_top3 margin_left2">
-          <input placeholder="请填写持卡人姓名" />
+        <view class="margin_top3 margin_left2" hidden="{{!payMoudel}}">
+          <input placeholder="请填写金额"  value="{{moneyNumber}}" type="number" bindinput="moneyNumber"/>
         </view>
       </view>
     </view>
     <view class="view_display margin_top2">
-      <view class="font_colorA0">余额￥3142.51</view>
-      <view class="font_colorf4">全部提现</view>
+      <view class="font_colorA0">余额￥{{myMoney.balance}}</view>
+      <view class="font_colorf4 margin_left2" catchtap="wholeMoney">全部提现</view>
     </view>
     <!-- 按钮 -->
     <view class="btn" catchtap="goMoney">
@@ -39,7 +39,23 @@
   </view>
 
 </view>
+<!-- 银行卡列表 -->
+<view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+  <view class="conter_motai">
+  <view class="bank_list">
+    <view class="view_display bank_list_one" wx:for="{{bankList}}" wx:key="index">
+      <view class="width10">
+        <image src="{{item.imgUrl}}" class="list_img"></image>
+      </view>
+      <view class="width30">{{item.bankName}}</view>
+      <view class="width30">{{item.bankCard}}</view>
+      <view class="bankBtn" catchtap="bankBtn" data-item="{{item}}">更换</view>
+    </view>
+  </view>
+    
+  </view>
 
+</view>
 
 <!-- 密码输入框 -->
 <view class="password_moudel_bj" hidden="{{payMoudel}}">
@@ -50,7 +66,7 @@
       <view style="margin-left:140rpx;margin-top:-12rpx">请输入密码</view>
     </view>
     <view class="text_center font_size30 margin_top3">提现</view>
-    <view class="font_size55 text_center">￥3010.00</view>
+    <view class="font_size55 text_center">￥{{moneyNumber}}</view>
     <!-- 密码框 -->
     <view class='password-input-box'>
       <view class='input' bindtap='getFocus'>
@@ -58,7 +74,7 @@
           <input value="{{Value.length>=index+1?Value[index]:''}}" disabled password='{{ispassword}}' catchtap='Tap'></input>
         </view>
       </view>
-      <input name="password" password="{{true}}" class='password-input' maxlength="{{Length}}" focus="{{isFocus}}" bindinput="password_input" type="digit"></input>
+      <input name="password" password="{{ispassword}}" value="{{Value}}" class='password-input' maxlength="{{Length}}" focus="{{isFocus}}" bindinput="password_input" type="digit"></input>
     </view>
   </view>
 </view>

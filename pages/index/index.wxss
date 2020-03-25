@@ -112,6 +112,7 @@ view {
   color: #f42300;
   border: 1px solid #f42300;
   text-align: center;
+  background-color: #fff;
 }
 
 .product_list_right {

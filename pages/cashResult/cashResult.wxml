@@ -2,33 +2,33 @@
   <navbar title='提现结果' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
-<view class="text_center font_size32 ">
+<view class="text_center font_size32 " >
   <image src="/image/carryS.png" class="img_size"></image>
-  <view class="margin_top5">提现受理中</view>
-  <view class="margin_top2">预计2小时内到账</view>
+  <!-- <view class="margin_top5">提现受理中</view> -->
+  <view class="margin_top2">{{cashData.resone}}</view>
 </view>
 <view class=" margin_left5 font_size28" style="padding-top:100rpx">
   <view class="view_display margin_top3">
     <view class="width30 ">提现金额</view>
-    <view>￥1.00 (手续费:3.00 税费:6.00)</view>
+    <view>￥{{cashData.amount}} (手续费:{{cashData.cmmsAmount}})</view>
   </view>
   <view class="view_display margin_top3">
     <view class="width30 ">实际到账金额</view>
-    <view>￥1.00</view>
+    <view>￥{{cashData.amount}}</view>
   </view>
   <view class="view_display margin_top3">
     <view class="width30 ">到账银行卡</view>
-    <view>工商银行(3202)</view>
+    <view>{{cashData.bankName}}({{cashData.bankCode}})</view>
   </view>
   <view class="view_display margin_top3">
     <view class="width30 ">订单编号</view>
-    <view>20195465431216544657</view>
+    <view>{{cashData.orderNo}}</view>
   </view>
   <view class="view_display margin_top3">
     <view class="width30 ">订单时间</view>
-    <view>2019-08-09 12:30:15</view>
+    <view>{{cashData.createTime}}</view>
   </view>
 </view>
-<view class="btn">
-完成
+<view class="btn" catchtap="goHOme">
+  完成
 </view>

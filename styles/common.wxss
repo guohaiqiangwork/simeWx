@@ -194,6 +194,9 @@
 .div_border99 {
   border: 1px solid #999 !important;
 }
+.width10 {
+  width: 10%;
+}
 
 .width15 {
   width: 15%;

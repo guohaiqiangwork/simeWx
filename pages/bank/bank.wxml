@@ -9,7 +9,7 @@
   </view>
   <view class="address_list">
     <view class="address_list_left">卡号</view>
-    <input type="number" class="width70" value="{{userInputCardNum}}" placeholder="请输入银行卡账号" maxlength="20" bindinput="bankcardInput" />
+    <input type="number" class="width70" value="{{userInputCardNum}}" placeholder="请输入银行卡账号" maxlength="23" bindinput="bankcardInput" />
   </view>
   <view class="address_list">
     <view class="address_list_left">银行</view>

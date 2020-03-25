@@ -1,5 +1,5 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='我的余额' show_bol='{{ishideback}}'></navbar>
+  <navbar title='我的余额' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
 <!--  -->
@@ -8,27 +8,26 @@
     <view class="font_size26 font_colorff">可用余额</view>
     <view class="view_display">
       <view class="balance_moeny_left margin_top4">¥</view>
-      <view class="balance_moeny_right margin_left2 width60">60.00</view>
+      <view class="balance_moeny_right margin_left2 width60">{{myMoney.balance}}</view>
       <view class="balance_moeny_btn" catchtap="goCashMoney">提现</view>
     </view>
-    <view class="font_size24 font_colorff">冻结金额¥930.00</view>
+    <view class="font_size24 font_colorff">冻结金额¥{{myMoney.integral}}</view>
   </view>
 </view>
 
 <view class="view_display tab_bj">
-  <view class="width33 text_center" wx:for="{{tabList}}" data-id="{{item.id}}" catchtap='productTabSwich'>
+  <view class="width33 text_center" wx:for="{{tabList}}" data-id="{{item.id}}"   data-transType="{{item.transType}}" catchtap='productTabSwich' wx:key="index">
     <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">{{item.name}}</view>
-    <view class='border_tab_y' wx:if="{{tabFalg == item.id}}"></view>
+    <view class='border_tab_y' wx:if="{{tabFalg == item.id}}" ></view>
   </view>
 </view>
 
 
 <!--列表 -->
-<scroll-view scroll-y>
-  <view class="view_display font_size24 padding_top2" wx:for="{{[1,2,3,4,5,6,7]}}">
-    <view class="width30 text_center">提现</view>
-    <view class="width20">2019-11-11</view>
-    <view class="width20">19:10:00</view>
-    <view class="width20 text_right">- ¥50.90</view>
+<scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
+  <view class="view_display font_size24 padding_top2" wx:for="{{moneyList}}" wx:key="index">
+    <view class="width30 text_center">{{item.recordDesc}}</view>
+    <view class="width40">{{item.createTime}}</view>
+    <view class="width20 text_right"> <text wx:if="{{item.transType == 1}}">+</text> <text wx:else>-</text> ¥{{item.amount}}</view>
   </view>
 </scroll-view>

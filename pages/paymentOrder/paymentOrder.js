@@ -247,40 +247,32 @@ Page({
         }
       })
     } else {
-      const openId = wx.getStorageSync("code") // 获取微信的code作为open ID传到后台
-      // console.log(openId);
-      return;
-      // payType后台规定的支付方式，orderId 订单id
-      http.postRequest('调后台的支付接口', {
-          payType: 2,
-          orderId: this.data.detail.id,
-          code: openId
+      var dataBase = {
+        orderId: that.data.orderId || '' ,
+        orderNo: that.data.orderNo || '',
+      };
+      wx.request({
+        url: ajax_url + '/wxPay/unifiedOrder',
+        method: "post",
+        data: dataBase,
+        header: {
+          'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+          'client': 'APP',
         },
-        (res) => {
-          if (res && res.code == 1) {
-            var _r = res.data
-            wx.requestPayment({ //调起支付
-              'timeStamp': _r.timeStamp,
-              'nonceStr': _r.nonceStr,
-              'package': _r.packageValue,
-              'signType': _r.signType,
-              'paySign': _r.paySign,
-              'success': function(res) { // 接口调用成功的回调函数
-                // console.log(res);
-                //TODO  跳转订单
-                wx.navigateTo({
-                  url: '/pages/myOrder/myOrder?type=1&list=2',
-                })
-              },
-              'fail': function(res) { // 接口调用失败的回调函数
-                // console.log('fail:' + JSON.stringify(res));
-              }
+        success: function (res) {
+          console.log(res)
+          if (res.data.code == '200') {
+        
+
+          } else {
+            wx.showModal({
+              content: res.data.message,
+              confirmColor: '#6928E2',
+              showCancel: false,
             })
           }
-        },
-        (err) => {
-          console.log(err);
-        });
-    }
+        }
+      })
+     }
   }
 })

@@ -49,7 +49,9 @@ Page({
           url: ajax_url + '/wx/miniLogin/' + res.code,
           method: "get",
           success: function(res) {
+            console.log(res)
             app.nativeData.openId = res.data.data.openid;
+            app.nativeData.sessionKey = res.data.data.sessionKey
             wx.getUserInfo({
               success: function(res) {
                 that.data.userInfo = res.userInfo;
@@ -151,31 +153,54 @@ Page({
   },
   // 同城
   goCity: function() {
-    wx.getLocation({
-      type: 'wgs84',
-      success: function(res) {
-        console.log(res);
-        //弹框
-        var locationString = res.latitude + "," + res.longitude;
-        wx.request({
-          url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-          data: {
-            "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
-            "location": locationString
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          method: 'GET',
-          success: function(r) {
-            var city = r.data.result.address_component.city
-            wx.navigateTo({
-              url: '/pages/searchResult/searchResult?city=' + city,
-            })
-          }
-        });
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.getLocation({
+            type: 'wgs84',
+            success: function (res) {
+              console.log(res);
+              //弹框
+              var locationString = res.latitude + "," + res.longitude;
+              wx.request({
+                url: 'https://apis.map.qq.com/ws/geocoder/v1/',
+                data: {
+                  "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
+                  "location": locationString
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                method: 'GET',
+                success: function (r) {
+                  var city = r.data.result.address_component.city
+                  wx.navigateTo({
+                    url: '/pages/searchResult/searchResult?city=' + city,
+                  })
+                }
+              });
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
       }
     })
+  
 
   },
 

@@ -19,6 +19,7 @@ Page({
    */
   onLoad: function(options) {
     let _this = this;
+    app.isLogin();//是否登录
     _this.getTabList(); //获取主分类
     _this.getTabListRight(_this.data.tabFalg) //获取右面
   },

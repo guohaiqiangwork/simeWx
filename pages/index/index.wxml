@@ -17,7 +17,7 @@
 <view class="">
   <view class="margin_top3 margin_left6 tab_width" catchtap="goCity">
     <view>
-      <image src="/image/switch/1.jpg" class="tabList_img"></image>
+      <image src="/image/payHot.png" class="tabList_img"></image>
     </view>
     <view class="font_size28 font_color33 margin_top2">同城</view>
   </view>

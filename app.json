@@ -12,8 +12,6 @@
     "pages/orderDetails/orderDetails",
     "pages/address/address",
     "pages/bank/bank",
-    "commpents/timeChoice/timeChoice",
-    "pages/dataSet/dataSet",
     "pages/prouctDetails/prouctDetails",
     "pages/detailedList/detailedList",
     "pages/paymentOrder/paymentOrder",
@@ -34,6 +32,9 @@
     "pages/goldDetail/goldDetail",
     "pages/cashResult/cashResult",
     "pages/cashMoney/cashMoney",
+    "pages/dataSet/dataSet",
+    "pages/modifyPhone/modifyPhone",
+    "pages/modifyName/modifyName",
     "pages/case/case"
   ],
   "window": {

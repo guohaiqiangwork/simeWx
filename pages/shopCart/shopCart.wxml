@@ -5,7 +5,7 @@
 
 <!-- 购物车  有效-->
 <view style="padding-bottom:120rpx">
-  <view class="shop_list" wx:for="{{list}}" wx:key="index">
+  <view class="shop_list" wx:for="{{list}}" wx:key="index" wx:if="{{list.length > 0}}">
     <view class="shop_list_left">
       <checkbox-group bindchange="checkboxChange" data-checkid="{{item.goodsId}}" data-ZpriceNum="{{item.num}}">
         <label>
@@ -28,6 +28,13 @@
         </view>
       </view>
     </view>
+  </view>
+  <view wx:if="{{list.length == 0}}" class="text_center">
+     <image src="/image/default/shopCar.png" class="none_img"></image>
+  <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
+  <view class="none_btn" catchtap="goHome">
+    去首页逛逛
+  </view>
   </view>
 </view>
 

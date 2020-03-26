@@ -1,0 +1,11 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title="修改用户名" show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view>
+  <input placeholder="请输入喜爱的用户名" maxlength="16" class="font_size32 input_moudel" bindinput="inputName" value="{{inputName}}"></input>
+</view>
+<view class="font_size28 font_color99 text_center margin_top2">  用户名长度不能大于16个字符</view>
+<view class="btn" catchtap="getName">
+  保存
+</view>

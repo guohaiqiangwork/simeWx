@@ -23,3 +23,15 @@
   width: 12rpx;
   height: 21rpx;
 }
+
+.bottom_btn{
+  height: 120rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 4;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(to right, #ff342d, #ff5882)
+}

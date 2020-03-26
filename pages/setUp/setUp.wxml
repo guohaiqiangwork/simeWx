@@ -14,3 +14,8 @@
     </view>
   </view>
 </view>
+
+<!-- 退出当前账号 -->
+<view class="bottom_btn" catchtap="goOutLogin">
+  退出当前账号
+</view>

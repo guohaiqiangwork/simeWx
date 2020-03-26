@@ -15,9 +15,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    // app.isLogin();//是否登录
     this.getMyDeatail() //获取个人信息
-    this.getMoney() //获取余额
-    this.getMyRedBlance()//获取金豆
+    // this.getMoney() //获取余额
+    // this.getMyRedBlance()//获取金豆
   },
   // 获取个人信息
   getMyDeatail: function() {
@@ -33,6 +34,11 @@ Page({
         if (res.data.code == '200') {
           _this.setData({
             myData: res.data.data
+          })
+          _this.getMoney()
+        } else if (res.data.code == '1500' || res.data.code == '401') {
+          wx.navigateTo({
+            url: '../logs/logs'
           })
         } else {
           wx.showModal({
@@ -57,6 +63,7 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
+          console.log(res.data.data )
           _this.setData({
             jinDou: res.data.data || 0
           })
@@ -86,6 +93,7 @@ Page({
           _this.setData({
             myMoney: res.data.data
           })
+          _this.getMyRedBlance();
         } else {
           wx.showModal({
             content: res.data.message,
@@ -108,7 +116,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.onLoad();
   },
 
   

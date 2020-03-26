@@ -24,7 +24,8 @@ Page({
    */
   onLoad: function(options) {
     this.getCartList(); //有效商品列表
-    this.getCartListNo() //失效商品列表
+    // _this.getCartListNo() //失效商品列表
+    
   },
   // 获取购物车列表有效
   getCartList: function() {
@@ -40,6 +41,11 @@ Page({
         if (res.data.code == '200') {
           _this.setData({
             list: res.data.data
+          })
+          _this.getCartListNo() //失效商品列表
+        } else if (res.data.code == '1500' || res.data.code == '401') {
+          wx.navigateTo({
+            url: '../logs/logs'
           })
         } else {
           wx.showModal({
@@ -190,12 +196,6 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -205,34 +205,11 @@ Page({
     _this.onLoad() //
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  goHome: function () {
+    wx.switchTab({
+      url: '../../pages/index/index'
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
   /**
    * 用户点击右上角分享
    */

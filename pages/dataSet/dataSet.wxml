@@ -2,21 +2,90 @@
   <navbar title='个人资料设置' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
 </view>
 
-<!-- 内容 -->
-<view class="setUp_moudel">
-  <view wx:for="{{setList}}" class="forClass" wx:key="key">
-    <picker class="setUp_moudel_list" bindchange="bindPickerChange" data-index="{{index}}" value="{{item.sexArray}}" range="{{item.sexArray}}" mode="{{item.modeVal}}">
-      <view class="width50 float-left">{{item.name}}</view>
-      <view class="width45 text_right float-right">
-        <view class="font_size26">
-          {{item.value}}
-          <image src="{{item.headImgUrl}}" class="headImgCla" hidden="{{index==0?'':'none'}}"></image>
-          <image src="/image/right.png" class="right"></image>
-        </view>
-      </view>
-    </picker>
+<view class="list_moudel">
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      头像
+    </view>
+    <view class="width50 text_right" catchtap="selectImg">
+      <image src="{{listData.avatar}}" class="headImgCla"></image>
+    </view>
   </view>
-  <!-- 纪念日组件 -->
-  <timeChoice></timeChoice>
-  
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      用户名
+    </view>
+    <view class="width50 text_right font_color0c" catchtap="goModifyName" data-value="{{listData.nickname}}">
+      <text>{{listData.nickname}}</text>
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      手机号
+    </view>
+    <view class="width50 text_right font_color0c" catchtap="goModifyPhone" data-value="{{listData.mobile}}">
+      <text>{{listData.mobile}}</text>
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      性别
+    </view>
+    <view class="width50 text_right font_color0c view_display">
+      <!-- <text>{{listData.sex}}</text> -->
+      <view class="width60"></view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{sexList}}" class="width40">
+        {{sexList[sexIndex]}}
+      </picker>
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      生日
+    </view>
+    <view class="width50 text_right font_color0c view_display">
+      <picker mode="date" value="{{birthdayDay}}" style="width:90%" start="1900-09-01" end="2999-09-01" bindchange="rememberDayPick">
+        {{birthdayDay}}
+      </picker>
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+  <view class="view_display list_one">
+    <view class="font_size32 width45 font_color33">
+      纪念日
+    </view>
+    <view class="width50 text_right font_color0c view_display">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" style="width:90%" bindcolumnchange="bindMultiPickerColumnChange" value="{{rememberDay}}" range="{{multiArray}}">
+        {{rememberDay}}
+      </picker>
+      <image src="/image/right.png" class="right"></image>
+    </view>
+  </view>
+</view>
+
+
+<!-- 纪念日moudel -->
+
+<view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+  <view class="conter_motai ">
+    <view class="text_center">
+      <view class=" font_size32 title">
+        请核对以下信息
+      </view>
+      <view class="font_size36  margin_top5">
+        {{rememberDay}}
+      </view>
+      <view class="font_size24 font_colorf4 margin_top2">
+        *纪念日1年只能修改一次
+      </view>
+    </view>
+    <view class="view_display">
+      <view class="model_btn margin_left6" catchtap="hideRule">重新填写</view>
+      <view class="model_btn margin_left3" catchtap="saveData">确认无误</view>
+    </view>
+  </view>
+
 </view>

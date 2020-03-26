@@ -36,11 +36,27 @@ App({
   nativeData: {
     token: '', //token
     openId: '',
-    useId:''
+    useId: ''
   },
   globalData: {
-    userInfo: null,
     ajax_url: 'http://service.bjxrkj.com',
-    // http://192.168.1.100:8080
+  },
+  isLogin: function() {
+    wx.request({
+      url: 'http://service.bjxrkj.com/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        if (res.data.code != '200') {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
   }
 })

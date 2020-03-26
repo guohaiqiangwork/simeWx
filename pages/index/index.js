@@ -181,20 +181,88 @@ Page({
 
   // 去搜素页面
   bindconfirm: function(e) {
-    wx.navigateTo({
-      url: '/pages/searchResult/searchResult?value=' + e.detail.value,
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
     })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: '/pages/searchResult/searchResult?value=' + e.detail.value,
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
   },
   // 去产品详情
   goProudctDetails: function(e) {
-    wx.navigateTo({
-      url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
     })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
   },
   //去活动详情
   tapBanner: function(e) {
-    wx.navigateTo({
-      url: '/pages/activityDetails/activityDetails?activeId=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: '/pages/activityDetails/activityDetails?activeId=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
     })
   },
   // 点击导航页面滚动
@@ -232,6 +300,10 @@ Page({
             content: '添加成功',
             confirmColor: '#6928E2',
             showCancel: false,
+          })
+        } else if (res.data.code == '1500' || res.data.code == '401') {
+          wx.navigateTo({
+            url: '../logs/logs'
           })
         } else {
           wx.showModal({

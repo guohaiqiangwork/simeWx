@@ -258,12 +258,28 @@ Page({
         header: {
           'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
           'client': 'APP',
+          'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
           console.log(res)
           if (res.data.code == '200') {
-        
-
+            wx.requestPayment(
+              {
+                "timeStamp": res.data.data.timeStamp.toString(),
+                "nonceStr": res.data.data.nonceStr,
+                "package": res.data.data.packageValue,
+                "signType": "MD5",
+                "paySign": res.data.data.sign,
+                'success': function (res) { 
+                  console.log(res)
+                },
+                'fail': function (res) {
+                  console.log(res)
+                 },
+                'complete': function (res) {
+                  console.log(res)
+                 }
+              });
           } else {
             wx.showModal({
               content: res.data.message,

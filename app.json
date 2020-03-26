@@ -46,8 +46,7 @@
     "enablePullDownRefresh": true
   },
   "usingComponents": {
-    "navbar": "/commpents/navbar/navbar",
-    "timeChoice": "/commpents/timeChoice/timeChoice"
+    "navbar": "/commpents/navbar/navbar"
   },
   "tabBar": {
     "selectedColor": "#E20000",

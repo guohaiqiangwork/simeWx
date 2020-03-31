@@ -72,9 +72,14 @@ Page({
   getMoneyList: function() {
     var _this = this;
     var data = {
-      memberId: wx.getStorageSync('useId'),
-      transType: _this.data.transType,
-      status: 1
+      data: {
+        memberId: wx.getStorageSync('useId'),
+        transType: _this.data.transType,
+        status: 1,
+
+      },
+      pageNum: 1,
+      pageSize: 100
     }
     wx.request({
       url: ajax_url + '/acc/flow/findAll',

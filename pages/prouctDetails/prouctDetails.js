@@ -48,7 +48,8 @@ Page({
             pictureUrlList: res.data.data.pictureUrlList,
             goodsId: res.data.data.id,//商品id
             mchId: res.data.data.mchId,//商户id
-            skuId: res.data.data.specification[0].id//规格id
+            skuId: res.data.data.specification[0].id,//规格id
+            detailsList: res.data.data.detailsList
           })
         } else {
           wx.showModal({

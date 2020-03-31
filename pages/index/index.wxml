@@ -3,10 +3,10 @@
   <navbar title='首页' show_bol='{{ishideback}}'></navbar>
 </view>
 <view class="search margin_top2">
-  <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+  <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm" placeholder-style="color: #CCCCCC; font-size: 26rpx;"></input>
   <image src="/image/icon/search.svg"></image>
 </view>
-<view class="swiper-container">
+<view class="swiper-container ">
   <swiper indicator-dots="true" indicator-active-color="#fff" autoplay circular>
     <swiper-item wx:for="{{banners}}" wx:key="id">
       <image mode="aspectFill" bindtap="tapBanner" data-id="{{item.id}}" src="{{item.carousel}}" />
@@ -15,22 +15,28 @@
 </view>
 <!-- 导航栏 -->
 <view class="">
-  <view class="margin_top3 margin_left6 tab_width" catchtap="goCity">
-    <view>
-      <image src="/image/payHot.png" class="tabList_img"></image>
-    </view>
-    <view class="font_size28 font_color33 margin_top2">同城</view>
-  </view>
-  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabList}}" wx:key="index" bindtap="toViewClick" data-code="{{item.code}}">
+  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabListTitle}}" wx:key="index" bindtap="toViewClick" data-code="{{item.sortId}}">
     <view>
       <image src="{{item.picture}}" class="tabList_img"></image>
     </view>
     <view class="font_size28 font_color33 margin_top2">{{item.name}}</view>
   </view>
+  <view class="margin_top3 margin_left6 tab_width" catchtap="goCity">
+    <view>
+      <image src="/image/city.png" class="tabList_img"></image>
+    </view>
+    <view class="font_size28 font_color33 margin_top2">同城商品</view>
+  </view>
+  <view class="margin_top3 margin_left6 tab_width" catchtap="goCity">
+    <view>
+      <image src="/image/whole.png" class="tabList_img"></image>
+    </view>
+    <view class="font_size28 font_color33 margin_top2">全部商品</view>
+  </view>
 </view>
 <!-- 新品发现 -->
-<view class="font_color00 margin_top2">
-  <view class="font_size34 text_center">*新品发现*</view>
+<view class="font_color00 margin_top2 ">
+  <view class="font_size34 text_center">- 新品发现 -</view>
   <scroll-view class='wrapper' scroll-x="true">
     <view class="new_moudel" wx:for="{{newList}}" wx:key="index" catchtap="goProudctDetails" data-productId="{{item.id}}">
       <view>
@@ -55,7 +61,7 @@
 
 <scroll-view style="height:{{winHeight}}" scroll-into-view="{{toView}}" scroll-y="true" bindscroll="scrollTo">
   <view wx:for="{{tabList}}" wx:key='index' id="{{item.id}}" wx:for-item="items">
-    <view class="text_center">- {{items.name}} -</view>
+    <view class="text_center font_size26 font_color66">- {{items.name}} -</view>
     <view>
       <image src="{{items.picture}}" class="product_img"></image>
     </view>
@@ -68,16 +74,26 @@
         <view class="product_none" hidden="{{item.inventory != 0}}">已抢光</view>
         <image src="{{item.pictureUrl}}" class="product_list_img"></image>
       </view>
-      <view class="font_size24"> {{item.goodsName}} {{items.spId}}</view>
-      <view class="font_size18">{{item.title}}</view>
-      <view class="view_display margin_top2">
-        <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-        <view catchtap="addShopCard" data-spId="{{item.pecificationId}}" data-id="{{item.id}}">
-          <image src="/image/add.png" class="new_add_img"></image>
+      <view style="background-color:#fff;margin-top:-4%">
+        <view class="font_size28"> {{item.goodsName}} {{items.spId}}</view>
+        <view class="font_size20">{{item.title}}</view>
+        <view class="view_display " style="margin-top:10rpx">
+          <view class="font_size28 font_colorf4 width80">¥{{item.price}}</view>
+          <view catchtap="addShopCard" data-spId="{{item.pecificationId}}" data-id="{{item.id}}">
+            <image src="/image/add.png" class="new_add_img"></image>
+          </view>
         </view>
+
       </view>
+
     </view>
+
+    <view style="display: inline-block;">
+      <image src="/image/moreProduct.jpg" style="width:360rpx;height:500rpx;margin-left:10rpx"></image>
+    </view>
+
   </view>
+
 </scroll-view>
 <!-- 测试 -->
 <!-- <view>

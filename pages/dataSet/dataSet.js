@@ -77,17 +77,20 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           console.log(res);
-          // if (res.data.data.sex == 1) {
-          //   res.data.data.sex = '男'
-          // } else {
-          //   res.data.data.sex = '女'
-          // }
+     
           console.log(res.data.data.sex)
+          res.data.data.mobile = res.data.data.mobile.substring(3, 0) + "^_^" + res.data.data.mobile.substring(7, 11);
+     
+          var bigTime = new Date().valueOf();
+          console.log(bigTime)
+          var timeFalgOne = Date.parse(res.data.data.rememberTime) > bigTime;
+          console.log(timeFalgOne)
           _this.setData({
             listData: res.data.data,
             sexIndex: res.data.data.sex,
             rememberDay: res.data.data.rememberDay || '请选择',
             birthdayDay: res.data.data.birthday || '请选择',
+            timeFalgOne: timeFalgOne
           })
         } else {
           wx.showModal({
@@ -101,7 +104,7 @@ Page({
 
   },
   // 保存数据
-  saveData: function() {
+  saveData: function(e) {
     var _this = this;
     if (_this.data.rememberDay == '请选择') {
       _this.data.rememberDay = '';
@@ -109,12 +112,22 @@ Page({
     if (_this.data.birthdayDay == '请选择') {
       _this.data.birthdayDay = '';
     }
-    var dataBase = {
-      birthday: _this.data.birthdayDay,
-      rememberDay: _this.data.rememberDay,
-      sex: _this.data.sexIndex,
-      id: wx.getStorageSync('useId'),
-    };
+    if (e.currentTarget.dataset.falg == 'jn'){
+      var dataBase = {
+        birthday: '',
+        rememberDay: _this.data.rememberDay,
+        sex: '',
+        id: wx.getStorageSync('useId'),
+      };
+    }else{
+      var dataBase = {
+        birthday: _this.data.birthdayDay,
+        rememberDay: _this.data.rememberDay,
+        sex: _this.data.sexIndex,
+        id: wx.getStorageSync('useId'),
+      };
+    }
+   
     wx.request({
       url: ajax_url + '/mb/updateMember',
       method: "post",
@@ -151,7 +164,7 @@ Page({
     var that = this;
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: [ 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
         //res.tempFilePaths 返回图片本地文件路径列表
@@ -191,6 +204,7 @@ Page({
             duration: 1500,
             mask: true
           });
+          _this.getUserList()//刷新数据
         } else {
           wx.showModal({
             content: json.message,
@@ -221,7 +235,7 @@ Page({
   // 电话
   goModifyPhone: function(e) {
     wx.navigateTo({
-      url: '/pages/modifyPhone/modifyPhone?name=' + e.currentTarget.dataset.value,
+      url: '/pages/modifyPhone/modifyPhone',
     })
   },
   // 男女

@@ -106,10 +106,19 @@ Page({
   },
   // 去金豆页
   goGoldDetail:function(){
-    wx.navigateTo({
-      url: '../goldDetail/goldDetail',
+    if (this.data.jinDou.amount > 0){
+      wx.navigateTo({
+        url: '../goldDetail/goldDetail',
 
-    })
+      })
+    }else{
+      wx.showModal({
+        content: '没有笑容金',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+    }
+   
   },
   
   /**

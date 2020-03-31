@@ -4,7 +4,7 @@
 
 
 <view wx:for="{{activeList}}" wx:key='index' wx:if="{{activeList.length > 0}}">
-  <image src="{{item}}" class="width100"></image>
+  <image src="{{item}}" class="width100" mode="widthFix"></image>
 </view>
 <view wx:for="{{barList}}" wx:key='index' wx:if="{{barList.length > 0}}">
   <image src="{{item.detailsImg}}" class="width100" style="height:680rpx"></image>

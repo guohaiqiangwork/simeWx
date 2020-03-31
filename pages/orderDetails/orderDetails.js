@@ -133,9 +133,8 @@ Page({
   },
   // 确认收货
   confirmOrder: function(e) {
-    var _this = this
-    var orderid = e.currentTarget.dataset.orderid;
     var _this = this;
+    var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid
     };
@@ -150,8 +149,7 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
-          _this.getMyOrder('new') //刷新数据
+          _this.getOrderDetail() //刷新数据
         } else {
           wx.showModal({
             content: res.data.message,

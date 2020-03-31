@@ -201,6 +201,7 @@ Page({
   applyRecord: function(e) {
     console.log(e.currentTarget.dataset.orderid);
     console.log(e.currentTarget.dataset.status);
+
     wx.request({
       url: ajax_url + "/order/mb/isLapse/" + e.currentTarget.dataset.orderid,
       method: "post",
@@ -211,7 +212,7 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           wx.navigateTo({
-            url: '../returnedApply/returnedApply?orderId=' + e.currentTarget.dataset.orderid + '&status=' + e.currentTarget.dataset.status,
+            url: '../returnedApply/returnedApply?orderId=' + e.currentTarget.dataset.orderid + '&status=' + e.currentTarget.dataset.status + '&falg=' + e.currentTarget.dataset.falg, 
           })
         } else {
           wx.showModal({

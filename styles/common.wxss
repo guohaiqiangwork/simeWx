@@ -246,6 +246,10 @@
   width: 80%;
 }
 
+.width85 {
+  width: 85%;
+}
+
 .width90 {
   width: 90%;
 }
@@ -294,11 +298,13 @@
   display: block;
   box-sizing: border-box;
   background: #fff;
-  border: 1rpx solid #e3e3e3;
+  border: 1rpx solid #CCCCCC;
   width: 700rpx;
   height: 60rpx;
   border-radius: 30rpx;
   padding-left: 70rpx;
+  color: #CCCCCC;
+  
 }
 
 .search image {

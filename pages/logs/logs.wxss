@@ -19,8 +19,9 @@ page {
   position: absolute;
   top: 130rpx;
   width: 670rpx;
-  margin-left: 70rpx;
+  /* margin-left: 70rpx; */
   color: #fff;
+  margin-left: 13%
 }
 
 .img_widthr {
@@ -45,6 +46,11 @@ page {
   width: 31rpx;
   height: 43rpx;
 }
+.input_left_img1 {
+  width: 36rpx;
+  height: 42rpx;
+}
+
 
 .login_btn {
   width: 570rpx;
@@ -58,7 +64,7 @@ page {
 }
 
 .bg_log_btn {
-  background-color: #eef0f36b;
+  background-color: rgba(245, 245, 245, 0.212);
 }
 
 .bglog_btn {
@@ -67,7 +73,7 @@ page {
 
 .or_left {
   border-top: 1px solid #868686;
-  width: 213rpx;
+  width: 202rpx;
   margin-right: 20rpx;
 }
 
@@ -81,7 +87,7 @@ page {
 
 .or_right {
   border-top: 1px solid #868686;
-  width: 213rpx;
+  width: 206rpx;
   margin-left: 20rpx;
 }
 

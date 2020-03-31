@@ -60,7 +60,6 @@ Page({
       success: function(res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          console.log(res)
           if (item == 'new') {
             _this.setData({
               goldList: res.data.data.records

@@ -15,6 +15,7 @@ Page({
     synthesize: '1',
     priceSorted: '',
     sell: '',
+    title: '全部商品',
     tabList: [{
       name: '综合',
       id: '001',
@@ -29,33 +30,32 @@ Page({
       falg: '1'
     }],
     tabFalg: '001',
-    searchList: [],
-    titleTop:'搜索'
+    searchList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    if (options.city){
+  onLoad: function (options) {
+    console.log(options)
+    if (options.city) {
       this.setData({
         city: options.city,
-        synthesize:''
+        synthesize: ''
       });
       this.getCityList();
-    }else{
+    } else {
       this.setData({
-        inputValue: options.value || '',
-        code: options.code || '',
-        titleTop: options.name || '搜索'
+        inputValue: options.value,
+        code: options.code
       });
       this.getSearchList() //获取查询列表
     }
 
-  
+
   },
-// 获取列表数据
-  getSearchList: function(type) {
+  // 获取列表数据
+  getSearchList: function (type) {
     let _this = this;
     var data = {
       city: _this.data.city || '',
@@ -67,9 +67,6 @@ Page({
       synthesize: _this.data.synthesize,
       meberId: wx.getStorageSync('useId')
     };
-    wx.showLoading({
-      title: '加载中...',
-    })
     wx.request({
       url: ajax_url + '/goods/getGoodsCondition',
       method: "post",
@@ -78,8 +75,9 @@ Page({
         'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
         'client': 'APP',
       },
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading();
+        console.log(res)
         if (res.data.code == '200') {
           if (type == 'new') {
             _this.setData({
@@ -113,9 +111,6 @@ Page({
       synthesize: _this.data.synthesize,
       meberId: wx.getStorageSync('useId')
     };
-    wx.showLoading({
-      title: '加载中...',
-    })
     wx.request({
       url: ajax_url + '/goods/getSameCityProduct',
       method: "post",
@@ -126,6 +121,7 @@ Page({
       },
       success: function (res) {
         wx.hideLoading();
+        console.log(res)
         if (res.data.code == '200') {
           if (type == 'new') {
             _this.setData({
@@ -188,31 +184,31 @@ Page({
       url: '/pages/prouctDetails/prouctDetails?productId=' + e.currentTarget.dataset.productid,
     })
   },
-  
+
   // 监听输入框值
-  bindconfirm: function(e) {
+  bindconfirm: function (e) {
+    console.log(e)
     var _this = this;
     _this.setData({
       inputValue: e.detail.value
     });
-    _this.data.code='';
-    _this.data.searchList =[];
-    if (_this.data.city){
+    _this.data.code = '';
+    _this.data.searchList = [];
+    if (_this.data.city) {
       _this.getCityList();
-    }else{
+    } else {
       _this.getSearchList();
     }
-    
-  },
-  
 
-  
+  },
+
+
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
-    var _this = this;
     this.setData({
       page: 1
     })
@@ -221,14 +217,14 @@ Page({
     } else {
       this.getSearchList('new');
     }
-   
+
     wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     wx.showLoading({
       title: '加载中',
     });
@@ -245,12 +241,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   // tab 切换
-  tabSwich: function(e) {
-    var _this = this;
+  tabSwich: function (e) {
     if (e.currentTarget.dataset.id == '002') {
       this.setData({
         sell: 1,

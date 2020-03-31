@@ -119,7 +119,7 @@
       去支付
     </view>
   </view>
-  <view wx:if="{{orderDetail.status == 3  }}">
+  <view wx:if="{{orderDetail.status == 3  }}" class="view_display">
     <view class="bottom_btn" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}">
       查看物流
     </view>

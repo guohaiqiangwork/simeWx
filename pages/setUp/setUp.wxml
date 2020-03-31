@@ -8,7 +8,7 @@
     <view class="width50">{{item.name}}</view>
     <view class="width45 text_right">
       <view class="font_size26">
-        {{item.phone}}
+        <text style="margin-right:5%">{{item.phone}}</text> 
         <image src="/image/right.png" class="right"></image>
       </view>
     </view>

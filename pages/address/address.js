@@ -5,7 +5,7 @@ Page({
     bar_Height: wx.getSystemInfoSync().statusBarHeight,
     ishideback: false,
     my_class: true,
-    title:'收货地址',
+    title:'我的收货地址',
     region: ['请选择'],
     items: [],
     startX: 0, //开始坐标
@@ -55,7 +55,7 @@ Page({
   newAddAddress:function(){
     this.setData({
       items:[],
-      title:'添加地址'
+      title:'添加收货地址'
     });
   },
 // 地址编辑
@@ -75,6 +75,7 @@ Page({
       region: [editList.province, editList.city, editList.area],
       isDefault: editList.isDefault,
       addAddressId: editList.id,
+      isDefaultD: editList.isDefault,
       title: '修改地址'
     });
   },

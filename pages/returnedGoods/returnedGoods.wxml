@@ -83,7 +83,7 @@
         <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:if="{{items.status == 4 }}" catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}">
           退换货
         </view>
-        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:else  catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}">
+        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:else  catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}" data-falg="tui">
           退款
         </view>
       </view>

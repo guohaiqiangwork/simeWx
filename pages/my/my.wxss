@@ -16,6 +16,7 @@
   border-radius: 50%;
   border: 4rpx solid #fff;
   margin-left: 31rpx;
+  overflow: hidden;
 }
 
 .my_heard_name {

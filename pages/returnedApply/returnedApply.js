@@ -43,6 +43,7 @@ Page({
     orderId: '', //订单id
     retReason: '', //退款原因
     userRemark: '', //用户备注
+    tuiFalg:false
   },
 
   /**
@@ -50,10 +51,17 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    // var options = {
-    //   orderId: "1242272983817445378",
-    //   status: "4"
-    // }
+    if (options.falg == 'tui'){
+      this.setData({
+        tuiFalg:true,
+        retReason: this.data.reasonArray[0].text,
+        applyServer: this.data.serviceArray[2].value,
+        index:2,
+        index1:0,
+        servelNull: '0',
+        reasonNull: '0'
+      })
+   }
     this.setData({
       orderId: options.orderId
     });
@@ -140,7 +148,7 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     console.log(this.data.reasonArray[e.detail.value].text)
     this.setData({
-      index: e.detail.value,
+      index1: e.detail.value,
       reasonNull: '0',
       retReason: this.data.reasonArray[e.detail.value].text
     })
@@ -282,6 +290,7 @@ Page({
 
   // 提交申请
   getRefund: function() {
+    var _this = this;
     if (!_this.data.applyServer) {
       wx.showModal({
         content: '请检查申请服务类型',

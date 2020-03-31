@@ -9,9 +9,12 @@
   </image>
   <view class="mouerl_hearder">
     <view class="view_display padding_top2">
-      <image src="{{myData.avatar}}" class="my_heard_img"></image>
+   <view class="my_heard_img">
+     <image src="{{myData.avatar}}"  style="width:136rpx;height:144rpx"></image>   
+   </view>
+      
       <view class="my_heard_name margin_top3">{{myData.nickname}}</view>
-      <view class="my_heard_btn margin_top4 margin_left2" hidden="!{{myData.idcard}}">已实名认证</view>
+      <view class="my_heard_btn margin_top4 margin_left2" hidden="{{!myData.idcard}}">已实名认证</view>
     </view>
     <view class="view_display header_money">
       <view class="font_colorff" catchtap="goBalance">
@@ -26,7 +29,7 @@
     <view class="view_display font_colorff jin_dou" >
       <view class="font_size28 width20">笑容金豆</view>
       <view class="font_size40 margin_left2 width50" style="margin-top:-10rpx">{{jinDou.amount}}</view>
-      <view class="font_size24" wx:if="{{jinDou.amount > 0}}" catchtap="goGoldDetail">立即查看></view>
+      <view class="font_size24"  catchtap="goGoldDetail">立即查看  <image src="/image/rightFF.png" style="width:11rpx;height:19rpx"></image></view>
     </view>
   </view>
 
@@ -36,10 +39,10 @@
     <view class="view_display  my_order_title">
       <view class="width50 view_display">
         <view class="title_left"></view>
-        <view class="margin_left2">我的订单</view>
+        <view class="margin_left2 font_size30">我的订单</view>
       </view>
       <view class="width50 text_right font_size24 font_color99" catchtap="goMyOrder" data-falg="001" data-status="">
-        查看更多》
+        查看更多 <image src="/image/right99.png" style="width:11rpx;height:19rpx"></image>
       </view>
     </view>
     <!-- 我的订单导航 -->

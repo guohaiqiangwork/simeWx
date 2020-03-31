@@ -2,7 +2,12 @@
   <navbar title='购物车' show_bol='{{ishideback}}'></navbar>
 </view>
 
-
+<view class="title_top" catchtap="editShop" hidden="{{!editFalg}}">
+  编辑
+</view>
+<view class="title_top" catchtap="cancelEnit" hidden="{{editFalg}}">
+  完成
+</view>
 <!-- 购物车  有效-->
 <view style="padding-bottom:120rpx">
   <view class="shop_list" wx:for="{{list}}" wx:key="index" wx:if="{{list.length > 0}}">
@@ -30,11 +35,11 @@
     </view>
   </view>
   <view wx:if="{{list.length == 0}}" class="text_center">
-     <image src="/image/default/shopCar.png" class="none_img"></image>
-  <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
-  <view class="none_btn" catchtap="goHome">
-    去首页逛逛
-  </view>
+    <image src="/image/default/shopCar.png" class="none_img"></image>
+    <view class="font_size26 margin_top2 ">您的购物车还是空的哦 ~</view>
+    <view class="none_btn" catchtap="goHome">
+      去首页逛逛
+    </view>
   </view>
 </view>
 
@@ -43,7 +48,7 @@
   <view class="view_display margin_left2">
     <view class="over_falg">失效</view>
     <view class="font_size28 font_color33 margin_left2" style="line-height:1">失效商品</view>
-    <view class="font_size28 font_color33" style="line-height:1;margin-left:320rpx" catchtap="deleteShopData" data-falg="over"> 清空失效商品</view>
+    <!-- <view class="font_size28 font_color33" style="line-height:1;margin-left:320rpx" catchtap="deleteShopData" data-falg="over"> 清空失效商品</view> -->
   </view>
   <!-- 列表 -->
   <view class="shop_list" wx:for="{{noList}}" wx:key="index">
@@ -63,7 +68,7 @@
 
 </view>
 
-<view class="shop_foot">
+<view class="shop_foot" hidden="{{!editFalg}}">
   <view class="shop_foot_left">
     <checkbox-group bindchange="checkedAll">
       <label>
@@ -82,4 +87,19 @@
   <view class="shop_foot_right" catchtap="goConfirmOrder">
     结算（{{totalNumber}}）
   </view>
+</view>
+
+
+<view class="shop_foot" hidden="{{editFalg}}">
+  <view class="enit_foot_left">
+    <checkbox-group bindchange="checkedAll">
+      <label>
+        <checkbox checked="{{checked_all}}" color='#3B9EF5' />
+      </label>
+      <text class="margin_left2">全选</text>
+    </checkbox-group>
+  </view>
+  <view catchtap="cancelEnit" class="enitBtn margin_left2" style="color:#F42300;border:1px solid #F42300">取消操作</view>
+  <view class="enitBtn" style="margin-left:2%" catchtap="deleteShop">确认删除</view>
+
 </view>

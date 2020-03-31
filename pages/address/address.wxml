@@ -15,7 +15,7 @@
   <view class="address_list">
     <view class="address_list_left">所在地区</view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-      <view class="picker font_size30">
+      <view class="picker font_size30" style="color:#a0a0a0;font-family:UICTFontTextStyleBody;">
         {{region[0]}}{{region[1]}}{{region[2]}}
       </view>
     </picker>
@@ -25,7 +25,7 @@
     <input class="address_list_right" value="{{address}}" name="input" placeholder="街道、楼牌号等" bindinput="addresInput" />
   </view>
   <view class="address_list" style="margin-top:30rpx">
-    <view class="address_list_left margin_left2">设置默认地址</view>
+    <view class="address_list_left margin_left2" style="padding-left: 2%;">设置默认地址</view>
     <switch bindchange="switch2Change" style="margin-left:50%" checked="{{isDefaultD}}" />
   </view>
 
@@ -45,12 +45,12 @@
           <!-- <view class="content" bindtap='goDetail'>{{item.content}}</view> -->
           <view class="content" catchtap="replaceAddress" data-id="{{item.id}}">
             <view class="view_display">
-              <view class="width70">
+              <view class="width80">
                 <view class="view_display">
-                  <view class="font_color5A font_size30">
+                  <view class="font_color5A font_size30" >
                     {{item.receiver}}
                   </view>
-                  <view class="font_size24 margin_left2">
+                  <view class="font_size24 margin_left2" style="margin-top:1%">
                     {{item.mobile}}
                   </view>
                   <view class="left_mo_ren margin_left2" hidden="{{item.isDefault != 1}}">
@@ -61,7 +61,7 @@
                   {{item.province}}{{item.city}}{{item.area}}{{item.address}}
                 </view>
               </view>
-              <view class="width30" catchtap="editAddress" data-item="{{item}}">
+              <view class="width20" catchtap="editAddress" data-item="{{item}}">
                 <view class="right_btn">编辑</view>
               </view>
             </view>

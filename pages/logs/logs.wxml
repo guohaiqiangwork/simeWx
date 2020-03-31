@@ -3,7 +3,7 @@
 </view>
 <view class="content">
   <view catchtap="goHome">
-    <image src="/image/rightlog.png" class="img_widthr"></image>
+    <image src="/image/rightlog.png" class="img_widthr" style="margin-left:-5%"></image>
   </view>
   <view>
     <image src="/image/logo3.png" class="img_width"></image>
@@ -14,12 +14,12 @@
     <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入手机号码" maxlength="11" bindinput="phoneInput" />
   </view>
   <view class="input_log margin_top8">
-    <image src="/image/yzm.png" class="input_left_img"></image>
-    <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入验证码" maxlength="6" bindinput="codeInput" />
-    <view class="font_colorff font_size26" catchtap="getYzm">{{yzmButtonName}}</view>
+    <image src="/image/yzm.png" class="input_left_img1"></image>
+    <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入验证码" maxlength="6" bindinput="codeInput" style="width:60%" />
+    <view class="font_colorff font_size26 width30" catchtap="getYzm">{{yzmButtonName}}</view>
   </view>
 
-  <view class="login_btn {{(phone.length == 11 && code.length == 6) ? 'bglog_btn' :  'bg_log_btn' }}}" catchtap="goLogin">
+  <view class="login_btn {{(phone.length == 11 && code.length == 6) ? 'bglog_btn':'bg_log_btn' }}" catchtap="goLogin">
     登录
   </view>
   <view class="font_size24 font_color66 margin_top2 margin_left4 view_display">
@@ -27,16 +27,16 @@
     <view class="font_color66"> 《用户协议》</view>
   </view>
   <!-- 微信登录 -->
-  <view class="view_display" style="margin-top:120rpx">
+  <view class="view_display" style="margin-top:25%">
     <view class="or_left"></view>
     <view class="or_center">or</view>
     <view class="or_right"></view>
   </view>
 
-  <button class='wx_btn' style="width:90rpx;height:90rpx;background-color: rgba(0, 0, 0, 0)" type='primary' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' >
+  <button class='wx_btn' style="width:90rpx;height:90rpx;background-color: rgba(0, 0, 0, 0);margin-top:8%" type='primary' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>
     <!-- <image src="/image/wx2.png" class="img_width90" catchtap="goWxLogin"></image> -->
   </button>
 
 
-  <view class="font_size26" style="margin-left:240rpx;margin-top:140rpx">微信登录</view>
+  <view class="font_size26" style="margin-left:36%;margin-top:25%">微信登录</view>
 </view>

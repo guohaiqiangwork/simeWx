@@ -7,8 +7,11 @@
     <view class="font_size32 width45 font_color33">
       头像
     </view>
-    <view class="width50 text_right" catchtap="selectImg">
-      <image src="{{listData.avatar}}" class="headImgCla"></image>
+    <view class="" style="margin-left:40%" catchtap="selectImg">
+      <view class="headImgCla">
+         <image src="{{listData.avatar}}" style="width:60rpx;height:64rpx;"></image>
+      </view>
+   
     </view>
   </view>
   <view class="view_display list_one">
@@ -24,7 +27,7 @@
     <view class="font_size32 width45 font_color33">
       手机号
     </view>
-    <view class="width50 text_right font_color0c" catchtap="goModifyPhone" data-value="{{listData.mobile}}">
+    <view class="width50 text_right font_color0c" catchtap="goModifyPhone" >
       <text>{{listData.mobile}}</text>
       <image src="/image/right.png" class="right"></image>
     </view>
@@ -58,10 +61,10 @@
       纪念日
     </view>
     <view class="width50 text_right font_color0c view_display">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" style="width:90%" bindcolumnchange="bindMultiPickerColumnChange" value="{{rememberDay}}" range="{{multiArray}}">
-        {{rememberDay}}
+      <picker mode="multiSelector"  disabled="{{timeFalgOne}}"  bindchange="bindMultiPickerChange" style="width:90%" bindcolumnchange="bindMultiPickerColumnChange" value="{{rememberDay}}" range="{{multiArray}}">
+        {{rememberDay}} 
       </picker>
-      <image src="/image/right.png" class="right"></image>
+      <image src="/image/right.png" class="right" hidden="{{timeFalgOne}}" ></image>
     </view>
   </view>
 </view>
@@ -84,7 +87,7 @@
     </view>
     <view class="view_display">
       <view class="model_btn margin_left6" catchtap="hideRule">重新填写</view>
-      <view class="model_btn margin_left3" catchtap="saveData">确认无误</view>
+      <view class="model_btn margin_left3" catchtap="saveData" data-falg="jn">确认无误</view>
     </view>
   </view>
 

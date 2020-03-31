@@ -57,6 +57,7 @@ picker {
   height: 60rpx;
   margin-right: 10rpx;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .list_one {
@@ -70,7 +71,7 @@ picker {
   width: 12rpx;
   height: 21rpx;
   margin-left: 20rpx;
-  margin-top: 12rpx;
+  margin-top: 5%;
 }
 
 .font_color0c {

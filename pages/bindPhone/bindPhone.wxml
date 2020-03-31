@@ -14,9 +14,9 @@
     <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入手机号码" maxlength="11" bindinput="phoneInput" />
   </view>
   <view class="input_log margin_top8">
-    <image src="/image/yzm.png" class="input_left_img"></image>
-    <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入验证码" maxlength="6" bindinput="codeInput" />
-    <view class="font_colorff font_size26" catchtap="getYzm">{{yzmButtonName}}</view>
+    <image src="/image/yzm.png" class="input_left_img1"></image>
+    <input type="number" class="font_size30 margin_left2 font_colorff" placeholder="请输入验证码" maxlength="6" bindinput="codeInput" style="width:60%"  />
+    <view class="font_colorff font_size26 width30" catchtap="getYzm">{{yzmButtonName}}</view>
   </view>
 
   <view class="login_btn {{(phone.length == 11 && code.length == 6) ? 'bglog_btn' :  'bg_log_btn' }}}" catchtap="goLogin">

@@ -1,8 +1,8 @@
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
-  <navbar title='{{titleTop}}' show_bol='{{ishideback}}' my_class='{{true}}'></navbar>
+  <navbar title='{{title}}' show_bol='{{ishideback}}' my_class='{{true}}'></navbar>
 </view>
 <view style="background-color:#fff" class="top_moudel">
-  <view class="search" style="padding-top:5%">
+  <view class="search padding_top2">
     <input type="text" placeholder="输入搜索关键词" value="{{inputValue}}" bindinput="bindinput" bindconfirm="bindconfirm" ></input>
     <image src="/image/icon/search.svg"></image>
   </view>
@@ -27,7 +27,7 @@
     <view class="font_size24"> {{item.goodsName}}</view>
     <!-- <view class="font_size18">{{item.falg}}</view> -->
     <view class="view_display margin_top2">
-      <view class="font_size28 font_colorf4 width80">¥{{item.price}}</view>
+      <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
       <view>
         <image src="/image/add.png" class="new_add_img" catchtap="addShopCard" data-spId="{{item.pecificationId}}"  data-id="{{item.id}}"></image>
       </view>
@@ -35,7 +35,7 @@
   </view>
 </scroll-view>
 <!-- 没有数据 -->
-<view  wx:else class="text_center box_bg" style="margin-top:30%">
-  <image src="/image/default/search.png" class="none_img"></image>
-  <view class="font_size26 margin_top2 ">您没有搜索到相关宝贝哦~</view>
+<view class='box_bg' wx:else>
+  <!-- <image class="bg_nodata" src='/images/listnone_order.png'></image> -->
+  <view class='text_nodata'>您还没有订单哦</view>
 </view>

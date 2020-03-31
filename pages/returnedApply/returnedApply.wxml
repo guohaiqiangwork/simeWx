@@ -13,7 +13,7 @@
     <view class="font_size28">
       <text class="font_colorf4">*</text> 申请服务：</view>
     <view>
-      <picker bindchange="bindPickerChange"  range="{{serviceArray}}" range-key="text">
+      <picker bindchange="bindPickerChange" disabled="{{tuiFalg}}"  range="{{serviceArray}}" range-key="text">
         <view class="picker font_size28 font_color66">
           {{servelNull?serviceArray[index].text:'请选择申请服务'}}
         </view>
@@ -25,9 +25,9 @@
       <text class="font_colorf4">*</text> 申请原因:
     </view>
     <view>
-      <picker bindchange="bindPickeR" value="{{reaIndex}}" range="{{reasonArray}}" range-key="text">
+      <picker bindchange="bindPickeR" disabled="{{tuiFalg}}" value="{{reaIndex}}" range="{{reasonArray}}" range-key="text">
         <view class="picker font_size28 font_color66 margin_left2">
-          {{reasonNull?reasonArray[index].text:'请选择申请原因'}}
+          {{reasonNull?reasonArray[index1].text:'请选择申请原因'}}
         </view>
       </picker>
     </view>
@@ -40,7 +40,7 @@
     </view>
   </view>
   <!-- 图片上传 -->
-  <view>
+  <view hidden="{{tuiFalg}}">
     <view class="view_display">
       <view class="up_img_moudel" data-id='1' catchtap="selectImg">
         <image src="{{upimgPathUrl1}}" class="up_img"></image>

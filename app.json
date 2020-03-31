@@ -1,8 +1,9 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/payResult/payResult",
-    "pages/my/my",
+      "pages/my/my",
     "pages/setUp/setUp",
     "pages/setPassword/setPassword",
     "pages/searchResult/searchResult",
@@ -25,7 +26,7 @@
     "pages/realName/realName",
     "pages/bindPhone/bindPhone",
     "pages/activityDetails/activityDetails",
-    "pages/shopCart/shopCart",
+      "pages/shopCart/shopCart",
     "pages/logistics/logistics",
     "pages/returnedGoods/returnedGoods",
     "pages/returnedApply/returnedApply",
@@ -35,6 +36,7 @@
     "pages/dataSet/dataSet",
     "pages/modifyPhone/modifyPhone",
     "pages/modifyName/modifyName",
+    "pages/productList/productList",
     "pages/case/case"
   ],
   "window": {

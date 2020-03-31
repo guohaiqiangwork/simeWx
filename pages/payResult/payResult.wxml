@@ -8,7 +8,7 @@
   <view wx:if="{{hotMoney}}">
     <image src="/image/payHot.png" class="image_width1"></image>
     <view class="font_size36">恭喜您！ 成功获得
-      <text class="font_colorf4"></text>金豆 </view>
+      <text class="font_colorf4">{{hotMoney}}</text>金豆 </view>
   </view>
 
   <view class="btn" catchtap="goHome">

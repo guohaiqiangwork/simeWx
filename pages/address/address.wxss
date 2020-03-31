@@ -16,6 +16,7 @@
 .address_list_right {
   font-size: 30rpx;
   color: #a0a0a0;
+  margin-left: 1%
 }
 
 .goPay {
@@ -99,7 +100,7 @@
 .right_btn {
   height: 70rpx;
   border-left: 1px solid #dbdbdb;
-  padding-left: 50rpx;
+  padding-left: 30rpx;
   margin-top: 30rpx;
   margin-left: 20rpx;
   line-height: 3;

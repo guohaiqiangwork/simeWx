@@ -25,10 +25,14 @@
 
 <!--列表 -->
 <scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
-  <view class="view_display font_size24 padding_top2" wx:for="{{moneyList}}" wx:key="index">
+  <view class="view_display font_size24 padding_top2" wx:if="{{moneyList.length > 0}}"  wx:for="{{moneyList}}" wx:key="index">
     <view class="width30 text_center">{{item.recordDesc}}</view>
     <view class="width40">{{item.createTime}}</view>
     <view class="width20 text_right"> <text wx:if="{{item.transType == 1}}">+</text> <text wx:else>-</text> ¥{{item.amount}}</view>
   </view>
 </scroll-view>
+ <view wx:if="{{moneyList.length == 0}}" class="text_center">
+    <image src="/image/default/shopCar.png" class="none_img"></image>
+    <view class="font_size26 margin_top2 ">您的购物车还是空的哦 ~</view>
+  </view>
 

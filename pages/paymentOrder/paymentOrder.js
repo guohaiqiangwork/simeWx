@@ -243,6 +243,12 @@ Page({
               confirmColor: '#6928E2',
               showCancel: false,
             })
+          setTimeout(function(){
+            wx.navigateTo({
+              url: '../setPassword/setPassword'
+            })
+          },500)
+          
           }
         }
       })
@@ -263,23 +269,19 @@ Page({
         success: function (res) {
           console.log(res)
           if (res.data.code == '200') {
-            wx.requestPayment(
-              {
-                "timeStamp": res.data.data.timeStamp.toString(),
-                "nonceStr": res.data.data.nonceStr,
-                "package": res.data.data.packageValue,
-                "signType": "MD5",
-                "paySign": res.data.data.sign,
-                'success': function (res) { 
-                  console.log(res)
-                },
-                'fail': function (res) {
-                  console.log(res)
-                 },
-                'complete': function (res) {
-                  console.log(res)
-                 }
-              });
+            wx.requestPayment({
+              "timeStamp": res.data.data.timeStamp.toString(),
+              "nonceStr": res.data.data.nonceStr,
+              "package": res.data.data.packageValue,
+              "signType": "MD5",
+              "paySign": res.data.data.sign,
+              "success": function (res) {
+                console.log(res)
+              },
+              "fail": function (res) {
+              }
+            })
+
           } else {
             wx.showModal({
               content: res.data.message,

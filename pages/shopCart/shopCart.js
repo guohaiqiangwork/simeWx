@@ -18,6 +18,8 @@ Page({
     list: [],
     shopCarId: [], //购物车Id
     curTouchGoodStore: 99, //最大购买数量
+    editFalg: true,
+    deleArr:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,7 +27,7 @@ Page({
   onLoad: function(options) {
     this.getCartList(); //有效商品列表
     // _this.getCartListNo() //失效商品列表
-    
+
   },
   // 获取购物车列表有效
   getCartList: function() {
@@ -156,22 +158,18 @@ Page({
   },
   // 删除商品
   deleteShop: function(list) {
-    // var data = {
-    //   ids: list,
-    // };
     var _this = this;
-    if (list.length == 0) {
+    if (_this.data.deleArr.length == 0) {
       wx.showModal({
         content: '请选择需要删除的内容',
         confirmColor: '#6928E2',
         showCancel: false,
       })
-      return;
     }
     wx.request({
       url: ajax_url + '/shoppingCart/delCarts',
       method: "post",
-      data: list,
+      data: _this.data.deleArr,
       header: {
         'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
         'client': 'APP',
@@ -179,13 +177,11 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           wx.showModal({
-            content: res.data.message,
+            content: '删除成功',
             confirmColor: '#6928E2',
             showCancel: false,
           });
-          _this.setData({
-            noList: []
-          });
+          _this.getCartList(); //有效商品列表
         } else {
           wx.showModal({
             content: res.data.message,
@@ -196,16 +192,36 @@ Page({
       }
     })
   },
-
+  // 编辑
+  editShop: function() {
+    this.setData({
+      editFalg: false
+    })
+  },
+  // 取消操作
+  cancelEnit: function() {
+    this.setData({
+      editFalg: true
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     var _this = this;
     _this.onLoad() //
+    // 全选回复默认
+    _this.setData({
+      arr: [],
+      priceArr: [],
+      checked_all: false,
+      deleArr: [],
+      totalNumber: 0, //选中商品数量
+      totalPrice: 0 //选中商品价格
+    })
   },
 
-  goHome: function () {
+  goHome: function() {
     wx.switchTab({
       url: '../../pages/index/index'
     })
@@ -241,6 +257,7 @@ Page({
               skuId: list[i].pecificationId,
               shopCarId: list[i].id
             }
+            that.data.deleArr.push(list[i].id); //选中商品删除数组
             // that.data.shopCarId.push(list[i].id)//购物车id
             that.data.arr.push(buyDataObj); //选中商品数组
             that.data.priceArr.push(list[i].price * zpricenum); //价格数组
@@ -265,7 +282,8 @@ Page({
           if (list[i].checkeditem) {
             for (var j = 0; j < that.data.arr.length; j++) {
               if (list[i].goodsId == that.data.arr[j].goodsId) {
-                list[i].checkeditem = false
+                list[i].checkeditem = false;
+                that.data.deleArr.splice(j, 1); //选中商品删除数组
                 that.data.arr.splice(j, 1); //删除选中
                 that.data.priceArr.splice(j, 1); //删除金额
               }
@@ -309,7 +327,6 @@ Page({
     var list = that.data.list
     var listLen = list.length
     var priceArr = that.data.priceArr;
-
     // console.log(valLen)
     if (valLen != 0) {
       console.log(that.data.arr + '全选选中')
@@ -321,6 +338,7 @@ Page({
           skuId: list[i].pecificationId,
           shopCarId: list[i].id
         }
+        that.data.deleArr.push(list[i].id);
         that.data.arr.push(buyDataObj); //ID数组
         that.data.priceArr.push(that.data.list[i].price * that.data.list[i].num) //价格数组
       }
@@ -348,6 +366,7 @@ Page({
         priceArr: [],
         checked_all: false,
         list: list,
+        deleArr:[],
         totalNumber: 0, //选中商品数量
         totalPrice: 0 //选中商品价格
       })

@@ -32,6 +32,7 @@ Page({
     })
   },
   onLoad: function() {
+    this.getTab()//获取首页头部分类
     this.getHot() //获取分类及产品
     this.goWxLogin() //获取openid
     this.getLunBo() //获取首页轮播
@@ -49,7 +50,6 @@ Page({
           url: ajax_url + '/wx/miniLogin/' + res.code,
           method: "get",
           success: function(res) {
-            console.log(res)
             app.nativeData.openId = res.data.data.openid;
             app.nativeData.sessionKey = res.data.data.sessionKey
             wx.getUserInfo({
@@ -140,6 +140,28 @@ Page({
         if (res.data.code == '200') {
           _this.setData({
             tabList: res.data.data
+          })
+        } else {
+          wx.showModal({
+            content: res.data.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+      }
+    })
+  },
+  // 获取tab
+  getTab:function(){
+    var _this = this;
+    wx.request({
+      url: ajax_url + '/tbGoodsPictureApi/selectPrice',
+      method: "get",
+      success: function (res) {
+        console.log(res)
+        if (res.data.code == '200') {
+          _this.setData({
+            tabListTitle: res.data.data
           })
         } else {
           wx.showModal({
@@ -292,11 +314,33 @@ Page({
   },
   // 点击导航页面滚动
   toViewClick: function(e) {
-
-    wx.pageScrollTo({
-      scrollTop: 850 * parseInt(e.currentTarget.dataset.code),
-      duration: 200
-    });
+    console.log(e.currentTarget.dataset.code);
+    return
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: '/pages/productList/productList?value=' + e.detail.value,
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
 
 
   },

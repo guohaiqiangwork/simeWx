@@ -14,7 +14,7 @@ view {
   width: 750rpx;
   height: 320rpx;
   position: relative;
-  margin-top: 10rpx;
+  margin-top: 30rpx;
 }
 
 .swiper-container swiper {
@@ -30,6 +30,7 @@ view {
 .tabList_img {
   width: 100rpx;
   height: 100rpx;
+  border-radius: 50%
 }
 
 .tab_width {
@@ -61,8 +62,8 @@ view {
 }
 
 .new_add_img {
-  width: 46rpx;
-  height: 46rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .index_yq_img {

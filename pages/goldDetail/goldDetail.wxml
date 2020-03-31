@@ -7,12 +7,12 @@
   <view class="top_conternt">
     <view class="view_display padding_top3">
       <view class="width40"></view>
-      <view class="width20 font_size26 font_colorff">笑容金豆</view>
+      <view class="width20 font_size30 font_colorff">笑容金豆</view>
       <view class="width33 font_size26 font_colorff text_right"catchtap="moudelExplain" >金豆说明</view>
     </view>
     <view class="view_display">
       <view class="width40"></view>
-      <view class="money">{{jinDou}}</view>
+      <view class="money">{{jinDou.amount}}</view>
       <image src="/image/jindou.png" class="img_width"></image>
     </view>
   </view>
@@ -47,12 +47,18 @@
 <!-- 数据展示 -->
 <scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
   <!-- 列表 -->
-  <view class="view_display font_size24 text_center padding_top3" wx:for="{{goldList}}" wx:key="index">
+  <view class="view_display font_size28 text_center" style="padding-top:8%" wx:for="{{goldList}}" wx:key="index"  wx:if="{{goldList.length > 0}}">
     <view class="width30">{{item.remark}}</view>
     <view class="width40">{{item.useTime}}</view>
-    <view class="width30">{{item.amount}}</view>
+    <view class="width30"><text wx:if="{{item.type == 1}}">+</text> <text wx:if="{{item.type == 2}}">-</text> {{item.amount}}</view>
   </view>
   <!-- <view>
     <image src=""></image>
   </view> -->
+   <view wx:if="{{goldList.length == 0}}" class="text_center">
+     <image src="/image/default/liushui.png" class="none_img"></image>
+  <view class="font_size26 margin_top2 ">暂无流水~</view>
+
+  </view>
 </scroll-view>
+

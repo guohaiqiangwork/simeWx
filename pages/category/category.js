@@ -70,7 +70,7 @@ Page({
   goSearchResult(e){
     console.log(e)
     wx.navigateTo({
-      url: '/pages/searchResult/searchResult?code=' + e.currentTarget.dataset.id,
+      url: '/pages/searchResult/searchResult?code=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name,
     })
   },
   /**

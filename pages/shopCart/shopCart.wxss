@@ -25,7 +25,7 @@ page {
   margin-top: 20rpx;
   display: flex;
   padding-top: 30rpx;
-  padding-left: 20rpx
+  padding-left: 20rpx;
 }
 
 .shop_list_left {
@@ -148,30 +148,64 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   background-color: #fafafa;
   display: flex;
   padding-left: 30rpx;
-  z-index: 999
+  z-index: 999;
 }
 
 .shop_foot_left {
   display: flex;
   width: 30%;
   margin-top: 24rpx;
+  font-size: 26rpx
 }
+
 .shop_foot_left_text {
   font-size: 24rpx;
   color: #333;
   margin-top: 10rpx;
   margin-left: 20rpx;
 }
-.shop_foot_content{
+
+.shop_foot_content {
   display: flex;
   width: 33%;
-   margin-top: 24rpx;
+  margin-top: 24rpx;
 }
-.shop_foot_right{
+
+.shop_foot_right {
   background: linear-gradient(to right, #ff342d, #ff5882);
   width: 33%;
   color: #fff;
   text-align: center;
   font-size: 36rpx;
-  line-height: 3
+  line-height: 3;
+}
+
+/*编辑 */
+
+.title_top {
+  background: linear-gradient(to right, #ff342e, #ff5882);
+  color: #fff;
+  text-align: right;
+  font-size: 30rpx;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-right: 7%;
+}
+
+.enitBtn{
+  width: 160rpx;
+  height: 57rpx;
+  border-radius: 40rpx;
+  border: 1px solid #707070;
+  text-align: center;
+  line-height: 2.3;
+  margin-top: 2%;
+  font-size: 26rpx
+}
+
+.enit_foot_left{
+  display: flex;
+  width: 45%;
+  margin-top: 4%;
+  font-size: 24rpx;
 }

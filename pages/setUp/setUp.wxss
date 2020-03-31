@@ -1,7 +1,7 @@
 /* pages/setUp/setUp.wxss */
 .setUp_moudel{
   width: 710rpx;
-  height: 627rpx;
+  height: 465rpx;
   background-color: #ffffff;
   margin-top: 22rpx;
   margin-left: 20rpx;

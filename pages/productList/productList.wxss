@@ -12,7 +12,7 @@
 }
 .order_fcolor {
  font-weight: 700;
-   font-size: 30rpx
+   font-size: 34rpx
 }
 
 .product_list_moudel{

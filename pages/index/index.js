@@ -223,6 +223,12 @@ Page({
         wx.hideToast()
         if (res.data.code == '200') {
           if (e.currentTarget.dataset.type == 'city') {
+            wx.showToast({
+              title: '获取位置',
+              icon: 'loading',
+              duration: 10000
+            })
+
             wx.getLocation({
               type: 'wgs84',
               success: function(res) {
@@ -240,6 +246,7 @@ Page({
                   },
                   method: 'GET',
                   success: function(r) {
+                    wx.hideToast()
                     var city = r.data.result.address_component.city
                     wx.navigateTo({
                       url: '/pages/productList/productList?city=' + city,

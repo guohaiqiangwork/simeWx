@@ -284,4 +284,22 @@ Page({
     }
   },
 
+  // 倒叙
+  listPaix: function () {
+    if (this.data.priceSorted == 0) {
+      var aSorrted = 1
+    } else {
+      var aSorrted = 0
+    }
+    this.setData({
+      priceSorted: aSorrted
+    })
+    this.data.searchList = [];
+    if (this.data.city) {
+      this.getCityList();
+    } else {
+      this.getSearchList();
+    }
+  }
+
 })

@@ -79,8 +79,6 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
-        wx.hideLoading();
-        console.log(res)
         if (res.data.code == '200') {
           if (type == 'new') {
             _this.setData({
@@ -123,7 +121,6 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
-        wx.hideLoading();
         console.log(res)
         if (res.data.code == '200') {
           if (type == 'new') {
@@ -269,7 +266,7 @@ Page({
       })
     } else {
       _this.setData({
-        priceSorted: '',
+        priceSorted: 1,
         sell: '',
         synthesize: 1,
         page: 1
@@ -285,5 +282,23 @@ Page({
       _this.getSearchList();
     }
   },
+
+  // 倒叙
+  listPaix:function(){
+    if (this.data.priceSorted == 0) {
+      var aSorrted = 1
+    } else {
+      var aSorrted = 0
+    }
+    this.setData({
+      priceSorted: aSorrted
+    })
+    this.data.searchList = [];
+    if (this.data.city) {
+      this.getCityList();
+    } else {
+      this.getSearchList();
+    }
+  }
 
 })

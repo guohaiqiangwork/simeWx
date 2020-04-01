@@ -229,6 +229,10 @@
 .width50 {
   width: 50%;
 }
+.width54 {
+  width: 54%;
+}
+
 
 .width55 {
   width: 55%;
@@ -236,6 +240,9 @@
 
 .width60 {
   width: 60%;
+}
+.width69 {
+  width: 69%;
 }
 
 .width70 {
@@ -303,7 +310,7 @@
   height: 60rpx;
   border-radius: 30rpx;
   padding-left: 70rpx;
-  color: #CCCCCC;
+  color: #000000;
   
 }
 

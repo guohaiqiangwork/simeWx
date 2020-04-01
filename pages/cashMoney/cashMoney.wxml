@@ -24,7 +24,7 @@
       <view class="view_display margin_top3">
         <view style="font-size:60rpx">¥</view>
         <view class="margin_top3 margin_left2" hidden="{{!payMoudel}}">
-          <input placeholder="请填写金额"  value="{{moneyNumber}}" type="number" bindinput="moneyNumber"/>
+          <input placeholder="请填写金额"  value="{{moneyNumber}}" type="number" bindinput="moneyNumber" style="font-size:45rpx"/>
         </view>
       </view>
     </view>

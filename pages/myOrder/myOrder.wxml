@@ -18,7 +18,7 @@
   <view class="product_moudel" wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}" wx:key="index" wx:for-item="items">
     <!-- 标题 -->
     <view class="title_order_border">
-      <view class="width20 padding_left2">
+      <view class="width20">
         <image src="{{items.mchLogo}}" class="img_title"></image>
       </view>
       <view class="font_size28 width50 margin_top2 view_width_hidden">{{items.mchName}}</view>
@@ -32,13 +32,13 @@
         <view class="font_size28 margin_top2 font_colorf4">待收货</view>
       </view>
       <view class="view_display width30" wx:if="{{items.status == 4}}">
-        <view class="font_size28 margin_top2">已完成</view>
+        <view class="font_size28 margin_top2" style="margin-left:24%">已完成</view>
         <view catchtap="delOrder" data-orderId="{{items.orderId}}">
           <image src="/image/orderD.png" class="del_img"></image>
         </view>
       </view>
       <view class="view_display width30" wx:if="{{items.status == 5}}">
-        <view class="font_size28 margin_top2">已取消</view>
+        <view class="font_size28 margin_top2" style="margin-left:24%">已取消</view>
         <view catchtap="delOrder" data-orderId="{{items.orderId}}">
           <image src="/image/orderD.png" class="del_img"></image>
         </view>
@@ -117,7 +117,7 @@
 <view wx:if="{{orderList.length == 0}}" class="text_center">
   <image src="/image/default/noeOrder.png" class="none_img"></image>
   <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
-  <view class="none_btn" catchtap="goHome">
+  <!-- <view class="none_btn" catchtap="goHome">
     去首页逛逛
-  </view>
+  </view> -->
 </view>

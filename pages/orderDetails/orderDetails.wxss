@@ -64,7 +64,7 @@
 .one_img {
   width: 140rpx;
   height: 140rpx;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   margin-top: 20rpx;
 }
 .bottom_moudel{
@@ -96,4 +96,10 @@
   border: 1px solid #333;
   line-height: 2;
   margin-top: 20rpx;
+}
+
+.image_width_right{
+  width: 15rpx;
+  height: 26rpx;
+  margin-top: 5%
 }

@@ -1,0 +1,51 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='售后详情' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+
+<view class="moudel_top">
+  <!-- 商品块 -->
+  <view class="view_display moudel_ll" wx:for="{{returnedData.records[0].returnItemList}}" wx:key="index">
+    <view class="width30">
+      <image src="{{item.picPath}}" class="img_width"></image>
+    </view>
+    <view class="width60 moudel_center">
+      <view class="font_size32 ">{{item.goodsName}}</view>
+      <view class="font_size28 font_color99">{{item.skuName}}</view>
+      <view class="font_size26 font_colorf4">¥{{item.price}}</view>
+    </view>
+    <view class="font_size28 font_color99 moudel_center_number">
+      x{{item.num}}
+    </view>
+
+  </view>
+  <!-- 列表 -->
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">订单编号:</view>
+    <view class="right">{{returnedData.records[0].orderNo}}</view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">物流单号:</view>
+    <view class="right">{{returnedData.records[0].retNo}}</view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">申请时间:</view>
+    <view class="right"> {{returnedData.records[0].retTime}}</view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">申请原因:</view>
+    <view class="right">{{returnedData.records[0].retReason}}</view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">退款时间:</view>
+    <view class="right">{{returnedData.records[0].returnTime}} </view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">退款金额:</view>
+    <view class="right">{{returnedData.records[0].retPrice}} </view>
+  </view>
+  <view class="view_display margin_left3 margin_top3">
+    <view class="left">退款路径:</view>
+    <view class="right">原路退回</view>
+  </view>
+</view>

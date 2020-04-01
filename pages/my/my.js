@@ -64,8 +64,11 @@ Page({
       success: function (res) {
         if (res.data.code == '200') {
           console.log(res.data.data )
+          if (!res.data.data){
+            res.data.data = 0
+          }
           _this.setData({
-            jinDou: res.data.data || 0
+            jinDou: res.data.data 
           })
         } else {
           wx.showModal({
@@ -113,7 +116,7 @@ Page({
       })
     }else{
       wx.showModal({
-        content: '没有笑容金',
+        content: '没有笑容金豆',
         confirmColor: '#6928E2',
         showCancel: false,
       })

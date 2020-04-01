@@ -23,12 +23,13 @@
       </view>
       <view class="font_colorff" style="margin-left:200rpx">
         <view class="font_size40 text_center">{{myMoney.integral}}</view>
-        <view class="font_size26">冻结金额</view>
+        <view class="font_size26">待收佣金</view>
       </view>
     </view>
     <view class="view_display font_colorff jin_dou" >
       <view class="font_size28 width20">笑容金豆</view>
-      <view class="font_size40 margin_left2 width50" style="margin-top:-10rpx">{{jinDou.amount}}</view>
+      <view class="font_size40 margin_left2 width50" wx:if="{{jinDou != 0}}"  style="margin-top:-2%">{{jinDou.amount}}</view>
+        <view class="font_size40 margin_left2 width50" wx:if="{{jinDou == 0}}" style="margin-top:-2%">{{jinDou}}</view>
       <view class="font_size24"  catchtap="goGoldDetail">立即查看  <image src="/image/rightFF.png" style="width:11rpx;height:19rpx"></image></view>
     </view>
   </view>
@@ -99,7 +100,7 @@
     <!-- 我的服务 -->
     <view class="view_display">
       <navigator url="../address/address" hover-class="none">
-        <view class=" margin_top5 padding_left3 ">
+        <view class=" margin_top5" style="padding-left:38rpx">
           <view class="margin_left2">
             <image src="/image/my/address.png" class="my_service_img"></image>
           </view>
@@ -123,7 +124,7 @@
           <view class="margin_left2">
             <image src="/image/my/back.png" class="my_service_img"></image>
           </view>
-          <view class="margin_top2  font_size24 font_color33">
+          <view class="margin_top2  font_size24 font_color33" style="padding-left:10rpx">
             银行卡
           </view>
         </view>

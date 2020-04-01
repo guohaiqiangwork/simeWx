@@ -17,19 +17,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let _this = this;
     app.isLogin();//是否登录
     _this.getTabList(); //获取主分类
     _this.getTabListRight(_this.data.tabFalg) //获取右面
   },
   //  获取分类左
-  getTabList: function() {
+  getTabList: function () {
     var _this = this;
     wx.request({
       url: ajax_url + '/sort/selectSortF',
       method: "get",
-      success: function(res) {
+      success: function (res) {
         if (res.data.code == '200') {
           _this.setData({
             leftList: res.data.data
@@ -46,12 +46,12 @@ Page({
 
   },
   //  获取分类右
-  getTabListRight: function(code) {
+  getTabListRight: function (code) {
     var _this = this;
     wx.request({
       url: ajax_url + '/sort/selectSortC/' + code,
       method: "get",
-      success: function(res) {
+      success: function (res) {
         if (res.data.code == '200') {
           _this.setData({
             rightList: res.data.data
@@ -67,7 +67,7 @@ Page({
     })
 
   },
-  goSearchResult(e){
+  goSearchResult(e) {
     console.log(e)
     wx.navigateTo({
       url: '/pages/searchResult/searchResult?code=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name,
@@ -76,53 +76,53 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   // 左边切换
-  swichTab: function(e) {
+  swichTab: function (e) {
     let _this = this;
     _this.getTabListRight(e.currentTarget.dataset.id)
     _this.setData({

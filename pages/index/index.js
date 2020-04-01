@@ -32,7 +32,7 @@ Page({
     })
   },
   onLoad: function() {
-    this.getTab()//获取首页头部分类
+    this.getTab() //获取首页头部分类
     this.getHot() //获取分类及产品
     this.goWxLogin() //获取openid
     this.getLunBo() //获取首页轮播
@@ -152,12 +152,12 @@ Page({
     })
   },
   // 获取tab
-  getTab:function(){
+  getTab: function() {
     var _this = this;
     wx.request({
       url: ajax_url + '/tbGoodsPictureApi/selectPrice',
       method: "get",
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         if (res.data.code == '200') {
           _this.setData({
@@ -172,58 +172,6 @@ Page({
         }
       }
     })
-  },
-  // 同城
-  goCity: function() {
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 10000
-    })
-    wx.request({
-      url: ajax_url + '/wx/isLogin',
-      method: "get",
-      header: {
-        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
-        'client': 'APP',
-      },
-      success: function (res) {
-        wx.hideToast()
-        if (res.data.code == '200') {
-          wx.getLocation({
-            type: 'wgs84',
-            success: function (res) {
-              console.log(res);
-              //弹框
-              var locationString = res.latitude + "," + res.longitude;
-              wx.request({
-                url: 'https://apis.map.qq.com/ws/geocoder/v1/',
-                data: {
-                  "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
-                  "location": locationString
-                },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded' // 默认值
-                },
-                method: 'GET',
-                success: function (r) {
-                  var city = r.data.result.address_component.city
-                  wx.navigateTo({
-                    url: '/pages/searchResult/searchResult?city=' + city,
-                  })
-                }
-              });
-            }
-          })
-        } else {
-          wx.navigateTo({
-            url: '../logs/logs'
-          })
-        }
-      }
-    })
-  
-
   },
 
   // 去搜素页面
@@ -255,6 +203,151 @@ Page({
     })
 
   },
+  // 去更多产品
+  goProductList: function(e) {
+    console.log(e.currentTarget.dataset);
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          if (e.currentTarget.dataset.type == 'city') {
+            wx.getLocation({
+              type: 'wgs84',
+              success: function(res) {
+                console.log(res);
+                //弹框
+                var locationString = res.latitude + "," + res.longitude;
+                wx.request({
+                  url: 'https://apis.map.qq.com/ws/geocoder/v1/',
+                  data: {
+                    "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
+                    "location": locationString
+                  },
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                  },
+                  method: 'GET',
+                  success: function(r) {
+                    var city = r.data.result.address_component.city
+                    wx.navigateTo({
+                      url: '/pages/productList/productList?city=' + city,
+                    })
+                  }
+                });
+              }
+            })
+          } else {
+            wx.navigateTo({
+              url: '/pages/productList/productList?code=' + e.currentTarget.dataset.code + '&type=' + e.currentTarget.dataset.type,
+            })
+          }
+
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
+  },
+  // 点击导航页面滚动
+  toViewClick: function(e) {
+    console.log(e.currentTarget.dataset.code);
+    return
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.navigateTo({
+            url: '/pages/productList/productList?value=' + e.detail.value,
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
+
+  },
+  // 同城
+  goCity: function() {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+    wx.request({
+      url: ajax_url + '/wx/isLogin',
+      method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideToast()
+        if (res.data.code == '200') {
+          wx.getLocation({
+            type: 'wgs84',
+            success: function(res) {
+              console.log(res);
+              //弹框
+              var locationString = res.latitude + "," + res.longitude;
+              wx.request({
+                url: 'https://apis.map.qq.com/ws/geocoder/v1/',
+                data: {
+                  "key": "OD6BZ-VQM3J-MGRFK-K54KC-DHQJQ-3UFD7",
+                  "location": locationString
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                method: 'GET',
+                success: function(r) {
+                  var city = r.data.result.address_component.city
+                  wx.navigateTo({
+                    url: '/pages/searchResult/searchResult?city=' + city,
+                  })
+                }
+              });
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '../logs/logs'
+          })
+        }
+      }
+    })
+
+
+  },
+
   // 去产品详情
   goProudctDetails: function(e) {
     wx.showToast({
@@ -312,38 +405,7 @@ Page({
       }
     })
   },
-  // 点击导航页面滚动
-  toViewClick: function(e) {
-    console.log(e.currentTarget.dataset.code);
-    return
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 10000
-    })
-    wx.request({
-      url: ajax_url + '/wx/isLogin',
-      method: "get",
-      header: {
-        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
-        'client': 'APP',
-      },
-      success: function (res) {
-        wx.hideToast()
-        if (res.data.code == '200') {
-          wx.navigateTo({
-            url: '/pages/productList/productList?value=' + e.detail.value,
-          })
-        } else {
-          wx.navigateTo({
-            url: '../logs/logs'
-          })
-        }
-      }
-    })
 
-
-  },
   // 加入购物车
   addShopCard: function(e) {
     wx.showLoading({

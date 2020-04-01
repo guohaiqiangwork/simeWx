@@ -76,7 +76,7 @@ Page({
       isDefault: editList.isDefault,
       addAddressId: editList.id,
       isDefaultD: editList.isDefault,
-      title: '修改地址'
+      title: '修改收货地址'
     });
   },
   // 新增地址

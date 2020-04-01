@@ -9,7 +9,7 @@
     <view class="width45 text_right">
       <view class="font_size26">
         <text style="margin-right:5%">{{item.phone}}</text> 
-        <image src="/image/right.png" class="right"></image>
+        <image src="/image/right99.png" class="right"></image>
       </view>
     </view>
   </view>

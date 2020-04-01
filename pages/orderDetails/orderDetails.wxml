@@ -36,7 +36,11 @@
 </view>
 <view class="top_title1" wx:if="{{orderDetail.status == 3}}">
   <view class=" margin_left4 padding_top3">
-    <view class="font_size34 width70">待收货</view>
+  <view class="view_display">
+     <view class="font_size34 width90">待收货</view>
+     <image src="/image/right99.png"class="image_width_right"></image>
+  </view>
+   
     <view class="font_size24">商家已发货，耐心等待收货</view>
   </view>
 </view>
@@ -57,10 +61,10 @@
 <!-- 产品块 -->
 <view class="conter_border" wx:for="{{orderDetail.itemList}}" wx:key="index">
   <view class="view_display">
-    <view class="width30">
+    <view class="width25">
       <image src="{{item.picPath}}" class="one_img"></image>
     </view>
-    <view class="font_size26 margin_top2 width60">
+    <view class="font_size26 margin_top2 width69">
       <view class="font_color33">{{item.title}}</view>
       <view class="font_color99">{{item.skuName}}</view>
       <view class="font_colorf4">¥{{item.totalFee}}</view>
@@ -93,13 +97,16 @@
   </view>
 
   <view class="view_display font_size26 margin_top3">
-    <view class="width60"></view>
-    <view>
+    <view class="width30"></view>
+    <view class="view_display text_right width70">
+        <view>
       实付款
     </view>
     <view class="font_colorf4 margin_left2">
       ¥{{orderDetail.payment}}
     </view>
+    </view>
+  
   </view>
 
 
@@ -120,9 +127,9 @@
     </view>
   </view>
   <view wx:if="{{orderDetail.status == 3  }}" class="view_display">
-    <view class="bottom_btn" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}">
+    <!-- <view class="bottom_btn" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}">
       查看物流
-    </view>
+    </view> -->
     <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" catchtap="confirmOrder" data-orderId="{{orderDetail.orderId}}">
       确认收货
     </view>

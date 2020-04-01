@@ -17,7 +17,7 @@ Page({
     name: '', //身份证姓名
     idCard: '', //生份证号
     cardTime: '', //生份证有效
-    oneCard: 3 //是否显示下一步
+    oneCard: '1' //是否显示下一步
   },
 
   /**
@@ -37,7 +37,8 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        if (res.data.code == '200') {
+        console.log(res)
+        if (res.data.data) {
           _this.setData({
             oneCard: 3
           })

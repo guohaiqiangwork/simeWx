@@ -38,6 +38,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    if (options.code == "undefined"){
+      options.code =  '';
+    }
     if (options.city) {
       this.setData({
         city: options.city,
@@ -46,8 +49,8 @@ Page({
       this.getCityList();
     } else {
       this.setData({
-        inputValue: options.value,
-        code: options.code
+        code: options.code,
+        title:options.type
       });
       this.getSearchList() //获取查询列表
     }
@@ -190,9 +193,11 @@ Page({
     console.log(e)
     var _this = this;
     _this.setData({
-      inputValue: e.detail.value
+      inputValue: e.detail.value,
+     
     });
     _this.data.code = '';
+    _this.data.page='';
     _this.data.searchList = [];
     if (_this.data.city) {
       _this.getCityList();
@@ -225,6 +230,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var _this = this;
     wx.showLoading({
       title: '加载中',
     });
@@ -246,33 +252,37 @@ Page({
   },
   // tab 切换
   tabSwich: function (e) {
+    var _this = this;
     if (e.currentTarget.dataset.id == '002') {
-      this.setData({
+      _this.setData({
         sell: 1,
         priceSorted: '',
-        synthesize: ''
+        synthesize: '',
+        page: 1
       })
     } else if (e.currentTarget.dataset.id == '003') {
-      this.setData({
+      _this.setData({
         priceSorted: 1,
         sell: '',
-        synthesize: ''
+        synthesize: '',
+        page: 1
       })
     } else {
-      this.setData({
+      _this.setData({
         priceSorted: '',
         sell: '',
-        synthesize: 1
+        synthesize: 1,
+        page: 1
       })
     }
-    this.setData({
+    _this.setData({
       tabFalg: e.currentTarget.dataset.id,
     });
-    this.data.searchList = [];
+    _this.data.searchList = [];
     if (_this.data.city) {
       _this.getCityList();
     } else {
-      this.getSearchList();
+      _this.getSearchList();
     }
   },
 

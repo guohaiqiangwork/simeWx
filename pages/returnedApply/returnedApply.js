@@ -43,7 +43,8 @@ Page({
     orderId: '', //订单id
     retReason: '', //退款原因
     userRemark: '', //用户备注
-    tuiFalg:false
+    tuiFalg:false,
+    totalPrice:0
   },
 
   /**

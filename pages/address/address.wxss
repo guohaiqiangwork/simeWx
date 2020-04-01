@@ -100,7 +100,7 @@
 .right_btn {
   height: 70rpx;
   border-left: 1px solid #dbdbdb;
-  padding-left: 30rpx;
+  padding-left: 70rpx;
   margin-top: 30rpx;
   margin-left: 20rpx;
   line-height: 3;

@@ -60,6 +60,7 @@ checkbox .wx-checkbox-input {
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   background: linear-gradient(to right, #ff342d, #ff5882);
+  border: none;
 }
 
 /*checkbox选中后图标样式  */
@@ -94,5 +95,20 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
    color: #fff;
    line-height: 4;
    font-size: 32rpx;
-   margin-top:20rpx
+   margin-top:20rpx;
+   position: fixed;
+   bottom: 0
+}
+
+.img_left_money{
+  background-color: #FFC40C;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 1.2;
+
 }

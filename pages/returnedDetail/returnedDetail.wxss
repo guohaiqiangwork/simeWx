@@ -1,0 +1,41 @@
+.moudel_top {
+  background-color: #fff;
+  width: 95%;
+  margin-left: 2%;
+  margin-top: 3%;
+  min-height: 999rpx;
+  border-radius: 3%;
+}
+
+.img_width {
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 30rpx;
+  margin-top: 46rpx;
+}
+
+.moudel_center {
+  margin-top: 46rpx;
+}
+
+.moudel_center_number {
+  margin-top: 88rpx;
+}
+
+.moudel_ll {
+  border-bottom: 1px solid #f0f0f0;
+  width: 95%;
+  margin-left: 2%;
+  padding-bottom: 3%;
+}
+
+.left {
+  font-size: 28rpx;
+  color: #333;
+  width: 22%;
+}
+
+.right {
+  font-size: 28rpx;
+  color: #333;
+}

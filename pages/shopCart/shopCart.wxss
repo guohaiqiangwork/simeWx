@@ -112,6 +112,7 @@ checkbox .wx-checkbox-input {
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   background: linear-gradient(to right, #ff342d, #ff5882);
+  border: none;
 }
 
 /*checkbox选中后图标样式  */

@@ -6,26 +6,26 @@
 <view wx:if="{{items.length == 0}}">
   <view class="address_list">
     <view class="address_list_left">收货人</view>
-    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" />
+    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" placeholder-style="color:#a0a0a0;" />
   </view>
   <view class="address_list">
     <view class="address_list_left">手机号码</view>
-    <input class="address_list_right" value="{{mobile}}" name="input" placeholder="请填写收货人手机号码" bindinput="phoneInput" maxlength="11" />
+    <input class="address_list_right" value="{{mobile}}" name="input" placeholder="请填写收货人手机号码" bindinput="phoneInput" maxlength="11" placeholder-style="color:#a0a0a0;"/>
   </view>
   <view class="address_list">
     <view class="address_list_left">所在地区</view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-      <view class="picker font_size30" style="color:#a0a0a0;font-family:UICTFontTextStyleBody;">
+      <view class="picker font_size30" style="color:#a0a0a0;">
         {{region[0]}}{{region[1]}}{{region[2]}}
       </view>
     </picker>
   </view>
   <view class="address_list">
     <view class="address_list_left">详细地址</view>
-    <input class="address_list_right" value="{{address}}" name="input" placeholder="街道、楼牌号等" bindinput="addresInput" />
+    <input class="address_list_right" value="{{address}}" name="input" placeholder="街道、楼牌号等" bindinput="addresInput"  placeholder-style="color:#a0a0a0;"/>
   </view>
   <view class="address_list" style="margin-top:30rpx">
-    <view class="address_list_left margin_left2" style="padding-left: 2%;">设置默认地址</view>
+    <view class="address_list_left margin_left2" style="padding-left: 2%;margin-top:1%">设置默认地址</view>
     <switch bindchange="switch2Change" style="margin-left:50%" checked="{{isDefaultD}}" />
   </view>
 
@@ -45,19 +45,19 @@
           <!-- <view class="content" bindtap='goDetail'>{{item.content}}</view> -->
           <view class="content" catchtap="replaceAddress" data-id="{{item.id}}">
             <view class="view_display">
-              <view class="width80">
+              <view class="width70">
                 <view class="view_display">
-                  <view class="font_color5A font_size30" >
+                  <view class="font_color5A font_size32" >
                     {{item.receiver}}
                   </view>
-                  <view class="font_size24 margin_left2" style="margin-top:1%">
+                  <view class="font_size26 margin_left2" style="margin-top:1%">
                     {{item.mobile}}
                   </view>
-                  <view class="left_mo_ren margin_left2" hidden="{{item.isDefault != 1}}">
+                  <view class="left_mo_ren margin_left2" hidden="{{item.isDefault != 1}}" style="margin-top:1%">
                     默认
                   </view>
                 </view>
-                <view class="font_size24">
+                <view class="font_size26">
                   {{item.province}}{{item.city}}{{item.area}}{{item.address}}
                 </view>
               </view>

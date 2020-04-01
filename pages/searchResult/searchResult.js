@@ -196,13 +196,13 @@ Page({
       inputValue: e.detail.value
     });
     _this.data.code='';
+    _this.data.page = '';
     _this.data.searchList =[];
     if (_this.data.city){
       _this.getCityList();
     }else{
       _this.getSearchList();
     }
-    
   },
   
 
@@ -255,19 +255,22 @@ Page({
       this.setData({
         sell: 1,
         priceSorted: '',
-        synthesize: ''
+        synthesize: '',
+        page:1
       })
     } else if (e.currentTarget.dataset.id == '003') {
       this.setData({
         priceSorted: 1,
         sell: '',
-        synthesize: ''
+        synthesize: '',
+        page: 1
       })
     } else {
       this.setData({
         priceSorted: '',
         sell: '',
-        synthesize: 1
+        synthesize: 1,
+        page: 1
       })
     }
     this.setData({

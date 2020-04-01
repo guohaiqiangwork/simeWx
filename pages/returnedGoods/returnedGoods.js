@@ -23,7 +23,6 @@ Page({
     page_size: 10,
     orderList: [],
     applyOrderList: [],
-
     hiddenmodalput: true,
     logisticsNumber:'',
     orderId:''
@@ -100,10 +99,11 @@ Page({
     console.log(e)
     var _this = this;
     _this.data.orderList = [];
+    _this.data.applyOrderList = [];
     this.setData({
       tabFalg: e.currentTarget.dataset.id,
       status: e.currentTarget.dataset.status,
-      page:1
+      page:1,
     });
     if (e.currentTarget.dataset.id == '001') {
       _this.getReturnedList()
@@ -228,6 +228,12 @@ Page({
   goOrderDetail: function(e) {
     wx.navigateTo({
       url: '../orderDetails/orderDetails?orderId=' + e.currentTarget.dataset.orderid,
+    })
+  },
+  // 去申请记录详情
+  goReturnedDetail: function (e) {
+    wx.navigateTo({
+      url: '../returnedDetail/returnedDetail?orderId=' + e.currentTarget.dataset.orderid,
     })
   },
   /**

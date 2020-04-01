@@ -131,7 +131,7 @@
 
       </view>
       <!-- 内容多个-->
-      <view class="conter_border" wx:if="{{items.returnItemList.length > 1}}" catchtap="goOrderDetail" data-orderId="{{items.orderId}}">
+      <view class="conter_border" wx:if="{{items.returnItemList.length > 1}}" catchtap="goReturnedDetail" data-orderId="{{items.id}}" >
         <view class="view_display">
           <scroll-view class='wrapper' scroll-x="true">
             <image src="{{item.picPath}}" class="money_img" wx:for="{{items.itemList}}" wx:key="index"></image>
@@ -147,7 +147,7 @@
         </view>
       </view>
       <!-- 一个内容 -->
-      <view class="conter_border" wx:if="{{items.returnItemList.length == 1}}" catchtap="goOrderDetail" data-orderId="{{items.orderId}}">
+      <view class="conter_border" wx:if="{{items.returnItemList.length == 1}}" catchtap="goReturnedDetail" data-orderId="{{items.id}}">
         <view class="view_display">
           <view class="width20">
             <image src="{{items.returnItemList[0].picPath}}" class="one_img"></image>

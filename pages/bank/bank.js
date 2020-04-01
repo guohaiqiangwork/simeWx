@@ -88,7 +88,7 @@ Page({
           for (var i = 0; i < _this.data.bankList.length; i++) {
             _this.data.bankList[i].isTouchMove = false;
             _this.data.bankList[i].bankCard = "****" + _this.data.bankList[i].bankCard.substr(-4);
-            switch (_this.data.bankList[i].bankBj) {
+            switch (_this.data.bankList[i].bankCode) {
               case 'ICBC':
                 _this.data.bankList[i].bankBj = 'bank_bgColor_zgp'
                 _this.data.bankList[i].imgUrl = '/image/bank/gsy.png';

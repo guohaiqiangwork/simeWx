@@ -46,8 +46,8 @@
           <view class="content  {{item.bankBj}}">
             <image src="{{item.imgUrl}}" class="bank_list_img"></image>
             <view class="bank_list_content">
-              <view class="font_size34">{{item.bankName}}</view>
-              <view class="font_size28">{{item.bankType}}</view>
+              <view class="font_size32">{{item.bankName}}</view>
+              <view class="font_size30">{{item.bankType}}</view>
             </view>
             <view class=" bank_list_right">{{item.bankCard}}</view>
           </view>

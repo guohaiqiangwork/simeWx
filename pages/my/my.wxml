@@ -85,7 +85,7 @@
   </view>
   <!-- 我的订单end -->
   <!-- 邀请 -->
-  <view>
+  <view catchtap="goShare">
     <image src="/image/my/recomment@2x1.png" class="my_centen_img"></image>
   </view>
   <!-- 邀请end -->

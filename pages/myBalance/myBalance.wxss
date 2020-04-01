@@ -49,6 +49,7 @@
 
 .order_fcolor {
   color: #0C0C0C;
-  font-weight: 500
+  font-weight: 800;
+   font-size: 28rpx;
 }
 

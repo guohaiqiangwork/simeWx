@@ -36,11 +36,11 @@
 </view>
 <view class="top_title1" wx:if="{{orderDetail.status == 3}}">
   <view class=" margin_left4 padding_top3">
-  <view class="view_display">
-     <view class="font_size34 width90">待收货</view>
-     <image src="/image/right99.png"class="image_width_right"></image>
-  </view>
-   
+    <view class="view_display">
+      <view class="font_size34 width90">待收货</view>
+      <image src="/image/right99.png" class="image_width_right"></image>
+    </view>
+
     <view class="font_size24">商家已发货，耐心等待收货</view>
   </view>
 </view>
@@ -97,16 +97,15 @@
   </view>
 
   <view class="view_display font_size26 margin_top3">
-    <view class="width30"></view>
-    <view class="view_display text_right width70">
-        <view>
-      实付款
+    <view class="view_display" stlye="width: 100%;justify-content: flex-end;margin-right: 5%;">
+      <view>
+        实付款
+      </view>
+      <view class="font_colorf4 margin_left2">
+        ¥{{orderDetail.payment}}
+      </view>
     </view>
-    <view class="font_colorf4 margin_left2">
-      ¥{{orderDetail.payment}}
-    </view>
-    </view>
-  
+
   </view>
 
 
@@ -115,11 +114,11 @@
 <!-- 底部按钮 -->
 <view class="view_display">
   <view class="width45"></view>
-  <view class="bottom_btn" style="margin-left:28%" wx:if="{{orderDetail.status == 4 || orderDetail.status == 2 || orderDetail.status == 5 }}" catchtap="againBuy" data-orderId="{{orderDetail.orderId}}">
+  <view class="bottom_btn" style="margin-left:30%" wx:if="{{orderDetail.status == 4 || orderDetail.status == 2 || orderDetail.status == 5 }}" catchtap="againBuy" data-orderId="{{orderDetail.orderId}}">
     再次购买
   </view>
-  <view class="view_display" wx:if="{{orderDetail.status == 1  }}">
-    <view class="bottom_btn font_color99" style="border:1px solid #999999" catchtap="cancelPay" data-orderId="{{orderDetail.orderId}}">
+  <view class="view_display" wx:if="{{orderDetail.status == 1}}" style="width:55%">
+    <view class="bottom_btn font_color99" style="border:1px solid #999999;margin-left:8%" catchtap="cancelPay" data-orderId="{{orderDetail.orderId}}">
       取消支付
     </view>
     <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" data-paydata="{{orderDetail}}" catchtap="goOrderPay">

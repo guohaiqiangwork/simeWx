@@ -44,6 +44,13 @@ Page({
           _this.setData({
             list: res.data.data
           })
+          for (var i = 0; i < _this.data.list.length; i++) {
+            _this.data.list[i].checkeditem = false
+          }
+          _this.setData({
+            checked_all: false,
+            list: _this.data.list
+          })
           _this.getCartListNo() //失效商品列表
         } else if (res.data.code == '1500' || res.data.code == '401') {
           wx.navigateTo({
@@ -181,6 +188,11 @@ Page({
             confirmColor: '#6928E2',
             showCancel: false,
           });
+          _this.setData({
+            editFalg: true,
+            totalNumber: 0, //选中商品数量
+            totalPrice: 0 //选中商品价格
+          })
           _this.getCartList(); //有效商品列表
         } else {
           wx.showModal({
@@ -200,8 +212,13 @@ Page({
   },
   // 取消操作
   cancelEnit: function() {
+    for (var i = 0; i < this.data.list.length; i++) {
+      this.data.list[i].checkeditem = false
+    }
     this.setData({
-      editFalg: true
+      editFalg: true,
+      checked_all:false,
+      list: this.data.list
     })
   },
   /**

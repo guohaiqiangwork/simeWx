@@ -5,13 +5,13 @@
 <!--  -->
 <view class="balance_moudel">
   <view class="padding_top3 margin_left6">
-    <view class="font_size26 font_colorff">可用余额</view>
+    <view class="font_size30 font_colorff">可用余额</view>
     <view class="view_display">
       <view class="balance_moeny_left margin_top4">¥</view>
       <view class="balance_moeny_right margin_left2 width60">{{myMoney.balance}}</view>
       <view class="balance_moeny_btn" catchtap="goCashMoney">提现</view>
     </view>
-    <view class="font_size24 font_colorff">冻结金额¥{{myMoney.integral}}</view>
+    <view class="font_size24 font_colorff">待收佣金：¥{{myMoney.integral}}</view>
   </view>
 </view>
 
@@ -25,7 +25,7 @@
 
 <!--列表 -->
 <scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
-  <view class="view_display font_size24 padding_top2" wx:if="{{moneyList.length > 0}}"  wx:for="{{moneyList}}" wx:key="index">
+  <view class="view_display font_size28 padding_top2" wx:if="{{moneyList.length > 0}}"  wx:for="{{moneyList}}" wx:key="index">
     <view class="width30 text_center">{{item.recordDesc}}</view>
     <view class="width40">{{item.createTime}}</view>
     <view class="width20 text_right"> <text wx:if="{{item.transType == 1}}">+</text> <text wx:else>-</text> ¥{{item.amount}}</view>

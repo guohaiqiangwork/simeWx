@@ -91,20 +91,21 @@ movable-area {
 }
 
 .bank_list_img {
-  width: 80rpx;
-  height: 80rpx;
-  margin-left: 34rpx;
-  margin-top: 54rpx;
+  width: 100rpx;
+height: 100rpx;
+margin-left: 34rpx;
+margin-top: 40rpx;
+
 }
 
 .bank_list_content {
-  margin-top: 48rpx;
+  margin-top: 40rpx;
   margin-left: 30rpx;
   width: 50%;
 }
 
 .bank_list_right {
-  margin-top: 54rpx;
+  margin-top: 43rpx;
   margin-left: 30rpx;
   font-size: 34rpx;
 }

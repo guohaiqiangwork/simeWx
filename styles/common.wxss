@@ -4,6 +4,9 @@
   display: flex;
 }
 
+.view_display_center{
+  justify-content:center
+}
 .font_size18 {
   font-size: 18rpx;
 }
@@ -240,6 +243,9 @@
 
 .width60 {
   width: 60%;
+}
+.width65 {
+  width: 65%;
 }
 .width69 {
   width: 69%;

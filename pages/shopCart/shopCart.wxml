@@ -34,16 +34,7 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{list.length == 0}}" class="text_center">
-    <image src="/image/default/shopCar.png" class="none_img"></image>
-    <view class="font_size26 margin_top2 ">您的购物车还是空的哦 ~</view>
-    <view class="none_btn" catchtap="goHome">
-      去首页逛逛
-    </view>
-  </view>
-</view>
-
-<!-- 购物车 失效商品 -->
+  <!-- 购物车 失效商品 -->
 <view class="over_list margin_top4 " style="margin-bottom:110rpx" wx:if="{{noList.length > 0}}">
   <view class="view_display margin_left2">
     <view class="over_falg">失效</view>
@@ -68,6 +59,16 @@
 
 </view>
 
+  <view wx:if="{{list.length == 0 && noList.length == 0}}" class="text_center">
+    <image src="/image/default/shopCar.png" class="none_img"></image>
+    <view class="font_size26 margin_top2 ">您的购物车还是空的哦 ~</view>
+    <view class="none_btn" catchtap="goHome">
+      去首页逛逛
+    </view>
+  </view>
+</view>
+
+
 <view class="shop_foot" hidden="{{!editFalg}}">
   <view class="shop_foot_left">
     <checkbox-group bindchange="checkedAll">
@@ -85,7 +86,7 @@
     </view>
   </view>
   <view class="shop_foot_right" catchtap="goConfirmOrder">
-    结算（{{totalNumber}}）
+    去结算（{{totalNumber}}）
   </view>
 </view>
 

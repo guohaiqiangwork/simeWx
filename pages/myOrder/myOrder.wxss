@@ -16,7 +16,8 @@
 
 .order_fcolor {
   color: #0c0c0c;
-  font-size: 34rpx;
+  font-size: 28rpx;
+  font-weight: 800
 }
 
 .order_view_swich {
@@ -178,7 +179,7 @@
 
 .product_moudel {
   width: 710rpx;
-  height: 370rpx;
+  height: 410rpx;
   background-color: #fff;
   border-radius: 20rpx;
   margin-left: 20rpx;
@@ -245,8 +246,8 @@
 }
 
 .one_img {
-  width: 90rpx;
-  height: 90rpx;
+  width: 140rpx;
+  height: 140rpx;
   margin-left: 10rpx;
   margin-top: 20rpx;
 }

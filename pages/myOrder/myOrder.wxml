@@ -64,10 +64,10 @@
     <!-- 一个内容 -->
     <view class="conter_border" wx:if="{{items.itemList.length == 1}}" catchtap="goOrderDetail" data-orderId="{{items.orderId}}">
       <view class="view_display">
-        <view class="width20">
+        <view class="width30">
           <image src="{{items.itemList[0].picPath}}" class="one_img"></image>
         </view>
-        <view class="font_size24 margin_top2 width70">
+        <view class="font_size24 margin_top2 width65">
           <view class="font_color33">{{items.itemList[0].title}}</view>
           <view class="font_color99">{{items.itemList[0].skuName}}</view>
           <view class="font_colorf4">¥{{items.itemList[0].totalFee}}</view>
@@ -89,7 +89,7 @@
       <view class="bottom_btn" style="margin-left:28%" wx:if="{{items.status == 4 || items.status == 2 || items.status == 5 }}" catchtap="againBuy" data-orderId="{{items.orderId}}">
         再次购买
       </view>
-      <view class="view_display" wx:if="{{items.status == 1  }}">
+      <view class="view_display" wx:if="{{items.status == 1}}">
         <view class="bottom_btn font_color99" style="border:1px solid #999999" catchtap="cancelPay"  data-orderId="{{items.orderId}}">
           取消支付
         </view>

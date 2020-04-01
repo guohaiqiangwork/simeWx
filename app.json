@@ -37,6 +37,7 @@
     "pages/modifyName/modifyName",
     "pages/productList/productList",
     "pages/returnedDetail/returnedDetail",
+    "pages/share/share",
     "pages/case/case"
   ],
   "window": {

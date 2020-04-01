@@ -1,0 +1,7 @@
+.share_img{
+  width: 100%;
+  height: 416rpx;
+}
+page{
+  background-color: #fff
+}

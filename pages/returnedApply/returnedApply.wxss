@@ -38,7 +38,9 @@
   width: 120rpx;
   height: 120rpx;
 }
-
+.width21{
+  width: 25%
+}
 .up_img_moudel {
   width: 120rpx;
   height: 120rpx;

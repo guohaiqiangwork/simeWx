@@ -14,7 +14,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    name:''
   },
   goSet: function() {
     wx.setStorage({
@@ -38,6 +39,11 @@ Page({
     this.getLunBo() //获取首页轮播
     this.getNewGoods() //获取新品发现
     this.getBanner() //获取bard
+  },
+  onShow: function () {
+    this.setData({
+      name:''
+    })
   },
   // 微信登录
   goWxLogin: function() {
@@ -211,7 +217,6 @@ Page({
       icon: 'loading',
       duration: 10000
     })
-
     wx.request({
       url: ajax_url + '/wx/isLogin',
       method: "get",

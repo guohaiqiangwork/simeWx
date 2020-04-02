@@ -19,31 +19,46 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    app.isLogin();//是否登录
     _this.getTabList(); //获取主分类
-    _this.getTabListRight(_this.data.tabFalg) //获取右面
+   
   },
   //  获取分类左
   getTabList: function () {
     var _this = this;
     wx.request({
-      url: ajax_url + '/sort/selectSortF',
+      url: ajax_url + '/wx/isLogin',
       method: "get",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
       success: function (res) {
         if (res.data.code == '200') {
-          _this.setData({
-            leftList: res.data.data
+          wx.request({
+            url: ajax_url + '/sort/selectSortF',
+            method: "get",
+            success: function (res) {
+              if (res.data.code == '200') {
+                _this.setData({
+                  leftList: res.data.data
+                });
+                _this.getTabListRight(_this.data.tabFalg) //获取右面
+              } else {
+                wx.showModal({
+                  content: res.data.message,
+                  confirmColor: '#6928E2',
+                  showCancel: false,
+                })
+              }
+            }
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.navigateTo({
+            url: '../logs/logs'
           })
         }
       }
     })
-
   },
   //  获取分类右
   getTabListRight: function (code) {
@@ -84,7 +99,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**
@@ -114,6 +129,7 @@ Page({
   onReachBottom: function () {
 
   },
+
 
   /**
    * 用户点击右上角分享

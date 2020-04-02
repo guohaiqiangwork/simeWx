@@ -218,7 +218,12 @@ Page({
     this.setData({
       editFalg: true,
       checked_all:false,
-      list: this.data.list
+      list: this.data.list,
+      arr: [],
+      priceArr: [],
+      deleArr: [],
+      totalNumber: 0, //选中商品数量
+      totalPrice: 0 //选中商品价格
     })
   },
   /**
@@ -345,6 +350,9 @@ Page({
     var listLen = list.length
     var priceArr = that.data.priceArr;
     // console.log(valLen)
+    that.data.arr =[];
+    that.data.priceArr = [];
+    that.data.deleArr=[];
     if (valLen != 0) {
       console.log(that.data.arr + '全选选中')
       for (var i = 0; i < listLen; i++) {

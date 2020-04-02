@@ -1,6 +1,9 @@
 <!-- 标题 -->
 <view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
   <navbar title='我的订单' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+    <view catchtap='goToMy' style='position:fixed;top:{{bar_Height + 12}}px;left:32rpx;z-index:1000000000;width:30%;height:4%'>
+    <image class='title_img' src="/image/back_grey.png"></image>
+  </view>
 </view>
 
 <view class="top_moudel" style="background-color:#fff">

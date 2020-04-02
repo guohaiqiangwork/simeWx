@@ -6,7 +6,7 @@
 <view wx:if="{{items.length == 0}}">
   <view class="address_list">
     <view class="address_list_left">收货人</view>
-    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" placeholder-style="color:#a0a0a0;" />
+    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" placeholder-style="color:#a0a0a0;" maxlength="6"/>
   </view>
   <view class="address_list">
     <view class="address_list_left">手机号码</view>
@@ -22,7 +22,7 @@
   </view>
   <view class="address_list">
     <view class="address_list_left">详细地址</view>
-    <input class="address_list_right" value="{{address}}" name="input" placeholder="街道、楼牌号等" bindinput="addresInput"  placeholder-style="color:#a0a0a0;"/>
+    <input class="address_list_right" value="{{address}}" maxlength="30" name="input" placeholder="街道、楼牌号等" bindinput="addresInput"  placeholder-style="color:#a0a0a0;"/>
   </view>
   <view class="address_list" style="margin-top:30rpx">
     <view class="address_list_left margin_left2" style="padding-left: 2%;margin-top:1%">设置默认地址</view>

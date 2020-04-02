@@ -11,12 +11,12 @@
 
 .order_tab_fcolor {
   color: #0c0c0c;
-  font-size: 30rpx;
+  font-size: 32rpx;
 }
 
 .order_fcolor {
   font-weight: 700;
-  font-size: 34rpx;
+  font-size: 32rpx;
 }
 
 .product_list_moudel {

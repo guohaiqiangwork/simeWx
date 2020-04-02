@@ -260,8 +260,13 @@ Page({
         page:1
       })
     } else if (e.currentTarget.dataset.id == '003') {
+      if (this.data.priceSorted == 0) {
+        var aSorrted = 1
+      } else {
+        var aSorrted = 0
+      }
       this.setData({
-        priceSorted: 1,
+        priceSorted: aSorrted,
         sell: '',
         synthesize: '',
         page: 1
@@ -286,21 +291,21 @@ Page({
   },
 
   // 倒叙
-  listPaix: function () {
-    if (this.data.priceSorted == 0) {
-      var aSorrted = 1
-    } else {
-      var aSorrted = 0
-    }
-    this.setData({
-      priceSorted: aSorrted
-    })
-    this.data.searchList = [];
-    if (this.data.city) {
-      this.getCityList();
-    } else {
-      this.getSearchList();
-    }
-  }
+  // listPaix: function () {
+  //   if (this.data.priceSorted == 0) {
+  //     var aSorrted = 1
+  //   } else {
+  //     var aSorrted = 0
+  //   }
+  //   this.setData({
+  //     priceSorted: aSorrted
+  //   })
+  //   this.data.searchList = [];
+  //   if (this.data.city) {
+  //     this.getCityList();
+  //   } else {
+  //     this.getSearchList();
+  //   }
+  // }
 
 })

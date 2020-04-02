@@ -10,7 +10,7 @@
     <view class="search_tab text_center" wx:for="{{tabList}}" wx:key='index' data-id="{{item.id}}" catchtap='tabSwich'>
       <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }} view_display view_display_center">
         <view> {{item.name}}</view>
-        <view class="arr" wx:if="{{item.name == '价格'}}" catchtap="listPaix">
+        <view class="arr" wx:if="{{item.name == '价格'}}">
           <view class="arrUp" style="border-bottom-color:{{priceSorted == 1 ? '#ccc' : '#F42300'}}"></view>
           <view class="arrDown" style="border-top-color:{{priceSorted == 0 ? '#ccc' : '#F42300'}}"></view>
         </view>
@@ -28,7 +28,7 @@
         <view class="product_list_left">赚</view>
         <view class="product_list_right">¥ {{item.rebate}}</view>
       </view>
-      <view class="product_none" hidden="{{item.inventory != 0}}">已抢光</view>
+      <view class="product_none" hidden="{{item.inventory != 0}}">已售罄</view>
       <image src="{{item.pictureUrl}}" catchtap="goProudctDetails" data-productId="{{item.id}}" class="product_list_img"></image>
     </view>
     <view style="background-color:#fff;margin-top:-4%;padding-left:6%">

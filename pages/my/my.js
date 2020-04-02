@@ -163,9 +163,18 @@ Page({
   },
   // 去余额
   goBalance: function() {
-    wx.navigateTo({
-      url: '../myBalance/myBalance',
-    })
+    if (this.data.myMoney.balance == 0){
+      wx.showModal({
+        content: '没有可用余额',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../myBalance/myBalance',
+      })
+    }
+  
   }
 
 })

@@ -96,16 +96,16 @@ Page({
         showCancel: false,
       })
       return;
-    } else if (!_this.data.address) {
+    } else if (_this.data.region.length == 1) {
       wx.showModal({
-        content: '请填写详细地址',
+        content: '请选择所在区域',
         confirmColor: '#6928E2',
         showCancel: false,
       })
       return;
-    } else if (_this.data.region.length == 1) {
+    }else if (!_this.data.address) {
       wx.showModal({
-        content: '请选择所在区域',
+        content: '请填写详细地址',
         confirmColor: '#6928E2',
         showCancel: false,
       })

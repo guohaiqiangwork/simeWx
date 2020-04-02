@@ -27,7 +27,7 @@
     <view class="font_color66"> 《用户协议》</view>
   </view>
   <!-- 微信登录 -->
-  <view class="view_display" style="margin-top:25%">
+  <view class="view_display" style="margin-top:20%">
     <view class="or_left"></view>
     <view class="or_center">or</view>
     <view class="or_right"></view>

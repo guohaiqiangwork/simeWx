@@ -8,7 +8,7 @@ Page({
   data: {
     bar_Height: wx.getSystemInfoSync().statusBarHeight, //获取手机状态栏
     my_class: true, //是否显示白色
-    ishideback: false, //是否显示箭头
+    ishideback: true, //是否显示箭头
     isScroll: true,
     orderTabList: [{
       name: '全部',
@@ -269,6 +269,12 @@ Page({
       }
     })
 
+  },
+  // 去我的
+  goToMy:function(){
+    wx.switchTab({
+      url: '../../pages/my/my'
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -8,11 +8,11 @@
   <view>1. 申请通过后退款按原支付方式退回，耐心等待通知</view>
   <view>2. 申请单通过后，商品就真的与你擦身而过</view>
 </view>
-<view class="moudel">
+<view class="moudel" style="padding-bottom:24%">
   <view class="view_display moudel_list">
-    <view class="font_size28">
+    <view class="font_size28 width21">
       <text class="font_colorf4">*</text> 申请服务：</view>
-    <view>
+    <view style="width:78%">
       <picker bindchange="bindPickerChange" disabled="{{tuiFalg}}" range="{{serviceArray}}" range-key="text">
         <view class="picker font_size28 font_color66">
           {{servelNull?serviceArray[index].text:'请选择申请服务'}}
@@ -21,24 +21,23 @@
     </view>
   </view>
   <view class="view_display moudel_list margin_top2">
-    <view class="font_size28">
+    <view class="font_size28 width21">
       <text class="font_colorf4">*</text> 申请原因:
     </view>
-    <view>
-      <picker bindchange="bindPickeR" disabled="{{tuiFalg}}" value="{{reaIndex}}" range="{{reasonArray}}" range-key="text">
-        <view class="picker font_size28 font_color66 margin_left2">
+    <view style="width:78%">
+      <picker bindchange="bindPickeR"  disabled="{{tuiFalg}}" value="{{reaIndex}}" range="{{reasonArray}}" range-key="text">
+        <view class="picker font_size28 font_color66">
           {{reasonNull?reasonArray[index1].text:'请选择申请原因'}}
         </view>
       </picker>
     </view>
   </view>
   <view class="moudel_list margin_top2 view_display font_size28">
-    <view style="margin-left:{{ index1 == 2 ? '' : '10rpx'}}">
+    <view style="margin-left:{{ index1 == 2 ? '' : '3%'}}" class="width21">
     <text class="font_colorf4" wx:if="{{index1 == 2}}">*</text> 
     具体说明：</view>
-    <view class="font_color66 margin_left2" style="margin-top:0">
-      <input placeholder="请具体说明" bindinput="phoneInput"></input>
-
+    <view class="font_color66 margin_left2" style="margin-top:0;width:78%">
+      <input placeholder="请具体说明" bindinput="phoneInput" style="margin-left:-3%"></input>
     </view>
   </view>
   <!-- 图片上传 -->
@@ -113,7 +112,6 @@
     <view class="font_size28 width70" style="margin-top: -0.5%;margin-left:2%">预计退款总金额</view>
     <view class="font_size32 font_colorf4">¥{{totalPrice}}</view>
   </view>
-
 
 </view>
 

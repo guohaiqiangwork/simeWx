@@ -257,3 +257,9 @@ text-overflow:ellipsis;
  
 white-space:nowrap;
 }
+
+.title_img{
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 10rpx
+}

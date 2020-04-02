@@ -27,15 +27,22 @@
   padding-left: 20rpx;
   width: 100%;
 }
-.up_img{
+
+.up_img {
   width: 100rpx;
   height: 100rpx;
-  margin-top: 10rpx
+  margin-top: 10rpx;
 }
-.up_img_moudel{
+
+.up_img_new {
   width: 120rpx;
   height: 120rpx;
-  border: 1ppx solid #CFCFCF;
+}
+
+.up_img_moudel {
+  width: 120rpx;
+  height: 120rpx;
+  border: 1ppx solid #cfcfcf;
   border-radius: 10rpx;
   background-color: #fff;
   text-align: center;
@@ -85,23 +92,24 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   margin-top: 20rpx;
   display: flex;
   padding-top: 30rpx;
-  padding-left: 20rpx
-}
-.bottom_btn{
-  width: 100%;
-  height: 120rpx;
-   background: linear-gradient(to right, #ff342d, #ff5882);
-   text-align: center;
-   color: #fff;
-   line-height: 4;
-   font-size: 32rpx;
-   margin-top:20rpx;
-   position: fixed;
-   bottom: 0
+  padding-left: 20rpx;
 }
 
-.img_left_money{
-  background-color: #FFC40C;
+.bottom_btn {
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  text-align: center;
+  color: #fff;
+  line-height: 4;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  position: fixed;
+  bottom: 0;
+}
+
+.img_left_money {
+  background-color: #ffc40c;
   width: 36rpx;
   height: 36rpx;
   border-radius: 50%;
@@ -110,5 +118,4 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color: #fff;
   font-size: 32rpx;
   line-height: 1.2;
-
 }

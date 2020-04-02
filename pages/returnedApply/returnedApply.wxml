@@ -13,7 +13,7 @@
     <view class="font_size28">
       <text class="font_colorf4">*</text> 申请服务：</view>
     <view>
-      <picker bindchange="bindPickerChange" disabled="{{tuiFalg}}"  range="{{serviceArray}}" range-key="text">
+      <picker bindchange="bindPickerChange" disabled="{{tuiFalg}}" range="{{serviceArray}}" range-key="text">
         <view class="picker font_size28 font_color66">
           {{servelNull?serviceArray[index].text:'请选择申请服务'}}
         </view>
@@ -43,13 +43,16 @@
   <view hidden="{{tuiFalg}}">
     <view class="view_display">
       <view class="up_img_moudel" data-id='1' catchtap="selectImg">
-        <image src="{{upimgPathUrl1}}" class="up_img"></image>
+        <image src="{{upimgPathUrl1}}" class="up_img" wx:if="{{!dataImage1}}"></image>
+        <image src="{{dataImage1}}" class="up_img_new" wx:if="{{dataImage1}}"></image>
       </view>
       <view class="up_img_moudel" data-id='2' catchtap="selectImg">
-        <image src="{{upimgPathUrl2}}" class="up_img"></image>
+        <image src="{{upimgPathUrl2}}" class="up_img" wx:if="{{!dataImage2}}"></image>
+        <image src="{{dataImage2}}" class="up_img_new" wx:if="{{dataImage2}}"></image>
       </view>
       <view class="up_img_moudel" data-id='3' catchtap="selectImg">
-        <image src="{{upimgPathUrl3}}" class="up_img"></image>
+        <image src="{{upimgPathUrl3}}" class="up_img" wx:if="{{!dataImage3}}"></image>
+        <image src="{{dataImage3}}" class="up_img_new" wx:if="{{dataImage3}}"></image>
       </view>
     </view>
     <view class="font_size22 font_color66 margin_top2">
@@ -92,11 +95,13 @@
         </view>
       </view>
       <view class="view_display" style="margin-top:6%">
-          <view class="font_size24 font_color33 width60">预计退款: <text class="font_colorf4">¥{{item.totalFee}}</text> </view>
-           <view class="font_size24 font_color33 width40">最多申请:<text class="font_colorf4">{{item.num}}件</text> </view>
-      
+        <view class="font_size24 font_color33 width60">预计退款:
+          <text class="font_colorf4">¥{{item.totalFee}}</text> </view>
+        <view class="font_size24 font_color33 width40">最多申请:
+          <text class="font_colorf4">{{item.num}}件</text> </view>
+
       </view>
-    
+
 
     </view>
   </view>
@@ -110,6 +115,6 @@
 
 </view>
 
-  <view class="bottom_btn" catchtap="getRefund">
-    提交申请
-  </view>
+<view class="bottom_btn" catchtap="getRefund">
+  提交申请
+</view>

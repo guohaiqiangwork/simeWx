@@ -43,8 +43,8 @@ Page({
     orderId: '', //订单id
     retReason: '', //退款原因
     userRemark: '', //用户备注
-    tuiFalg:false,
-    totalPrice:0
+    tuiFalg: false,
+    totalPrice: 0
   },
 
   /**
@@ -52,17 +52,17 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    if (options.falg == 'tui'){
+    if (options.falg == 'tui') {
       this.setData({
-        tuiFalg:true,
+        tuiFalg: true,
         retReason: this.data.reasonArray[0].text,
         applyServer: this.data.serviceArray[2].value,
-        index:2,
-        index1:0,
+        index: 2,
+        index1: 0,
         servelNull: '0',
         reasonNull: '0'
       })
-   }
+    }
     this.setData({
       orderId: options.orderId
     });
@@ -80,23 +80,73 @@ Page({
       success: function(res) {
         //res.tempFilePaths 返回图片本地文件路径列表
         var tempFilePaths = res.tempFilePaths;
-        var url = 'upimgPathUrl' + imgId;
-        if (imgId == 1) {
-          that.setData({
-            upimgPathUrl1: tempFilePaths[0],
-          })
-        } else if (imgId == 2) {
-          that.setData({
-            upimgPathUrl2: tempFilePaths[0],
-          })
-        } else if (imgId == 3) {
-          that.setData({
-            upimgPathUrl3: tempFilePaths[0],
-          })
-        }
+        that.loadImg(tempFilePaths[0], imgId);
       }
     })
   },
+
+  loadImg: function(data, imagId) {
+    wx.showLoading({
+      title: '上传中...',
+    })
+    var _this = this;
+    wx.uploadFile({
+      url: ajax_url + '/file/fileUpload',
+      filePath: data,
+      name: "file",
+      header: {
+        'Authorization': "Bearer" + " " + wx.getStorageSync('token'),
+        'client': 'APP',
+      },
+      success: function(res) {
+        wx.hideLoading();
+        var json = JSON.parse(res.data) // 此处转换
+        var dataImg = JSON.stringify(json.data);
+        console.log(json.data.showFile)
+        if (json.code == 200) {
+          if (imagId == 1) {
+            _this.setData({
+              dataImage1: json.data.showFile,
+              dataImageOne: json.data.path
+            })
+          } else if (imagId == 2) {
+            _this.setData({
+              dataImage2: json.data.showFile,
+              dataImageTwo: json.data.path
+            })
+          } else if (imagId == 3) {
+            _this.setData({
+              dataImage3: json.data.showFile,
+              dataImageThree: json.data.path
+            })
+          }
+          wx.showToast({
+            title: "图像上传成功！",
+            icon: "none",
+            duration: 1500,
+            mask: true
+          });
+        } else {
+          wx.showModal({
+            content: json.message,
+            confirmColor: '#6928E2',
+            showCancel: false,
+          })
+        }
+
+      },
+      fail: function(res) {
+        wx.showToast({
+          title: "上传失败，请检查网络或稍后重试。",
+          icon: "none",
+          duration: 1500,
+          mask: true
+        });
+      }
+
+    })
+  },
+
   // 获取退换货详情
   getReturnList: function(orderId) {
     var _this = this;
@@ -324,18 +374,18 @@ Page({
       return;
     }
     var _this = this;
-    if (_this.data.upimgPathUrl1 == '/image/upImg.png') {
-      _this.data.upimgPathUrl1 = '';
-    } else if (_this.data.upimgPathUrl2 == '/image/upImg.png') {
-      _this.data.upimgPathUrl2 = '';
-    } else if (_this.data.upimgPathUrl3 == '/image/upImg.png') {
-      _this.data.upimgPathUrl3 = '';
-    }
+    // if (_this.data.dataImage1) {
+    //   _this.data.dataImage1 = '';
+    // } else if (_this.data.dataImage2) {
+    //   _this.data.dataImage2 = '';
+    // } else if (_this.data.dataImage3) {
+    //   _this.data.dataImage3 = '';
+    // }
     var data = {
       applyServer: _this.data.applyServer, //申请服务 1- 退货、2-换货、3-仅退款、4-补发货
       itemList: _this.data.arr,
       orderId: _this.data.orderId, //订单id
-      pictrue: _this.data.upimgPathUrl1 + ',' + _this.data.upimgPathUrl2 + ',' + _this.data.upimgPathUrl3, //退换货的图片
+      pictrue: _this.data.dataImageOne + ',' + _this.data.dataImageTwo + ',' + _this.data.dataImageThree, //退换货的图片
       retReason: _this.data.retReason, //退款原因
       userRemark: '' //用户备注
     }
@@ -354,11 +404,11 @@ Page({
             confirmColor: '#6928E2',
             showCancel: false,
           })
-          setTimeout(function(){
+          setTimeout(function() {
             wx.navigateBack({
               delta: 1,
             })
-          },500)
+          }, 500)
         } else {
           wx.showModal({
             content: res.data.message,

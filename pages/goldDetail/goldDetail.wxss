@@ -20,8 +20,8 @@
   margin-top: 16rpx;
 }
 .img_width{
-  width: 27rpx;
-  height: 27rpx;
+  width: 36rpx;
+  height: 36rpx;
   margin-top: 64rpx;
 margin-left: 20rpx;
 }

@@ -94,11 +94,8 @@
   <!-- 缺省页 -->
 
   <view wx:if="{{orderList.length == 0}}" class="text_center">
-    <image src="/image/default/noeOrder.png" class="none_img"></image>
-    <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
-    <view class="none_btn" catchtap="goHome">
-      去首页逛逛
-    </view>
+    <image src="/image/default/name.png" class="none_img"></image>
+    <view class="font_size26 margin_top2 ">没有可申请的订单哦</view>
   </view>
 </view>
 
@@ -171,18 +168,16 @@
       <!-- 底部按钮 -->
       <view class="view_display">
         <view wx:if="{{items.applyServer != 4 }}" style="margin-left:70%">
-          <view wx:if="{{items.applyServer == 1 || items.applyServer == 2}}" >
+          <view wx:if="{{items.applyServer == 1 || items.applyServer == 2}}">
             <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300;margin-left:20%" wx:if="{{items.retStatus == 2 && !items.logisticsCode}}" bindtap="modalinput" data-item="{{items}}">
               填写物流单号
             </view>
           </view>
           <view wx:if="{{items.applyServer != 4 && items.retStatus != 6}}">
-              <view class="font_color99 margin_left2 font_size24 margin_top3" wx:if="{{items.logisticsCode}}">
-            物流单号：{{items.logisticsCode}}
+            <view class="font_color99 margin_left2 font_size24 margin_top3" wx:if="{{items.logisticsCode}}">
+              物流单号：{{items.logisticsCode}}
+            </view>
           </view>
-          </view>
-        
-
         </view>
 
       </view>
@@ -197,10 +192,7 @@
   <!-- 缺省页 -->
 
   <view wx:if="{{applyOrderList.length == 0}}" class="text_center">
-    <image src="/image/default/noeOrder.png" class="none_img"></image>
-    <view class="font_size26 margin_top2 ">您暂时还没有订单哦~</view>
-    <view class="none_btn" catchtap="goHome">
-      去首页逛逛
-    </view>
+    <image src="/image/default/liushui.png" class="none_img"></image>
+    <view class="font_size26 margin_top2 ">没有可申请的订单哦~</view>
   </view>
 </view>

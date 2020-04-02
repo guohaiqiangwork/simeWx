@@ -69,7 +69,7 @@ overflow: hidden;
 }
 
 .tips_moudel {
-	border: 1px dashed #333333;
+	/* border: 1px dashed #333333; */
 	width: 700rpx;
 	height: 180rpx;
 	overflow: hidden;

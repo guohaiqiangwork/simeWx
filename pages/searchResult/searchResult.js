@@ -229,6 +229,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    var _this = this;
     wx.showLoading({
       title: '加载中',
     });

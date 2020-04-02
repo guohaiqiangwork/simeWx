@@ -79,6 +79,7 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
+        wx.hideLoading();
         if (res.data.code == '200') {
           if (type == 'new') {
             _this.setData({
@@ -210,6 +211,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var _this = this;
     wx.showNavigationBarLoading();
     this.setData({
       page: 1
@@ -234,6 +236,7 @@ Page({
     this.setData({
       page: this.data.page + 1,
     })
+
     if (_this.data.city) {
       _this.getCityList();
     } else {

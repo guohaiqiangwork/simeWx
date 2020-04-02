@@ -21,7 +21,7 @@
 
 .product_list_moudel {
   width: 360rpx;
-  height: 540rpx;
+  height: 500rpx;
   display: inline-block;
   margin-left: 10rpx;
 }

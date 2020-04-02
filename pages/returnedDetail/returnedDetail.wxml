@@ -20,13 +20,160 @@
 
   </view>
   <!-- 列表 -->
-  <view class="view_display margin_left3 margin_top3">
+  <!-- applyServer  retStatus==1-->
+  <view wx:if="{{returnedData.records[0].retStatus == 1}}">
+    <view wx:if="{{returnedData.records[0].applyServer == 1 || returnedData.records[0].applyServer == 2 || returnedData.records[0].applyServer == 3 || returnedData.records[0].applyServer == 4}}">
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+
+    </view>
+
+  </view>
+
+  <!-- applyServer  retStatus==2-->
+  <view wx:if="{{returnedData.records[0].retStatus == 2}}">
+    <view wx:if="{{returnedData.records[0].applyServer == 1  || returnedData.records[0].applyServer == 2}}">
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3" wx:if="{{returnedData.records[0].logisticsCode}}">
+        <view class="left">物流单号:</view>
+        <view class="right">{{returnedData.records[0].logisticsCode}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+    </view>
+    <view wx:if="{{returnedData.records[0].applyServer == 4}}">
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">未通过原因:</view>
+        <view class="right">{{returnedData.records[0].remark}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- applyServer  retStatus==3-->
+  <view wx:if="{{returnedData.records[0].retStatus == 3}}">
+    <view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">未通过原因:</view>
+        <view class="right">{{returnedData.records[0].remark}}</view>
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <!-- applyServer  retStatus==4-->
+  <view wx:if="{{returnedData.records[0].retStatus == 4}}">
+    <view wx:if="{{returnedData.records[0].applyServer == 1 ||  returnedData.records[0].applyServer == 3}}">
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">退款时间:</view>
+        <view class="right">{{returnedData.records[0].returnTime}} </view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">退款金额:</view>
+        <view class="right">{{returnedData.records[0].retPrice}} </view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">退款路径:</view>
+        <view class="right">原路退回</view>
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <!-- applyServer  retStatus==6-->
+  <view wx:if="{{returnedData.records[0].retStatus == 6}}">
+    <view wx:if="{{returnedData.records[0].applyServer == 2 || returnedData.records[0].applyServer == 4}}">
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">订单编号:</view>
+        <view class="right">{{returnedData.records[0].orderNo}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3" wx:if="{{returnedData.records[0].logisticsCode}}">
+        <view class="left">物流单号:</view>
+        <view class="right">{{returnedData.records[0].logisticsCode}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请时间:</view>
+        <view class="right"> {{returnedData.records[0].retTime}}</view>
+      </view>
+      <view class="view_display margin_left3 margin_top3">
+        <view class="left">申请原因:</view>
+        <view class="right">{{returnedData.records[0].retReason}}</view>
+      </view>
+    </view>
+
+
+
+  </view>
+
+
+
+
+
+  <!-- <view class="view_display margin_left3 margin_top3">
     <view class="left">订单编号:</view>
     <view class="right">{{returnedData.records[0].orderNo}}</view>
   </view>
   <view class="view_display margin_left3 margin_top3">
     <view class="left">物流单号:</view>
-    <view class="right">{{returnedData.records[0].retNo}}</view>
+    <view class="right">{{returnedData.records[0].logisticsCode}}</view>
   </view>
   <view class="view_display margin_left3 margin_top3">
     <view class="left">申请时间:</view>
@@ -47,5 +194,5 @@
   <view class="view_display margin_left3 margin_top3">
     <view class="left">退款路径:</view>
     <view class="right">原路退回</view>
-  </view>
+  </view> -->
 </view>

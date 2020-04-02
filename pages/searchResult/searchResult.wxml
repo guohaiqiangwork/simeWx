@@ -8,9 +8,9 @@
   </view>
   <view class="view_display div_backgroundff " style="margin-top:6%">
     <view class="search_tab text_center" wx:for="{{tabList}}" wx:key='index' data-id="{{item.id}}" catchtap='tabSwich'>
-      <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}">
+      <view class="{{tabFalg != item.id ? 'order_tab_fcolor':'order_fcolor' }}  view_display view_display_center" >
          <view> {{item.name}}</view>
-        <view class="arr" wx:if="{{item.name == '价格'}}" catchtap="listPaix" view_display view_display_center>
+        <view class="arr" wx:if="{{item.name == '价格'}}" catchtap="listPaix">
           <view class="arrUp" style="border-bottom-color:{{priceSorted == 1 ? '#ccc' : '#F42300'}}"></view>
           <view class="arrDown" style="border-top-color:{{priceSorted == 0 ? '#ccc' : '#F42300'}}"></view>
         </view>

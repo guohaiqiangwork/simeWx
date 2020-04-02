@@ -96,8 +96,8 @@
     <view class="width70">{{orderDetail.totalPrice}}</view>
   </view>
 
-  <view class="view_display font_size26 margin_top3">
-    <view class="view_display" stlye="width: 100%;justify-content: flex-end;margin-right: 5%;">
+  <view class="view_display font_size26 margin_top3" style="width:100%;justify-content:flex-end;margin-right:5%;">
+    <view class="view_display" style="margin-left:5%">
       <view>
         实付款
       </view>

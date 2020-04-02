@@ -3,7 +3,7 @@
   width: 95%;
   margin-left: 2%;
   margin-top: 3%;
-  min-height: 999rpx;
+  padding-bottom: 5%;
   border-radius: 3%;
 }
 

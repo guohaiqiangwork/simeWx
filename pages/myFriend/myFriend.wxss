@@ -23,12 +23,12 @@
 }
 
 .frind_btn {
-  width: 691rpx;
+  width: 95%;
   text-align: center;
   border-radius: 30rpx;
   background: linear-gradient(to right, #ff342d, #ff5882);
   color: #fff;
-  margin-left: 20rpx;
+  margin-left: 2%;
   margin-top: 40rpx;
 }
 

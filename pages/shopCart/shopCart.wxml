@@ -75,7 +75,7 @@
       <label>
         <checkbox checked="{{checked_all}}" color='#3B9EF5' />
       </label>
-      全选
+      <text class="margin_left2">全选</text>
     </checkbox-group>
   </view>
   <view class="shop_foot_content">

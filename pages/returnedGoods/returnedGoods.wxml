@@ -153,7 +153,7 @@
             <image src="{{items.returnItemList[0].picPath}}" style="width:140rpx;height:140rpx" class="one_img"></image>
           </view>
           <view class="font_size24 margin_top2 width65">
-            <view class="font_color33">{{items.returnItemList[0].title}}</view>
+            <view class="font_color33">{{items.returnItemList[0].goodsName}}</view>
             <view class="font_color99">{{items.returnItemList[0].skuName}}</view>
             <view class="font_colorf4">¥{{items.returnItemList[0].totalFee}}</view>
           </view>

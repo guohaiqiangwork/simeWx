@@ -13,8 +13,8 @@
   </view>
 </view>
 <!-- 好友列表 -->
-<view class="view_display frind_btn">
-  <view class="font_size26 " style="margin-top:10rpx;padding-left:150rpx">活动累计已获得奖励</view>
+<view class="view_display frind_btn" style="justify-content:center;">
+  <view class="font_size26 " style="margin-top:10rpx;">活动累计已获得奖励</view>
   <view class="font_size36" style="color:#FFF184">￥{{totalPrice}}</view>
 </view>
 <!-- 显示列表 -->

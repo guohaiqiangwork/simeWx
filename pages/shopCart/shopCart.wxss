@@ -207,6 +207,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .enit_foot_left{
   display: flex;
   width: 45%;
-  margin-top: 4%;
-  font-size: 24rpx;
+  margin-top: 24rpx;
+  font-size: 26rpx; 
 }

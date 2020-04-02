@@ -80,7 +80,7 @@ overflow: hidden;
 #realNameOne ._left {
 	width: 350rpx;
 	height: 230rpx;
-	border: 1px dashed #333333;
+	/* border: 1px dashed #333333; */
 	margin-top: 30rpx;
 	margin-left: 20rpx;
 	overflow: hidden;

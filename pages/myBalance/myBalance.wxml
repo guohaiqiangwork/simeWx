@@ -25,7 +25,7 @@
 
 <!--列表 -->
 <scroll-view scroll-y="{{isScroll}}" style='height:100%;padding-bottom:50rpx;padding-top:20rpx'>
-  <view class="view_display font_size28 padding_top2" wx:if="{{moneyList.length > 0}}"  wx:for="{{moneyList}}" wx:key="index">
+  <view class="view_display font_size28" style="padding-top:8%" wx:if="{{moneyList.length > 0}}"  wx:for="{{moneyList}}" wx:key="index">
     <view class="width30 text_center">{{item.recordDesc}}</view>
     <view class="width40">{{item.createTime}}</view>
     <view class="width20 text_right"> <text wx:if="{{item.transType == 1}}">+</text> <text wx:else>-</text> ¥{{item.amount}}</view>

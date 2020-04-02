@@ -130,7 +130,9 @@
       </view>
       <view class="view_display margin_left3 margin_top3">
         <view class="left">退款路径:</view>
-        <view class="right">原路退回</view>
+        <view class="right" wx:if="{{returnedData.records[0].paymentType == 1}}">微信支付</view>
+        <view class="right" wx:if="{{returnedData.records[0].paymentType == 2}}">支付宝支付</view>
+        <view class="right" wx:if="{{returnedData.records[0].paymentType == 3}}">余额支付</view>
       </view>
     </view>
 

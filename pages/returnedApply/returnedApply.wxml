@@ -33,7 +33,9 @@
     </view>
   </view>
   <view class="moudel_list margin_top2 view_display font_size28">
-    <view style="margin-left:10rpx">具体说明：</view>
+    <view style="margin-left:{{ index1 == 2 ? '' : '10rpx'}}">
+    <text class="font_colorf4" wx:if="{{index1 == 2}}">*</text> 
+    具体说明：</view>
     <view class="font_color66 margin_left2" style="margin-top:0">
       <input placeholder="请具体说明" bindinput="phoneInput"></input>
 

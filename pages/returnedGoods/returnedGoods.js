@@ -66,6 +66,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        wx.hideLoading();
         if (res.data.code == '200') {
           console.log(res);
           _this.setData({
@@ -133,7 +134,6 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        wx.hideLoading();
         if (res.data.code == '200') {
           console.log(res)
           if (type == 'new') {
@@ -175,7 +175,7 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        wx.hideLoading();
+      
         if (res.data.code == '200') {
           console.log(res)
           if (type == 'new') {
@@ -268,6 +268,7 @@ Page({
     this.setData({
       page: this.data.page + 1,
     })
+    wx.hideLoading();
     if (this.data.tabFalg == '001') {
       this.getReturnedList(); //获取数据
     } else {

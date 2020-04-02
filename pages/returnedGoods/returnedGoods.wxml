@@ -59,7 +59,7 @@
       <view class="conter_border" wx:if="{{items.itemList.length == 1}}" catchtap="goOrderDetail" data-orderId="{{items.orderId}}">
         <view class="view_display">
           <view class="width30">
-            <image src="{{items.itemList[0].picPath}}" class="one_img" style="width:140rpx;height:140rpx" ></image>
+            <image src="{{items.itemList[0].picPath}}" class="one_img" style="width:140rpx;height:140rpx"></image>
           </view>
           <view class="font_size24 margin_top2 width65">
             <view class="font_color33">{{items.itemList[0].title}}</view>
@@ -83,7 +83,7 @@
         <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:if="{{items.status == 4 }}" catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}">
           退换货
         </view>
-        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:else  catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}" data-falg="tui">
+        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300" wx:else catchtap="applyRecord" data-orderId="{{items.orderId}}" data-status="{{items.status}}" data-falg="tui">
           退款
         </view>
       </view>
@@ -120,10 +120,10 @@
           <view class="font_size28 margin_top2 ">审核通过</view>
         </view>
         <view class="text_right width30" wx:if="{{items.retStatus == 3}}">
-          <view class="font_size28 margin_top2">审核拒绝 </view>
+          <view class="font_size28 margin_top2">审核未通过 </view>
         </view>
         <view class="text_right width30" wx:if="{{items.retStatus == 4}}">
-          <view class="font_size28 margin_top2">退款成功</view>
+          <view class="font_size28 margin_top2">已退款</view>
         </view>
         <view class="text_right width30" wx:if="{{items.retStatus == 6}}">
           <view class="font_size28 margin_top2">已完成</view>
@@ -131,7 +131,7 @@
 
       </view>
       <!-- 内容多个-->
-      <view class="conter_border" wx:if="{{items.returnItemList.length > 1}}" catchtap="goReturnedDetail" data-orderId="{{items.id}}" >
+      <view class="conter_border" wx:if="{{items.returnItemList.length > 1}}" catchtap="goReturnedDetail" data-orderId="{{items.id}}">
         <view class="view_display">
           <scroll-view class='wrapper' scroll-x="true">
             <image src="{{item.picPath}}" class="money_img" wx:for="{{items.itemList}}" wx:key="index"></image>
@@ -170,18 +170,26 @@
 
       <!-- 底部按钮 -->
       <view class="view_display">
-        <view class="width50"></view>
-        <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300;margin-left:20%" wx:if="{{items.retStatus == 2 }}" bindtap="modalinput" data-item="{{items}}">
-          填写物流单号
+        <view wx:if="{{items.applyServer != 4 }}" style="margin-left:70%">
+          <view wx:if="{{items.applyServer == 1 || items.applyServer == 2}}" >
+            <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300;margin-left:20%" wx:if="{{items.retStatus == 2 && !items.logisticsCode}}" bindtap="modalinput" data-item="{{items}}">
+              填写物流单号
+            </view>
+          </view>
+          <view wx:if="{{items.applyServer != 4 && items.retStatus != 6}}">
+              <view class="font_color99 margin_left2 font_size24 margin_top3" wx:if="{{items.logisticsCode}}">
+            物流单号：{{items.logisticsCode}}
+          </view>
+          </view>
+        
+
         </view>
-        <view class="font_color99 margin_left2 font_size24 margin_top3"  wx:if="{{items.logisticsCode}}">
-          物流单号：{{items.logisticsCode}}
-        </view>
+
       </view>
 
-<modal hidden="{{hiddenmodalput}}" title="填写物流单号" confirm-text="确认" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">
-    <input type='number'placeholder="请输入内容" bindinput="bankcardInput" auto-focus/>
-</modal>
+      <modal hidden="{{hiddenmodalput}}" title="填写物流单号" confirm-text="确认" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">
+        <input type='number' placeholder="请输入内容" bindinput="bankcardInput" auto-focus/>
+      </modal>
 
     </view>
 
@@ -196,5 +204,3 @@
     </view>
   </view>
 </view>
-
-

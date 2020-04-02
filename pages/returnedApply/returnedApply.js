@@ -44,7 +44,8 @@ Page({
     retReason: '', //退款原因
     userRemark: '', //用户备注
     tuiFalg: false,
-    totalPrice: 0
+    totalPrice: 0,
+    imgUpList: []
   },
 
   /**
@@ -119,7 +120,8 @@ Page({
               dataImage3: json.data.showFile,
               dataImageThree: json.data.path
             })
-          }
+          };
+          _this.data.imgUpList.push(json.data.path)
           wx.showToast({
             title: "图像上传成功！",
             icon: "none",
@@ -168,11 +170,11 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        wx.hideLoading();
         if (res.data.code == '200') {
           console.log(res.data.data.records)
           _this.setData({
-            orderList: res.data.data.records[0].itemList
+            orderList: res.data.data.records[0].itemList,
+            status: res.data.data.records[0].status
           });
         } else {
           wx.showModal({
@@ -342,6 +344,7 @@ Page({
   // 提交申请
   getRefund: function() {
     var _this = this;
+    console.log(_this.data.retReason)
     if (!_this.data.applyServer) {
       wx.showModal({
         content: '请检查申请服务类型',
@@ -372,20 +375,25 @@ Page({
         showCancel: false,
       })
       return;
+    } else if (_this.data.status == 4) {
+      if (_this.data.imgUpList.length == 0) {
+        wx.showModal({
+          content: '请上传图片',
+          confirmColor: '#6928E2',
+          showCancel: false,
+        })
+        return;
+      }
+
     }
     var _this = this;
-    // if (_this.data.dataImage1) {
-    //   _this.data.dataImage1 = '';
-    // } else if (_this.data.dataImage2) {
-    //   _this.data.dataImage2 = '';
-    // } else if (_this.data.dataImage3) {
-    //   _this.data.dataImage3 = '';
-    // }
+    // 图片参数
+    var str = _this.data.imgUpList.join(',');
     var data = {
       applyServer: _this.data.applyServer, //申请服务 1- 退货、2-换货、3-仅退款、4-补发货
       itemList: _this.data.arr,
       orderId: _this.data.orderId, //订单id
-      pictrue: _this.data.dataImageOne + ',' + _this.data.dataImageTwo + ',' + _this.data.dataImageThree, //退换货的图片
+      pictrue: str, //退换货的图片
       retReason: _this.data.retReason, //退款原因
       userRemark: '' //用户备注
     }

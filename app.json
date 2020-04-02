@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/payResult/payResult",
     "pages/my/my",
@@ -38,6 +39,7 @@
     "pages/productList/productList",
     "pages/returnedDetail/returnedDetail",
     "pages/share/share",
+      "pages/orderTracking/orderTracking",
     "pages/case/case"
   ],
   "window": {

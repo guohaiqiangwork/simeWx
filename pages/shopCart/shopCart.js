@@ -19,7 +19,7 @@ Page({
     shopCarId: [], //购物车Id
     curTouchGoodStore: 99, //最大购买数量
     editFalg: true,
-    deleArr:[]
+    deleArr: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -97,12 +97,15 @@ Page({
 
   // 加按钮
   jiaBtnTap: function(e) {
+    console.log(e)
     var _this = this;
     var index = e.currentTarget.dataset.index;
     var shopId = e.currentTarget.dataset.id;
     var num = e.currentTarget.dataset.number;
     var fag = e.currentTarget.dataset.fag;
     var pecificationId = e.currentTarget.dataset.pecificationid;
+    var price = e.currentTarget.dataset.price;
+    var priceNumber = Number(price)
     var num = Number(e.currentTarget.dataset.number);
     if (fag == 'add') {
       num = num + 1;
@@ -121,7 +124,6 @@ Page({
       num: num,
       pecificationId: pecificationId,
     };
-    console.log(data)
     wx.request({
       url: ajax_url + '/shoppingCart/setCarttNum',
       method: "post",
@@ -133,8 +135,14 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           let list = "list[" + index + "].num"
+          if (fag == 'add') {
+            var heJiPrice = _this.data.totalPrice + (1 * priceNumber)
+          } else {
+            var heJiPrice = _this.data.totalPrice - (1 * priceNumber)
+          }
           _this.setData({
-            [list]: num
+            [list]: num,
+            totalPrice: heJiPrice
           });
 
         } else {
@@ -147,6 +155,7 @@ Page({
       }
     })
   },
+
   // 删除数据处理
   deleteShopData: function(e) {
     let _this = this;
@@ -217,7 +226,7 @@ Page({
     }
     this.setData({
       editFalg: true,
-      checked_all:false,
+      checked_all: false,
       list: this.data.list,
       arr: [],
       priceArr: [],
@@ -350,9 +359,9 @@ Page({
     var listLen = list.length
     var priceArr = that.data.priceArr;
     // console.log(valLen)
-    that.data.arr =[];
+    that.data.arr = [];
     that.data.priceArr = [];
-    that.data.deleArr=[];
+    that.data.deleArr = [];
     if (valLen != 0) {
       console.log(that.data.arr + '全选选中')
       for (var i = 0; i < listLen; i++) {
@@ -391,7 +400,7 @@ Page({
         priceArr: [],
         checked_all: false,
         list: list,
-        deleArr:[],
+        deleArr: [],
         totalNumber: 0, //选中商品数量
         totalPrice: 0 //选中商品价格
       })

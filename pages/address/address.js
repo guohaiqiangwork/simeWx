@@ -123,7 +123,7 @@ Page({
       isDefault: _this.data.isDefault, //	是否默认
     }
   // 判断是新增还是修改
-  if(_this.data.title == '修改地址'){
+  if(_this.data.title == '修改收货地址'){
     wx.request({
       url: ajax_url + '/address/updateAddress',
       method: "post",

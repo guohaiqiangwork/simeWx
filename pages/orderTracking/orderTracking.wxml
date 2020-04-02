@@ -1,0 +1,66 @@
+<view class='box-detail' style="padding-top:{{bar_Height  + 42}}px;">
+  <navbar title='订单追踪' show_bol='{{ishideback}}' my_class='{{my_class}}'></navbar>
+</view>
+
+<view class="moudel">
+  <view class="view_display margin_top2">
+    <view class="left_border"></view>
+    <view class="margin_left2 font_size28">订单信息</view>
+  </view>
+
+  <view class="view_display font_size28 font_color6A margin_top4 margin_left2">
+    <view>订单编号：</view>
+    <view>{{moneyList.orderNo}}</view>
+  </view>
+  <view class="view_display font_size28 font_color6A margin_top4 margin_left2">
+    <view>下单时间：</view>
+    <view>{{moneyList.createTime}}</view>
+  </view>
+
+
+  <view class="view_display margin_top5">
+    <view class="left_border"></view>
+    <view class="margin_left2 font_size28">物流信息</view>
+  </view>
+
+
+
+  <view>
+    
+  
+  
+  
+  </view>
+  <view>
+    <view class=''>
+      <view class='express-item' wx:for="{{moneyList.logistics}}" wx:key="index">
+  
+        <!-- 左边子容器 -->
+        <view class='express-middle-axis'>
+          <!-- 显示顶部收的圆点 -->
+          <view class='dot-shou' wx:if="{{index==0}}">收</view>
+          <!-- 正在进行的时间轴上半个时间线 -->
+          <view class='online-top-closing'></view>
+          <!-- 正在进行的时间轴点 -->
+          <view class='dot-closing'></view>
+          <!-- 正在进行的时间轴下半个时间线 -->
+          <view class='online-bottom'></view>
+          <!-- 显示尾部的圆点 -->
+          <view class='dot-closing' wx:if="{{index==list.length - 1}}">及</view>
+        </view>
+
+        <!-- 右边子容器 -->
+        <view class='express-right'>
+          <view class='express-statusing'>{{item.context}}</view>
+          <view class='express-status-address'>{{item.ftime}}</view>
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+
+
+
+</view>

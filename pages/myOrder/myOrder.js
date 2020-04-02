@@ -174,6 +174,7 @@ Page({
   },
   // 取消支付
   cancelPay: function(e) {
+    var _this = this;
     var orderid = e.currentTarget.dataset.orderid;
     var keywords = {
       orderId: orderid

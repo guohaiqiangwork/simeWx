@@ -220,6 +220,17 @@ Page({
   // 去支付
   goPay: function() {
     var that = this
+    if (!that.data.countDown) {
+      return;
+    }
+    if (!that.data.payType) {
+      wx.showModal({
+        content: '请选择支付方式',
+        confirmColor: '#6928E2',
+        showCancel: false,
+      });
+      return;
+    }
     // 余额支付
     if (that.data.payType == 'ye') {
       var _this = this;
@@ -243,18 +254,18 @@ Page({
               confirmColor: '#6928E2',
               showCancel: false,
             })
-          setTimeout(function(){
-            wx.navigateTo({
-              url: '../setPassword/setPassword'
-            })
-          },500)
-          
+            setTimeout(function() {
+              wx.navigateTo({
+                url: '../setPassword/setPassword'
+              })
+            }, 500)
+
           }
         }
       })
     } else {
       var dataBase = {
-        orderId: that.data.orderId || '' ,
+        orderId: that.data.orderId || '',
         orderNo: that.data.orderNo || '',
       };
       wx.request({
@@ -266,7 +277,7 @@ Page({
           'client': 'APP',
           'content-type': 'application/x-www-form-urlencoded'
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res)
           if (res.data.code == '200') {
             wx.requestPayment({
@@ -275,11 +286,10 @@ Page({
               "package": res.data.data.packageValue,
               "signType": "MD5",
               "paySign": res.data.data.sign,
-              "success": function (res) {
+              "success": function(res) {
                 console.log(res)
               },
-              "fail": function (res) {
-              }
+              "fail": function(res) {}
             })
 
           } else {
@@ -291,6 +301,6 @@ Page({
           }
         }
       })
-     }
+    }
   }
 })

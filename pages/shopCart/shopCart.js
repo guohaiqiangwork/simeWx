@@ -376,7 +376,7 @@ Page({
       that.setData({
         checked_all: true, //全选
         list: list,
-        priceArr: priceArr,
+        priceArr: that.data.priceArr,
         totalNumber: that.data.arr.length, //选中商品数量
         totalPrice: sum //选中商品价格
       })

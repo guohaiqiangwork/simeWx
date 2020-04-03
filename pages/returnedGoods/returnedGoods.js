@@ -23,22 +23,22 @@ Page({
     page_size: 10,
     orderList: [],
     applyOrderList: [],
-    hiddenmodalput: true,
+    hiddenmodalput: false,
     logisticsNumber:'',
     orderId:''
   },
   //点击按钮痰喘指定的hiddenmodalput弹出框
   modalinput: function (e) {
-
     this.setData({
-      hiddenmodalput: !this.data.hiddenmodalput,
+      hiddenmodalput: true,
       orderId: e.currentTarget.dataset.item.id
     })
   },
   //取消按钮
   cancel: function () {
     this.setData({
-      hiddenmodalput: true
+      hiddenmodalput: false,
+      isScroll: true
     });
   },
   //确认
@@ -74,7 +74,7 @@ Page({
         wx.hideLoading();
         if (res.data.code == '200') {
           _this.setData({
-            hiddenmodalput: true
+            hiddenmodalput: false
           });
           _this.getApplyRecord('new')//刷新数组
         } else {
@@ -294,5 +294,6 @@ Page({
       this.getApplyRecord() //获取申请
     }
 
-  }
+  },
+
 })

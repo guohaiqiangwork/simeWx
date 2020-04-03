@@ -1,4 +1,5 @@
 @import '/pages/myOrder/myOrder.wxss';
+
 .border_tab_t {
   width: 40%;
   height: 6rpx;
@@ -6,4 +7,77 @@
   border-radius: 3rpx;
   margin-left: 30%;
   margin-top: 16rpx;
+}
+
+/* 弹出层 */
+
+.isRuleShow {
+  display: block;
+}
+
+.isRuleHide {
+  display: none;
+}
+
+.ruleZhezhao {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.conter_motai {
+  background: rgba(255, 255, 255, 1);
+  width: 580rpx;
+  margin-left: 84rpx;
+  border: 1px solid #fff;
+  position: absolute;
+  color: #333;
+  font-size: 30rpx;
+  top: 40%;
+  border-radius: 14rpx;
+  padding-bottom: 5%;
+  overflow: auto;
+}
+
+.title {
+  padding-top: 20rpx;
+  padding-left: 42rpx;
+  /* border-bottom: 1px solid #ededed; */
+  padding-bottom: 20rpx;
+}
+
+.title_img {
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 10rpx;
+}
+
+.font_padding {
+  padding: 28rpx;
+}
+
+.width35 {
+  width: 35%;
+}
+
+.bottom_btn_moudel {
+  background: linear-gradient(to right, #ff342d, #ff5882);
+  width: 256rpx;
+  height: 65rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 2.5;
+  margin-top: 8%;
+  margin-left: 30%;
+}
+
+.border_bottom{
+  border-bottom: 1px solid #EEEEEE;
+  padding-bottom: 3%
 }

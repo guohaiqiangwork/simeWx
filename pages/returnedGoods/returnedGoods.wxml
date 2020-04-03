@@ -146,7 +146,7 @@
           <view style="width:26%">
             <image src="{{items.returnItemList[0].picPath}}" style="width:140rpx;height:140rpx" class="one_img"></image>
           </view>
-          <view class="font_size24 margin_top2"  style="width:69%">
+          <view class="font_size24 margin_top2" style="width:69%">
             <view class="font_color33 font_size28">{{items.returnItemList[0].goodsName}}</view>
             <view class="font_color99">{{items.returnItemList[0].skuName}}</view>
             <view class="font_colorf4">¥{{items.returnItemList[0].totalFee}}</view>
@@ -162,10 +162,10 @@
       </view>
 
       <!-- 底部按钮 -->
-      <view class="view_display">
-        <view wx:if="{{items.applyServer != 4 }}" style="margin-left:70%">
+      <view class="view_display" style="justify-content:flex-end;margin-right:4%">
+        <view wx:if="{{items.applyServer != 4 }}" style="">
           <view wx:if="{{items.applyServer == 1 || items.applyServer == 2}}">
-            <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300;margin-left:20%" wx:if="{{items.retStatus == 2 && !items.logisticsCode}}" bindtap="modalinput" data-item="{{items}}">
+            <view class="bottom_btn font_colorf4 margin_left2" style="border:1px solid #F42300;" wx:if="{{items.retStatus == 2 && !items.logisticsCode}}" bindtap="modalinput" data-item="{{items}}">
               填写物流单号
             </view>
           </view>
@@ -178,9 +178,31 @@
 
       </view>
 
-      <modal hidden="{{hiddenmodalput}}" title="填写物流单号" confirm-text="确认" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">
+      <!-- <modal hidden="{{hiddenmodalput}}" title="填写物流单号" confirm-text="确认" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm">
         <input type='number' placeholder="请输入内容" bindinput="bankcardInput" auto-focus/>
-      </modal>
+      </modal> -->
+
+      <view class="ruleZhezhao {{hiddenmodalput?'isRuleShow':'isRuleHide'}}">
+        <view class="conter_motai">
+          <view class="view_display title">
+            <view class="width35" catchtap="cancel">
+              <image src="/image/close.png" class="title_img"></image>
+            </view>
+            <view class="font_size32">填写物流单号</view>
+          </view>
+          <view class="view_display margin_top3 border_bottom">
+            <view class="font_size32" style="margin-left:8%">物流单号</view>
+            <input type='number' style="marrgin-top:1%" class="margin_left2" placeholder=" 请填写物流单号" bindinput="bankcardInput" auto-focus/>
+          </view>
+
+          <view class="bottom_btn_moudel" catchtap="confirm">
+            确定
+          </view>
+        </view>
+
+      </view>
+
+
 
     </view>
 

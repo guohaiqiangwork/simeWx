@@ -28,7 +28,7 @@
         <view class="product_list_left">赚</view>
         <view class="product_list_right">¥ {{item.rebate}}</view>
       </view>
-      <view class="product_none" hidden="{{item.inventory != 0}}">已售罄</view>
+      <view class="product_none" hidden="{{item.inventory != 0}}" catchtap="goProudctDetails" data-productId="{{item.id}}" >已售罄</view>
       <image src="{{item.pictureUrl}}" catchtap="goProudctDetails" data-productId="{{item.id}}" class="product_list_img"></image>
     </view>
     <view style="background-color:#fff;margin-top:-4%;padding-left:6%">

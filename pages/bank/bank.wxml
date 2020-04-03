@@ -9,7 +9,7 @@
   </view>
   <view class="address_list">
     <view class="address_list_left">卡号</view>
-    <input type="number" class="width70" value="{{userInputCardNum}}" placeholder="请输入银行卡账号" maxlength="23" bindinput="bankcardInput" />
+    <input type="number" class="address_list_right" value="{{userInputCardNum}}" placeholder="请输入银行卡账号" maxlength="23" bindinput="bankcardInput" />
   </view>
   <view class="address_list">
     <view class="address_list_left">银行</view>
@@ -26,14 +26,14 @@
     </view>
   </view>
   <view class="address_list">
-    <view class="address_list_left">验证码</view>
+    <view class="address_list_left" style="width:{{iosFalg ? '20%' : '25%'}}">验证码</view>
     <view class="view_display">
-      <input class="width60" bindinput="yzmInp" value="{{code}}" type="number" maxlength="6" placeholder="请输入验证码"></input>
+      <input class="width60 address_list_right" bindinput="yzmInp" value="{{code}}" type="number" maxlength="6" placeholder="请输入验证码"></input>
       <view catchtap="getYzm" class="yzm_btn">{{yzmButtonName}}</view>
     </view>
   </view>
   <view class="goPay" catchtap="saveBank">
-    完成
+   {{iosFalg}} 完成{{iosFalg ? '20%' : '25%'}}
   </view>
 </view>
 

@@ -31,6 +31,20 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        if (res.platform == "ios") {
+          that.setData({
+            iosFalg:true
+          })
+        } else {
+          that.setData({
+            iosFalg: false
+          })
+        }
+      }
+    })
+
     that.getName() //查询是否实名认证
 
     if (that.data.bankList.length > 0) {

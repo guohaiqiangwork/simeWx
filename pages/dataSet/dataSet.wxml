@@ -3,46 +3,47 @@
 </view>
 
 <view class="list_moudel">
-  <view class="view_display list_one">
+  <view class="view_display list_one" catchtap="selectImg">
     <view class="font_size32 width45 font_color33">
       头像
     </view>
-    <view class="" style="margin-left:44%" catchtap="selectImg">
+    <view class="view_display" style="justify-content:flex-end;width:54%">
       <view class="headImgCla">
-         <image src="{{listData.avatar}}" style="width:60rpx;height:64rpx;"></image>
+        <image src="{{listData.avatar}}" style="width:60rpx;height:64rpx;"></image>
+
       </view>
-   
+      <image src="/image/right99.png" class="right" style="margin-top:7%"></image>
     </view>
   </view>
-  <view class="view_display list_one">
+  <view class="view_display list_one" catchtap="goModifyName" data-value="{{listData.nickname}}">
     <view class="font_size32 width45 font_color33">
       用户名
     </view>
-    <view class="width54 text_right font_color0c" catchtap="goModifyName" data-value="{{listData.nickname}}">
+    <view class="width54 text_right font_color0c">
       <text>{{listData.nickname}}</text>
       <image src="/image/right99.png" class="right"></image>
     </view>
   </view>
-  <view class="view_display list_one">
+  <view class="view_display list_one" catchtap="goModifyPhone">
     <view class="font_size32 width45 font_color33">
       手机号
     </view>
-    <view class="width54 text_right font_color0c" catchtap="goModifyPhone" >
+    <view class="width54 text_right font_color0c">
       <text>{{listData.mobile}}</text>
       <image src="/image/right99.png" class="right"></image>
     </view>
   </view>
-  <view class="view_display list_one">
+  <view class="view_display list_one" bindchange="bindPickerChange">
     <view class="font_size32 width45 font_color33">
       性别
     </view>
     <view class="width54 text_right font_color0c view_display">
       <!-- <text>{{listData.sex}}</text> -->
       <view class="width60"></view>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{sexList}}" class="width40">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{sexList}}" class="view_picker">
         {{sexList[sexIndex]}}
       </picker>
-      <image src="/image/right99.png" class="right"></image>
+      <image src="/image/right99.png" class="right" style="margin-left:36%"></image>
     </view>
   </view>
   <view class="view_display list_one">
@@ -50,10 +51,10 @@
       生日
     </view>
     <view class="width54 text_right font_color0c view_display">
-      <picker mode="date" value="{{birthdayDay}}" style="width:90%" start="1900-09-01" end="2999-09-01" bindchange="rememberDayPick">
+      <picker mode="date" value="{{birthdayDay}}" class="view_picker" start="1900-09-01" end="2999-09-01" bindchange="rememberDayPick">
         {{birthdayDay}}
       </picker>
-      <image src="/image/right99.png" class="right"></image>
+      <image src="/image/right99.png" class="right" style="margin-left:95%"></image>
     </view>
   </view>
   <view class="view_display list_one">
@@ -61,10 +62,10 @@
       纪念日
     </view>
     <view class="width54 text_right font_color0c view_display">
-      <picker mode="multiSelector"  disabled="{{timeFalgOne}}"  bindchange="bindMultiPickerChange" style="width:90%" bindcolumnchange="bindMultiPickerColumnChange" value="{{rememberDay}}" range="{{multiArray}}">
-        {{rememberDay}} 
+      <picker mode="multiSelector" disabled="{{timeFalgOne}}" bindchange="bindMultiPickerChange" style="width:90%" bindcolumnchange="bindMultiPickerColumnChange" value="{{rememberDay}}" range="{{multiArray}}">
+        {{rememberDay}}
       </picker>
-      <image src="/image/right99.png" class="right" hidden="{{timeFalgOne}}" ></image>
+      <image src="/image/right99.png" class="right" hidden="{{timeFalgOne}}"></image>
     </view>
   </view>
 </view>

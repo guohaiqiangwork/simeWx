@@ -14,11 +14,12 @@
   </view>
   <view class="address_list">
     <view class="address_list_left">所在地区</view>
-    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-      <view class="picker font_size30" style="color:#a0a0a0;font-size: 30rpx;font-width:500">
+    <picker style="width:62%" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="picker font_size30" style="color:#a0a0a0;font-size: 30rpx;font-width:500;margin-left: 2%;">
         {{region[0]}}{{region[1]}}{{region[2]}}
       </view>
     </picker>
+    <image src="/image/down.png" style="width:30rpx;height:17rpx;margin-top:3%"></image>
   </view>
   <view class="address_list">
     <view class="address_list_left">详细地址</view>

@@ -58,8 +58,7 @@
           <image src="/image/right99.png" class="many_img"></image>
         </view>
       </view>
-      <view class="view_display font_size28">
-        <view class="width50"></view>
+      <view class="view_display font_size28" style="justify-content:flex-end;margin-right:2%">
         <view class="font_color99">共{{items.goodsNum}}种</view>
         <view class="margin_left2 font_color00">实付款：¥{{items.payment}}</view>
       </view>
@@ -71,7 +70,7 @@
           <image src="{{items.itemList[0].picPath}}" class="one_img"></image>
         </view>
         <view class="font_size24 margin_top2 width65">
-          <view class="font_color33">{{items.itemList[0].title}}</view>
+          <view class="font_color33 font_size28">{{items.itemList[0].title}}</view>
           <view class="font_color99">{{items.itemList[0].skuName}}</view>
           <view class="font_colorf4">¥{{items.itemList[0].totalFee}}</view>
         </view>
@@ -79,8 +78,7 @@
           *{{items.itemList[0].num}}
         </view>
       </view>
-      <view class="view_display font_size28">
-        <view class="width50"></view>
+      <view class="view_display font_size28" style=" justify-content:flex-end;margin-right:2%">
         <view class="font_color99">共{{items.goodsNum}}种</view>
         <view class="margin_left2 font_color00">实付款：¥{{items.payment}}</view>
       </view>

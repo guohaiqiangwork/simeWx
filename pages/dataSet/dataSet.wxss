@@ -128,3 +128,10 @@ picker {
   line-height: 2.5;
   margin-top: 80rpx
 }
+
+
+.view_picker{
+  position: absolute;
+  width: 83%;
+  left: 5%;
+}

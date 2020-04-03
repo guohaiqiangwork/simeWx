@@ -15,7 +15,7 @@
 </view>
 <!-- 导航栏 bindtap="toViewClick"-->
 <view class="">
-  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabListTitle}}" wx:key="index"  data-code="{{item.sortId}}" catchtap="goProductList" data-type="{{item.name}}" data-code="{{item.sortId}}">
+  <view class="margin_top3 margin_left6 tab_width" wx:for="{{tabListTitle}}" wx:key="index" data-code="{{item.sortId}}" catchtap="goProductList" data-type="{{item.name}}" data-code="{{item.sortId}}">
     <view>
       <image src="{{item.picture}}" class="tabList_img"></image>
     </view>
@@ -43,15 +43,15 @@
         <image src="{{item.pictureUrl}}" class="new_img"></image>
       </view>
 
-       <view style="background-color:#fff;margin-top:-4%;padding-left:6%">
-      <view class="font_size24 view_hidden"> {{item.goodsName}}</view>
-      <view class="font_size18 view_hidden">{{item.title}}</view>
-      <view class="view_display margin_top2">
-        <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
-        <view catchtap="addShopCard" data-spId="{{item.spId}}" data-id="{{item.id}}">
-          <image src="/image/add.png" class="new_add_img"></image>
+      <view style="background-color:#fff;margin-top:-4%;padding-left:6%">
+        <view class="font_size24 view_hidden"> {{item.goodsName}}</view>
+        <view class="font_size18 view_hidden">{{item.title}}</view>
+        <view class="view_display margin_top2">
+          <view class="font_size28 font_colorf4 width70">¥{{item.price}}</view>
+          <view catchtap="addShopCard" data-spId="{{item.spId}}" data-id="{{item.id}}">
+            <image src="/image/add.png" class="new_add_img"></image>
+          </view>
         </view>
-      </view>
       </view>
     </view>
   </scroll-view>
@@ -91,9 +91,11 @@
 
     </view>
 
-    <view style="display: inline-block;" catchtap="goProductList" data-code="{{items.code}}" data-type="{{items.name}}">
-      <image src="/image/moreProduct.jpg" style="width:360rpx;height:500rpx;margin-left:10rpx"></image>
-    </view>
+    <!-- <view style="" catchtap="goProductList" data-code="{{items.code}}" data-type="{{items.name}}"> -->
+      <image src="/image/moreProduct.jpg"
+      catchtap="goProductList" data-code="{{items.code}}" data-type="{{items.name}}"
+       style="width:360rpx;height:504rpx;display: inline-block;margin-left:10rpx;vertical-align: bottom;margin-bottom:4%"></image>
+    <!-- </view> -->
 
   </view>
 

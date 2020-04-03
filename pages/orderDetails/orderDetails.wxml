@@ -37,10 +37,10 @@
   <view class=" margin_left4 padding_top3">
     <view class="view_display">
       <view class="font_size34 width90">待收货</view>
-      <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%"> 
-        <image src="/image/rightFF.png" class="image_width_right" ></image>
+      <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%">
+        <image src="/image/rightFF.png" class="image_width_right"></image>
       </view>
-      
+
     </view>
 
     <view class="font_size24">商家已发货，耐心等待收货</view>
@@ -50,8 +50,8 @@
   <view class=" margin_left4 padding_top3">
     <view class="view_display">
       <view class="font_size34 width90">订单已完成</view>
-    <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%"> 
-        <image src="/image/rightFF.png" class="image_width_right" ></image>
+      <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%">
+        <image src="/image/rightFF.png" class="image_width_right"></image>
       </view>
     </view>
 
@@ -79,8 +79,8 @@
     <view class="width25">
       <image src="{{item.picPath}}" class="one_img"></image>
     </view>
-    <view class="font_size26 margin_top2 width69">
-      <view class="font_color33">{{item.title}}</view>
+    <view class="font_size26 margin_top2 " style="width:68%">
+      <view class="font_color33 font_size28">{{item.title}}</view>
       <view class="font_color99">{{item.skuName}}</view>
       <view class="font_colorf4">¥{{item.totalFee}}</view>
     </view>
@@ -112,7 +112,7 @@
   </view>
 
   <view class="view_display font_size26 margin_top3" style="width:100%;justify-content:flex-end;margin-right:5%;">
-    <view class="view_display" style="margin-left:5%">
+    <view class="view_display" style="margin-right:5%">
       <view>
         实付款
       </view>

@@ -37,7 +37,7 @@
 }
 
 .product_none {
-  background-color: #585252c7;
+  background-color: rgba(0, 0, 0, 0.4);
   width: 360rpx;
   height: 370rpx;
   text-align: center;

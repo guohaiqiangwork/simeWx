@@ -22,7 +22,7 @@
 .img_width{
   width: 36rpx;
   height: 36rpx;
-  margin-top: 64rpx;
+  margin-top: 6%;
 margin-left: 20rpx;
 }
 .width33{
@@ -56,7 +56,7 @@ width: 33%
   font-size: 30rpx;
   top: 312rpx;
   border-radius: 14rpx;
-  height: 470rpx;
+  height: 410rpx;
   overflow: auto;
 }
 .title{
@@ -72,4 +72,7 @@ width: 33%
 }
 .font_padding{
   padding:28rpx;
+}
+.width35{
+  width: 35%;
 }

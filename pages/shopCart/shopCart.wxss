@@ -18,7 +18,7 @@ page {
 
 .shop_list {
   width: 690rpx;
-  height: 230rpx;
+  height: 210rpx;
   background-color: #fff;
   border-radius: 10rpx;
   margin-left: 20rpx;

@@ -245,10 +245,18 @@ Page({
   },
   // 去商品清单
   goDetailList: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '/pages/detailedList/detailedList?type=' + e.currentTarget.dataset.type,
-    })
+    if (this.data.cartListNo != 0){
+      wx.navigateTo({
+        url: '/pages/detailedList/detailedList?type=' + e.currentTarget.dataset.type,
+      })
+    }else{
+      wx.showToast({
+        title: '失效商品为空',
+        icon: 'none',
+        duration: 1000,
+      })
+    }
+   
   },
 
   // 去选择地址；

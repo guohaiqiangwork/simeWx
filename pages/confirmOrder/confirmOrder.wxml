@@ -12,10 +12,13 @@
   <view wx:if="{{adderList.length > 0}}" class="view_display" wx:for="{{adderList}}" wx:key="index">
     <view class="left">
       <view class="left_name">{{item.receiver}}</view>
-      <view class="left_mo_ren" wx:if="{{item.isDefault == 1}}">默认</view>
     </view>
     <view class="centent">
-      <view class="font_size32 font_color33">{{item.mobile}}</view>
+      <view class="view_display">
+        <view class="font_size32 font_color33">{{item.mobile}}</view>
+        <view class="left_mo_ren" wx:if="{{item.isDefault == 1}}" style="marrgin-top:2%;margin-left:2%">默认</view>
+      </view>
+
       <view class="font_size28 font_color66">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
     </view>
     <view class="right" catchtap="goAddress" data-falg="replace">
@@ -68,19 +71,19 @@
 
 <!-- 显示list -->
 <view style="">
-<view class="con_list">
-  <view class="width50 margin_top3 margin_left2">失效商品清单</view>
-  <view class="view_display margin_top3" style="margin-left:190rpx;" data-type="失效" catchtap="goDetailList">
-    <view style="margin-top:-4rpx">共{{cartListNo}}种</view>
-    <image src="/image/right99.png" class="many_img" wx:if="{{cartListNo > 0}}"></image>
+  <view class="con_list">
+    <view class="width50 margin_top3 margin_left2">失效商品清单</view>
+    <view class="view_display margin_top3" style="margin-left:190rpx;" data-type="失效" catchtap="goDetailList">
+      <view style="margin-top:-4rpx">共{{cartListNo}}种</view>
+      <image src="/image/right99.png" class="many_img" wx:if="{{cartListNo > 0}}"></image>
+    </view>
   </view>
-</view>
-<view class="con_list">
-  <view class="width50 margin_top3 margin_left2">商品金额</view>
-  <view class="view_display margin_top3" style="margin-left:190rpx;">
-    <view style="margin-top:-4rpx">¥{{prouctList.totalPrice}}</view>
+  <view class="con_list">
+    <view class="width50 margin_top3 margin_left2">商品金额</view>
+    <view class="view_display margin_top3" style="margin-left:190rpx;">
+      <view style="margin-top:-4rpx">¥{{prouctList.totalPrice}}</view>
+    </view>
   </view>
-</view>
 
 </view>
 

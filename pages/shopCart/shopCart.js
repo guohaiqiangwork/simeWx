@@ -19,7 +19,7 @@ Page({
     shopCarId: [], //购物车Id
     curTouchGoodStore: 99, //最大购买数量
     editFalg: true,
-    deleArr: []
+    deleArr: [],
   },
   /**
    * 生命周期函数--监听页面加载
@@ -116,6 +116,7 @@ Page({
     var pecificationId = e.currentTarget.dataset.pecificationid;
     var price = e.currentTarget.dataset.price;
     var priceNumber = Number(price)
+    var checkeditem = e.currentTarget.dataset.checkeditem; //是否选中
     var num = Number(e.currentTarget.dataset.number);
     if (fag == 'add') {
       num = num + 1;
@@ -145,10 +146,14 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           let list = "list[" + index + "].num"
-          if (fag == 'add') {
-            var heJiPrice = _this.data.totalPrice + (1 * priceNumber)
-          } else {
-            var heJiPrice = _this.data.totalPrice - (1 * priceNumber)
+          console.log(checkeditem)
+          var heJiPrice = 0;
+          if (checkeditem) {
+            if (fag == 'add') {
+              var heJiPrice = _this.data.totalPrice + (1 * priceNumber)
+            } else {
+              var heJiPrice = _this.data.totalPrice - (1 * priceNumber)
+            }
           }
           _this.setData({
             [list]: num,

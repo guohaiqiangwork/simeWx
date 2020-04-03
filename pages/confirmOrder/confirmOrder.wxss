@@ -22,12 +22,13 @@ view {
 .left {
   width: 20%;
   padding-left: 33rpx;
-  padding-top: 67rpx;
+  padding-top: 5%;
 }
 
 .centent {
-  width: 65%;
+  width: 60%;
   padding-top: 33rpx;
+  margin-left: 2%
 }
 
 .right {

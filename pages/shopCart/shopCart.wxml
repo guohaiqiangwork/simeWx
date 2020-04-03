@@ -27,9 +27,9 @@
       <view class="view_display margin_top2">
         <view class="font_size26 font_colorf4" style="width:240rpx">¥{{item.price}} </view>
         <view class="buy-num">
-          <view class="jian-btn {{item.num <=1? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}" data-price="{{item.price}}">-</view>
+          <view class="jian-btn {{item.num <=1? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}" data-price="{{item.price}}" data-checkeditem="{{item.checkeditem}}">-</view>
           <input type="number" value="{{item.num}}" disabled/>
-          <view class="jia-btn {{item.number ==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-fag="add" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}" data-price="{{item.price}}">+</view>
+          <view class="jia-btn {{item.number ==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-fag="add" data-index="{{index}}" data-number="{{item.num}}" data-id="{{item.id}}" data-pecificationId="{{item.pecificationId}}" data-price="{{item.price}}" data-checkeditem="{{item.checkeditem}}">+</view>
         </view>
       </view>
     </view>

@@ -129,10 +129,15 @@ Page({
             mask: true
           });
         } else {
-          wx.showModal({
-            content: json.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: json.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: json.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
 
@@ -177,10 +182,15 @@ Page({
             status: res.data.data.records[0].status
           });
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -346,41 +356,66 @@ Page({
     var _this = this;
     console.log(_this.data.retReason)
     if (!_this.data.applyServer) {
-      wx.showModal({
-        content: '请检查申请服务类型',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请检查申请服务类型',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请检查申请服务类型',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (!_this.data.retReason) {
-      wx.showModal({
-        content: '请检查退款原因',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请检查退款原因',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请检查退款原因',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (_this.data.retReason == '商品质量问题') {
       if (!_this.data.userRemark) {
-        wx.showModal({
-          content: '请检查具体说明',
-          confirmColor: '#6928E2',
-          showCancel: false,
+        // wx.showModal({
+        //   content: '请检查具体说明',
+        //   confirmColor: '#6928E2',
+        //   showCancel: false,
+        // })
+        wx.showToast({
+          title: '请检查具体说明',
+          icon: 'none',
+          duration: 1000,
         })
         return;
       }
     } else if (_this.data.arr.length == 0) {
-      wx.showModal({
-        content: '请选择商品',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请选择商品',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请选择商品',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (_this.data.status == 4) {
       if (_this.data.imgUpList.length == 0) {
-        wx.showModal({
-          content: '请上传图片',
-          confirmColor: '#6928E2',
-          showCancel: false,
+        // wx.showModal({
+        //   content: '请上传图片',
+        //   confirmColor: '#6928E2',
+        //   showCancel: false,
+        // })
+        wx.showToast({
+          title: '请上传图片',
+          icon: 'none',
+          duration: 1000,
         })
         return;
       }
@@ -407,10 +442,15 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '提交成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '提交成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: '提交成功',
+            icon: 'none',
+            duration: 1000,
           })
           setTimeout(function() {
             wx.navigateBack({
@@ -418,11 +458,16 @@ Page({
             })
           }, 500)
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })

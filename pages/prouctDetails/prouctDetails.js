@@ -52,10 +52,15 @@ Page({
             detailsList: res.data.data.detailsList
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -78,10 +83,15 @@ Page({
             prouctNumberNo: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -100,15 +110,24 @@ Page({
 //立即购买
   goBuy:function(){
     var _this = this;
-    var prouctData ={
-      goodsId: _this.data.goodsId,//商品id
-      mchId: _this.data.mchId,//商户id
-      skuId: _this.data.skuId,//规格id
-      falg:'prouct'
+    if (_this.data.specification[0].inventory == 0){
+      wx.showToast({
+        title: '货物已售罄',
+        icon: 'none',
+        duration: 1000,
+      })
+    }else{
+      var prouctData = {
+        goodsId: _this.data.goodsId,//商品id
+        mchId: _this.data.mchId,//商户id
+        skuId: _this.data.skuId,//规格id
+        falg: 'prouct'
+      }
+      wx.navigateTo({
+        url: '/pages/confirmOrder/confirmOrder?prouctData=' + JSON.stringify(prouctData),
+      })
     }
-    wx.navigateTo({
-      url: '/pages/confirmOrder/confirmOrder?prouctData=' + JSON.stringify(prouctData),
-    })
+   
   },
   // 去购物车
   goShopCart:function(){
@@ -139,17 +158,22 @@ Page({
       success: function (res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '添加成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '添加成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: '添加成功',
+            icon: 'none',
+            duration: 1000,
           })
           _this.getNum()
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

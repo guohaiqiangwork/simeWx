@@ -115,10 +115,15 @@ Page({
             });
           }
         } else {
-          wx.showModal({
-            content: json.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: json.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: json.message,
+            icon: 'none',
+            duration: 1000,
           })
           // wx.showToast({
           //   title: json.message,
@@ -199,10 +204,15 @@ Page({
             oneCard: 3
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

@@ -8,28 +8,33 @@ Page({
     code: '', //验证码
     oprnId: '' //微信openId
   },
-  phoneInput: function(e) {
+  phoneInput: function (e) {
     var _this = this;
     _this.setData({
       phone: e.detail.value
     })
   },
-  codeInput: function(e) {
+  codeInput: function (e) {
     var _this = this;
     _this.setData({
       code: e.detail.value
     })
   },
   // 获取验证码
-  getYzm: function(e) {
+  getYzm: function (e) {
     let that = this;
     let yzm = that.data.yzm;
     let telephone = that.data.phone;
     if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -51,7 +56,7 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
-        success: function(res) {
+        success: function (res) {
           console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
@@ -60,7 +65,7 @@ Page({
               icon: 'success',
               duration: 2000
             })
-            that.data.setInter = setInterval(function() {
+            that.data.setInter = setInterval(function () {
               times--;
               if (times < 1) {
                 that.setData({
@@ -76,10 +81,15 @@ Page({
               }
             }, 1000);
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
           }
         }
@@ -88,21 +98,31 @@ Page({
   },
 
   // 手机号登录
-  goLogin: function(e) {
+  goLogin: function (e) {
     var _this = this
     if (_this.data.phone.length != 11) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title: '请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
+      })
       return;
     } else if (_this.data.code.length != 6) {
-      wx.showModal({
-        content: '请输入正确验证码',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请输入正确验证码',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title: '请输入正确验证码',
+        icon: 'none',
+        duration: 1000,
+      })
       return;
     }
     var data = {
@@ -121,7 +141,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值 
       },
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading()
         if (res.data.code == '200') {
           wx.showToast({
@@ -139,15 +159,21 @@ Page({
             data: res.data.data.id
           }
           )
-         
+
           wx.switchTab({
             url: '../../pages/index/index'
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -155,7 +181,7 @@ Page({
   },
 
   // 是否授权弹窗
-  bindGetUserInfo: function(res) {
+  bindGetUserInfo: function (res) {
     console.log(app.nativeData.openId);
     app.nativeData.name = res.detail.userInfo.nickName
     app.nativeData.imgurl = res.detail.userInfo.avatarUrl
@@ -175,7 +201,7 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded',
         },
-        success: function(res) {
+        success: function (res) {
           if (res.data.code == '200') {
             wx.showToast({
               title: '登录成功',
@@ -183,27 +209,35 @@ Page({
               duration: 2000
             });
             wx.setStorage({
-                key: 'token',
-                data: res.data.data.token
-              }
+              key: 'token',
+              data: res.data.data.token
+            }
             )
-            wx.setStorage(  {
+            wx.setStorage({
               key: 'useId',
-                data: res.data.data.id
+              data: res.data.data.id
             }
             )
             wx.switchTab({
               url: '../../pages/index/index'
             })
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
-            wx.navigateTo({
-              url: '/pages/bindPhone/bindPhone',
-            })
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/bindPhone/bindPhone',
+              })
+            }, 500)
           }
         }
       })
@@ -214,7 +248,7 @@ Page({
         content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
         showCancel: false,
         confirmText: '',
-        success: function(res) {
+        success: function (res) {
           // 用户没有授权成功，不需要改变 isHide 的值
           if (res.confirm) {
             console.log('用户点击了“返回授权”');
@@ -223,14 +257,14 @@ Page({
       });
     }
   },
-  goHome:function(){
+  goHome: function () {
     wx.switchTab({
       url: '../../pages/index/index'
     })
   },
 
 
-  onLoad: function() {
+  onLoad: function () {
 
   }
 })

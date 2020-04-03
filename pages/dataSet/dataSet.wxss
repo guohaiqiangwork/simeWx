@@ -112,7 +112,7 @@ picker {
 
 .title {
   padding-top: 20rpx;
-  padding-left: 42rpx;
+  /* padding-left: 42rpx; */
   border-bottom: 1px solid #ededed;
   padding-bottom: 20rpx;
 }

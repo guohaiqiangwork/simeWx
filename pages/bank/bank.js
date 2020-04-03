@@ -69,10 +69,15 @@ Page({
           if (res.data.data) {
             _this.getBankList() //查询银行卡列表
           } else {
-            wx.showModal({
-              content: '请先进行实名认证',
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: '请先进行实名认证',
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title:  '请先进行实名认证',
+              icon: 'none',
+              duration: 1000,
             })
             setTimeout(function() {
               wx.navigateBack({
@@ -155,24 +160,39 @@ Page({
   saveBank: function() {
     var _this = this;
     if (!_this.data.cardName) {
-      wx.showModal({
-        content: '请填写持卡人名字',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写持卡人名字',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title:  '请填写持卡人名字',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (!_this.data.cardPhone) {
-      wx.showModal({
-        content: '请填写手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title:  '请填写手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (!_this.data.code) {
-      wx.showModal({
-        content: '请填写验证码',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写验证码',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title:  '请填写验证码',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -195,18 +215,28 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '添加成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '添加成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:  '添加成功',
+            icon: 'none',
+            duration: 1000,
           })
           _this.getBankList();
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title:  res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })
@@ -223,18 +253,28 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '删除成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '删除成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:  '删除成功',
+            icon: 'none',
+            duration: 1000,
           })
           _this.getBankList();
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })
@@ -413,10 +453,15 @@ Page({
     let yzm = that.data.yzm;
     let telephone = that.data.cardPhone;
     if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -462,11 +507,17 @@ Page({
               }
             }, 1000);
           } else {
-            wx.showModal({
-              content: res.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+
+            wx.showToast({
+              title:res.message,
+              icon: 'none',
+              duration: 1000,
             })
+            // wx.showModal({
+            //   content: res.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
           }
         }
       })

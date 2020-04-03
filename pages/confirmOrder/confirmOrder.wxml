@@ -36,7 +36,7 @@
     <view class="product_left">
       <image src="{{item.picPath}}" class="product_left_img"></image>
     </view>
-    <view class="product_content margin_left5">
+    <view class="product_content margin_left5 width50">
       <view class="font_size32 font_color33">{{item.goodsName}}</view>
       <view class="font_size28 font_color99">规格: {{item.skuName}}</view>
       <view class="font_colorf4 font_size26">¥{{item.price}}</view>

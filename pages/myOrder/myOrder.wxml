@@ -66,7 +66,7 @@
     <!-- 一个内容 -->
     <view class="conter_border" wx:if="{{items.itemList.length == 1}}" catchtap="goOrderDetail" data-orderId="{{items.orderId}}">
       <view class="view_display">
-        <view class="width30">
+        <view class="" style="width:26%">
           <image src="{{items.itemList[0].picPath}}" class="one_img"></image>
         </view>
         <view class="font_size24 margin_top2 width65">

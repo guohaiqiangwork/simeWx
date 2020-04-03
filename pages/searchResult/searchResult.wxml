@@ -31,7 +31,7 @@
       <image src="{{item.pictureUrl}}" catchtap="goProudctDetails" data-productId="{{item.id}}" class="product_list_img"></image>
     </view>
     <view style="background-color:#fff;margin-top:-4%;padding-left:6%">
-      <view class="font_size24"> {{item.goodsName}}</view>
+      <view class="font_size28"> {{item.goodsName}}</view>
       <!-- <view class="font_size18">{{item.falg}}</view> -->
       <view class="view_display margin_top2">
         <view class="font_size28 font_colorf4 width80">¥{{item.price}}</view>

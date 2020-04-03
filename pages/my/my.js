@@ -41,10 +41,15 @@ Page({
             url: '../logs/logs'
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -71,10 +76,15 @@ Page({
             jinDou: res.data.data 
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -98,10 +108,15 @@ Page({
           })
           _this.getMyRedBlance();
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -115,10 +130,15 @@ Page({
 
       })
     }else{
-      wx.showModal({
-        content: '没有笑容金豆',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '没有笑容金豆',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '没有笑容金豆',
+        icon: 'none',
+        duration: 1000,
       })
     }
    

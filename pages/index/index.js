@@ -85,10 +85,15 @@ Page({
             banners: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -106,10 +111,15 @@ Page({
             newList: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -148,10 +158,15 @@ Page({
             tabList: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -170,10 +185,15 @@ Page({
             tabListTitle: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -439,20 +459,30 @@ Page({
       success: function(res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '添加成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '添加成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:'添加成功',
+            icon: 'none',
+            duration: 1000,
           })
         } else if (res.data.code == '1500' || res.data.code == '401') {
           wx.navigateTo({
             url: '../logs/logs'
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

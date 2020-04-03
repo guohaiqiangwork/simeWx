@@ -57,10 +57,15 @@ Page({
             url: '../logs/logs'
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -84,10 +89,15 @@ Page({
             noList: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -146,10 +156,15 @@ Page({
           });
 
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -176,11 +191,17 @@ Page({
   deleteShop: function(list) {
     var _this = this;
     if (_this.data.deleArr.length == 0) {
-      wx.showModal({
-        content: '请选择需要删除的内容',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请选择需要删除的内容',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请选择需要删除的内容',
+        icon: 'none',
+        duration: 1000,
       })
+      return;
     }
     wx.request({
       url: ajax_url + '/shoppingCart/delCarts',
@@ -192,11 +213,16 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '删除成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
-          });
+          // wx.showModal({
+          //   content: '删除成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // });
+          wx.showToast({
+            title: '删除成功',
+            icon: 'none',
+            duration: 1000,
+          })
           _this.setData({
             editFalg: true,
             totalNumber: 0, //选中商品数量
@@ -204,11 +230,16 @@ Page({
           })
           _this.getCartList(); //有效商品列表
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })

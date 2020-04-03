@@ -76,10 +76,15 @@ Page({
             prouctList: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -101,10 +106,15 @@ Page({
             cartListNo: res.data.data.length
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -136,10 +146,15 @@ Page({
             adderList: list
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -213,10 +228,15 @@ Page({
             url: '/pages/paymentOrder/paymentOrder?buyData=' + JSON.stringify(_this.data.buyData),
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -275,10 +295,15 @@ Page({
               adderList: list
             })
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title:res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
           }
         }

@@ -30,10 +30,15 @@ Page({
     let yzm = that.data.yzm;
     let telephone = that.data.phone;
     if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title:'请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -80,10 +85,16 @@ Page({
               }
             }, 1000);
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+
+            wx.showToast({
+              title:res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
           }
         }
@@ -94,18 +105,28 @@ Page({
   goLogin: function(e) {
     var _this = this
     if (_this.data.phone.length != 11) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title:'请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
+      })
       return;
     } else if (_this.data.code.length != 6) {
-      wx.showModal({
-        content: '请输入正确验证码',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请输入正确验证码',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title:'请输入正确验证码',
+        icon: 'none',
+        duration: 1000,
+      })
       return;
     }
     var keyword = {
@@ -147,11 +168,16 @@ Page({
             url: '../../pages/index/index'
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })

@@ -40,6 +40,7 @@
   <scroll-view class='wrapper' scroll-x="true">
     <view class="new_moudel" wx:for="{{newList}}" wx:key="index" catchtap="goProudctDetails" data-productId="{{item.id}}" style="background-color:#fff">
       <view>
+       <view class="new_product_none" hidden="{{item.inventory != 0}}">已售罄</view>
         <image src="{{item.pictureUrl}}" class="new_img"></image>
       </view>
 
@@ -94,7 +95,7 @@
     <!-- <view style="" catchtap="goProductList" data-code="{{items.code}}" data-type="{{items.name}}"> -->
       <image src="/image/moreProduct.jpg"
       catchtap="goProductList" data-code="{{items.code}}" data-type="{{items.name}}"
-       style="width:360rpx;height:504rpx;display: inline-block;margin-left:10rpx;vertical-align: bottom;margin-bottom:4%"></image>
+       style="width:360rpx;height:504rpx;display: inline-block;margin-left:10rpx;vertical-align: bottom;margin-bottom:5%"></image>
     <!-- </view> -->
 
   </view>

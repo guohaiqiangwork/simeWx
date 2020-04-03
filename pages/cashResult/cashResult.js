@@ -36,10 +36,15 @@ Page({
          })
          
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

@@ -30,7 +30,7 @@ view {
 .tabList_img {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .tab_width {
@@ -104,6 +104,19 @@ view {
   color: #fff;
   position: absolute;
   line-height: 10;
+}
+
+.new_product_none {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 175rpx;
+  height: 175rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  position: absolute;
+  line-height: 7;
+  left: 6%;
+  top: 11%;
 }
 
 .product_list_left {

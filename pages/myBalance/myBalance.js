@@ -59,10 +59,15 @@ Page({
             myMoney: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -96,10 +101,15 @@ Page({
           })
 
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -160,10 +170,15 @@ Page({
     if (_this.data.myMoney.balance > 0) {
       _this.getName() //各种判断
     } else {
-      wx.showModal({
-        content: '没有可提现金额',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '没有可提现金额',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '没有可提现金额',
+        icon: 'none',
+        duration: 1000,
       })
     }
   },
@@ -182,10 +197,15 @@ Page({
           if (res.data.data) {
             _this.getBankList() //查询是否绑定银行卡
           } else {
-            wx.showModal({
-              content: '请先进行实名认证',
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: '请先进行实名认证',
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title: '请先进行实名认证',
+              icon: 'none',
+              duration: 1000,
             })
             setTimeout(function() {
               wx.navigateTo({
@@ -213,10 +233,15 @@ Page({
           console.log(res)
           _this.getpaword();
         } else {
-          wx.showModal({
-            content: '请绑定银行卡',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '请绑定银行卡',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: '请绑定银行卡',
+            icon: 'none',
+            duration: 1000,
           })
           setTimeout(function() {
             wx.navigateTo({
@@ -243,11 +268,16 @@ Page({
             url: "../cashMoney/cashMoney",
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
-          });
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // });
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
+          })
           setTimeout(function() {
             wx.navigateTo({
               url: '../setPassword/setPassword',

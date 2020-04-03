@@ -93,10 +93,15 @@ Page({
             timeFalgOne: timeFalgOne
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -138,10 +143,15 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '保存成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '保存成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:'保存成功',
+            icon: 'none',
+            duration: 1000,
           })
           // if (_this.data.rememberDay){
             _this.setData({
@@ -150,10 +160,15 @@ Page({
           // }
           _this.getUserList(); //刷新数据
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -206,10 +221,16 @@ Page({
           });
           _this.getUserList()//刷新数据
         } else {
-          wx.showModal({
-            content: json.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: json.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+
+          wx.showToast({
+            title:json.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
 

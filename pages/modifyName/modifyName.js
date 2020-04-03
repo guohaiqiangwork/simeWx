@@ -43,19 +43,29 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '保存成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '保存成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: '保存成功',
+            icon: 'none',
+            duration: 1000,
           })
           wx.navigateBack({
             delta: 1,
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

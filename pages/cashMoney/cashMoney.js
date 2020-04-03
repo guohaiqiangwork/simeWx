@@ -81,10 +81,16 @@ Page({
                     Length: 6, //输入框个数  
                   })
                   wx.hideLoading();
-                  wx.showModal({
-                    content: res.data.message,
-                    confirmColor: '#6928E2',
-                    showCancel: false,
+                  // wx.showModal({
+                  //   content: res.data.message,
+                  //   confirmColor: '#6928E2',
+                  //   showCancel: false,
+                  // })
+
+                  wx.showToast({
+                    title:res.data.message,
+                    icon: 'none',
+                    duration: 1000,
                   })
 
                 }
@@ -100,11 +106,16 @@ Page({
               Length: 6, //输入框个数  
             });
 
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            wx.showToast({
+              title:res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
           }
         }
       })
@@ -137,10 +148,15 @@ Page({
   //提现
   goMoney: function() {
     if (!this.data.moneyNumber){
-      wx.showModal({
-        content: '请填写金额',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写金额',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title:'请填写金额',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }else{
@@ -262,10 +278,15 @@ Page({
             myMoney: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

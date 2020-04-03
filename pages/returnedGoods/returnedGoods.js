@@ -45,11 +45,16 @@ Page({
   confirm: function () {
     var _this = this;
     if (!_this.data.logisticsNumber){
-      wx.showModal({
-        content: '请输入内容',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请输入内容',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title: '请输入内容',
+        icon: 'none',
+        duration: 1000,
+      })
       return;
     };
     var addLogistics = {
@@ -74,10 +79,15 @@ Page({
           });
           _this.getApplyRecord('new')//刷新数组
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -146,11 +156,17 @@ Page({
             });
           }
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          
         }
       }
     })
@@ -188,10 +204,15 @@ Page({
             });
           }
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -215,10 +236,15 @@ Page({
             url: '../returnedApply/returnedApply?orderId=' + e.currentTarget.dataset.orderid + '&status=' + e.currentTarget.dataset.status + '&falg=' + e.currentTarget.dataset.falg, 
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

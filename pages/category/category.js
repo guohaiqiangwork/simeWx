@@ -44,10 +44,15 @@ Page({
                 });
                 _this.getTabListRight(_this.data.tabFalg) //获取右面
               } else {
-                wx.showModal({
-                  content: res.data.message,
-                  confirmColor: '#6928E2',
-                  showCancel: false,
+                // wx.showModal({
+                //   content: res.data.message,
+                //   confirmColor: '#6928E2',
+                //   showCancel: false,
+                // })
+                wx.showToast({
+                  title:res.data.message,
+                  icon: 'none',
+                  duration: 1000,
                 })
               }
             }
@@ -72,10 +77,15 @@ Page({
             rightList: res.data.data
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

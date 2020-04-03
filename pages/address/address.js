@@ -83,31 +83,51 @@ Page({
   addAddress: function() {
     var _this = this;
     if (!_this.data.receiver) {
-      wx.showModal({
-        content: '请输入收货人姓名',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请输入收货人姓名',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请输入收货人姓名',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (_this.data.mobile.length < 11 || !(/^1[3456789]\d{9}$/.test(_this.data.mobile))) {
-      wx.showModal({
-        content: '请填写正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请填写正确手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     } else if (_this.data.region.length == 1) {
-      wx.showModal({
-        content: '请选择所在区域',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请选择所在区域',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请选择所在区域',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }else if (!_this.data.address) {
-      wx.showModal({
-        content: '请填写详细地址',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请填写详细地址',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请填写详细地址',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -134,18 +154,28 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '修改成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '修改成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: '修改成功',
+            icon: 'none',
+            duration: 1000,
           })
           _this.getAddressList();//获取列表
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title:  res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })
@@ -160,10 +190,15 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '添加成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '添加成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:  '添加成功',
+            icon: 'none',
+            duration: 1000,
           })
           if (app.nativeData.addressf == 'confirmOrder'){
             wx.navigateBack({
@@ -174,11 +209,16 @@ Page({
           }
          
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title:  res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })
@@ -220,10 +260,16 @@ Page({
        
          
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+
+          wx.showToast({
+            title:  res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -246,18 +292,28 @@ Page({
       success: function (res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '删除成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: '删除成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title:  '删除成功',
+            icon: 'none',
+            duration: 1000,
           })
           _this.getAddressList('del');//刷新列表
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          wx.showToast({
+            title:  res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
         }
       }
     })

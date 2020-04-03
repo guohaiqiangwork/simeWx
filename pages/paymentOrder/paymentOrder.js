@@ -82,10 +82,15 @@ Page({
                     payMoudel: true
                   })
                   wx.hideLoading();
-                  wx.showModal({
-                    content: res.data.message,
-                    confirmColor: '#6928E2',
-                    showCancel: false,
+                  // wx.showModal({
+                  //   content: res.data.message,
+                  //   confirmColor: '#6928E2',
+                  //   showCancel: false,
+                  // })
+                  wx.showToast({
+                    title: res.data.message,
+                    icon: 'none',
+                    duration: 1000,
                   })
                   setTimeout(function() {
                     wx.navigateTo({
@@ -101,13 +106,19 @@ Page({
               Value: "",
               payMoudel: true
             });
+          
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
+            })
             wx.navigateTo({
               url: '/pages/payResult/payResult?payFalg=close',
-            })
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
             })
           }
         }
@@ -224,11 +235,17 @@ Page({
       return;
     }
     if (!that.data.payType) {
-      wx.showModal({
-        content: '请选择支付方式',
-        confirmColor: '#6928E2',
-        showCancel: false,
-      });
+      // wx.showModal({
+      //   content: '请选择支付方式',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // });
+      wx.showToast({
+        title: '请选择支付方式',
+        icon: 'none',
+        duration: 1000,
+      })
+      
       return;
     }
     // 余额支付
@@ -249,10 +266,15 @@ Page({
               Value: ""
             });
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
             setTimeout(function() {
               wx.navigateTo({
@@ -293,10 +315,15 @@ Page({
             })
 
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
           }
         }

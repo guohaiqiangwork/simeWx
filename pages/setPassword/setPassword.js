@@ -42,10 +42,15 @@ Page({
             telephone: res.data.data.mobile
           })
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }
@@ -76,10 +81,15 @@ Page({
     let yzm = that.data.yzm;
     let telephone = that.data.telephone;
     if (telephone.length < 11 || !(/^1[3456789]\d{9}$/.test(telephone))) {
-      wx.showModal({
-        content: '请输入正确手机号',
-        confirmColor: '#6928E2',
-        showCancel: false,
+      // wx.showModal({
+      //   content: '请输入正确手机号',
+      //   confirmColor: '#6928E2',
+      //   showCancel: false,
+      // })
+      wx.showToast({
+        title: '请输入正确手机号',
+        icon: 'none',
+        duration: 1000,
       })
       return;
     }
@@ -126,10 +136,16 @@ Page({
               }
             }, 1000);
           } else {
-            wx.showModal({
-              content: res.data.message,
-              confirmColor: '#6928E2',
-              showCancel: false,
+            // wx.showModal({
+            //   content: res.data.message,
+            //   confirmColor: '#6928E2',
+            //   showCancel: false,
+            // })
+
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000,
             })
           }
         }
@@ -214,21 +230,31 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          wx.showModal({
-            content: '设置成功',
-            confirmColor: '#6928E2',
-            showCancel: false,
-          });
+          // wx.showModal({
+          //   content: '设置成功',
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // });
+          wx.showToast({
+            title: '设置成功',
+            icon: 'none',
+            duration: 1000,
+          })
           setTimeout(function() {
             wx.navigateBack({
               delta: -1
             });
           }, 2000)
         } else {
-          wx.showModal({
-            content: res.data.message,
-            confirmColor: '#6928E2',
-            showCancel: false,
+          // wx.showModal({
+          //   content: res.data.message,
+          //   confirmColor: '#6928E2',
+          //   showCancel: false,
+          // })
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000,
           })
         }
       }

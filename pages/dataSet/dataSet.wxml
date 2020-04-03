@@ -88,7 +88,7 @@
     </view>
     <view class="view_display">
       <view class="model_btn margin_left6" catchtap="hideRule">重新填写</view>
-      <view class="model_btn margin_left3" catchtap="saveData" data-falg="jn">确认无误</view>
+      <view class="model_btn margin_left3" catchtap="saveData" data-falg="jn" style="margin-left:12%">确认无误</view>
     </view>
   </view>
 

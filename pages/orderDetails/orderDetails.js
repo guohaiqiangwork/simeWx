@@ -207,7 +207,8 @@ Page({
     } else {
       that.setData({
         countDown: false
-      })
+      });
+      that.getOrderDetail();
     }
   },
   //小于10的格式化函数（2变成02）

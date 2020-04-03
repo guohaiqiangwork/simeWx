@@ -126,7 +126,6 @@ Page({
   },
 
   Tap() {
-    console.log('6')
     var that = this;
     that.setData({
       isFocus: true,
@@ -134,13 +133,11 @@ Page({
   },
 
   getFocus: function() {
-    console.log('3')
     this.setData({
       focus: !this.data.focus
     })
   },
   goBank: function() {
-    console.log(9)
     wx.navigateTo({
       url: "../bank/bank",
     })
@@ -247,7 +244,6 @@ Page({
   },
   // 更换
   bankBtn: function(e) {
-    console.log(e.currentTarget.dataset.item);
     let bankList = "bankList[0]"
     this.setData({
       [bankList]: e.currentTarget.dataset.item,
@@ -273,7 +269,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             myMoney: res.data.data
           })

@@ -135,7 +135,6 @@ Page({
 
   // 去支付
   goOrderPay: function(e) {
-    console.log(e.currentTarget.dataset.paydata);
     wx.navigateTo({
       url: '/pages/paymentOrder/paymentOrder?payData=' + JSON.stringify(e.currentTarget.dataset.paydata),
     })
@@ -200,7 +199,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.getMyOrder('new') //刷新数据
         } else {
           // wx.showModal({
@@ -235,7 +233,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.getMyOrder('new') //刷新数据
         } else {
           // wx.showModal({

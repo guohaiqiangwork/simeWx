@@ -76,15 +76,13 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res);
-     
-          console.log(res.data.data.sex)
+   
           res.data.data.mobile = res.data.data.mobile.substring(3, 0) + "^_^" + res.data.data.mobile.substring(7, 11);
      
           var bigTime = new Date().valueOf();
-          console.log(bigTime)
+    
           var timeFalgOne = Date.parse(res.data.data.rememberTime) > bigTime;
-          console.log(timeFalgOne)
+     
           _this.setData({
             listData: res.data.data,
             sexIndex: res.data.data.sex,
@@ -210,9 +208,8 @@ Page({
       success: function(res) {
         wx.hideLoading();
         var json = JSON.parse(res.data) // 此处转换
-        console.log(json)
+ 
         if (json.code == 200) {
-          console.log(JSON.stringify(json.data))
           wx.showToast({
             title: "图像上传成功！",
             icon: "none",
@@ -261,7 +258,6 @@ Page({
   },
   // 男女
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       sexIndex: e.detail.value
     })
@@ -269,7 +265,6 @@ Page({
   },
   // 生日
   rememberDayPick: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       birthdayDay: e.detail.value
     });
@@ -277,7 +272,6 @@ Page({
   },
   // 纪念日
   bindMultiPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
@@ -287,7 +281,7 @@ Page({
     const day = this.data.multiArray[2][index[2]];
     const hour = this.data.multiArray[3][index[3]];
     const minute = this.data.multiArray[4][index[4]];
-    // console.log(`${year}-${month}-${day}-${hour}-${minute}`);
+  
     this.setData({
       rememberDay: month + '-' + day,
       isRuleTrue: true,
@@ -299,12 +293,12 @@ Page({
     //获取年份
     if (e.detail.column == 0) {
       let choose_year = this.data.multiArray[e.detail.column][e.detail.value];
-      console.log(choose_year);
+      
       this.setData({
         choose_year
       })
     }
-    //console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+
     if (e.detail.column == 1) {
       let num = parseInt(this.data.multiArray[e.detail.column][e.detail.value]);
       let temp = [];
@@ -330,7 +324,6 @@ Page({
         });
       } else if (num == 2) { //判断2月份天数
         let year = parseInt(this.data.choose_year);
-        console.log(year);
         if (((year % 400 == 0) || (year % 100 != 0)) && (year % 4 == 0)) {
           for (let i = 1; i <= 29; i++) {
             if (i < 10) {
@@ -353,7 +346,7 @@ Page({
           });
         }
       }
-      console.log(this.data.multiArray[2]);
+
     }
     var data = {
       multiArray: this.data.multiArray,

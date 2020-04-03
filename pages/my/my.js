@@ -68,7 +68,6 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
-          console.log(res.data.data )
           if (!res.data.data){
             res.data.data = 0
           }
@@ -102,7 +101,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             myMoney: res.data.data
           })

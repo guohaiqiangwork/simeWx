@@ -37,7 +37,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     if (options.code == "undefined"){
       options.code =  '';
     }
@@ -127,7 +126,6 @@ Page({
         'client': 'APP',
       },
       success: function (res) {
-        console.log(res)
         if (res.data.code == '200') {
           if (type == 'new') {
             _this.setData({
@@ -208,7 +206,6 @@ Page({
 
   // 监听输入框值
   bindconfirm: function (e) {
-    console.log(e)
     var _this = this;
     _this.setData({
       inputValue: e.detail.value,

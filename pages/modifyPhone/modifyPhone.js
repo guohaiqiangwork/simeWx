@@ -84,7 +84,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
         success: function(res) {
-          console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
             wx.showToast({

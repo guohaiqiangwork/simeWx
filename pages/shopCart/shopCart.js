@@ -84,7 +84,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             noList: res.data.data
           })
@@ -107,7 +106,6 @@ Page({
 
   // 加按钮
   jiaBtnTap: function(e) {
-    console.log(e)
     var _this = this;
     var index = e.currentTarget.dataset.index;
     var shopId = e.currentTarget.dataset.id;
@@ -124,10 +122,8 @@ Page({
       num = num - 1;
     };
     if (num == 0) {
-      console.log('3232')
       return;
     } else if (num == 100) {
-      console.log('12')
       return;
     }
     var data = {
@@ -146,7 +142,6 @@ Page({
       success: function(res) {
         if (res.data.code == '200') {
           let list = "list[" + index + "].num"
-          console.log(checkeditem)
           var heJiPrice = 0;
           if (checkeditem) {
             if (fag == 'add') {
@@ -312,12 +307,9 @@ Page({
     if (valLen != 0) { //选中
       for (var i = 0; i < listLen; i++) {
         if (list[i].goodsId == checkid) {
-          console.log(list[i].goodsId + 'if' + checkid)
           if (!list[i].checkeditem) {
             list[i].checkeditem = true;
-            console.log('未选中状态');
             num = num + 1;
-            console.log('--' + num)
             var buyDataObj = {
               goodsId: list[i].goodsId,
               num: list[i].num,
@@ -331,9 +323,7 @@ Page({
           }
         } else {
           if (list[i].checkeditem) {
-            console.log(list[i].goodsId + 'else' + checkid)
             num = num + 1;
-            console.log('++' + num)
           }
         }
       }
@@ -342,8 +332,6 @@ Page({
       var arrList = []
       var trolleyLen = that.data.arr.length;
       // 去掉数组中取消选中数据
-      console.log(listLen + '循环长度')
-      console.log(that.data.arr)
       for (var i = 0; i < listLen; i++) {
         if (list[i].goodsId == checkid) {
           if (list[i].checkeditem) {
@@ -376,7 +364,6 @@ Page({
         list: list //页面数据
       })
     } else {
-      console.log(that.data.arr.length)
       that.setData({
         checked_all: false, //全选
         totalNumber: that.data.arr.length, //选中商品数量
@@ -399,7 +386,7 @@ Page({
     that.data.priceArr = [];
     that.data.deleArr = [];
     if (valLen != 0) {
-      console.log(that.data.arr + '全选选中')
+      console.log( '全选选中')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = true;
         var buyDataObj = {
@@ -417,7 +404,7 @@ Page({
       for (var i = 0; i < l; i++) {
         sum += Number(that.data.priceArr[i]);
       }
-      console.log(that.data.arr)
+    
       that.setData({
         checked_all: true, //全选
         list: list,
@@ -426,7 +413,7 @@ Page({
         totalPrice: sum //选中商品价格
       })
     } else {
-      console.log(that.data.arr + '取消全选')
+      console.log('取消全选')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = false
       }
@@ -445,7 +432,7 @@ Page({
   // 去结算
   goConfirmOrder: function() {
     var that = this;
-    console.log(that.data.arr)
+
     if (that.data.arr.length > 0) {
       wx.navigateTo({
         url: '/pages/confirmOrder/confirmOrder?listArr=' + JSON.stringify(that.data.arr),

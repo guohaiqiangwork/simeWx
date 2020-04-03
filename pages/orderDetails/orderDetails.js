@@ -18,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.orderId)
     this.setData({
       orderId: options.orderId
     });
@@ -121,7 +120,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.getOrderDetail() //刷新数据
         } else {
           // wx.showModal({
@@ -181,7 +179,6 @@ Page({
   },
   // 去支付
   goOrderPay: function(e) {
-    console.log(e.currentTarget.dataset.paydata);
     wx.navigateTo({
       url: '/pages/paymentOrder/paymentOrder?payData=' + JSON.stringify(e.currentTarget.dataset.paydata),
     })
@@ -189,7 +186,6 @@ Page({
 
   // 倒计时
   countDown: function() {
-    console.log(endTime)
     var that = this;
     var nowTime = new Date().getTime(); //现在时间（时间戳）
     var endTime = new Date(that.data.endTime).getTime(); //结束时间（时间戳）

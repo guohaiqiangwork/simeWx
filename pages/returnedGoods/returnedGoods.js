@@ -29,7 +29,7 @@ Page({
   },
   //点击按钮痰喘指定的hiddenmodalput弹出框
   modalinput: function (e) {
-    console.log(e)
+
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput,
       orderId: e.currentTarget.dataset.item.id
@@ -73,7 +73,6 @@ Page({
       success: function (res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          console.log(res);
           _this.setData({
             hiddenmodalput: true
           });
@@ -107,7 +106,6 @@ Page({
   },
   // 切换
   productTabSwich: function(e) {
-    console.log(e)
     var _this = this;
     _this.data.orderList = [];
     _this.data.applyOrderList = [];
@@ -145,7 +143,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           if (type == 'new') {
             _this.setData({
               orderList: res.data.data.records
@@ -193,7 +190,6 @@ Page({
       success: function(res) {
       
         if (res.data.code == '200') {
-          console.log(res)
           if (type == 'new') {
             _this.setData({
               applyOrderList: res.data.data.records
@@ -220,9 +216,6 @@ Page({
   },
   // 去申请退换货
   applyRecord: function(e) {
-    console.log(e.currentTarget.dataset.orderid);
-    console.log(e.currentTarget.dataset.status);
-
     wx.request({
       url: ajax_url + "/order/mb/isLapse/" + e.currentTarget.dataset.orderid,
       method: "post",

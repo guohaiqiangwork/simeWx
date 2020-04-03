@@ -52,7 +52,6 @@ Page({
   },
   //获取时间日期
   bindMultiPickerChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
@@ -74,12 +73,11 @@ Page({
     //获取年份
     if (e.detail.column == 0) {
       let choose_year = this.data.multiArray[e.detail.column][e.detail.value];
-      console.log(choose_year);
+      // console.log(choose_year);
       this.setData({
         choose_year
       })
     }
-    //console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     if (e.detail.column == 1) {
       let num = parseInt(this.data.multiArray[e.detail.column][e.detail.value]);
       let temp = [];
@@ -105,7 +103,7 @@ Page({
         });
       } else if (num == 2) { //判断2月份天数
         let year = parseInt(this.data.choose_year);
-        console.log(year);
+        // console.log(year);
         if (((year % 400 == 0) || (year % 100 != 0)) && (year % 4 == 0)) {
           for (let i = 1; i <= 29; i++) {
             if (i < 10) {
@@ -128,7 +126,7 @@ Page({
           });
         }
       }
-      console.log(this.data.multiArray[2]);
+      // console.log(this.data.multiArray[2]);
     }
     var data = {
       multiArray: this.data.multiArray,

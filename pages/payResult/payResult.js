@@ -26,7 +26,6 @@ Page({
    */
   onLoad: function(options) {
     var _this = this;
-    console.log(options)
     if (options.item) {
       var dataHotD = JSON.parse(options.item)
       _this.setData({

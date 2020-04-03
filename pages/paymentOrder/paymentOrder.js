@@ -131,7 +131,6 @@ Page({
 
   Tap() {
     var that = this;
-    // console.log('234')
     that.setData({
       isFocus: true,
     })
@@ -146,7 +145,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
     var that = this;
     if (options.buyData) {
       var buyData = JSON.parse(options.buyData);
@@ -217,7 +215,6 @@ Page({
   },
   // 选择支付放肆
   radiochange: function(e) {
-    // console.log('radio发生change事件，携带的value值为：', e.detail.value);
     this.data.payType = e.detail.value;
   },
   // 关闭密码框
@@ -300,7 +297,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function(res) {
-          console.log(res)
           if (res.data.code == '200') {
             wx.requestPayment({
               "timeStamp": res.data.data.timeStamp.toString(),
@@ -309,7 +305,6 @@ Page({
               "signType": "MD5",
               "paySign": res.data.data.sign,
               "success": function(res) {
-                console.log(res)
               },
               "fail": function(res) {}
             })

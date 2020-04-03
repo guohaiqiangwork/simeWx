@@ -41,7 +41,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res.data.data.totalPrice);
         _this.setData({
           friendList: res.data.data.result.records,
           totalPrice: res.data.data.totalPrice

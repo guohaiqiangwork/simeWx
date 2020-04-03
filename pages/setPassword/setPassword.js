@@ -36,7 +36,6 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        console.log(res)
         if (res.data.code == '200') {
           _this.setData({
             telephone: res.data.data.mobile
@@ -112,7 +111,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
         success: function(res) {
-          console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
             wx.showToast({
@@ -217,7 +215,6 @@ Page({
       memberId: wx.getStorageSync('useId'),
       password: newPassword,
     };
-    console.log(dataBase);
     //上面已验证时正确的 下面直接开始对接口
     wx.request({
       url: ajax_url + '/account/updatePassword/' + wx.getStorageSync('useId'),

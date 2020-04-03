@@ -54,7 +54,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             myMoney: res.data.data
           })
@@ -230,7 +229,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.getpaword();
         } else {
           // wx.showModal({

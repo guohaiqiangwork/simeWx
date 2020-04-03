@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+  
     this.setData({
       title: options.type + '商品清单'
     });
@@ -35,7 +35,6 @@ Page({
       },
       success: function (res) {
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             newList: res.data.data
           })

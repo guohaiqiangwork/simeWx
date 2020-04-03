@@ -40,7 +40,6 @@ Page({
       success: function(res) {
         wx.hideLoading();
         if (res.data.code == '200') {
-          console.log(res)
           _this.setData({
             returnedData: res.data.data
           })

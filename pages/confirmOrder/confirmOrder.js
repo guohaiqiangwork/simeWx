@@ -33,18 +33,15 @@ Page({
     };
     if (options.listArr) {
       _this.data.listArrShop = JSON.parse(options.listArr);
-      console.log(_this.data.listArrShop);
       _this.data.shopCarIdList
       for (var i = 0; i < _this.data.listArrShop.length; i++) {
         _this.data.shopCarIdList.push(_this.data.listArrShop[i].shopCarId)
         _this.data.listArrShop[i].shopCarId = ''; 
-        console.log(_this.data.listArrShop)
-        console.log(_this.data.shopCarIdList)
+
       }
       _this.getProuctBuy(_this.data.listArrShop) //详情页过来获取数据
       _this.data.comeUrl = 'two'
     }
-    console.log(options)
     _this.getCartListNo() //获取失效商品数量 
     _this.getAddressList() //获取地址列表
     _this.getShareId() //查询是否绑定他人
@@ -261,7 +258,6 @@ Page({
 
   // 去选择地址；
   goAddress: function(e) {
-    console.log(e.currentTarget.dataset.falg)
     app.nativeData.addressf = ''
     if (e.currentTarget.dataset.falg == "replace") {
       app.nativeData.addressf = 'replace'

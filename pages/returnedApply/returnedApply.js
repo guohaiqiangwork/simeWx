@@ -52,7 +52,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     if (options.falg == 'tui') {
       this.setData({
         tuiFalg: true,
@@ -71,7 +70,6 @@ Page({
   },
   // 照片上传
   selectImg: function(e) {
-    console.log(e)
     var imgId = e.currentTarget.dataset.id
     var that = this;
     wx.chooseImage({
@@ -103,7 +101,6 @@ Page({
         wx.hideLoading();
         var json = JSON.parse(res.data) // 此处转换
         var dataImg = JSON.stringify(json.data);
-        console.log(json.data.showFile)
         if (json.code == 200) {
           if (imagId == 1) {
             _this.setData({
@@ -176,7 +173,6 @@ Page({
       },
       success: function(res) {
         if (res.data.code == '200') {
-          console.log(res.data.data.records)
           _this.setData({
             orderList: res.data.data.records[0].itemList,
             status: res.data.data.records[0].status
@@ -198,8 +194,6 @@ Page({
   },
   // 申请服务
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    console.log()
     this.setData({
       index: e.detail.value,
       servelNull: '0',
@@ -208,8 +202,6 @@ Page({
   },
   // 申请原因
   bindPickeR: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    console.log(this.data.reasonArray[e.detail.value].text)
     this.setData({
       index1: e.detail.value,
       reasonNull: '0',
@@ -237,21 +229,21 @@ Page({
     if (valLen != 0) { //选中
       for (var i = 0; i < listLen; i++) {
         if (list[i].goodsId == checkid) {
-          console.log(list[i].goodsId + 'if' + checkid)
+
           if (!list[i].checkeditem) {
             list[i].checkeditem = true;
-            console.log('未选中状态');
+        
             num = num + 1;
-            console.log('--' + num)
+    
             // that.data.shopCarId.push(list[i].id)//购物车id
             that.data.arr.push(list[i]); //选中商品数组
             that.data.priceArr.push(list[i].price * zpricenum); //价格数组
           }
         } else {
           if (list[i].checkeditem) {
-            console.log(list[i].goodsId + 'else' + checkid)
+
             num = num + 1;
-            console.log('++' + num)
+     
           }
         }
       }
@@ -260,8 +252,6 @@ Page({
       var arrList = []
       var trolleyLen = that.data.arr.length;
       // 去掉数组中取消选中数据
-      console.log(listLen + '循环长度')
-      console.log(that.data.arr)
       for (var i = 0; i < listLen; i++) {
         if (list[i].goodsId == checkid) {
           if (list[i].checkeditem) {
@@ -293,7 +283,6 @@ Page({
         list: list //页面数据
       })
     } else {
-      console.log(that.data.arr.length)
       that.setData({
         checked_all: false, //全选
         totalNumber: that.data.arr.length, //选中商品数量
@@ -301,7 +290,6 @@ Page({
         list: list //页面数据
       });
     }
-    // console.log(JSON.stringify(list) + '页面展示数据');
   },
   // 全选
   checkedAll: function(e) {
@@ -312,10 +300,9 @@ Page({
     var listLen = list.length
     var priceArr = that.data.priceArr;
 
-    console.log(valLen)
+
     if (valLen != 0) {
-      console.log(that.data.arr + '全选选中')
-      console.log(list)
+      console.log('全选选中')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = true;
         that.data.arr.push(list[i]); //ID数组
@@ -326,7 +313,6 @@ Page({
       for (var i = 0; i < l; i++) {
         sum += Number(that.data.priceArr[i]);
       }
-      console.log(that.data.arr)
       that.setData({
         checked_all: true, //全选
         orderList: list,
@@ -335,7 +321,7 @@ Page({
         totalPrice: sum //选中商品价格
       })
     } else {
-      console.log(that.data.arr + '取消全选')
+      console.log('取消全选')
       for (var i = 0; i < listLen; i++) {
         list[i].checkeditem = false
       }
@@ -354,7 +340,6 @@ Page({
   // 提交申请
   getRefund: function() {
     var _this = this;
-    console.log(_this.data.retReason)
     if (!_this.data.applyServer) {
       // wx.showModal({
       //   content: '请检查申请服务类型',
@@ -471,7 +456,6 @@ Page({
         }
       }
     })
-    console.log(data)
   },
 
 

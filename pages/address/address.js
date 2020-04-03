@@ -21,11 +21,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(this.data.items.length)
+
     // for (var i = 0; i < this.data.items.length; i++) {
     //   this.data.items[i].isTouchMove = false
     // }
-    // console.log(this.data.items)
+
     // this.setData({
     //   items: this.data.items
     // });
@@ -60,7 +60,7 @@ Page({
   },
 // 地址编辑
   editAddress:function(e){
-    console.log(e.currentTarget.dataset.item)
+
     var editList = e.currentTarget.dataset.item;
     if (editList.isDefault == 1){
       editList.isDefault = true
@@ -383,7 +383,7 @@ Page({
  
   //跳转
   goDetail() {
-    console.log('点击元素跳转')
+    
   },
 
   /**
@@ -436,15 +436,12 @@ Page({
   },
   //地址点击确定按钮
   bindRegionChange: function(e) {
-    console.log(e)
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       region: e.detail.value
     })
   },
   // 开关默认地址
   switch2Change: function(e) {
-    console.log('switch2 发生 change 事件，携带值为', e.detail.value)
     if (e.detail.value) {
       this.setData({
         isDefault: 1

@@ -57,7 +57,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值 
         },
         success: function (res) {
-          console.log(JSON.stringify(res))
           wx.hideLoading();
           if (res.data.code == '200') {
             wx.showToast({
@@ -182,7 +181,6 @@ Page({
 
   // 是否授权弹窗
   bindGetUserInfo: function (res) {
-    console.log(app.nativeData.openId);
     app.nativeData.name = res.detail.userInfo.nickName
     app.nativeData.imgurl = res.detail.userInfo.avatarUrl
     if (res.detail.userInfo) {

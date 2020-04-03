@@ -179,7 +179,6 @@ Page({
       url: ajax_url + '/tbGoodsPictureApi/selectPrice',
       method: "get",
       success: function(res) {
-        console.log(res)
         if (res.data.code == '200') {
           _this.setData({
             tabListTitle: res.data.data
@@ -231,7 +230,7 @@ Page({
   },
   // 去更多产品
   goProductList: function(e) {
-    console.log(e.currentTarget.dataset);
+
     wx.showToast({
       title: '加载中',
       icon: 'loading',
@@ -257,7 +256,7 @@ Page({
             wx.getLocation({
               type: 'wgs84',
               success: function(res) {
-                console.log(res);
+         
                 //弹框
                 var locationString = res.latitude + "," + res.longitude;
                 wx.request({
@@ -297,7 +296,6 @@ Page({
   },
   // 点击导航页面滚动
   toViewClick: function(e) {
-    console.log(e.currentTarget.dataset.code);
     return
     wx.showToast({
       title: '加载中',
@@ -347,7 +345,7 @@ Page({
           wx.getLocation({
             type: 'wgs84',
             success: function(res) {
-              console.log(res);
+
               //弹框
               var locationString = res.latitude + "," + res.longitude;
               wx.request({

@@ -37,7 +37,6 @@ Page({
         'client': 'APP',
       },
       success: function(res) {
-        console.log(res)
         if (res.data.data) {
           _this.setData({
             oneCard: 3
@@ -48,7 +47,6 @@ Page({
   },
   // 照片上传
   selectImg: function(e) {
-    console.log(e)
     var imgType = e.currentTarget.dataset.type
     var that = this;
     wx.chooseImage({
@@ -94,9 +92,7 @@ Page({
       success: function(res) {
         wx.hideLoading();
         var json = JSON.parse(res.data) // 此处转换
-        console.log(json)
         if (json.code == 200) {
-          console.log(JSON.stringify(json.data))
           wx.showToast({
             title: "图像上传成功！",
             icon: "none",
@@ -104,7 +100,6 @@ Page({
             mask: true
           });
           if (_this.data.imgType == 'zheng') {
-            console.log(JSON.stringify(json.data));
             _this.setData({
               name: json.data.name,
               idCard: json.data.idcard

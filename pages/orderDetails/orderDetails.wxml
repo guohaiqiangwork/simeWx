@@ -37,7 +37,10 @@
   <view class=" margin_left4 padding_top3">
     <view class="view_display">
       <view class="font_size34 width90">待收货</view>
-      <image src="/image/rightFF.png" class="image_width_right" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}"></image>
+      <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%"> 
+        <image src="/image/rightFF.png" class="image_width_right" ></image>
+      </view>
+      
     </view>
 
     <view class="font_size24">商家已发货，耐心等待收货</view>
@@ -47,7 +50,9 @@
   <view class=" margin_left4 padding_top3">
     <view class="view_display">
       <view class="font_size34 width90">订单已完成</view>
-      <image src="/image/rightFF.png" class="image_width_right" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}"></image>
+    <view catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}" style="width:30%;margin-top:3%;text-align:right;margin-right:5%"> 
+        <image src="/image/rightFF.png" class="image_width_right" ></image>
+      </view>
     </view>
 
     <view class="font_size24">您已签收，感谢使用笑容smille，期待下次光临</view>

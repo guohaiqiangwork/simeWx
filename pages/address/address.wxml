@@ -6,16 +6,16 @@
 <view wx:if="{{items.length == 0}}">
   <view class="address_list">
     <view class="address_list_left">收货人</view>
-    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" placeholder-style="color:#a0a0a0;" maxlength="6"/>
+    <input class="address_list_right" value="{{receiver}}" name="input" placeholder="请填写收货人姓名" bindinput="nameInput" placeholder-style="color:#a0a0a0;font-size: 30rpx;font-width:500" maxlength="6"/>
   </view>
   <view class="address_list">
     <view class="address_list_left">手机号码</view>
-    <input class="address_list_right" value="{{mobile}}" name="input" placeholder="请填写收货人手机号码" bindinput="phoneInput" maxlength="11" placeholder-style="color:#a0a0a0;"/>
+    <input class="address_list_right" value="{{mobile}}" name="input" placeholder="请填写收货人手机号码" bindinput="phoneInput" maxlength="11" placeholder-style="color:#a0a0a0;font-size: 30rpx;font-width:500"/>
   </view>
   <view class="address_list">
     <view class="address_list_left">所在地区</view>
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-      <view class="picker font_size30" style="color:#a0a0a0;">
+      <view class="picker font_size30" style="color:#a0a0a0;font-size: 30rpx;font-width:500">
         {{region[0]}}{{region[1]}}{{region[2]}}
       </view>
     </picker>

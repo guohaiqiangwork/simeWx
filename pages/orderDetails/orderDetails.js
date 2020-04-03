@@ -124,11 +124,10 @@ Page({
     })
   },
   // 查看物流
-  goLogistics: function(e) {
-
+  goLogistics: function (e) {
     var orderid = e.currentTarget.dataset.orderid;
     wx.navigateTo({
-      url: '/pages/logistics/logistics?orderId=' + orderid,
+      url: '/pages/orderTracking/orderTracking?orderId=' + orderid,
     })
   },
   // 确认收货

@@ -4,7 +4,6 @@
 
 <!-- 状态栏 -->
 <!-- 已取消 status -->
-
 <view class="top_title5" wx:if="{{orderDetail.status == 5}}">
   <view class=" margin_left4 padding_top3">
     <view class="font_size34">已取消</view>
@@ -38,12 +37,23 @@
   <view class=" margin_left4 padding_top3">
     <view class="view_display">
       <view class="font_size34 width90">待收货</view>
-      <image src="/image/right99.png" class="image_width_right"></image>
+      <image src="/image/rightff.png" class="image_width_right" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}"></image>
     </view>
 
     <view class="font_size24">商家已发货，耐心等待收货</view>
   </view>
 </view>
+<view class="top_title1" wx:if="{{orderDetail.status == 4}}">
+  <view class=" margin_left4 padding_top3">
+    <view class="view_display">
+      <view class="font_size34 width90">订单已完成</view>
+      <image src="/image/rightff.png" class="image_width_right" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}"></image>
+    </view>
+
+    <view class="font_size24">您已签收，感谢使用笑容smille，期待下次光临</view>
+  </view>
+</view>
+
 
 <!-- 地址块 -->
 <view class="con_order_adder">
@@ -125,7 +135,7 @@
       去支付
     </view>
   </view>
-  <view wx:if="{{orderDetail.status == 3  }}" class="view_display">
+  <view wx:if="{{orderDetail.status == 3 }}" class="view_display" style="justify-content:flex-end;width:50%">
     <!-- <view class="bottom_btn" catchtap="goLogistics" data-orderId="{{orderDetail.orderId}}">
       查看物流
     </view> -->

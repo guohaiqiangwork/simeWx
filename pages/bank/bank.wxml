@@ -33,7 +33,7 @@
     </view>
   </view>
   <view class="goPay" catchtap="saveBank">
-   {{iosFalg}} 完成{{iosFalg ? '20%' : '25%'}}
+ 完成
   </view>
 </view>
 
